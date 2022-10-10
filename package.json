@@ -15,7 +15,8 @@
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-native": "0.69.6",
-    "react-native-svg": "12.3.0"
+    "react-native-svg": "12.3.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
