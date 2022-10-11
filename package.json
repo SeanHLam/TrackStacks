@@ -16,6 +16,7 @@
     "react": "18.0.0",
     "react-native": "0.69.6",
     "react-native-svg": "12.3.0",
+    "react-native-web": "^0.18.9",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
