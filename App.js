@@ -6,6 +6,7 @@ import { ApplicationProvider, Layout, IconRegistry} from '@ui-kitten/components'
 import NavMenu from './components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { Cont } from './components/navmenu/navmenu.js';
+import { useState } from 'react';
 
 
 
@@ -17,7 +18,11 @@ const HomeScreen = () => (
   </Layout>
 );
 
-export default () => (
+
+
+export default function App () { 
+  const [pages, setPage] = useState(0)
+  return(
 <>
     <IconRegistry icons={EvaIconsPack} />
     <ApplicationProvider style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
@@ -27,9 +32,7 @@ export default () => (
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
   /> */}
-
-
   <NavMenu></NavMenu>
     </ApplicationProvider>
 </>
-);
+  )};
