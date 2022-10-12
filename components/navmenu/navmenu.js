@@ -40,7 +40,6 @@ export default function NavMenu({
             <Icon name='brush' fill={colour[activemenu].brush} style={styles.icon} onPress={onDecor}/>
             <Divider>|</Divider>
             <Icon name='person' fill={colour[activemenu].user} style={styles.icon} onPress={onUser}/>
-        
         </Cont>
     )
 }

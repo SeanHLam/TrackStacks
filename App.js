@@ -21,7 +21,10 @@ const HomeScreen = () => (
 
 
 export default function App () { 
-  const [pages, setPage] = useState(0)
+  const [pages, setPage] = useState(1)
+  const HandlePage = (new_page) =>{
+    setPage(new_page)
+  }
   return(
 <>
     <IconRegistry icons={EvaIconsPack} />
@@ -32,7 +35,13 @@ export default function App () {
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
   /> */}
-  <NavMenu></NavMenu>
+  <NavMenu
+  activemenu={pages}
+  onHome={()=>HandlePage(1)}
+  onTask={()=>HandlePage(2)}
+  onDecor={()=>HandlePage(3)}
+  onUser={()=>HandlePage(4)}
+  ></NavMenu>
     </ApplicationProvider>
 </>
   )};

@@ -23,7 +23,7 @@ export const colour = {
 3:{
     "home":"#FEFDF4",
     "board":"#FEFDF4",
-    "brush":"##99FFDF",
+    "brush":"#99FFDF",
     "user":"#FEFDF4",
 },
 
