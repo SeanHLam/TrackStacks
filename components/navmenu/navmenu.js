@@ -2,7 +2,7 @@ import { View,Text,} from 'react-native';
 import React from 'react';
 import * as eva from '@eva-design/eva';
 import styled from 'styled-components/native';
-// import { Icon } from '@ui-kitten/components';
+import { Icon } from '@ui-kitten/components';
 
 const Cont = styled.View`
 background-color: #363630;
@@ -19,10 +19,10 @@ export default function NavMenu(){
     
     return(
         <Cont>
-             {/* <Icon
-        fill='#8F9BB3'
-        name='star'
-        /> */}
+            <Icon
+            name='star'
+            fill="white"
+            />
         </Cont>
     )
 }
