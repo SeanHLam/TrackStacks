@@ -21,14 +21,20 @@ font-family: ${({size}) =>
   };
 
     color: ${({col}) => 
-        col === 'black' && 'Black'
+        col === 'black' && '#363630' ||
+        col === 'white' && '#FEFDF4' ||
+        col === 'blue' && '#7B89A3' ||
+        col === 'teal' && '#99FFDF' ||
+        col === 'pink' && '#EAAA99' ||
+        '#363630'
     };
 `
 
 export default function AppText({
 
     style="body",
-    text="sample text"
+    text="sample text",
+    c="black"
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,
@@ -42,7 +48,7 @@ export default function AppText({
 
       
     return(
-        <AllText size={style}>
+        <AllText col={c} size={style}>
            {text}
         </AllText>
     )
