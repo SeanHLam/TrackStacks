@@ -7,6 +7,7 @@ import NavMenu from './components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { Cont } from './components/navmenu/navmenu.js';
 import { useState } from 'react';
+import { Wrapper, NavWrapper } from './styles/global.js';
 
 
 
@@ -18,30 +19,34 @@ const HomeScreen = () => (
   </Layout>
 );
 
-
-
 export default function App () { 
   const [pages, setPage] = useState(1)
   const HandlePage = (new_page) =>{
     setPage(new_page)
   }
   return(
-<>
+<ApplicationProvider {...eva} theme={eva.light}>
+  <Wrapper>
     <IconRegistry icons={EvaIconsPack} />
-    <ApplicationProvider style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
+    
+   
       {/* <Button 
         onPress={()  => Alert.alert('simple press')}
         title="Learn More"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
   /> */}
-  <NavMenu
-  activemenu={pages}
-  onHome={()=>HandlePage(1)}
-  onTask={()=>HandlePage(2)}
-  onDecor={()=>HandlePage(3)}
-  onUser={()=>HandlePage(4)}
-  ></NavMenu>
-    </ApplicationProvider>
-</>
+  <NavWrapper>
+    <NavMenu
+    activemenu={pages}
+    onHome={()=>HandlePage(1)}
+    onTask={()=>HandlePage(2)}
+    onDecor={()=>HandlePage(3)}
+    onUser={()=>HandlePage(4)}
+    ></NavMenu>
+  </NavWrapper>
+    
+
+  </Wrapper>
+</ApplicationProvider>
   )};
