@@ -27,31 +27,36 @@ export default function App () {
 
 
   return(
-<Wrapper>
 <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
   
     <IconRegistry icons={EvaIconsPack} />
    
+   <Wrapper>
     <AppText c="black" style="header" text="This is a header"></AppText>
-   
-      {/* <Button 
-        onPress={()  => Alert.alert('simple press')}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-  /> */}
-  <NavWrapper>
-    <NavMenu
-    activemenu={pages}
-    onHome={()=>HandlePage(1)}
-    onTask={()=>HandlePage(2)}
-    onDecor={()=>HandlePage(3)}
-    onUser={()=>HandlePage(4)}
-    ></NavMenu>
-  </NavWrapper>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
+  </Wrapper>
+    
+    <NavWrapper>
+      <NavMenu
+      activemenu={pages}
+      onHome={()=>HandlePage(1)}
+      onTask={()=>HandlePage(2)}
+      onDecor={()=>HandlePage(3)}
+      onUser={()=>HandlePage(4)}
+      ></NavMenu>
+    </NavWrapper>
     
 
   
 </ApplicationProvider>
-</Wrapper>
+
   )};
