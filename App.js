@@ -8,8 +8,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { Cont } from './components/navmenu/navmenu.js';
 import { useState } from 'react';
 import { Wrapper, NavWrapper } from './styles/global.js';
-
-
+import { Text, } from 'react-native';
+import AppText from './components/apptext/apptext.js';
 
 const HomeScreen = () => (
 
@@ -24,11 +24,15 @@ export default function App () {
   const HandlePage = (new_page) =>{
     setPage(new_page)
   }
+
+
   return(
-<ApplicationProvider {...eva} theme={eva.light}>
-  <Wrapper>
+<Wrapper>
+<ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
+  
     <IconRegistry icons={EvaIconsPack} />
-    
+   
+    <AppText style="header" text="THis is a header"></AppText>
    
       {/* <Button 
         onPress={()  => Alert.alert('simple press')}
@@ -47,6 +51,7 @@ export default function App () {
   </NavWrapper>
     
 
-  </Wrapper>
+  
 </ApplicationProvider>
+</Wrapper>
   )};

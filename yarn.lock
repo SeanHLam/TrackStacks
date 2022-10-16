@@ -1142,6 +1142,16 @@
   resolved "https://registry.yarnpkg.com/@eva-design/processor/-/processor-2.1.1.tgz#33a59efa52ee2d206ac4d912dae801d12f9275a8"
   integrity sha512-lbxZLm5ARhuk/wxWkaiWhw5XeZ+Xcp1JGCjcZl+S5rUbLppfp4U47jfq861EY27BP1dpQ5PyTVFCbl5eHlRFdg==
 
+"@expo-google-fonts/cabin@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/cabin/-/cabin-0.2.2.tgz#eebf5c737956c6c746307624ae58f40e49da2a23"
+  integrity sha512-M/dh243BiQZ0XdQrDW3YQ3Qrb+hz+tYEn3RZgXwucXtSGpWF9ypk8SEoyPN/cVgG+z2vKqac8MkgR5G0gyEm/A==
+
+"@expo-google-fonts/days-one@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/days-one/-/days-one-0.2.2.tgz#2b910dd0507ebb20f9ac861b6428473c14b69010"
+  integrity sha512-uC8J1+8MO+3rTET/0olg3R7FT19t7iIG/0grG6CzqUSu2r+yS40Mba3DSP5weYamHn0b/Y5gz9TR+dmOgTXxiw==
+
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"
@@ -3166,7 +3176,7 @@ expo-file-system@~14.1.0:
     "@expo/config-plugins" "~5.0.0"
     uuid "^3.4.0"
 
-expo-font@~10.2.1:
+expo-font@~10.2.0, expo-font@~10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-10.2.1.tgz#c13e65e864befaa4710504096b68635c6f7e48d8"
   integrity sha512-sxy5GrdtY+Ka8Wo5wnrcFFeO6MbYC6Dris5wMLqshvVK6BneJNMUsFvwRfvVgg0TzsmMAc3Rlca2xyZ8ettinw==
