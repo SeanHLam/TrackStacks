@@ -32,7 +32,7 @@ export default function App () {
   
     <IconRegistry icons={EvaIconsPack} />
    
-    <AppText style="header" text="THis is a header"></AppText>
+    <AppText c="black" style="header" text="This is a header"></AppText>
    
       {/* <Button 
         onPress={()  => Alert.alert('simple press')}
