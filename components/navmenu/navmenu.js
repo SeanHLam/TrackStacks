@@ -7,11 +7,11 @@ import { colour } from './navdata';
 
 const Cont = styled.View`
 background-color: #363630;
-width: 85%;
-height:10.5%;
+width: 100%;
+height:11.5%;
 border-radius: 30px;
 display: flex;
-justify-content: center;
+// justify-content: center;
 align-items: center;
 flex-direction: row;
 `;
@@ -19,8 +19,8 @@ flex-direction: row;
 const Divider = styled.Text`
 color: #FEFDF4;
 font-size: 20px;
-margin-right: 7%;
-margin-left: 7%;
+// margin-right: 7%;
+// margin-left: 7%;
 `
 
 export default function NavMenu({
@@ -48,5 +48,7 @@ const styles = StyleSheet.create({
     icon: {
       width: 35,
       height: 35,
+      marginRight: 20,
+      marginLeft: 20,
     },
   });
