@@ -12,3 +12,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 `;
+export const ButtonCont = styled.View`
+    width:${props=>props.wth};
+    height:${props=>props.hght};
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+    box-shadow: 4px 4px #363630;
+`

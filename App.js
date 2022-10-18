@@ -4,7 +4,7 @@ import { Button, Alert} from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout} from '@ui-kitten/components';
 import NavMenu from './components/navmenu/navmenu.js';
-
+import { Button1 } from './components/Button/Button1.js';
 import { Cont } from './components/navmenu/navmenu.js';
 
 
@@ -25,7 +25,7 @@ export default () => (
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
   />
-  
+  <Button1/>
   <NavMenu></NavMenu>
     </ApplicationProvider>
 
