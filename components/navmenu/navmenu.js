@@ -8,7 +8,7 @@ import { colour } from './navdata';
 const Cont = styled.View`
 background-color: #363630;
 width: 100%;
-height:11.5%;
+height:12%;
 border-radius: 30px;
 display: flex;
 justify-content: center;
