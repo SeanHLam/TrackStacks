@@ -10,6 +10,8 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
+import { Button1 } from '../components/Button/Button1.js';
+import { Widget1 } from '../components/widgets/widget.js';
 
 export default function Home({navigation}) { 
   const [pages, setPage] = useState(1)
@@ -24,6 +26,7 @@ export default function Home({navigation}) {
 
   return(
 <SafeAreaView>
+  
   <SliderCont>
   <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
       <IconRegistry icons={EvaIconsPack} />
@@ -43,8 +46,10 @@ export default function Home({navigation}) {
           <AppText c="black" style="header" text="This is a header"></AppText>
           <AppText c="black" style="header" text="This is a header"></AppText>
         </Wrapper>
-
+        
         <NavWrapper>
+        
+        
         <NavMenu
         activemenu={pages}
         onHome={()=>HandlePage(1)}
