@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Alert} from 'react-native';
+import { Button, Alert, SafeAreaView, ScrollView,} from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, IconRegistry} from '@ui-kitten/components';
 import NavMenu from './components/navmenu/navmenu.js';
@@ -30,21 +30,26 @@ export default function App () {
 <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
   
     <IconRegistry icons={EvaIconsPack} />
-   
-   <Wrapper>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-    <AppText c="black" style="header" text="This is a header"></AppText>
-  </Wrapper>
-    
+   <SafeAreaView>
+     <ScrollView>
+      <Wrapper>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+      </Wrapper>
+    </ScrollView>
+  </SafeAreaView>
     <NavWrapper>
       <NavMenu
       activemenu={pages}
