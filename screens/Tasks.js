@@ -24,7 +24,6 @@ export default function Tasks({navigation}) {
 
   return(
 <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
-  
     <IconRegistry icons={EvaIconsPack} />
    <SafeAreaView>
      <ScrollView>

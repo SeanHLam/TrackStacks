@@ -1,4 +1,4 @@
-import { View,Text,} from 'react-native';
+import { View,Text, SafeAreaView, ScrollView,} from 'react-native';
 import { ApplicationProvider} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
@@ -18,8 +18,11 @@ height:100%;
 display:flex;
 align-items:center;
 justify-content:flex-end;
-padding: 5%;
+padding: 2%;
 z-index: 5;
 position: absolute;
-
 `;
+
+export const SliderCont = styled(ScrollView)`
+background-colour: "black"
+`
