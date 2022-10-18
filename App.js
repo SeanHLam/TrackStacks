@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Alert} from 'react-native';
+import { Button, Alert, SafeAreaView, ScrollView,} from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, IconRegistry} from '@ui-kitten/components';
 import NavMenu from './components/navmenu/navmenu.js';
@@ -27,31 +27,41 @@ export default function App () {
 
 
   return(
-<Wrapper>
 <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
   
     <IconRegistry icons={EvaIconsPack} />
-   
-    <AppText c="black" style="header" text="This is a header"></AppText>
-   
-      {/* <Button 
-        onPress={()  => Alert.alert('simple press')}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-  /> */}
-  <NavWrapper>
-    <NavMenu
-    activemenu={pages}
-    onHome={()=>HandlePage(1)}
-    onTask={()=>HandlePage(2)}
-    onDecor={()=>HandlePage(3)}
-    onUser={()=>HandlePage(4)}
-    ></NavMenu>
-  </NavWrapper>
+   <SafeAreaView>
+     <ScrollView>
+      <Wrapper>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+        <AppText c="black" style="header" text="This is a header"></AppText>
+      </Wrapper>
+    </ScrollView>
+  </SafeAreaView>
+    <NavWrapper>
+      <NavMenu
+      activemenu={pages}
+      onHome={()=>HandlePage(1)}
+      onTask={()=>HandlePage(2)}
+      onDecor={()=>HandlePage(3)}
+      onUser={()=>HandlePage(4)}
+      ></NavMenu>
+    </NavWrapper>
     
 
   
 </ApplicationProvider>
-</Wrapper>
+
   )};

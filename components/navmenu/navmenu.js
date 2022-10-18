@@ -11,7 +11,7 @@ width: 100%;
 height:11.5%;
 border-radius: 30px;
 display: flex;
-// justify-content: center;
+justify-content: center;
 align-items: center;
 flex-direction: row;
 `;
@@ -19,8 +19,7 @@ flex-direction: row;
 const Divider = styled.Text`
 color: #FEFDF4;
 font-size: 20px;
-// margin-right: 7%;
-// margin-left: 7%;
+
 `
 
 export default function NavMenu({
