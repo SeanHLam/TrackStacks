@@ -40,7 +40,6 @@ export default function Home({navigation, route}) {
       <Header/>
       <SliderCont>
         <Wrapper>
-        
           <TaskList style="header"
           num="3"
           date="Mon"
@@ -49,18 +48,6 @@ export default function Home({navigation, route}) {
         </Wrapper>
 
         
-        <NavWrapper>
-        
-        <NavMenu
-        activemenu={pages}
-        onHome={()=>HandlePage(1)}
-        onTask={()=>HandlePage(2)}
-        onDecor={()=>HandlePage(3)}
-        onUser={()=>HandlePage(4)}
-        ></NavMenu>
-      </NavWrapper>
-          
-        </Wrapper>
       </SliderCont>
       <NavWrapper>
           <NavMenu
