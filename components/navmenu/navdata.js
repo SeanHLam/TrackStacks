@@ -27,7 +27,7 @@ export const colour = {
     "user":"#FEFDF4",
 },
 
-"Task":{
+"User":{
     "home":"#FEFDF4",
     "board":"#FEFDF4",
     "brush":"#FEFDF4",
