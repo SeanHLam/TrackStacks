@@ -1,25 +1,35 @@
 import React from 'react';
 import { ButtonCont  } from '../../styles/global';
-import { Button, Layout } from '@ui-kitten/components';
+import { Button, Layout, Text } from '@ui-kitten/components';
 import styled from 'styled-components';
 
 
 
 export const Button1 = ({
-  width="30%",
+  width="170px",
   text ="Sign Up",
-  height = "10%",
+  height="45px"
 }) => (
- <ButtonCont wth= {width} hght= {height} >
-  <Button style={{backgroundColor:"#EAAA99", color:"#363630",borderColor:"#363630",borderWidth:2}}>
-     Sign Up
-    </Button>
+ <ButtonCont >
+  <Buttonst wth= {width} hght= {height}>
+     <Text style={{color:"#FFDDAA"}}>{text}</Text>
+    </Buttonst>
  </ButtonCont>
  
 );
 
 export const Buttonst = styled(Button)`
+display:flex;
 background-color:#EAAA99;
+border-color:"#363630";
+border:2px solid;
+width:${props=>props.wth};
+height:${props=>props.hght};
+justify-content:center;
+align-items:center;
+align-content:center;
+text-align:center;
+margin:10px;
 `
 
 
