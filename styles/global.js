@@ -34,16 +34,13 @@ export const WidgetCont = styled.View`
 
 export const NavWrapper = styled.View`
 width: 100%;
-height:100%;
+height: 10%;
 display:flex;
 align-items:center;
-justify-content:flex-end;
-padding: 2%;
-z-index: 5;
-position: absolute;
+
 `;
 
 export const SliderCont = styled(ScrollView)`
-background-colour: "black"
+width: 100%;
 `
 
