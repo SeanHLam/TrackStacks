@@ -1,33 +1,33 @@
 export const colour = {
-0:{
+"None":{
     "home":"#FEFDF4",
     "board":"#FEFDF4",
     "brush":"#FEFDF4",
     "user":"#FEFDF4",
 },
 
-1:{
+"Home":{
     "home":"#99FFDF",
     "board":"#FEFDF4",
     "brush":"#FEFDF4",
     "user":"#FEFDF4",
 },
 
-2:{
+"Tasks":{
     "home":"#FEFDF4",
     "board":"#99FFDF",
     "brush":"#FEFDF4",
     "user":"#FEFDF4",
 },
 
-3:{
+"Decor":{
     "home":"#FEFDF4",
     "board":"#FEFDF4",
     "brush":"#99FFDF",
     "user":"#FEFDF4",
 },
 
-4:{
+"Task":{
     "home":"#FEFDF4",
     "board":"#FEFDF4",
     "brush":"#FEFDF4",
