@@ -23,7 +23,7 @@ font-size: 20px;
 `
 
 export default function NavMenu({
- activemenu = 0,
+ activemenu = "Home",
  onHome =()=>{},
  onTask =()=>{},
  onDecor =()=>{},

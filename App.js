@@ -10,18 +10,18 @@ export default function App() {
       <Stack.Navigator 
       initialRouteName='Home'
       screenOptions={{
-        headerShown: " false"
+        headerShown: false
       }}
       >
         <Stack.Screen 
         name="Home" 
         component={Home} 
-        options={{ headerShown: "true" }}
+        
         />
         <Stack.Screen 
         name="Tasks" 
         component={Tasks} 
-        options={{ headerShown: "false" }}
+        
         />
       </Stack.Navigator>
     </NavigationContainer>
