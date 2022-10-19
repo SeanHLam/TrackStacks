@@ -12,6 +12,7 @@ import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
 import { Button1 } from '../components/Button/Button1.js';
 import { Widget1 } from '../components/widgets/widget.js';
+import TaskList from '../components/tasklist/tasklist.js';
 
 export default function Home({navigation}) { 
   const [pages, setPage] = useState(1)
@@ -45,10 +46,15 @@ export default function Home({navigation}) {
           <AppText c="black" style="header" text="This is a header"></AppText>
           <AppText c="black" style="header" text="This is a header"></AppText>
           <AppText c="black" style="header" text="This is a header"></AppText>
+          <TaskList style="header"
+          num="3"
+          date="Mon"
+          typ="longterm">
+          </TaskList>
         </Wrapper>
+
         
         <NavWrapper>
-        
         
         <NavMenu
         activemenu={pages}

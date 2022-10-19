@@ -11,6 +11,7 @@ import { Wrapper, NavWrapper } from '../styles/global.js';
 import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
 
+
 export default function Tasks({navigation}) { 
   const [pages, setPage] = useState(2)
   const HandlePage = (new_page) =>{
@@ -31,6 +32,7 @@ export default function Tasks({navigation}) {
         <AppText c="black" style="header" text="This is a header"></AppText>
       </Wrapper>
     </ScrollView>
+    
   </SafeAreaView>
     <NavWrapper>
       <NavMenu
