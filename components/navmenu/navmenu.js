@@ -8,8 +8,7 @@ import { colour } from './navdata';
 const Cont = styled.View`
 background-color: #363630;
 width: 100%;
-height:12%;
-border-radius: 30px;
+height:100%;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -45,9 +44,9 @@ export default function NavMenu({
 
 const styles = StyleSheet.create({
     icon: {
-      width: 35,
-      height: 35,
-      marginRight: 20,
-      marginLeft: 20,
+      width: 40,
+      height: 40,
+      marginRight: 25,
+      marginLeft: 25,
     },
   });

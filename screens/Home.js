@@ -22,28 +22,17 @@ export default function Home({navigation, route}) {
   }
   console.log(route)
   return(
-    
-<SafeAreaView>
-  <SliderCont>
+
+  
     <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
       <IconRegistry icons={EvaIconsPack} />
+      <SliderCont>
         <Wrapper>
           <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
-          <AppText c="black" style="header" text="This is a header"></AppText>
         </Wrapper>
-        <NavWrapper>
+ 
+      </SliderCont>
+      <NavWrapper>
           <NavMenu
             activemenu={route.name}
             onHome={()=>HandlePage(1)}
@@ -53,7 +42,7 @@ export default function Home({navigation, route}) {
           ></NavMenu>
         </NavWrapper>
     </ApplicationProvider>
-  </SliderCont>
-</SafeAreaView>
+  
+
 
   )};
