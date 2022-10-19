@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 
+
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
@@ -47,3 +48,4 @@ export default function Tasks({navigation, route}) {
           </NavWrapper>
       </ApplicationProvider>
     )};
+

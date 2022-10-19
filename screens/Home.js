@@ -6,7 +6,13 @@ import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Text, } from 'react-native';
+import AppText from '../components/apptext/apptext.js';
+import { Button1 } from '../components/Button/Button1.js';
+import { Widget1 } from '../components/widgets/widget.js';
+import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
+
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -34,6 +40,25 @@ export default function Home({navigation, route}) {
       <Header/>
       <SliderCont>
         <Wrapper>
+        
+          <TaskList style="header"
+          num="3"
+          date="Mon"
+          typ="longterm">
+          </TaskList>
+        </Wrapper>
+
+        
+        <NavWrapper>
+        
+        <NavMenu
+        activemenu={pages}
+        onHome={()=>HandlePage(1)}
+        onTask={()=>HandlePage(2)}
+        onDecor={()=>HandlePage(3)}
+        onUser={()=>HandlePage(4)}
+        ></NavMenu>
+      </NavWrapper>
           
         </Wrapper>
       </SliderCont>
