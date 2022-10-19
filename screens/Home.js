@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
+import Header from '../components/header/header.js';
 
 export default function Home({navigation, route}) { 
   const [pages, setPage] = useState(1)
@@ -26,6 +27,7 @@ export default function Home({navigation, route}) {
   
     <ApplicationProvider style={{display: "flex", justifyContent: 'center', alignItems: 'center'}} {...eva} theme={eva.light}>
       <IconRegistry icons={EvaIconsPack} />
+      <Header/>
       <SliderCont>
         <Wrapper>
           <AppText c="black" style="header" text="This is a header"></AppText>
