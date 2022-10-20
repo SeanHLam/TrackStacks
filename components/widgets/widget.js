@@ -8,14 +8,13 @@ import { CurrentRenderContext } from '@react-navigation/native';
 
 
 export const Widget1 = ({
-  width="300px",
   text ="WED",
-  height="251px",
   text1 ="18",
-  justifyContent="center"
+  justifyContent="center",
+  style = "body"
   
 }) => (
- <WidgetCont wth= {width} hght= {height} jst={justifyContent}> 
+ <WidgetCont size={style} jst={justifyContent}> 
  <TextCont>{text}</TextCont>
  <TextCont1>{text1}</TextCont1>
  </WidgetCont>

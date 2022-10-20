@@ -9,9 +9,9 @@ import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
 import { Button1 } from '../components/Button/Button1.js';
-import { Widget1 } from '../components/widgets/widget.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
+import { Widget1 } from '../components/widgets/widget.js';
 
 
 export default function Home({navigation, route}) { 
@@ -40,11 +40,11 @@ export default function Home({navigation, route}) {
       <Header/>
       <SliderCont>
         <Wrapper>
-          <TaskList style="header"
+        <TaskList style="header"
           num="3"
           date="Mon"
           typ="longterm">
-          </TaskList>
+        </TaskList>
         </Wrapper>
 
         
