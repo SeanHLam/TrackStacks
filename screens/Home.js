@@ -7,6 +7,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
+import { Button1 } from '../components/Button/Button1.js';
+import { Widget1 } from '../components/widgets/widget.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -34,7 +36,8 @@ export default function Home({navigation, route}) {
       <Header/>
       <SliderCont>
         <Wrapper>
-          
+          <Button1/>
+          <Widget1/>
         </Wrapper>
       </SliderCont>
       <NavWrapper>

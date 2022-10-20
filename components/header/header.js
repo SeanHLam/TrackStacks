@@ -38,6 +38,6 @@ export default function Header({
 
 const styles = StyleSheet.create({
     icon: {
- 
+        
     },
   });
