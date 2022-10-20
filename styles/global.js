@@ -24,11 +24,22 @@ export const WidgetCont = styled.View`
     border-radius: 15px;
     box-shadow: 5px 5px #363630;
     border: 4px solid #363630;
-    width:${props=>props.wth};
-    height:${props=>props.hght};
+    width: ${({size}) => 
+    size === 'small' && '100px' ||
+    size === 'large' && '200px' || 
+    size === 'huge' && '300px' || 
+    '300px'
+};
+height: ${({size}) => 
+    size === 'small' && '100px' ||
+    size === 'large' && '200px' || 
+    size === 'huge' && '251px' || 
+    '251px'
+};
     align-items: center;
     align-content:center;
     justify-content:${props=>props.jst};
+
 `
 
 

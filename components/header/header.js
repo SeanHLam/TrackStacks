@@ -44,9 +44,11 @@ export default function Header({
 
 const styles = StyleSheet.create({
     icon: {
+
         width: 25,
         height: 25,
         marginRight: 5,
         marginLeft: 5,
+
     },
   });
