@@ -1,7 +1,7 @@
 
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
+import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ import { Button1 } from '../components/Button/Button1.js';
 import { Widget1 } from '../components/widgets/widget.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
-
+import { default as theme } from "../assets/TSTheme.json";
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -31,9 +31,16 @@ export default function Home({navigation, route}) {
     <ApplicationProvider 
     style={{display: "flex", 
     justifyContent: 'center',
-    alignItems: 'center'}} 
+    alignItems: 'center',
+    backgroundColor: 'black',
+  }} 
     {...eva} 
-    theme={eva.light}>
+    theme={
+      { 
+      ...eva.light,
+      ...theme
+    }
+    }>
       <IconRegistry 
       icons={EvaIconsPack} 
       />
@@ -45,11 +52,14 @@ export default function Home({navigation, route}) {
           date="Mon"
           typ="longterm">
           </TaskList>
+
+
+          <Button1></Button1>
         </Wrapper>
 
         
       </SliderCont>
-      <NavWrapper>
+      <NavWrapper>  
           <NavMenu
             activemenu={route.name}
             onHome={()=>HandlePage(1)}

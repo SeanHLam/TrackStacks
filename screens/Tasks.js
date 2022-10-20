@@ -1,11 +1,12 @@
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
+import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
+import { default as theme } from "../assets/TSTheme.json";
 
 
 export default function Tasks({navigation, route}) { 
@@ -20,21 +21,41 @@ export default function Tasks({navigation, route}) {
           navigation.navigate("User")
       }
     }
-    
+    const [date, setDate] = React.useState(new Date());
+    const HandleDate = (seldate)=> {
+      console.log("pressed")
+    }
     return(
       <ApplicationProvider 
       style={{display: "flex", 
       justifyContent: 'center',
-      alignItems: 'center'}} 
+      alignItems: 'center',
+      backgroundColor: 'black',
+    }} 
       {...eva} 
-      theme={eva.light}>
+      theme={
+        { 
+        ...eva.light,
+        ...theme
+      }
+      }>
         <IconRegistry 
         icons={EvaIconsPack} 
         />
         <Header/>
         <SliderCont>
           <Wrapper>
-            
+          
+          
+          <Calendar
+            date={date}
+            onSelect={
+            nextDate => {
+              setDate(nextDate), 
+              console.log(date.toLocaleDateString()
+              ) 
+            }}>
+          </Calendar>
           </Wrapper>
         </SliderCont>
         <NavWrapper>
