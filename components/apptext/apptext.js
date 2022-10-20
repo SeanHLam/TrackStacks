@@ -8,15 +8,21 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 const AllText = styled(Text)`
 font-size: ${({size}) => 
         size === 'header' && '38px' ||
+        size === 'date' && '24px' || 
         size === 'sub' && '20px' || 
         size === 'body' && '20px' || 
+        size === 'task' && '16px' ||
+        size === 'tasksub' && '14px' ||
         '38px'
   };
 
 font-family: ${({size}) => 
         size === 'header' && "DaysOne_400Regular" ||
+        size === 'date' && 'DaysOne_400Regular' || 
         size === 'sub' && "Cabin_700Bold" || 
         size === 'body' && "Cabin_400Regular" || 
+        size === 'task' && "Cabin_700Bold" ||
+        size === 'tasksub' && "Cabin_400Regular" ||
         "DaysOne_400Regular"
   };
 
