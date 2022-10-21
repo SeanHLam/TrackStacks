@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-
+import TaskList from '../components/tasklist/tasklist.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -21,10 +21,37 @@ export default function Tasks({navigation, route}) {
           navigation.navigate("User")
       }
     }
+
+    const temp = [
+      {
+        title:"Do Chores",
+        date:"Thu, Oct 20, 2022",
+        cat:"todo",
+      },
+      {
+        title:"Make more eye contact",
+        date:"Fri, Oct 21, 2022",
+        cat:"longterm",
+      },
+      {
+        title:"Do AP History hw",
+        date:"Fri, Oct 28, 2022",
+        cat:"single",
+      },
+      {
+        title:"Cook dinner",
+        date:"Fri, Oct 21, 2022",
+        cat:"single",
+      },
+    ]
     const [date, setDate] = React.useState(new Date());
-    const HandleDate = (seldate)=> {
-      console.log("pressed")
+    //const [newDate, setNewDate] = useState(date)
+    const HandleDate = ()=> {
+      const newdate = datedate.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',})
+      setTasks(newdate)
     }
+
+    console.log(date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}))
     return(
       <ApplicationProvider 
       style={{display: "flex", 
@@ -47,15 +74,26 @@ export default function Tasks({navigation, route}) {
           <Wrapper>
           
           
-          <Calendar
-            date={date}
-            onSelect={
-            nextDate => {
-              setDate(nextDate), 
-              console.log(date.toLocaleDateString()
-              ) 
-            }}>
-          </Calendar>
+            <Calendar
+              date={date}
+              onSelect={
+              nextDate => {
+                setDate(nextDate)
+    
+                
+              }}>
+            </Calendar>
+            
+            {temp.map((o,i)=>
+            temp[i].date == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
+                <TaskList tlt={temp[i].title}
+                num={date.toLocaleDateString(undefined, {day:"numeric"})}
+                date={date.toLocaleDateString(undefined, {weekday:"short"})}
+                typ={temp[i].cat}>
+              </TaskList> )
+            }
+          
+            
           </Wrapper>
         </SliderCont>
         <NavWrapper>
@@ -70,3 +108,4 @@ export default function Tasks({navigation, route}) {
       </ApplicationProvider>
     )};
 
+    // console.log(date.toLocaleDateString(undefined, {weekday:"short"})) 
