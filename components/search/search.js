@@ -9,7 +9,7 @@ width:90%;
 display: flex;
 flex-direction: row;
 background-color:#7B89A3;
-padding:5%;
+padding:3%;
 margin: 5%;
 border:2px solid #363630;
 border-radius: 5px;
