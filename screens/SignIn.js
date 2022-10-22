@@ -32,9 +32,9 @@ export default function SignIn({navigation, route}) {
         />
         <Header/>
         <SliderCont>
-          <Wrapper>
-            
-          </Wrapper>
+            <Wrapper>
+                
+            </Wrapper>
         </SliderCont>
         <NavWrapper>
             <NavMenu
