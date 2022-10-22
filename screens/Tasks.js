@@ -10,6 +10,7 @@ import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
+import Add from '../components/addbutton/addbutton.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -53,11 +54,9 @@ export default function Tasks({navigation, route}) {
               onSelect={
               nextDate => {
                 setDate(nextDate)
-    
-                
               }}>
             </Calendar>
-            
+            <Add></Add>
             {tasks.map((o,i)=>
             tasks[i].date == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
                 <TaskList tlt={tasks[i].title}
