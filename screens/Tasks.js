@@ -9,6 +9,7 @@ import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
+import TaskSearch from '../components/search/search.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -25,6 +26,7 @@ export default function Tasks({navigation, route}) {
     const [date, setDate] = React.useState(new Date());
 
     return(
+
       <ApplicationProvider 
       style={{display: "flex", 
       justifyContent: 'center',
@@ -44,7 +46,7 @@ export default function Tasks({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-          
+            <TaskSearch></TaskSearch>
           
             <Calendar
               date={date}

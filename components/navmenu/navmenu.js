@@ -1,6 +1,5 @@
-import { View,Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import * as eva from '@eva-design/eva';
 import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import { colour } from './navdata';
