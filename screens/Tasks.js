@@ -69,7 +69,6 @@ export default function Tasks({navigation, route}) {
                 typ={tasks[i].cat}>
               </TaskList> ) 
             }
-            <AppBttn></AppBttn>
             
           </Wrapper>
         </SliderCont>

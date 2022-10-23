@@ -15,6 +15,8 @@ import { Widget1 } from '../components/widgets/widget.js';
 import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
+import Widget from '../components/widgets/widget.js';
+import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -52,8 +54,10 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        
+       
          <AppBttn onBttn={HandleAdd}/>
+         <Widget onWidget={HandleAdd}></Widget>
+         <AddDetail></AddDetail>
         </Wrapper>
           
       </SliderCont>

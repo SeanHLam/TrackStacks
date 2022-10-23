@@ -1,40 +1,44 @@
 import React from 'react';
-import { WidgetCont } from '../../styles/global';
 import { Text } from '@ui-kitten/components';
 import styled from 'styled-components';
 import { Size } from '@ui-kitten/components/devsupport';
 import { CurrentRenderContext } from '@react-navigation/native';
+import {Pressable} from 'react-native';
+import AppText from '../apptext/apptext';
 
+export const WidgetCont = styled.Pressable`
+    background-color: ${({col}) => 
+    col === 'black' && '#363630' ||
+    col === 'white' && '#FEFDF4' ||
+    col === 'blue' && '#7B89A3' ||
+    col === 'teal' && '#99FFDF' ||
+    col === 'pink' && '#EAAA99' ||
+    '#EAAA99'
+};
+    Font-Weight:Bold;
+    border-radius: 10px;
+    box-shadow: 5px 5px #363630;
+    border: 4px solid #363630;
+    width: ${ props => props.WidWidth};
+    align-items: center;
+    align-content:center;
+    justify-content:${props=>props.jst};
+    padding:5%;
+    margin:5%;
 
+`
 
-export const Widget1 = ({
-  text ="WED",
-  text1 ="18",
+//Keep the widget empty. This way you can wrap it around any text or images when laying out.
+export default function Widget ({
   justifyContent="center",
-  style = "body"
-  
-}) => (
- <WidgetCont size={style} jst={justifyContent}> 
- <TextCont>{text}</TextCont>
- <TextCont1>{text1}</TextCont1>
+  width="30%",
+  onWidget=()=>{},
+  c="pink"
+}){ 
+return(
+ <WidgetCont col={c} onPress={onWidget} WidWidth={width} jst={justifyContent}> 
+
  </WidgetCont>
  
-);
-
-const TextCont = styled(Text)`
-font-weight:bold;
-display:flex;
-justify-content:center;
-font-size: 28px;
-text-align:center;
-`
-const TextCont1 = styled(Text)`
-font-weight:bold;
-display:flex;
-justify-content:center;
-font-size: 110px;
-text-align:center;
-
-`
-
-
+  )
+}
