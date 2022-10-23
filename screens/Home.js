@@ -56,7 +56,9 @@ export default function Home({navigation, route}) {
         <Wrapper>
        
          <AppBttn onBttn={HandleAdd}/>
-         <Widget onWidget={HandleAdd}></Widget>
+         <Widget onWidget={HandleAdd}>
+           
+         </Widget>
          <AddDetail></AddDetail>
         </Wrapper>
           

@@ -1,4 +1,4 @@
-import { View,Text, StyleSheet} from 'react-native';
+import { View,Text, StyleSheet, Pressable} from 'react-native';
 import styled from 'styled-components/native';
 import React, {useState} from 'react';
 import AppText from '../apptext/apptext';
@@ -80,30 +80,27 @@ position:flex;
 `
 
 export default function TaskList({
+onDone=()=>{},
 num="0",
 date="Date",
 tlt="Task Title",
 sub="CATEGORY",
 typ="single",
-sz="50px"
+sz="50px",
+
 })
 { 
-
-
     const [isChecked, setChecked] = useState(false);
-
-    const deleteTask = () => {
-
-    }
     return (
         <Cont>
-            <Checkbox style={styles.checkbox}
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? '#363630' : '#FFFDF4'}
-            onClick={()=>deleteTask()}
-            >
-            </Checkbox>        
+            <Pressable onPress={onDone}>
+                <Checkbox style={styles.checkbox}
+                value={isChecked}
+                onValueChange={setChecked}
+                color={isChecked ? '#363630' : '#FFFDF4'}
+                >
+                </Checkbox>
+            </Pressable>        
 
            <DateCont>
                 <AppText text={num} style="date" c="black"/>
