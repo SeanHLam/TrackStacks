@@ -16,7 +16,7 @@ margin-left:20px;
 margin-top:20px;
 `
 
-export const AddTaskDetail = ({
+export default function AddDetail({
   text ="Detail",
   text1 ="Subtask 1",
   text2 ="Subtask 2",
@@ -24,7 +24,7 @@ export const AddTaskDetail = ({
   text4 =" Add Subtask",
   style = "body"
   
-}) => (
+}){return(
  <WidgetCont1 size={style}> 
  <TextCont>{text}</TextCont>
  <Checkbox/>
@@ -37,7 +37,8 @@ export const AddTaskDetail = ({
  <TextCont1>{text4}</TextCont1>
  </WidgetCont1>
  
-);
+)
+}
 
 const TextCont = styled(Text)`
 font-weight:bold;
