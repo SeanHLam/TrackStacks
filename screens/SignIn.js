@@ -37,7 +37,6 @@ export default function SignIn({navigation, route}) {
         />
         <Header/>
         <SliderCont>
-<<<<<<< HEAD
           <Wrapper>
           <Signin placeholder="Enter Email Address" value={email} SetValue={setEmail}/>
           <Signin 
@@ -48,11 +47,6 @@ export default function SignIn({navigation, route}) {
           secureTextEntry={true}
           />
           </Wrapper>
-=======
-            <Wrapper>
-                
-            </Wrapper>
->>>>>>> 3f3d9786aadb7ee89b37779f616b6184bdb9c658
         </SliderCont>
         <SigninButton />
         <NavWrapper>
