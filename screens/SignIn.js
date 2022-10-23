@@ -8,6 +8,7 @@ import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { SigninButton} from '../components/Form/Signin.js';
 import { Signin } from '../components/Form/Signin.js';
+import { default as theme } from "../assets/TSTheme.json";
 
 
 export default function SignIn({navigation, route}) { 
@@ -27,11 +28,18 @@ export default function SignIn({navigation, route}) {
     
     return(
       <ApplicationProvider 
-      style={{display: "flex", 
-      justifyContent: 'center',
-      alignItems: 'center'}} 
-      {...eva} 
-      theme={eva.light}>
+    style={{display: "flex", 
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+  }} 
+    {...eva} 
+    theme={
+      { 
+      ...eva.light,
+      ...theme
+    }
+    }>
         <IconRegistry 
         icons={EvaIconsPack} 
         />

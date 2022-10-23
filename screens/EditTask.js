@@ -8,7 +8,7 @@ import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 
-export default function Decor({navigation, route}) { 
+export default function EditTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
