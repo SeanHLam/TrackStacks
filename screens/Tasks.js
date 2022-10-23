@@ -10,8 +10,10 @@ import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
-import Add from '../components/addbutton/addbutton.js';
 import Category from '../components/categorymenu/categorymenu.js';
+import AddBttn from '../components/addbutton/addbutton.js';
+import AppBttn from '../components/Button/appbutton.js';
+
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -24,7 +26,10 @@ export default function Tasks({navigation, route}) {
       }else if(new_page === 4){
           navigation.navigate("User")
       }
-    }
+    };
+    const HandleAdd = ()=>{
+      navigation.navigate("MakeTask")
+    };
     const [date, setDate] = React.useState(new Date());
 
     const [value,setValue]=useState('');
@@ -67,23 +72,22 @@ export default function Tasks({navigation, route}) {
           
             <Calendar
               date={date}
-              onSelect={
-              nextDate => {
-                setDate(nextDate)
-              }}>
+              onSelect={(nextDate)=> {setDate(nextDate)}}>
             </Calendar>
-            <Add></Add>
+            <AddBttn onAdd={()=>HandleAdd}></AddBttn>
             {tasks.map((o,i)=>
-            tasks[i].date == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
-                <TaskList tlt={tasks[i].title}
+            tasks[i].date == date.toLocaleDateString
+            (undefined, 
+            {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
+              <TaskList tlt={tasks[i].title}
+                key={i}
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}>
-              </TaskList> )
+              </TaskList> ) 
             }
 
           <Category onChange={changeCat}></Category>
-          
             
           </Wrapper>
         </SliderCont>
@@ -98,5 +102,3 @@ export default function Tasks({navigation, route}) {
           </NavWrapper>
       </ApplicationProvider>
     )};
-
-    // console.log(date.toLocaleDateString(undefined, {weekday:"short"})) 

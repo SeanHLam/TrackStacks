@@ -6,6 +6,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
+import { default as theme } from "../assets/TSTheme.json";
 
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -22,14 +23,18 @@ export default function User({navigation, route}) {
     
     return(
       <ApplicationProvider 
-      style={{display: "flex", 
-      justifyContent: 'center',
-      alignItems: 'center'}} 
-      {...eva} 
-      theme={eva.light}>
-        <IconRegistry 
-        icons={EvaIconsPack} 
-        />
+    style={{display: "flex", 
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+  }} 
+    {...eva} 
+    theme={
+      { 
+      ...eva.light,
+      ...theme
+    }
+    }>
         <Header/>
         <SliderCont>
           <Wrapper>

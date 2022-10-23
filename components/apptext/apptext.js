@@ -52,7 +52,6 @@ export default function AppText({
         return null;
       }
 
-      
     return(
         <AllText col={c} size={style}>
            {text}

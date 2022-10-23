@@ -8,13 +8,15 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text,Image } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
-import { SigninButton} from '../components/Button/Button1.js';
+import AppBttn, { SigninButton} from '../components/Button/appbutton.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
 import { Widget1 } from '../components/widgets/widget.js';
 import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
-
+import AddBttn from '../components/addbutton/addbutton.js';
+import Widget from '../components/widgets/widget.js';
+import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -28,7 +30,9 @@ export default function Home({navigation, route}) {
       navigation.navigate("User")
     }
   }
-
+  const HandleAdd = ()=>{
+    console.log("pressed")
+  };
   return(
     <ApplicationProvider 
     style={{display: "flex", 
@@ -50,11 +54,10 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-          <TaskList style="header"
-            num="3"
-            date="Mon"
-            typ="longterm">
-          </TaskList>
+       
+         <AppBttn onBttn={HandleAdd}/>
+         <Widget onWidget={HandleAdd}></Widget>
+         <AddDetail></AddDetail>
         </Wrapper>
           
       </SliderCont>

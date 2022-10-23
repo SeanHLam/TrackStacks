@@ -2,15 +2,14 @@ import styled from 'styled-components/native';
 import React from 'react';
 import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
-import { View,Text, StyleSheet, TextInput} from 'react-native';
+import { View,Text, StyleSheet, TextInput, TouchableOpacity, Pressable} from 'react-native';
 
-const Wrapper = styled.View`
+const Wrapper = styled.Pressable`
 width:90%;
 display: flex;
 justify-content: flex-end;
 flex-direction: row;
 padding:3%;
-
 `
 
 const IconCont = styled.View`
@@ -22,12 +21,12 @@ border-radius: 5px;
 box-shadow: 4px 4px #363630;
 `
 
-export default function Add({
+export default function AddBttn({
  onAdd=()=>{},
 }){
     return (
     <Wrapper onPress={onAdd()}>
-        <IconCont>
+        <IconCont >
          <Icon name='plus' fill={"#FEFDF4"} style={styles.icon}/>
         </IconCont>
     </Wrapper>
