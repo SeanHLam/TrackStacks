@@ -4,6 +4,8 @@ import { Text } from '@ui-kitten/components';
 import styled from 'styled-components';
 import { Size } from '@ui-kitten/components/devsupport';
 import { CurrentRenderContext } from '@react-navigation/native';
+import { Icon } from '@ui-kitten/components';
+import AddBttn2 from './AddBttn2';
 
 const Checkbox = styled.View`
 width:25px;
@@ -15,6 +17,7 @@ background-color:#FFFDF4;
 margin-left:20px;
 margin-top:20px;
 `
+
 
 export default function AddDetail({
   text ="Detail",
@@ -33,7 +36,7 @@ export default function AddDetail({
  <TextCont1>{text2}</TextCont1>
  <Checkbox/>
  <TextCont1>{text3}</TextCont1>
- <Checkbox/>
+ <AddBttn2 />
  <TextCont1>{text4}</TextCont1>
  </WidgetCont1>
  
