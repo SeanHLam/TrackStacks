@@ -4,7 +4,7 @@ import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
-const Wrapper = styled.View`
+export const Wrapper = styled.View`
 width:90%;
 display: flex;
 flex-direction: row;

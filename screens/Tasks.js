@@ -11,6 +11,7 @@ import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
 import Add from '../components/addbutton/addbutton.js';
+import Category from '../components/categorymenu/categorymenu.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -25,6 +26,21 @@ export default function Tasks({navigation, route}) {
       }
     }
     const [date, setDate] = React.useState(new Date());
+
+    const [value,setValue]=useState('');
+    const changeCat=(e)=>{
+        setValue(e)
+    }
+
+    function Tab({value}){
+    if (value.toString() == 'Long-Term') {
+      value="Long-Term"
+    }else if (value.toString() == 'Single') {
+      value="Single"
+    }else {
+      value="To-Do"
+    }
+    }
 
     return(
 
@@ -65,6 +81,8 @@ export default function Tasks({navigation, route}) {
                 typ={tasks[i].cat}>
               </TaskList> )
             }
+
+          <Category onChange={changeCat}></Category>
           
             
           </Wrapper>

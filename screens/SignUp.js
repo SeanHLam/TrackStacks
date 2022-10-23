@@ -6,6 +6,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
+import Category from '../components/categorymenu/categorymenu.js';
 
 export default function SignUp({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -36,6 +37,8 @@ export default function SignUp({navigation, route}) {
             
           </Wrapper>
         </SliderCont>
+
+        <Category> </Category>
         <NavWrapper>
             <NavMenu
               activemenu={route.name}

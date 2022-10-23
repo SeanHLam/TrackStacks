@@ -60,8 +60,8 @@ color:black;
 margin:5px;
 `*/
 
-const CategoryTag = styled.View`
-height:50px;
+export const CategoryTag = styled.View`
+height:${props=>props.size || "50px"};
 width: 5%;
 display:flex;
 border-radius: 4px 6px 6px 4px;
@@ -85,6 +85,7 @@ date="Date",
 tlt="Task Title",
 sub="CATEGORY",
 typ="single",
+sz="50px"
 })
 { 
 
@@ -112,7 +113,7 @@ typ="single",
                 <TextCont>
                     <AppText text={tlt} style="task" c="black"/>
                     <AppText text={sub} style="tasksub" c="pink"/>
-                    <CategoryTag clr={typ}/>
+                    <CategoryTag clr={typ} size={sz}/>
                 </TextCont>
             </ListCont>
             
