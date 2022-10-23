@@ -19,10 +19,11 @@ background-color:#EAAA99;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
-
+margin-right:260px;
+margin-bottom:-15px;
 `
 
-export default function AddBttn({
+export default function AddBttn2({
  onAdd=()=>{},
 }){
     return (
@@ -36,7 +37,7 @@ export default function AddBttn({
 
 const styles = StyleSheet.create({
     icon: {
-        width: 35,
-        height: 35,
+        width: 30,
+        height: 30,
     },
   });

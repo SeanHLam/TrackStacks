@@ -20,8 +20,9 @@ export const WidgetCont = styled.Pressable`
     box-shadow: 5px 5px #363630;
     border: 4px solid #363630;
     width: ${ props => props.WidWidth};
-    align-items: center;
-    align-content:center;
+    height: ${ props => props.WidHeight};
+    align-items:${props=>props.alig};
+    align-content:${props=>props.ali};
     justify-content:${props=>props.jst};
     padding:5%;
     margin:5%;
@@ -30,14 +31,26 @@ export const WidgetCont = styled.Pressable`
 
 //Keep the widget empty. This way you can wrap it around any text or images when laying out.
 export default function Widget ({
+  alignItems="center",
   justifyContent="center",
+  alignContent="center",
   width="30%",
+  height="20%",
   onWidget=()=>{},
-  c="pink"
+  c="pink",
+  text="Wed",
+  text1="18",
 }){ 
 return(
- <WidgetCont col={c} onPress={onWidget} WidWidth={width} jst={justifyContent}> 
-
+ <WidgetCont col={c} onPress={onWidget} 
+ WidHeight={height}
+  WidWidth={width} 
+ jst={justifyContent} 
+ ali={alignContent} 
+ alig={alignItems}
+ > 
+  <Text>{text}</Text>
+  <Text>{text1}</Text>
  </WidgetCont>
  
   )

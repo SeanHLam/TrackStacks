@@ -38,8 +38,8 @@ height: ${({size}) =>
     size === 'huge' && '251px' || 
     '251px'
 };
-    align-items: center;
-    align-content:center;
+    align-items:${props=>props.alig};
+    align-content:${props=>props.ali};
     justify-content:${props=>props.jst};
 
 `
