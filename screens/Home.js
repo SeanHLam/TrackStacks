@@ -8,10 +8,13 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text, } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
-import { Button1 } from '../components/Button/Button1.js';
+import { SigninButton} from '../components/Button/Button1.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
-import { Widget1 } from '../components/widgets/widget.js';
+import { Signin } from '../components/Form/Signin.js';
+import { AddTaskDetail } from '../components/AddTaskDetail/addtaskdetail.js';
+
+
 
 
 export default function Home({navigation, route}) { 
@@ -38,6 +41,7 @@ export default function Home({navigation, route}) {
       icons={EvaIconsPack} 
       />
       <Header/>
+      
       <SliderCont>
         <Wrapper>
         <TaskList style="header"
@@ -45,10 +49,12 @@ export default function Home({navigation, route}) {
           date="Mon"
           typ="longterm">
         </TaskList>
-        </Wrapper>
-
         
+        </Wrapper>
+          
+          
       </SliderCont>
+      
       <NavWrapper>
           <NavMenu
             activemenu={route.name}
@@ -58,5 +64,7 @@ export default function Home({navigation, route}) {
             onUser={()=>HandlePage(4)}
           ></NavMenu>
         </NavWrapper>
+        
     </ApplicationProvider>
+    
   )};

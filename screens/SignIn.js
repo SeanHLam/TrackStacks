@@ -6,8 +6,13 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
+import { SigninButton} from '../components/Form/Signin.js';
+import { Signin } from '../components/Form/Signin.js';
+
 
 export default function SignIn({navigation, route}) { 
+  const [email, setEmail]= useState('');
+  const [password, setPassword]= useState('');
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -33,9 +38,17 @@ export default function SignIn({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            
+          <Signin placeholder="Enter Email Address" value={email} SetValue={setEmail}/>
+          <Signin 
+          placeholder="Enter Password" 
+          text='Password' 
+          value={password} 
+          SetValue={setPassword}
+          secureTextEntry={true}
+          />
           </Wrapper>
         </SliderCont>
+        <SigninButton />
         <NavWrapper>
             <NavMenu
               activemenu={route.name}

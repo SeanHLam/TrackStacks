@@ -16,6 +16,7 @@ justify-content:center;
 export const ButtonCont = styled.View`
     display:flex;
     box-shadow: 4px 4px #363630;
+    align-items:${props=>props.ali};
 `
 export const WidgetCont = styled.View`
     display:flex;
@@ -39,6 +40,29 @@ height: ${({size}) =>
     align-items: center;
     align-content:center;
     justify-content:${props=>props.jst};
+
+`
+export const WidgetCont1 = styled.View`
+    display:flex;
+    background-color:#FFFDF4;
+    Font-Weight:Bold;
+    border-radius: 15px;
+    box-shadow: 2px 2px #363630;
+    border: 2px solid #363630;
+    width: ${({size}) => 
+    size === 'small' && '100px' ||
+    size === 'large' && '200px' || 
+    size === 'huge' && '360px' || 
+    '360px'
+};
+height: ${({size}) => 
+    size === 'small' && '100px' ||
+    size === 'large' && '200px' || 
+    size === 'huge' && '300px' || 
+    '300px'
+};
+    align-items:flex-start;
+    align-content:center;
 
 `
 

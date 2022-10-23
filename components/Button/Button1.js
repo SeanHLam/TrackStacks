@@ -5,12 +5,13 @@ import styled from 'styled-components';
 
 
 
-export const Button1 = ({
+export const SigninButton = ({
   text ="Sign Up",
   style = "body",
-  c = "black"
+  c = "black",
+  alignItems="center"
 }) => (
- <ButtonCont >
+ <ButtonCont ali={alignItems}>
   <Buttonst size={style} >
      <TextSt col={c}>{text}</TextSt>
     </Buttonst>
@@ -24,16 +25,16 @@ background-color:#EAAA99;
 border-color:"#363630";
 border:2px solid;
 width: ${({size}) => 
-size === 'small' && '50px' ||
-size === 'large' && '170px' || 
-size === 'huge' && '200px' || 
-'170px'
+size === 'small' && '20%' ||
+size === 'large' && '40%' || 
+size === 'huge' && '60%' || 
+'40%'
 };
 height: ${({size}) => 
-size === 'small' && '20px' ||
-size === 'large' && '45px' || 
-size === 'huge' && '60px' || 
-'45px'
+size === 'small' && '20%' ||
+size === 'large' && '35%' || 
+size === 'huge' && '60%' || 
+'40%'
 };
 justify-content:center;
 align-items:center;
