@@ -26,8 +26,8 @@ export default function Add({
  onAdd=()=>{},
 }){
     return (
-    <Wrapper onPress={onAdd()}>
-        <IconCont>
+    <Wrapper onPress={onAdd}>
+        <IconCont >
          <Icon name='plus' fill={"#FEFDF4"} style={styles.icon}/>
         </IconCont>
     </Wrapper>

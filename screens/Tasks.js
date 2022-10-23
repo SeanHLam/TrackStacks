@@ -23,7 +23,10 @@ export default function Tasks({navigation, route}) {
       }else if(new_page === 4){
           navigation.navigate("User")
       }
-    }
+    };
+    const HandleAdd = ()=>{
+      navigation.navigate("MakeTask")
+    };
     const [date, setDate] = React.useState(new Date());
 
     return(
@@ -51,19 +54,19 @@ export default function Tasks({navigation, route}) {
           
             <Calendar
               date={date}
-              onSelect={
-              nextDate => {
-                setDate(nextDate)
-              }}>
+              onSelect={(nextDate)=> {setDate(nextDate)}}>
             </Calendar>
-            <Add></Add>
+            <Add onAdd={()=>HandleAdd}></Add>
             {tasks.map((o,i)=>
-            tasks[i].date == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
-                <TaskList tlt={tasks[i].title}
+            tasks[i].date == date.toLocaleDateString
+            (undefined, 
+            {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
+              <TaskList tlt={tasks[i].title}
+                key={i}
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}>
-              </TaskList> )
+              </TaskList> ) 
             }
           
             
@@ -80,5 +83,3 @@ export default function Tasks({navigation, route}) {
           </NavWrapper>
       </ApplicationProvider>
     )};
-
-    // console.log(date.toLocaleDateString(undefined, {weekday:"short"})) 
