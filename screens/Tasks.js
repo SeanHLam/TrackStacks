@@ -10,7 +10,8 @@ import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
-import Add from '../components/addbutton/addbutton.js';
+import AddBttn from '../components/addbutton/addbutton.js';
+import AppBttn from '../components/Button/appbutton.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -56,7 +57,7 @@ export default function Tasks({navigation, route}) {
               date={date}
               onSelect={(nextDate)=> {setDate(nextDate)}}>
             </Calendar>
-            <Add onAdd={()=>HandleAdd}></Add>
+            <AddBttn onAdd={()=>HandleAdd}></AddBttn>
             {tasks.map((o,i)=>
             tasks[i].date == date.toLocaleDateString
             (undefined, 
@@ -68,7 +69,7 @@ export default function Tasks({navigation, route}) {
                 typ={tasks[i].cat}>
               </TaskList> ) 
             }
-          
+            <AppBttn></AppBttn>
             
           </Wrapper>
         </SliderCont>

@@ -14,8 +14,9 @@ justify-content:center;
 `;
 
 export const ButtonCont = styled.View`
+    width: 100%;
+    height: 100%;
     display:flex;
-    box-shadow: 4px 4px #363630;
     align-items:${props=>props.ali};
 `
 export const WidgetCont = styled.View`
