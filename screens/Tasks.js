@@ -10,8 +10,10 @@ import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
 import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
+import Category from '../components/categorymenu/categorymenu.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import AppBttn from '../components/Button/appbutton.js';
+
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -29,6 +31,21 @@ export default function Tasks({navigation, route}) {
       navigation.navigate("MakeTask")
     };
     const [date, setDate] = React.useState(new Date());
+
+    const [value,setValue]=useState('');
+    const changeCat=(e)=>{
+        setValue(e)
+    }
+
+    function Tab({value}){
+    if (value.toString() == 'Long-Term') {
+      value="Long-Term"
+    }else if (value.toString() == 'Single') {
+      value="Single"
+    }else {
+      value="To-Do"
+    }
+    }
 
     return(
 
@@ -69,6 +86,8 @@ export default function Tasks({navigation, route}) {
                 typ={tasks[i].cat}>
               </TaskList> ) 
             }
+
+          <Category onChange={changeCat}></Category>
             
           </Wrapper>
         </SliderCont>
