@@ -13,6 +13,7 @@ import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
 import { Widget1 } from '../components/widgets/widget.js';
 import { default as theme } from "../assets/TSTheme.json";
+import ModalPop from '../components/modal/modal.js';
 
 
 export default function Home({navigation, route}) { 
@@ -49,13 +50,12 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        <TaskList style="header"
-          num="3"
-          date="Mon"
-          typ="longterm">
-        </TaskList>
+          <TaskList style="header"
+            num="3"
+            date="Mon"
+            typ="longterm">
+          </TaskList>
         </Wrapper>
-          
           
       </SliderCont>
       <NavWrapper>
