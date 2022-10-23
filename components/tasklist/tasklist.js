@@ -1,9 +1,10 @@
 import { View,Text, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
-import React from 'react';
+import React, {useState} from 'react';
 import AppText from '../apptext/apptext';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { Icon } from '@ui-kitten/components';
+import Checkbox from 'expo-checkbox';
 
 const Cont = styled.View`
 width: 100%;
@@ -13,14 +14,15 @@ justify-content:center;
 align-items:center;
 `
 
-const Checkbox = styled.View`
-width:25px;
-height:25px;
+/*const Checkbox = styled.View`
+width:20px;
+height:20px;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
 background-color:#FFFDF4;
 `
+*/
 
 const DateCont = styled.View`
 display:flex;
@@ -28,6 +30,7 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 margin:15px;
+width:40px;
 `
 
 const ListCont = styled.View`
@@ -41,7 +44,7 @@ background-color:#FFFDF4;
 `
 
 const TextCont = styled.View`
-width:100%;
+width: 230px;
 display:flex;
 flex-direction: column;
 justify-content:center;
@@ -59,30 +62,49 @@ margin:5px;
 
 const CategoryTag = styled.View`
 height:50px;
-width: 12px;
+width: 5%;
 display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
 position:absolute;
 right: 15px;
 background-color: ${({clr}) =>
-                    clr === 'todo' && '#5C7457' ||
-                    clr === 'longterm' && '#85C0FF' ||
-                    clr === 'single' && '#89608E'
+                    clr === 'To-Do' && '#5C7457' ||
+                    clr === 'Long-Term' && '#85C0FF' ||
+                    clr === 'Single' && '#89608E'
                 };
+`
+
+const Wrap = styled.View`
+position:flex;
 `
 
 export default function TaskList({
 num="0",
 date="Date",
 tlt="Task Title",
-sub="Task Subtext",
-typ="single"
-}){
+sub="CATEGORY",
+typ="single",
+})
+{ 
+
+
+    const [isChecked, setChecked] = useState(false);
+
+    const deleteTask = () => {
+
+    }
     return (
         <Cont>
-            <Checkbox/>
-            <DateCont>
+            <Checkbox style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#363630' : '#FFFDF4'}
+            onClick={()=>deleteTask()}
+            >
+            </Checkbox>        
+
+           <DateCont>
                 <AppText text={num} style="date" c="black"/>
                 <AppText text={date} style="body" c="black" />
             </DateCont>
@@ -92,8 +114,23 @@ typ="single"
                     <AppText text={sub} style="tasksub" c="pink"/>
                     <CategoryTag clr={typ}/>
                 </TextCont>
-                     
             </ListCont>
+            
+
         </Cont>
     )
 }
+
+const styles = StyleSheet.create({
+    checkbox: {
+        shadowOpacity:1,
+        shadowColor: '#363630',
+        shadowRadius: 0.1,
+        shadowOffset: { width:2, height:2 },
+        width: 25,
+        height:25,
+        borderWidth:2,
+        borderRadius:5,
+        borderColor:'#FFFDF4',
+    }
+  });
