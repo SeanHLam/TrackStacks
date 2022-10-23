@@ -4,6 +4,7 @@ import * as eva from '@eva-design/eva';
 import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
+import { user } from '../../data/userdata';
 
 
 const Cont = styled.View`
@@ -17,6 +18,10 @@ padding: 5% 5% 5% 5%;
 `;
 
 const SCont = styled.View`
+flex-direction: row;
+width: 85%;
+justify-content: flex-end;
+align-items: center;
 
 `
 
@@ -30,7 +35,8 @@ export default function Header({
             <AppText text="LOGO"style='body'></AppText>
             
             <SCont>
-                <AppText style='sub'></AppText>
+                <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
+                <AppText text={user.points} style='sub'></AppText>
             </SCont>
         </Cont>
     )
@@ -38,6 +44,11 @@ export default function Header({
 
 const styles = StyleSheet.create({
     icon: {
-        
+
+        width: 25,
+        height: 25,
+        marginRight: 5,
+        marginLeft: 5,
+
     },
   });
