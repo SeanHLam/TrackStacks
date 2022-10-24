@@ -1,59 +1,57 @@
 import React from 'react';
-import { WidgetCont1 } from '../../styles/global';
 import { Text } from '@ui-kitten/components';
 import styled from 'styled-components';
 import { Size } from '@ui-kitten/components/devsupport';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
-import AddBttn2 from './AddBttn2';
+import AppText from '../apptext/apptext';
+import SubTask from './subtask';
+import AddBttn from '../addbutton/addbutton';
 
-const Checkbox = styled.View`
-width:25px;
-height:25px;
-border:2px solid #363630;
-border-radius: 5px;
-box-shadow: 2px 2px #363630;
-background-color:#FFFDF4;
-margin-left:20px;
-margin-top:20px;
+
+
+export const WidgetCont = styled.View`
+    display:flex;
+    background-color:#FFFDF4;
+    Font-Weight:Bold;
+    border-radius: 10px;
+    box-shadow: 2px 2px #363630;
+    border: 2px solid #363630;
+    width: 90%;
+    padding:5%;
+    align-items:flex-start;
+    align-content:center;
+    margin: 5%;
 `
 
+export const AddCont = styled.View`
+
+display:flex;
+flex-direction:row;
+
+align-items:center;
+`
 
 export default function AddDetail({
-  text ="Detail",
-  text1 ="Subtask 1",
-  text2 ="Subtask 2",
-  text3 ="Subtask 3",
-  text4 =" Add Subtask",
-  style = "body"
   
-}){return(
- <WidgetCont1 size={style}> 
- <TextCont>{text}</TextCont>
- <Checkbox/>
- <TextCont1>{text1}</TextCont1>
- <Checkbox/>
- <TextCont1>{text2}</TextCont1>
- <Checkbox/>
- <TextCont1>{text3}</TextCont1>
- <AddBttn2 />
- <TextCont1>{text4}</TextCont1>
- </WidgetCont1>
+}){
+  const [text, onChangeText] = React.useState('Add Sub Task');
+  return(
+ <WidgetCont> 
+   <AppText style='sub' text='Details'></AppText>
+  <SubTask></SubTask>
+  <SubTask></SubTask>
+  <SubTask></SubTask>
+
+  <AddCont>
+    <AddBttn></AddBttn>
+    <AppText style='body' text='Add New'></AppText>
+  </AddCont>
+ 
+ </WidgetCont>
  
 )
 }
 
-const TextCont = styled(Text)`
-font-weight:bold;
-font-size: 15px;
-padding:8px;
-`
-const TextCont1 = styled(Text)`
-display:flex;
-margin-left:60px;
-margin-top:-30px;
-font-size: 20px;
-padding:8px;
-`
 
 

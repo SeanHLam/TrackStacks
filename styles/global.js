@@ -43,32 +43,6 @@ height: ${({size}) =>
     align-content:${props=>props.ali};
     justify-content:${props=>props.jst};`
 
-export const WidgetCont1 = styled.View`
-    display:flex;
-    background-color:#FFFDF4;
-    Font-Weight:Bold;
-    border-radius: 15px;
-    box-shadow: 2px 2px #363630;
-    border: 2px solid #363630;
-    width: ${({size}) => 
-    size === 'small' && '100px' ||
-    size === 'large' && '200px' || 
-    size === 'huge' && '360px' || 
-    '360px'
-};
-
-height: ${({size}) => 
-    size === 'small' && '100px' ||
-    size === 'large' && '200px' || 
-    size === 'huge' && '300px' || 
-    '300px'
-};
-    align-items:flex-start;
-    align-content:center;
-
-`
-
-
 export const NavWrapper = styled.View`
 width: 100%;
 height: 10%;
@@ -87,4 +61,13 @@ flex-direction: row;
 align-items: center;
 width:100%;
 padding:3%;
+`
+
+export const AddCont = styled.View`
+display:flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-end;
+width:90%;
+
 `

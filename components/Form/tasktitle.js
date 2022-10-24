@@ -16,7 +16,7 @@ border-radius: 5px;
 box-shadow: 4px 4px #363630;
 `
 
-const SearchCont = styled(TextInput)`
+const TitleCont = styled(TextInput)`
 font-family: Cabin_400Regular;
 color: #363630;
 font-size: 20px;
@@ -30,7 +30,6 @@ flex-direction: row;
 align-items: flex-end;
 justify-content: flex-end;
 margin-right: 10%;
-
 `
 
 
@@ -41,13 +40,13 @@ export default function TaskTitle({
     return (
     <>
     <Wrapper>
-        <SearchCont
+        <TitleCont
         onChangeText={onChangeText} 
         value={text}
         maxLength={30}
         defaultValue={"Title"}
         >   
-        </SearchCont>
+        </TitleCont>
         <Icon name='edit-outline' fill={"#363630"} style={styles.icon}/>
     </Wrapper>
     <TxtCont>
