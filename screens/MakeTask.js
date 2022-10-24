@@ -4,9 +4,13 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, HeaderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
+import Category from '../components/categorymenu/categorymenu.js';
+import AppText from '../components/apptext/apptext.js';
+import AppBttn from '../components/Button/appbutton.js';
+import TaskTitle from '../components/form/tasktitle.js';
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -41,7 +45,13 @@ export default function MakeTask({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            
+            <HeaderCont>
+              <AppText style='header' text='Add Task'></AppText>
+              <AppBttn style='small' bttntext='Cancel'></AppBttn>
+            </HeaderCont>
+            <TaskTitle></TaskTitle>
+ 
+            <Category></Category>
           </Wrapper>
         </SliderCont>
         <NavWrapper>
