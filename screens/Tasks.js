@@ -4,7 +4,7 @@ import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
@@ -83,7 +83,10 @@ export default function Tasks({navigation, route}) {
               date={date}
               onSelect={(nextDate)=> {setDate(nextDate)}}>
             </Calendar>
-            <AddBttn onAdd={()=>HandleAdd}></AddBttn>
+            <AddCont>
+              <AddBttn onAdd={()=>HandleAdd}></AddBttn>
+            </AddCont>
+            
             {tasks.map((o,i)=>
             tasks[i].date == date.toLocaleDateString
             (undefined, 
@@ -98,7 +101,7 @@ export default function Tasks({navigation, route}) {
               </TaskList> ) 
             }
           <AppBttn onBttn={HandleDone} bttntext='show modal'/>
-          <Category onChange={changeCat}></Category>
+         
             
           </Wrapper>
         </SliderCont>

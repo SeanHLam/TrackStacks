@@ -4,13 +4,16 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, HeaderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
-
+import TaskDate from '../components/form/taskdate.js';
+import TaskTitle from '../components/form/tasktitle.js';
+import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
+import { Datepicker, Layout, Text } from '@ui-kitten/components';
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -24,7 +27,10 @@ export default function MakeTask({navigation, route}) {
         navigation.navigate("User")
       }
     }
-    
+    const HandleBack = ()=>{
+      navigation.navigate("Tasks")
+    }
+    const [date, setDate] = React.useState(new Date());
     return(
       <ApplicationProvider 
       style={{display: "flex", 
@@ -50,8 +56,13 @@ export default function MakeTask({navigation, route}) {
               <AppBttn style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle></TaskTitle>
- 
             <Category></Category>
+            <AddDetail></AddDetail>
+            <PickDate
+              date={date}
+              onSelect={nextDate => setDate(nextDate)}
+            ></PickDate>
+            <AppBttn onBttn={HandleBack} style='small' bttntext='Add'></AppBttn>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

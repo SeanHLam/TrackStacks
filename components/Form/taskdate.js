@@ -2,35 +2,43 @@ import styled from 'styled-components/native';
 import React from 'react';
 import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
-import { View,Text, StyleSheet, TextInput, TouchableOpacity, Pressable} from 'react-native';
+import { View,Text, StyleSheet, TextInput} from 'react-native';
 
-const Wrapper = styled.Pressable`
+export const Wrapper = styled.View`
+width:90%;
 display: flex;
 flex-direction: row;
+background-color:#FEFDF4;
 padding:3%;
-`
-
-const IconCont = styled.View`
-display: flex;
-flex-direction: row;
-background-color:#EAAA99;
+margin: 5% 5% 1% 5%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
+`
+
+const TitleCont = styled(TextInput)`
 
 `
 
-export default function AddBttn({
- onAdd=()=>{},
+
+
+export default function TaskDate({
+    
 }){
+    
     return (
-    <Wrapper onPress={onAdd()}>
-        <IconCont >
-         <Icon name='plus' fill={"#FEFDF4"} style={styles.icon}/>
-        </IconCont>
+    <>
+    <Wrapper>
+        <AppText></AppText>
+        <Icon name='edit-outline' fill={"#363630"} style={styles.icon}/>
     </Wrapper>
+
+   
+    </>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     icon: {
@@ -38,3 +46,4 @@ const styles = StyleSheet.create({
         height: 35,
     },
   });
+
