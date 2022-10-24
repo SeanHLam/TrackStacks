@@ -19,6 +19,7 @@ export const ButtonCont = styled.View`
     display:flex;
     align-items:${props=>props.ali};
 `
+
 export const WidgetCont = styled.View`
     display:flex;
     background-color:#EAAA99;
@@ -40,9 +41,8 @@ height: ${({size}) =>
 };
     align-items:${props=>props.alig};
     align-content:${props=>props.ali};
-    justify-content:${props=>props.jst};
+    justify-content:${props=>props.jst};`
 
-`
 export const WidgetCont1 = styled.View`
     display:flex;
     background-color:#FFFDF4;
@@ -56,6 +56,7 @@ export const WidgetCont1 = styled.View`
     size === 'huge' && '360px' || 
     '360px'
 };
+
 height: ${({size}) => 
     size === 'small' && '100px' ||
     size === 'large' && '200px' || 
@@ -80,3 +81,10 @@ export const SliderCont = styled(ScrollView)`
 width: 100%;
 `
 
+export const HeaderCont = styled.View`
+display:flex;
+flex-direction: row;
+align-items: center;
+width:100%;
+padding:3%;
+`

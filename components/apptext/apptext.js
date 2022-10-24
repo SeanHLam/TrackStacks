@@ -7,7 +7,7 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 
 const AllText = styled(Text)`
 font-size: ${({size}) => 
-        size === 'header' && '38px' ||
+        size === 'header' && '32px' ||
         size === 'date' && '24px' || 
         size === 'sub' && '20px' || 
         size === 'body' && '20px' || 
