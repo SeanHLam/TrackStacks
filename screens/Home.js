@@ -104,7 +104,8 @@ export default function Home({navigation, route}) {
          right='-115'
          ></Widget>
         </Wrapper>
-          
+         <AppBttn bttntext='View tasks'/> 
+         <AppBttn bttntext='Add tasks'/> 
       </SliderCont>
       <NavWrapper>
           <NavMenu

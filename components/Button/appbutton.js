@@ -24,6 +24,7 @@ text-align:center;
 border-radius: 10px;
 padding:3%;
 margin:3%;
+
 `
 
 export default function AppBttn({
