@@ -16,7 +16,7 @@ import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
-import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
+
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -62,8 +62,8 @@ export default function Home({navigation, route}) {
          style='header' 
          cl="white"
          position='relative'
-         top='10'
-         right='100'
+         top='10px'
+         right='100px'
          ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
@@ -76,8 +76,8 @@ export default function Home({navigation, route}) {
          height='30%'
          style='header2'
          position='relative'
-         top='-185'
-         left='115'
+         top='-185px'
+         left='115px'
          ></Widget>
          <Widget onWidget={HandleAdd} 
          width="45%" 
@@ -91,8 +91,8 @@ export default function Home({navigation, route}) {
          alignItems='flex-start' 
          c='blue'
          position='relative'
-         right='100'
-         top='-240'
+         right='100px'
+         top='-240px'
          ></Widget>
          <Widget onWidget={HandleAdd} 
          width="40%" 
@@ -100,8 +100,8 @@ export default function Home({navigation, route}) {
          text=''
          text1=''
          position='relative'
-         top='-430'
-         right='-115'
+         top='-430px'
+         right='-115px'
          ></Widget>
         </Wrapper>
          <AppBttn bttntext='View tasks'/> 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View,Text, TextInput,StyleSheet} from 'react-native';
 import styled from 'styled-components';
-import { SigninButton } from '../Button/Button1';
+
 
 export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
     text="Email",
