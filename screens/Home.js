@@ -16,7 +16,7 @@ import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
-import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
+
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -55,20 +55,57 @@ export default function Home({navigation, route}) {
       <SliderCont>
         <Wrapper>
 
-        <AppText text='Good Afternoon, Sean' style='header'/>
-         <Widget onWidget={HandleAdd} width="40%" height='35%'></Widget>
+        <AppText text='Good Afternoon!,    Sean' style='header'/>
+         <Widget onWidget={HandleAdd} 
+         width="45%" 
+         height='20%' 
+         style='header' 
+         cl="white"
+         position='relative'
+         top='10px'
+         right='100px'
+         ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
          justifyContent="flex-start"
          alignItems='flex-start' 
          text='Task Archive'
+         text1=''
          c='blue'
-         width='30%'
-         height='48%'
+         width='40%'
+         height='30%'
+         style='header2'
+         position='relative'
+         top='-185px'
+         left='115px'
          ></Widget>
-         <Widget onWidget={HandleAdd} width="34%" height='25%' text1='' text=''></Widget>
+         <Widget onWidget={HandleAdd} 
+         width="45%" 
+         height='25%' 
+         style='header3' 
+         text1=''
+         text='Help & 
+         Resources'
+         alignContent="flex-end" 
+         justifyContent="flex-end"
+         alignItems='flex-start' 
+         c='blue'
+         position='relative'
+         right='100px'
+         top='-240px'
+         ></Widget>
+         <Widget onWidget={HandleAdd} 
+         width="40%" 
+         height='20%' 
+         text=''
+         text1=''
+         position='relative'
+         top='-430px'
+         right='-115px'
+         ></Widget>
         </Wrapper>
-          
+         <AppBttn bttntext='View tasks'/> 
+         <AppBttn bttntext='Add tasks'/> 
       </SliderCont>
       <NavWrapper>
           <NavMenu
