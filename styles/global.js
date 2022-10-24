@@ -41,7 +41,7 @@ height: ${({size}) =>
 };
     align-items:${props=>props.alig};
     align-content:${props=>props.ali};
-    justify-content:${props=>props.jst};
+    justify-content:${props=>props.jst};`
 
 export const WidgetCont1 = styled.View`
     display:flex;
@@ -56,6 +56,7 @@ export const WidgetCont1 = styled.View`
     size === 'huge' && '360px' || 
     '360px'
 };
+
 height: ${({size}) => 
     size === 'small' && '100px' ||
     size === 'large' && '200px' || 
