@@ -12,7 +12,7 @@ background-color:#EAAA99;
 border:2px solid #363630;
 box-shadow: 2px 2px #363630;
 width: ${({size}) => 
-size === 'small' && '20%' ||
+size === 'small' && '30%' ||
 size === 'large' && '40%' || 
 size === 'huge' && '60%' || 
 '40%'

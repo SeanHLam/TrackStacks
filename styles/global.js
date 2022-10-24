@@ -81,3 +81,10 @@ export const SliderCont = styled(ScrollView)`
 width: 100%;
 `
 
+export const HeaderCont = styled.View`
+display:flex;
+flex-direction: row;
+align-items: center;
+width:100%;
+padding:3%;
+`

@@ -9,7 +9,6 @@ export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
     
 }) => {
     return(
-        
         <View style={{width:"100%", justifyContent:'center', display:"flex"}}>
             <Text style={{fontWeight:"bold", fontSize:"20px", color:'#363630', marginLeft:30}}>{text}</Text>
             <View style={styles.container}>
