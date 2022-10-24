@@ -8,10 +8,16 @@ import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate } from '../styles
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
+import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
+<<<<<<< HEAD
+=======
+import TaskTitle from '../components/Form/tasktitle.js';
+>>>>>>> 0a406561f55b5cda58ac988efdb427ca09911045
 import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';
+import { colours } from '../components/categorymenu/categorydata.js';
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -54,7 +60,8 @@ export default function MakeTask({navigation, route}) {
               <AppBttn style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle></TaskTitle>
-            <Category></Category>
+            <Category tlt={colours[0].category}></Category>
+            <RepeatMenu></RepeatMenu>
             <AddDetail></AddDetail>
             <PickDate
               date={date}

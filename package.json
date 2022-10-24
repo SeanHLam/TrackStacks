@@ -12,6 +12,7 @@
     "@eva-design/eva": "^2.1.1",
     "@expo-google-fonts/cabin": "^0.2.2",
     "@expo-google-fonts/days-one": "^0.2.2",
+    "@react-native-picker/picker": "2.4.2",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.1",
     "@ui-kitten/components": "^5.1.2",
@@ -28,6 +29,7 @@
     "react-native-screens": "~3.15.0",
     "react-native-svg": "12.3.0",
     "react-native-web": "^0.18.9",
+    "react-select": "^5.5.4",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
