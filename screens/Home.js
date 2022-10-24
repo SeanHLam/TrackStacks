@@ -57,7 +57,7 @@ export default function Home({navigation, route}) {
 
         <AppText text='Good Afternoon!,    Sean' style='header'/>
          <Widget onWidget={HandleAdd} 
-         width="45%" 
+         width='45%' 
          height='20%' 
          style='header' 
          cl="white"
@@ -80,7 +80,7 @@ export default function Home({navigation, route}) {
          left='115px'
          ></Widget>
          <Widget onWidget={HandleAdd} 
-         width="45%" 
+         width='45%' 
          height='25%' 
          style='header3' 
          text1=''
@@ -95,7 +95,7 @@ export default function Home({navigation, route}) {
          top='-240px'
          ></Widget>
          <Widget onWidget={HandleAdd} 
-         width="40%" 
+         width='40%' 
          height='20%' 
          text=''
          text1=''

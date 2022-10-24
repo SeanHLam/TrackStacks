@@ -34,6 +34,8 @@ export const WidgetCont = styled.Pressable`
     right:${props=>props.por};
     bottom:${props=>props.pob};
     top:${props=>props.pot};
+  
+   
 `
 const TextCont = styled(Text)`
 font-size: ${({size}) => 
@@ -101,6 +103,7 @@ col2 === 'pink' && '#EAAA99' ||
 '#363630'
 };
 `
+
 
 //Keep the widget empty. This way you can wrap it around any text or images when laying out.
 export default function Widget ({

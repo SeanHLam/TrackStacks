@@ -6,6 +6,7 @@ import Decor from './screens/Decor';
 import User from './screens/User';
 import MakeTask from './screens/MakeTask';
 import EditTask from './screens/EditTask';
+import SignIn from './screens/SignIn';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,11 @@ export default function App() {
           name="EditTask" 
           component={EditTask} 
         />
+        <Stack.Screen 
+          name="SignIn" 
+          component={SignIn} 
+        />
+        
 
       </Stack.Navigator>
     </NavigationContainer>
