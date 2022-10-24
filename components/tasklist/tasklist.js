@@ -90,7 +90,7 @@ sz="50px",
 
 })
 { 
-    const [isChecked, setChecked] = useState(false);
+    const [isChecked, setChecked] = useState(false);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
     return (
         <Cont>
             <Pressable onPress={onDone}>

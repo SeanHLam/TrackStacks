@@ -5,9 +5,7 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput, TouchableOpacity, Pressable} from 'react-native';
 
 const Wrapper = styled.Pressable`
-width:90%;
 display: flex;
-justify-content: flex-end;
 flex-direction: row;
 padding:3%;
 `

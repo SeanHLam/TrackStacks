@@ -11,6 +11,7 @@ import Category from '../components/categorymenu/categorymenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
 import TaskTitle from '../components/form/tasktitle.js';
+import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -23,6 +24,9 @@ export default function MakeTask({navigation, route}) {
       }else if(new_page === 4){
         navigation.navigate("User")
       }
+    }
+    const HandleBack = ()=>{
+      navigation.navigate("Tasks")
     }
     
     return(
@@ -50,8 +54,9 @@ export default function MakeTask({navigation, route}) {
               <AppBttn style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle></TaskTitle>
- 
             <Category></Category>
+            <AddDetail></AddDetail>
+            <AppBttn onBttn={HandleBack} style='small' bttntext='Back'></AppBttn>
           </Wrapper>
         </SliderCont>
         <NavWrapper>
