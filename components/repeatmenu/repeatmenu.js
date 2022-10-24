@@ -3,14 +3,11 @@ import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext.js';
-import {Wrapper} from '../search/search';
-import DropDown from './categorydropdown.js';
-import { colours } from './categorydata.js';
-
-import { IndexPath, Layout, Select, SelectItem } from '@ui-kitten/components';
+import RepeatDropDown from './repeatdropdown';
+import { repeatdata } from './repeatdata.js';
 
 
-const Wrapper1 = styled.View`
+const Wrapper = styled.View`
 background-color:#fcf9ed;
 width:90%;
 border:2px solid #363630;
@@ -21,7 +18,7 @@ margin:5%;
 `
 
 
-const SearchCont = styled.View`
+const RepeatCont = styled.View`
 color: #363630;
 display:flex;
 flex-direction:row;
@@ -36,22 +33,8 @@ padding-right:3%;
 const DropDownWrapper = styled.View`
 `
 
-const Layout2 = styled(Layout)`
-background-color:#fcf9ed;
-width:90%;
-border:2px solid #363630;
-border-radius: 5px;
-box-shadow: 4px 4px #363630;
-font-family: DaysOne_400Regular;
-font-size: 20px;
-`
-
-const SelectItem2 = styled(SelectItem)`
-padding:5%;
-`
-
-export default function Category({
-tlt="Pick a Category",
+export default function RepeatMenu({
+tlt="Repeat",
 }){
     const [toggle, setToggle] = React.useState(false);
     function toggleState(){
@@ -62,14 +45,10 @@ tlt="Pick a Category",
         } 
     }
 
-    const [selectedCat, setSelectedCat] = React.useState(new IndexPath(0));
-    const changeCat = () => {
-        console.log('pressed')
-    }
-
-    return ( <Wrapper1>
-            <SearchCont onPress={toggleState}>
-                <AppText text={tlt} style="body" wdth="90%"/>
+    return ( 
+    <Wrapper>
+            <RepeatCont onPress={toggleState}>
+                <AppText wdth="90%" text={tlt} style="body"/>
                 {
                 toggle === false &&
                 <Icon name="chevron-down"
@@ -87,17 +66,22 @@ tlt="Pick a Category",
                 onPress={toggleState}
                 />
                 }
-            </SearchCont>
+            </RepeatCont>
 
             
             {toggle === true &&
             <DropDownWrapper>
-                    <DropDown typ={colours[0].category} txt={colours[0].category} onSelect={changeCat}/>
-                    <DropDown typ={colours[1].category} txt={colours[1].category} onSelect={changeCat}/>
-                    <DropDown typ={colours[2].category} txt={colours[2].category} onSelect={changeCat}/>
+                    <RepeatDropDown txt={repeatdata[0].cycle}/>
+                    <RepeatDropDown txt={repeatdata[1].cycle}/>
+                    <RepeatDropDown txt={repeatdata[2].cycle}/>
+                    <RepeatDropDown txt={repeatdata[3].cycle}/>
+                    <RepeatDropDown txt={repeatdata[4].cycle}/>
+                    <RepeatDropDown txt={repeatdata[5].cycle}/>
+                    <RepeatDropDown txt={repeatdata[6].cycle}/>
+                    <RepeatDropDown txt={repeatdata[7].cycle}/>
             </DropDownWrapper>
             }
-        </Wrapper1>
+        </Wrapper>
     )
 }
 

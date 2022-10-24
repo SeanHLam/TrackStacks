@@ -3,15 +3,13 @@ import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext.js';
-import { CategoryTag } from '../tasklist/tasklist.js';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import { colours } from './categorydata.js';
 
 const DropDownCont = styled.View`
 width:90%;
 `
 
-const Category = styled.View`
+const Repeat = styled.View`
 display:flex;
 flex-direction:row;
 justify-content:flex-start;
@@ -22,28 +20,18 @@ padding-top:8%;
 padding-bottom:3%;
 `
 
-const CategoryID = styled(CategoryTag)`
-position:static;
-right:0;
-margin-right:5%;
-`
-
-export default function DropDown({
-    typ="Single",
-    txt="Category",
+export default function RepeatDropDown({
+    txt="Repeat",
     onSelect=()=>{},
 }){
 
     return (
         <DropDownCont>
                 <Pressable onPress={onSelect}>
-                    <Category>
-                        <CategoryID clr={typ} size="40px"/>
-                        <AppText text={txt} style="body"/>
-                    </Category>
+                    <Repeat>
+                        <AppText wdth="100%" text={txt} style="body"/>
+                    </Repeat>
                 </Pressable>
-                
-                
         </DropDownCont>
     )
 }

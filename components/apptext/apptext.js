@@ -34,13 +34,16 @@ font-family: ${({size}) =>
         col === 'pink' && '#EAAA99' ||
         '#363630'
     };
+
+    width: ${ props => props.WidWidth};
 `
 
 export default function AppText({
 
     style="body",
     text="sample text",
-    c="black"
+    c="black",
+    wdth="50%"
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,
@@ -53,7 +56,7 @@ export default function AppText({
       }
 
     return(
-        <AllText col={c} size={style}>
+        <AllText col={c} size={style}  WidWidth={wdth} >
            {text}
         </AllText>
     )
