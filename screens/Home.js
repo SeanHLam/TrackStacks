@@ -55,17 +55,54 @@ export default function Home({navigation, route}) {
       <SliderCont>
         <Wrapper>
         <AppText text='Good Afternoon, Sean' style='header'/>
-         <Widget onWidget={HandleAdd} width="40%" height='35%'></Widget>
+         <Widget onWidget={HandleAdd} 
+         width="40%" 
+         height='70%' 
+         style='header' 
+         cl="white"
+         position='absolute'
+         top='90'
+         left='-10'
+         ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
          justifyContent="flex-start"
          alignItems='flex-start' 
          text='Task Archive'
+         text1=''
          c='blue'
-         width='30%'
-         height='48%'
+         width='35%'
+         height='100%'
+         style='header2'
+         position='absolute'
+         top='90'
+         left='220'
+
          ></Widget>
-         <Widget onWidget={HandleAdd} width="34%" height='25%' text1='' text=''></Widget>
+         <Widget onWidget={HandleAdd} 
+         width="40%" 
+         height='80%' 
+         style='header2' 
+         text1=''
+         text='Help & 
+         Resources'
+         alignContent="flex-end" 
+         justifyContent="flex-end"
+         alignItems='flex-start' 
+         c='blue'
+         position='absolute'
+         top='300'
+         left='-10'
+         ></Widget>
+         <Widget onWidget={HandleAdd} 
+         width="40%" 
+         height='60%' 
+         text=''
+         text1=''
+         position='relative'
+         top='290'
+         left='115'
+         ></Widget>
         </Wrapper>
           
       </SliderCont>
