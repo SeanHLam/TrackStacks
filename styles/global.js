@@ -12,6 +12,17 @@ display:flex;
 align-items:center;
 justify-content:center;
 `;
+export const Wrapper1 = styled.View`
+flex:1;
+display:flex;
+flex-direction:row;
+`;
+export const Wrapper2 = styled.View`
+flex:2;
+display:flex;
+flex-direction:row;
+margin-top:25px;
+`;
 
 export const ButtonCont = styled.View`
     width: 100%;
