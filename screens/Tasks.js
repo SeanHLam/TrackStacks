@@ -13,6 +13,7 @@ import TaskSearch from '../components/search/search.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import AppBttn from '../components/Button/appbutton.js';
+import ModalPop from '../components/modal/modal.js';
 
 
 export default function Tasks({navigation, route}) { 
@@ -30,13 +31,20 @@ export default function Tasks({navigation, route}) {
     const HandleAdd = ()=>{
       navigation.navigate("MakeTask")
     };
-    const [date, setDate] = React.useState(new Date());
+    const [modalVisible, setModalVisible] = useState(false);
+    const HandleDone = ()=>{
+      setModalVisible(true)
+    };
+    const HandleClose = ()=>{
+      setModalVisible(false)
+    }
 
+    const [date, setDate] = React.useState(new Date());
     const [value,setValue]=useState('');
     const changeCat=(e)=>{
         setValue(e)
     }
-
+    
     function Tab({value}){
     if (value.toString() == 'Long-Term') {
       value="Long-Term"
@@ -66,10 +74,11 @@ export default function Tasks({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
+        <ModalPop onYes={HandleClose} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
           <Wrapper>
             <TaskSearch></TaskSearch>
-          
+            
             <Calendar
               date={date}
               onSelect={(nextDate)=> {setDate(nextDate)}}>
@@ -78,15 +87,17 @@ export default function Tasks({navigation, route}) {
             {tasks.map((o,i)=>
             tasks[i].date == date.toLocaleDateString
             (undefined, 
-            {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric',}) &&
-              <TaskList tlt={tasks[i].title}
+            {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) &&
+              <TaskList
+                tlt={tasks[i].title}
                 key={i}
+                onDone={()=> HandleDone()} 
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}>
               </TaskList> ) 
             }
-
+          <AppBttn onBttn={HandleDone} bttntext='show modal'/>
           <Category onChange={changeCat}></Category>
             
           </Wrapper>

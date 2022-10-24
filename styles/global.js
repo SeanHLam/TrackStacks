@@ -19,6 +19,7 @@ export const ButtonCont = styled.View`
     display:flex;
     align-items:${props=>props.ali};
 `
+
 export const WidgetCont = styled.View`
     display:flex;
     background-color:#EAAA99;
@@ -42,7 +43,6 @@ height: ${({size}) =>
     align-content:${props=>props.ali};
     justify-content:${props=>props.jst};
 
-`
 export const WidgetCont1 = styled.View`
     display:flex;
     background-color:#FFFDF4;
