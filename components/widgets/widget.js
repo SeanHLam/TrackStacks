@@ -39,6 +39,7 @@ const TextCont = styled(Text)`
 font-size: ${({size}) => 
 size === 'header' && '38px' ||
 size === 'header2' && '28px' ||
+size === 'header3' && '24px' ||
 size === 'date' && '24px' || 
 size === 'sub' && '20px' || 
 size === 'body' && '20px' || 
@@ -82,6 +83,7 @@ size === 'tasksub' && '14px' ||
 font-family: ${({size}) => 
 size === 'header' && "DaysOne_400Regular" ||
 size === 'header2' && "DaysOne_400Regular" ||
+size === 'header3' && "DaysOne_400Regular" ||
 size === 'date' && 'DaysOne_400Regular' || 
 size === 'sub' && "Cabin_700Bold" || 
 size === 'body' && "Cabin_400Regular" || 

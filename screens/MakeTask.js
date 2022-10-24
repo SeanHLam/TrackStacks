@@ -10,7 +10,7 @@ import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
-import TaskTitle from '../components/form/tasktitle.js';
+
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
