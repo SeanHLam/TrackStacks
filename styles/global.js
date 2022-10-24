@@ -1,5 +1,5 @@
 import { View,Text, SafeAreaView, ScrollView,} from 'react-native';
-import { ApplicationProvider} from '@ui-kitten/components';
+import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
@@ -69,5 +69,14 @@ flex-direction: row;
 align-items: center;
 justify-content: flex-end;
 width:90%;
+`
+export const PickDate = styled(Datepicker)`
+width: 90%;
 
+background-color:#FEFDF4;
+padding:3%;
+
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
 `
