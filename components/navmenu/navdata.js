@@ -47,5 +47,11 @@ export const colour = {
     "brush":"#FEFDF4",
     "user":"#99FFDF",
 },
+"Facebook":{
+    "home":"#363630",
+    "board":"#363630",
+    "brush":"#363630",
+    "user":"#363630",
+},
 
 }

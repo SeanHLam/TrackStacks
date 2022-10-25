@@ -5,7 +5,7 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, Wrapper4 } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
@@ -74,9 +74,14 @@ export default function SignIn({navigation, route}) {
           />
           
           <AppText text='Forgot Password?' align='right' c='blue' style='tasksub'/>
-         
-          <AppBttn bttntext='  Sign In' style='large'/>
+          <AppBttn onPress={()=>navigation.navigate("Home")} bttntext='  Sign In' style='large'/>
+          <AppText text='---or---' style='date' align='center'/>
           <Facebook text='Continue with Facebook' style1='body' align='center'/>
+          <Wrapper4>
+          <AppText text='New user?' style='sub' align='center'/>
+          <AppText text='Sign Up' style='sub' align='center' c='blue'/>
+          </Wrapper4>
+          
           
          
         </Wrapper>

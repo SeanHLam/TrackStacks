@@ -12,7 +12,7 @@ display:flex;
 align-items:center;
 justify-content:center
 flex-direction:column;
-background-color:#FEFDF4;
+
 `;
 export const Wrapper1 = styled.View`
 flex:1;
@@ -32,6 +32,13 @@ flex-direction:row;
 align-items:center;
 justify-content:center;
 margin-top:50px;
+`;
+export const Wrapper4 = styled.View`
+display:flex;
+flex-direction:row;
+margin-right:120px;
+margin-left:155px;
+margin-top:30px;
 `;
 
 export const ButtonCont = styled.View`
