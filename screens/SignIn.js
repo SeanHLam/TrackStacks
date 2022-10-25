@@ -41,8 +41,11 @@ export default function SignIn({navigation, route}) {
       }else if(new_page === 4){
         navigation.navigate("User")
       }
+  
     }
-    
+    const HandleSignIn = () =>{
+      navigation.navigate("Home")
+    }
     return(
       <ApplicationProvider 
     style={{display: "flex", 
@@ -74,7 +77,7 @@ export default function SignIn({navigation, route}) {
           />
           
           <AppText text='Forgot Password?' align='right' c='blue' style='tasksub'/>
-          <AppBttn onPress={()=>navigation.navigate("Home")} bttntext='  Sign In' style='large'/>
+          <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
           <AppText text='---or---' style='date' align='center'/>
           <Facebook text='Continue with Facebook' style1='body' align='center'/>
           <Wrapper4>
@@ -92,14 +95,6 @@ export default function SignIn({navigation, route}) {
        
         
          
-        <NavWrapper>
-            <NavMenu
-              activemenu={route.name}
-              onHome={()=>HandlePage(1)}
-              onTask={()=>HandlePage(2)}
-              onDecor={()=>HandlePage(3)}
-              onUser={()=>HandlePage(4)}
-            ></NavMenu>
-          </NavWrapper>
+        
       </ApplicationProvider>
     )};

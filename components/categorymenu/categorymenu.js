@@ -95,7 +95,8 @@ tlt="Pick a Category",
             {toggle === true &&
             <DropDownWrapper>
                 {colours.map((o,i)=>
-                    <DropDown  keys={i} typ={colours[i].category} txt={colours[i].category} onSelect={()=>changeCat(colours[i].category)}/>
+        
+                    <DropDown  key={i} typ={colours[i].category} txt={colours[i].category} onSelect={()=>changeCat(colours[i].category)}/>
                 )}
             </DropDownWrapper>
             }

@@ -34,7 +34,7 @@ export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
 const styles = StyleSheet.create({
     container:{
         backgroundColor: "#FFFDF4",
-        width:"80%",
+        width:"85%",
         borderColor:"black",
         shadowColor:"black",
         shadowOffset: {width:4, height:4},
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         marginLeft:30,
         padding:10,
-        margin:15
+        margin:10
     },
     input:{
         marginLeft:20
