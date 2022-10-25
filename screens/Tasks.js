@@ -12,7 +12,7 @@ import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import AddBttn from '../components/addbutton/addbutton.js';
-import AppBttn from '../components/Button/appbutton.js';
+import AppBttn from '../components/button/appbutton.js';
 import ModalPop from '../components/modal/modal.js';
 
 

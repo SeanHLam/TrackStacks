@@ -9,8 +9,8 @@ import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 
-import { Signin } from '../components/Form/Signin.js';
-import AppBttn from '../components/Button/appbutton.js';
+import { Signin } from '../components/form/Signin.js';
+import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
 
 

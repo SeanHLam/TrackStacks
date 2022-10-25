@@ -31,7 +31,8 @@ display:flex;
 flex-direction:row;
 align-items:center;
 justify-content:center;
-margin-top:50px;
+margin-top: 3%;
+margin-bottom:5%;
 `;
 
 export const ButtonCont = styled.View`
@@ -98,4 +99,8 @@ padding:3%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
+`
+
+export const TaskContWrapper = styled.View`
+margin-top:10%;
 `

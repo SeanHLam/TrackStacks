@@ -10,10 +10,11 @@ import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
-import AppBttn from '../components/Button/appbutton.js';
-import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
+import AppBttn from '../components/button/appbutton.js';
+import AddDetail from '../components/addtaskdetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
+import TaskTitle from '../components/form/tasktitle.js'
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 import styled from 'styled-components';
 import { Size } from '@ui-kitten/components/devsupport';
 import { CurrentRenderContext } from '@react-navigation/native';
-import {Pressable} from 'react-native';
+import {Pressable, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
@@ -28,9 +28,8 @@ export const WidgetCont = styled.Pressable`
     justify-content:${props=>props.jst};
     padding:5%;
     margin:3%;
+    margin-top:${ props => props.WidMrgn};
     display:flex;
- 
-  
    
 `
 const TextCont = styled(Text)`
@@ -65,6 +64,8 @@ col === 'teal' && '#99FFDF' ||
 col === 'pink' && '#EAAA99' ||
 '#363630'
 };
+margin-top:15px;
+
 `
 const TextCont2 = styled(Text)`
 font-size: ${({size1}) => 
@@ -102,7 +103,13 @@ col2 === 'pink' && '#EAAA99' ||
 };
 margin-top:-15px;
 `
-
+const IconCont = styled.View`
+width:100%;
+display:flex;
+position:absolute;
+top:${props => props.top};
+left:${props => props.left};
+`
 
 //Keep the widget empty. This way you can wrap it around any text or images when laying out.
 export default function Widget ({
@@ -118,6 +125,12 @@ export default function Widget ({
   style="body",
   cl="black",
   style1="body",
+  nme="chevron-down",
+  fll="#FFFDF4",
+  dsp="none",
+  top="0%",
+  left="0%",
+  marginTop='0px'
 }){ 
 
   let [fontsLoaded] = useFonts({
@@ -136,11 +149,25 @@ return(
  jst={justifyContent} 
  ali={alignContent} 
  alig={alignItems}
-
+ WidMrgn={marginTop}
  > 
   <TextCont size={style}>{text}</TextCont>
   <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>
+  <IconCont top={top} left={left}>
+  <Icon name={nme} fill={fll} display={dsp} style={styles.icon} ></Icon>
+  </IconCont>
  </WidgetCont>
  
   )
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    width: 60,
+    height: 60,
+    shadowOpacity:1,
+    shadowOffset: {height:4, width:4},
+    shadowRadius:0.1,
+    shadowColor:"#363630"
+},
+});
