@@ -20,13 +20,13 @@ display:flex;
 flex-direction:row;
 `;
 export const Wrapper2 = styled.View`
-flex:2;
+flex:1;
 display:flex;
 flex-direction:row;
 margin-top:25px;
 `;
 export const Wrapper3 = styled.View`
-flex:2;
+flex:1;
 display:flex;
 flex-direction:row;
 align-items:center;

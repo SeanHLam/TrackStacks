@@ -27,7 +27,7 @@ export const WidgetCont = styled.Pressable`
     align-content:${props=>props.ali};
     justify-content:${props=>props.jst};
     padding:5%;
-    margin:5%;
+    margin:3%;
     display:flex;
  
   

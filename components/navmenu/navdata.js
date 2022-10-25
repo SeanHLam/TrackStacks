@@ -5,6 +5,12 @@ export const colour = {
     "brush":"#FEFDF4",
     "user":"#FEFDF4",
 },
+"SignIn":{
+    "home":"#FEFDF4",
+    "board":"#FEFDF4",
+    "brush":"#FEFDF4",
+    "user":"#FEFDF4",
+},
 
 "Home":{
     "home":"#99FFDF",

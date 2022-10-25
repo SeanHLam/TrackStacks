@@ -106,8 +106,8 @@ export default function Home({navigation, route}) {
        
         </Wrapper>
         <Wrapper3>
-        <AppBttn bttntext='     View tasks' style='large'/> 
-         <AppBttn bttntext='     Add tasks'/> 
+        <AppBttn bttntext='View tasks' style='large'/> 
+         <AppBttn bttntext='Add tasks'/> 
         </Wrapper3>
         
       </SliderCont>

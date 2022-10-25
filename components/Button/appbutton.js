@@ -17,6 +17,7 @@ size === 'large' && '40%' ||
 size === 'huge' && '60%' || 
 '40%'
 };
+
 justify-content:center;
 align-items:center;
 align-content:center;
