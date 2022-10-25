@@ -51,8 +51,10 @@ padding:5%;
 `
 
 export default function Category({
+
 tlt="Pick a Category",
 }){
+    const [title, setTitle] = useState("Pick a Category")
     const [toggle, setToggle] = React.useState(false);
     function toggleState(){
         if (toggle === false) {
@@ -63,13 +65,13 @@ tlt="Pick a Category",
     }
 
     const [selectedCat, setSelectedCat] = React.useState(new IndexPath(0));
-    const changeCat = () => {
-        console.log('pressed')
+    const changeCat = (catname) => {
+       setTitle(catname)
     }
 
     return ( <Wrapper1>
             <SearchCont onPress={toggleState}>
-                <AppText text={tlt} style="body" wdth="90%"/>
+                <AppText text={title} style="body" wdth="90%"/>
                 {
                 toggle === false &&
                 <Icon name="chevron-down"
@@ -92,9 +94,9 @@ tlt="Pick a Category",
             
             {toggle === true &&
             <DropDownWrapper>
-                    <DropDown typ={colours[0].category} txt={colours[0].category} onSelect={changeCat}/>
-                    <DropDown typ={colours[1].category} txt={colours[1].category} onSelect={changeCat}/>
-                    <DropDown typ={colours[2].category} txt={colours[2].category} onSelect={changeCat}/>
+                {colours.map((o,i)=>
+                    <DropDown  keys={i} typ={colours[i].category} txt={colours[i].category} onSelect={()=>changeCat(colours[i].category)}/>
+                )}
             </DropDownWrapper>
             }
         </Wrapper1>
