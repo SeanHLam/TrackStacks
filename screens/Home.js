@@ -18,6 +18,7 @@ import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
 import { Wrapper1 } from '../styles/global.js';
 import { Wrapper2 } from '../styles/global.js';
+import { Wrapper3 } from '../styles/global.js';
 
 
 export default function Home({navigation, route}) { 
@@ -102,10 +103,13 @@ export default function Home({navigation, route}) {
         
          ></Widget>
         </Wrapper2>
+       
         </Wrapper>
+        <Wrapper3>
         <AppBttn bttntext='View tasks'/> 
          <AppBttn bttntext='Add tasks'/> 
-         
+        </Wrapper3>
+        
       </SliderCont>
      
       <NavWrapper>

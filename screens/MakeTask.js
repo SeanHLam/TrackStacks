@@ -11,13 +11,13 @@ import Category from '../components/categorymenu/categorymenu.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
-<<<<<<< HEAD
+
 
 
 import TaskTitle from '../components/Form/tasktitle.js';
-=======
-import TaskTitle from '../components/form/tasktitle.js';
->>>>>>> 6e0aa17dbefc603c3f45812da8c9ca066250c8e8
+
+
+
 
 import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';

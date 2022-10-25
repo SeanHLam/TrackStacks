@@ -25,6 +25,14 @@ display:flex;
 flex-direction:row;
 margin-top:25px;
 `;
+export const Wrapper3 = styled.View`
+flex:2;
+display:flex;
+flex-direction:row;
+align-items:center;
+justify-content:center;
+margin-top:50px;
+`;
 
 export const ButtonCont = styled.View`
     width: 100%;

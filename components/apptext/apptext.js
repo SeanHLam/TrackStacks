@@ -35,12 +35,8 @@ font-family: ${({size}) =>
         '#363630'
     };
 
-<<<<<<< HEAD
-    width: ${ props => props.WidWidth};
-    
-=======
 
->>>>>>> 6e0aa17dbefc603c3f45812da8c9ca066250c8e8
+    width: ${ props => props.WidWidth};
 `
 
 export default function AppText({
