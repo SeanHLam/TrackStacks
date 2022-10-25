@@ -29,8 +29,8 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-margin:15px;
-width:40px;
+margin:4%;
+width:11%;
 `
 
 const ListCont = styled.View`
@@ -44,7 +44,7 @@ background-color:#FFFDF4;
 `
 
 const TextCont = styled.View`
-width: 230px;
+width: 70%;
 display:flex;
 flex-direction: column;
 justify-content:center;
@@ -61,60 +61,81 @@ margin:5px;
 `*/
 
 export const CategoryTag = styled.View`
-height:${props=>props.size || "50px"};
-width: 5%;
+width: 20%;
 display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
-position:absolute;
-right: 15px;
 background-color: ${({clr}) =>
-                    clr === 'To-Do' && '#5C7457' ||
-                    clr === 'Long-Term' && '#85C0FF' ||
-                    clr === 'Single' && '#89608E'
+                    clr === 'todo' && '#5C7457' ||
+                    clr === 'longterm' && '#85C0FF' ||
+                    clr === 'single' && '#89608E'
                 };
 `
 
-const Wrap = styled.View`
-position:flex;
+const ColTag = styled.View`
+width: 8%;
+border-radius: 4px 6px 6px 4px;
+box-shadow: -3px 0px #363630;
+background-color: ${({clr}) =>
+                    clr === 'todo' && '#5C7457' ||
+                    clr === 'longterm' && '#85C0FF' ||
+                    clr === 'single' && '#89608E'
+                };
+margin-left: 2%;
+
 `
+
+const ICont = styled.View`
+display:flex;
+align-itens: center;
+justify-content: flex-end;
+
+`
+
+
 
 export default function TaskList({
 onDone=()=>{},
+onEdit=()=>{},
 num="0",
 date="Date",
 tlt="Task Title",
 sub="CATEGORY",
 typ="single",
-sz="50px",
-
+sz="100%",
+checked=false
 })
 { 
-    const [isChecked, setChecked] = useState(false);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     return (
         <Cont>
             <Pressable onPress={onDone}>
                 <Checkbox style={styles.checkbox}
-                value={isChecked}
-                onValueChange={setChecked}
-                color={isChecked ? '#363630' : '#FFFDF4'}
+                value={checked}
+                onValueChange={onDone}
+                color={checked ? '#363630' : '#FFFDF4'}
                 >
                 </Checkbox>
             </Pressable>        
 
            <DateCont>
                 <AppText align='center' text={num} style="date" c="black"/>
-                <AppText align='center' text={date} style="body" c="black" />
+                <AppText align='center' wdth='100%' text={date} style="body" c="black" />
             </DateCont>
             <ListCont>
                 <TextCont>
-                    <AppText text={tlt} style="task" c="black"/>
+                    <AppText text={tlt}  style="task" c="black"/>
                     <AppText text={sub} style="tasksub" c="pink"/>
-                    <CategoryTag clr={typ} size={sz}/>
+
+                    
                 </TextCont>
+                <ICont>
+                    <Icon onPress={onEdit} name='edit-outline' fill={"#363630"} style={styles.icon}/>
+                </ICont>
+                
+                <ColTag clr={typ}></ColTag>
             </ListCont>
             
-
         </Cont>
     )
 }
@@ -130,5 +151,11 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderRadius:5,
         borderColor:'#FFFDF4',
-    }
+    },
+    icon: {
+        width: 25,
+        height: 25,
+        alignSelf: 'center',
+        padding: 10,
+    },
   });

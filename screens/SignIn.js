@@ -8,10 +8,11 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-
-import { Signin } from '../components/form/Signin.js';
-import AppBttn from '../components/button/appbutton.js';
+import AppText from '../components/apptext/apptext.js';
+import{Signin} from '../components/form/Signincomo';
+import AppBttn from '../components/Button/appbutton.js';
 import styled from 'styled-components';
+import {Facebook} from '../components/form/Facebook';
 
 
 
@@ -25,15 +26,8 @@ font-weight:bold;
 
 `
 
-const TextCont = styled.Text`
-display:flex;
-color: #7B89A3;
-font-size: 12px;
-margin-left:190px;
-margin-top:-10px;
-text-align:right;
 
-`
+
 export default function SignIn({navigation, route}) { 
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
@@ -78,11 +72,13 @@ export default function SignIn({navigation, route}) {
           SetValue={setPassword}
           secureTextEntry={true}
           />
-          <TextCont>
-          <Text>Forgot Password?</Text>
-          </TextCont>
-          <AppBttn bttntext='      Sign In' style='large'/>
-          <Divider>--- or ---</Divider>
+          
+          <AppText text='Forgot Password?' align='right' c='blue' style='tasksub'/>
+         
+          <AppBttn bttntext='  Sign In' style='large'/>
+          <Facebook text='Continue with Facebook' style1='body' align='center'/>
+          
+         
         </Wrapper>
         
         

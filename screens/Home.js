@@ -83,7 +83,7 @@ export default function Home({navigation, route}) {
          text='Task Archive'
          text1=''
          c='blue'
-         width='40%'
+         width='45%'
          height='100%'
          style='header3'
         nme='folder'

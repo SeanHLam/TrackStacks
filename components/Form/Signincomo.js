@@ -1,6 +1,9 @@
 import React from 'react';
 import { View,Text, TextInput,StyleSheet} from 'react-native';
 import styled from 'styled-components';
+import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
+import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+
 
 
 export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
@@ -32,7 +35,6 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: "#FFFDF4",
         width:"80%",
-        height:"45%",
         borderColor:"black",
         shadowColor:"black",
         shadowOffset: {width:4, height:4},
@@ -42,7 +44,8 @@ const styles = StyleSheet.create({
         borderRadius:5,
         justifyContent:"center",
         marginLeft:30,
-        
+        padding:10,
+        margin:15
     },
     input:{
         marginLeft:20
