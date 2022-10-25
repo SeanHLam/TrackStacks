@@ -50,7 +50,7 @@ export default function TaskTitle({
         <Icon name='edit-outline' fill={"#363630"} style={styles.icon}/>
     </Wrapper>
     <TxtCont>
-        <AppText text={`${text.length}/30`}></AppText>
+        <AppText align='right'  text={`${text.length}/30`}></AppText>
     </TxtCont>
    
     </>

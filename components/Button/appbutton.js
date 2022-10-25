@@ -36,7 +36,7 @@ export default function AppBttn({
     return(
      
       <Buttonst size={style} onPress={onBttn}>
-         <AppText c="black" style='sub' text={bttntext}/>
+         <AppText align='center' c="black" style='sub' text={bttntext}/>
       </Buttonst>
 
     )

@@ -36,6 +36,7 @@ const DropDownWrapper = styled.View`
 export default function RepeatMenu({
 tlt="Repeat",
 }){
+    const [title, setTitle] = useState("Never")
     const [toggle, setToggle] = React.useState(false);
     function toggleState(){
         if (toggle === false) {
@@ -45,10 +46,14 @@ tlt="Repeat",
         } 
     }
 
+    const changeCat = (catname) => {
+        setTitle(catname)
+     }
     return ( 
     <Wrapper>
             <RepeatCont onPress={toggleState}>
-                <AppText wdth="90%" text={tlt} style="body"/>
+                <AppText wdth="60%" text={title} style="body"/>
+                <AppText text={title}  style="tasksub" c="pink"/>
                 {
                 toggle === false &&
                 <Icon name="chevron-down"
@@ -71,14 +76,11 @@ tlt="Repeat",
             
             {toggle === true &&
             <DropDownWrapper>
-                    <RepeatDropDown txt={repeatdata[0].cycle}/>
-                    <RepeatDropDown txt={repeatdata[1].cycle}/>
-                    <RepeatDropDown txt={repeatdata[2].cycle}/>
-                    <RepeatDropDown txt={repeatdata[3].cycle}/>
-                    <RepeatDropDown txt={repeatdata[4].cycle}/>
-                    <RepeatDropDown txt={repeatdata[5].cycle}/>
-                    <RepeatDropDown txt={repeatdata[6].cycle}/>
-                    <RepeatDropDown txt={repeatdata[7].cycle}/>
+                  {repeatdata.map((o,i)=>
+                    <RepeatDropDown 
+                    txt={repeatdata[i].cycle} 
+                    onSelect={()=>changeCat(repeatdata[i].cycle)}/>
+                )}
             </DropDownWrapper>
             }
         </Wrapper>

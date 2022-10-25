@@ -37,6 +37,7 @@ font-family: ${({size}) =>
 
 
     width: ${ props => props.WidWidth};
+    text-align: ${ props => props.txtalign};
 `
 
 export default function AppText({
@@ -44,7 +45,8 @@ export default function AppText({
     style="body",
     text="sample text",
     c="black",
-    wdth="90%"
+    wdth="90%",
+    align="left",
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,
@@ -57,7 +59,7 @@ export default function AppText({
       }
 
     return(
-        <AllText col={c} size={style}  WidWidth={wdth} >
+        <AllText col={c} size={style} txtalign={align} WidWidth={wdth} >
            {text}
         </AllText>
     )
