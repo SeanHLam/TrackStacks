@@ -14,6 +14,7 @@ import AppBttn from '../components/Button/appbutton.js';
 import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
+import TaskTitle from '../components/form/tasktitle.js';
 
 export default function MakeTask({navigation, route}) { 
     const HandlePage = (new_page) =>{
