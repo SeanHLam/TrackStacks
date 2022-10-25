@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-import { Signin } from '../components/Form/Signin.js';
+import { Signin } from '../components/form/Signin.js';
 
 
 export default function SignIn({navigation, route}) { 
