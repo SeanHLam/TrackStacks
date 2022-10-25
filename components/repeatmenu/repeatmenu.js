@@ -22,7 +22,8 @@ const RepeatCont = styled.View`
 color: #363630;
 display:flex;
 flex-direction:row;
-align-items:flex-start;
+align-items:center;
+
 font-family: Cabin_400Regular;
 width:100%;
 margin-top:1%;
@@ -52,8 +53,9 @@ tlt="Repeat",
     return ( 
     <Wrapper>
             <RepeatCont onPress={toggleState}>
-                <AppText wdth="60%" text={title} style="body"/>
-                <AppText text={title}  style="tasksub" c="pink"/>
+                <AppText wdth="48%" text={"Repeat"} style="body"/>
+                <AppText text={title} wdth="45%" align='right' style="tasksub" c="pink"/>
+                
                 {
                 toggle === false &&
                 <Icon name="chevron-down"
