@@ -8,13 +8,13 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-<<<<<<< HEAD
+
 import { Signin } from '../components/Form/Signin.js';
 import AppBttn from '../components/Button/appbutton.js';
 import styled from 'styled-components';
-=======
-import { Signin } from '../components/form/Signin.js';
->>>>>>> 79c694ba54d4ef108b951316939bf08ad7a17bc3
+
+
+
 
 
 
