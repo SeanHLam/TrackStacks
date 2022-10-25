@@ -5,38 +5,24 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
 export const Wrapper = styled.View`
-width:35%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-contenr: center;
-background-color:#FEFDF4;
-padding:3%;
-margin: 3%;
-border:2px solid #363630;
-border-radius: 5px;
-box-shadow: 4px 4px #363630;
+
 `
 
 
-export default function DecWidget({
+export default function IconBttn({
 i="search",
-t="Shop",
 }){
     const [text, onChangeText] = React.useState('Search');
     return (
-    <Wrapper>
         <Icon name={i} fill={"#363630"} style={styles.icon}/>
-        <AppText text={t} align='left' style='sub'></AppText>
-    </Wrapper>
     )
 }
 
 const styles = StyleSheet.create({
     icon: {
 
-        width: 35,
-        height: 35,
+        width: 45,
+        height: 40,
         marginRight: 5,
   
 

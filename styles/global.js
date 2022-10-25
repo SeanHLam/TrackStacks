@@ -3,6 +3,7 @@ import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
+import { Icon } from '@ui-kitten/components';
 
 export const Wrapper = styled.View`
 flex:1;
@@ -117,13 +118,16 @@ export const DecorCont = styled.View`
 display:flex;
 flex-direction: row;
 width: 100%;
-
+align-items:center;
 `
 
 export const DecorImage = styled(Image)`
 display:flex;
 justify-content: center;
 align-items: center;
+`
 
-
+const AppIcon = styled(Icon)`
+width: 20%;
+height: 20%;
 `

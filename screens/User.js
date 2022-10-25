@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
+import AppText from '../components/apptext/apptext.js';
+import SetWidget from '../components/settingswidget/settingswidget.js';
 
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -38,7 +40,8 @@ export default function User({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            
+            <AppText text='Settings'></AppText>
+            <SetWidget></SetWidget>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

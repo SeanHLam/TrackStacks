@@ -4,11 +4,12 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import { Image } from 'react-native';
 import DecWidget from '../components/decorwidget/decorwidget.js';
+import IconBttn from '../components/iconbttn/iconbttn.js';
 
 export default function Decor({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -45,7 +46,8 @@ export default function Decor({navigation, route}) {
           <Wrapper>
             <DecorCont>
               <DecWidget t={"Shop"} i={"shopping-cart-outline"}></DecWidget>
-              <DecWidget t={"Inventory"} i={"briefcase-outline"}></DecWidget>
+              <DecWidget t={"Items"} i={"briefcase-outline"}></DecWidget>
+              <IconBttn i={"question-mark-circle"}></IconBttn>
             </DecorCont>
            
             
@@ -66,3 +68,5 @@ export default function Decor({navigation, route}) {
           </NavWrapper>
       </ApplicationProvider>
     )};
+
+  
