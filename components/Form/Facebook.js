@@ -2,6 +2,9 @@ import React from 'react';
 import { View,Text, TextInput,StyleSheet} from 'react-native';
 import styled from 'styled-components';
 import AppText from '../apptext/apptext';
+import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
+import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+
 
 const TextCont = styled(Text)`
 font-size: ${({size1}) => 
@@ -61,7 +64,6 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: "#FFFDF4",
         width:"85%",
-        height:"40%",
         borderColor:"black",
         shadowColor:"black",
         shadowOffset: {width:4, height:4},
@@ -73,7 +75,9 @@ const styles = StyleSheet.create({
         alignContent:"center",
         alignItems:"center",
         display:"flex",
-        marginLeft:25
+        marginLeft:25,
+        padding:10,
+        margin:10
     },
     input:{
         marginLeft:20
