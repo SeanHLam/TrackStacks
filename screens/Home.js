@@ -62,7 +62,7 @@ export default function Home({navigation, route}) {
         <Wrapper1>
         <Widget onWidget={HandleAdd} 
          width='45%' 
-         height='60%' 
+         height='65%' 
          style='header' 
          cl="white"
         style1='header3'
@@ -74,7 +74,7 @@ export default function Home({navigation, route}) {
          text='Task Archive'
          text1=''
          c='blue'
-         width='40%'
+         width='45%'
          height='100%'
          style='header2'
         
@@ -83,7 +83,7 @@ export default function Home({navigation, route}) {
         
         <Wrapper2>
         <Widget onWidget={HandleAdd} 
-         width='45%' 
+         width='49%' 
          height='100%' 
          style='header3' 
          text1=''
