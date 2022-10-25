@@ -8,8 +8,6 @@ import AppText from '../apptext/apptext';
 import subtask from './subtask.js';
 import AddBttn from '../addbutton/addbutton';
 
-
-
 export const WidgetCont = styled.View`
     display:flex;
     background-color:#FFFDF4;
