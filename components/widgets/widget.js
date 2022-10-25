@@ -67,14 +67,15 @@ col === 'pink' && '#EAAA99' ||
 };
 `
 const TextCont2 = styled(Text)`
-font-size: ${({size}) => 
-size === 'header' && '38px' ||
-size === 'header2' && '28px' ||
-size === 'date' && '24px' || 
-size === 'sub' && '20px' || 
-size === 'body' && '20px' || 
-size === 'task' && '16px' ||
-size === 'tasksub' && '14px' ||
+font-size: ${({size1}) => 
+size1 === 'header' && '38px' ||
+size1 === 'header3' && '100px' ||
+size1 === 'header2' && '28px' ||
+size1 === 'date' && '24px' || 
+size1 === 'sub' && '20px' || 
+size1 === 'body' && '20px' || 
+size1 === 'task' && '16px' ||
+size1 === 'tasksub' && '14px' ||
 '38px'
 };
 
@@ -97,7 +98,9 @@ col2 === 'blue' && '#7B89A3' ||
 col2 === 'teal' && '#99FFDF' ||
 col2 === 'pink' && '#EAAA99' ||
 '#363630'
+
 };
+margin-top:-15px;
 `
 
 
@@ -114,7 +117,7 @@ export default function Widget ({
   text1="18",
   style="body",
   cl="black",
- 
+  style1="body",
 }){ 
 
   let [fontsLoaded] = useFonts({
@@ -136,7 +139,7 @@ return(
 
  > 
   <TextCont size={style}>{text}</TextCont>
-  <TextCont2 col2={cl} >{text1}</TextCont2>
+  <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>
  </WidgetCont>
  
   )

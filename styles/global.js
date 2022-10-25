@@ -10,7 +10,9 @@ width: 100%;
 height:100%;
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:center
+flex-direction:column;
+
 `;
 export const Wrapper1 = styled.View`
 flex:1;
@@ -22,6 +24,14 @@ flex:2;
 display:flex;
 flex-direction:row;
 margin-top:25px;
+`;
+export const Wrapper3 = styled.View`
+flex:2;
+display:flex;
+flex-direction:row;
+align-items:center;
+justify-content:center;
+margin-top:50px;
 `;
 
 export const ButtonCont = styled.View`

@@ -18,6 +18,7 @@ import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
 import { Wrapper1 } from '../styles/global.js';
 import { Wrapper2 } from '../styles/global.js';
+import { Wrapper3 } from '../styles/global.js';
 
 
 export default function Home({navigation, route}) { 
@@ -56,14 +57,15 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        <AppText text='Good Afternoon,     Sean' style='header'/>
+        <AppText text='Good Afternoon, Sean' style='header'/>
+        
         <Wrapper1>
         <Widget onWidget={HandleAdd} 
          width='45%' 
-         height='80%' 
+         height='60%' 
          style='header' 
          cl="white"
-        
+        style1='header3'
          ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
@@ -101,11 +103,15 @@ export default function Home({navigation, route}) {
         
          ></Widget>
         </Wrapper2>
-         
+       
         </Wrapper>
-         <AppBttn bttntext='View tasks'/> 
-         <AppBttn bttntext='Add tasks'/> 
+        <Wrapper3>
+        <AppBttn bttntext='     View tasks' style='large'/> 
+         <AppBttn bttntext='     Add tasks'/> 
+        </Wrapper3>
+        
       </SliderCont>
+     
       <NavWrapper>
           <NavMenu
             activemenu={route.name}
