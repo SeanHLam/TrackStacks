@@ -7,7 +7,7 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 
 const AllText = styled(Text)`
 font-size: ${({size}) => 
-        size === 'header' && '32px' ||
+        size === 'header' && '34px' ||
         size === 'date' && '24px' || 
         size === 'sub' && '20px' || 
         size === 'body' && '20px' || 
@@ -36,6 +36,7 @@ font-family: ${({size}) =>
     };
 
     width: ${ props => props.WidWidth};
+    
 `
 
 export default function AppText({
@@ -43,7 +44,7 @@ export default function AppText({
     style="body",
     text="sample text",
     c="black",
-    wdth="50%"
+    wdth="90%"
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,

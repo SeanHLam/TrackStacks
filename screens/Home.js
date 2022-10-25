@@ -56,14 +56,15 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        <AppText text='Good Afternoon,     Sean' style='header'/>
+        <AppText text='Good Afternoon, Sean' style='header'/>
+        
         <Wrapper1>
         <Widget onWidget={HandleAdd} 
          width='45%' 
-         height='80%' 
+         height='60%' 
          style='header' 
          cl="white"
-        
+        style1='header3'
          ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
@@ -101,11 +102,12 @@ export default function Home({navigation, route}) {
         
          ></Widget>
         </Wrapper2>
-         
         </Wrapper>
-         <AppBttn bttntext='View tasks'/> 
+        <AppBttn bttntext='View tasks'/> 
          <AppBttn bttntext='Add tasks'/> 
+         
       </SliderCont>
+     
       <NavWrapper>
           <NavMenu
             activemenu={route.name}
