@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
+import AppText from '../components/apptext/apptext.js';
 
 export default function Settings({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -41,7 +42,7 @@ export default function Settings({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            
+           
           </Wrapper>
         </SliderCont>
         <NavWrapper>

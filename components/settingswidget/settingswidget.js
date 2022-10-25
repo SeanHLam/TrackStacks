@@ -5,21 +5,21 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
 export const Wrapper = styled.View`
-width:35%;
+width:90    %;
 display: flex;
 flex-direction: row;
 align-items: center;
 justify-contenr: center;
 background-color:#FEFDF4;
 padding:3%;
-margin: 3%;
+margin: 5%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
 `
 
 
-export default function DecWidget({
+export default function SetWidget({
 i="search",
 t="Shop",
 }){
