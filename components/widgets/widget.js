@@ -29,11 +29,7 @@ export const WidgetCont = styled.Pressable`
     padding:5%;
     margin:5%;
     display:flex;
-    position:${props=>props.po};
-    left:${props=>props.pol};
-    right:${props=>props.por};
-    bottom:${props=>props.pob};
-    top:${props=>props.pot};
+ 
   
    
 `
@@ -118,11 +114,7 @@ export default function Widget ({
   text1="18",
   style="body",
   cl="black",
-  position="",
-  top="",
-  bottom="",
-  right="",
-  left=""
+ 
 }){ 
 
   let [fontsLoaded] = useFonts({
@@ -141,11 +133,7 @@ return(
  jst={justifyContent} 
  ali={alignContent} 
  alig={alignItems}
- po={position}
- pol={left}
- por={right}
- pob={bottom}
- pot={top}
+
  > 
   <TextCont size={style}>{text}</TextCont>
   <TextCont2 col2={cl} >{text1}</TextCont2>

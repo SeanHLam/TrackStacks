@@ -16,6 +16,8 @@ import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
+import { Wrapper1 } from '../styles/global.js';
+import { Wrapper2 } from '../styles/global.js';
 
 
 export default function Home({navigation, route}) { 
@@ -54,16 +56,14 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-
-        <AppText text='Good Afternoon, Sean' style='header'/>
-         <Widget onWidget={HandleAdd} 
+        <AppText text='Good Afternoon,     Sean' style='header'/>
+        <Wrapper1>
+        <Widget onWidget={HandleAdd} 
          width='45%' 
-         height='20%' 
+         height='80%' 
          style='header' 
          cl="white"
-         position='relative'
-         top='10px'
-         right='100px'
+        
          ></Widget>
          <Widget onWidget={HandleAdd} 
          alignContent="flex-start" 
@@ -73,15 +73,16 @@ export default function Home({navigation, route}) {
          text1=''
          c='blue'
          width='40%'
-         height='30%'
+         height='100%'
          style='header2'
-         position='relative'
-         top='-185px'
-         left='115px'
+        
          ></Widget>
-         <Widget onWidget={HandleAdd} 
+        </Wrapper1>
+        
+        <Wrapper2>
+        <Widget onWidget={HandleAdd} 
          width='45%' 
-         height='25%' 
+         height='100%' 
          style='header3' 
          text1=''
          text='Help & 
@@ -90,19 +91,17 @@ export default function Home({navigation, route}) {
          justifyContent="flex-end"
          alignItems='flex-start' 
          c='blue'
-         position='relative'
-         right='100px'
-         top='-240px'
+        
          ></Widget>
          <Widget onWidget={HandleAdd} 
          width='40%' 
-         height='20%' 
+         height='80%' 
          text=''
          text1=''
-         position='relative'
-         top='-430px'
-         right='-115px'
+        
          ></Widget>
+        </Wrapper2>
+         
         </Wrapper>
          <AppBttn bttntext='View tasks'/> 
          <AppBttn bttntext='Add tasks'/> 

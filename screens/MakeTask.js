@@ -12,6 +12,7 @@ import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
 import TaskTitle from '../components/form/tasktitle.js';
+
 import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
