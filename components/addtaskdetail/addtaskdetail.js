@@ -5,7 +5,7 @@ import { Size } from '@ui-kitten/components/devsupport';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
-import subtask from './subtask.js';
+import SubTask from './subtask.js';
 import AddBttn from '../addbutton/addbutton';
 
 export const WidgetCont = styled.View`

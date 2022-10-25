@@ -59,6 +59,7 @@ export default function TaskCont(){
 
             {recent.map((o,i)=>
                 <TaskList tlt={recent[i].title}
+                key={i}
                 num={recent[i].num}
                 date={recent[i].date}
                 typ={recent[i].cat}

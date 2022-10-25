@@ -80,6 +80,7 @@ tlt="Repeat",
             <DropDownWrapper>
                   {repeatdata.map((o,i)=>
                     <RepeatDropDown 
+                    key={i}
                     txt={repeatdata[i].cycle} 
                     onSelect={()=>changeCat(repeatdata[i].cycle)}/>
                 )}
