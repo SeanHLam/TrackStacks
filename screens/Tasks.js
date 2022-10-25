@@ -12,7 +12,7 @@ import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import AddBttn from '../components/addbutton/addbutton.js';
-import AppBttn from '../components/Button/appbutton.js';
+import AppBttn from '../components/button/appbutton.js';
 import ModalPop from '../components/modal/modal.js';
 
 
@@ -31,9 +31,16 @@ export default function Tasks({navigation, route}) {
     const HandleAdd = ()=>{
       navigation.navigate("MakeTask")
     };
+
+    const HandleEdit = ()=>{
+      navigation.navigate("EditTask")
+    };
+
     const [modalVisible, setModalVisible] = useState(false);
+    const [isChecked, setChecked] = useState(false);  
     const HandleDone = ()=>{
       setModalVisible(true)
+      setChecked(true)
     };
     const HandleClose = ()=>{
       setModalVisible(false)
@@ -54,7 +61,7 @@ export default function Tasks({navigation, route}) {
       value="To-Do"
     }
     }
-
+    
     return(
 
       <ApplicationProvider 
@@ -95,14 +102,15 @@ export default function Tasks({navigation, route}) {
                 tlt={tasks[i].title}
                 key={i}
                 onDone={()=> HandleDone()} 
+                onEdit={()=> HandleEdit()}
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}
                 sub={tasks[i].cat}
+                checked={isChecked}
                 >
               </TaskList> ) 
             }
-          <AppBttn onBttn={HandleDone} bttntext='show modal'/>
          
             
           </Wrapper>

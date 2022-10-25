@@ -1,4 +1,4 @@
-import { View,Text, SafeAreaView, ScrollView,} from 'react-native';
+import { View,Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
@@ -31,7 +31,8 @@ display:flex;
 flex-direction:row;
 align-items:center;
 justify-content:center;
-margin-top:50px;
+margin-top: 3%;
+margin-bottom:5%;
 `;
 export const Wrapper4 = styled.View`
 display:flex;
@@ -105,4 +106,24 @@ padding:3%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
+`
+
+
+export const TaskContWrapper = styled.View`
+margin-top:10%;
+`
+
+export const DecorCont = styled.View`
+display:flex;
+flex-direction: row;
+width: 100%;
+
+`
+
+export const DecorImage = styled(Image)`
+display:flex;
+justify-content: center;
+align-items: center;
+
+
 `

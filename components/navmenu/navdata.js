@@ -19,7 +19,6 @@ export const colour = {
     "user":"#FEFDF4",
 },
 
-
 "Tasks":{
     "home":"#FEFDF4",
     "board":"#99FFDF",
@@ -28,6 +27,13 @@ export const colour = {
 },
 
 "MakeTask":{
+    "home":"#FEFDF4",
+    "board":"#99FFDF",
+    "brush":"#FEFDF4",
+    "user":"#FEFDF4",
+},
+
+"EditTask":{
     "home":"#FEFDF4",
     "board":"#99FFDF",
     "brush":"#FEFDF4",

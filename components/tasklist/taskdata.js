@@ -3,19 +3,19 @@ export const recent = [
       title:"Do Chores",
       date:"Thu",
       num:"20",
-      cat:"To-Do",
+      cat:"todo",
     },
     {
       title:"Make more eye contact",
       date:"Fri",
       num:"21",
-      cat:"Long-Term",
+      cat:"longterm",
     },
     {
       title:"Do AP History hw",
       date:"Fri",
       num:"28",
-      cat:"Single",
+      cat:"single",
     }
   ]
 
@@ -24,18 +24,18 @@ export const recent = [
       title:"Project 3 Taskflow",
       date:"Thu",
       num:"20",
-      cat:"Single",
+      cat:"single",
     },
     {
       title:"Pay Bills",
       date:"Sun",
       num:"23",
-      cat:"To-Do",
+      cat:"todo",
     },
     {
       title:"Research Paper",
       date:"Mon",
       num:"24",
-      cat:"Single",
+      cat:"single",
     }
   ]
