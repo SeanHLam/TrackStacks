@@ -12,7 +12,6 @@ import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/Button/appbutton.js';
 import TaskTitle from '../components/form/tasktitle.js';
-
 import AddDetail from '../components/AddTaskDetail/addtaskdetail.js';
 import { Datepicker, Layout, Text } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
@@ -58,7 +57,7 @@ export default function MakeTask({navigation, route}) {
               <AppBttn style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle></TaskTitle>
-            <Category tlt={colours[0].category}></Category>
+            <Category></Category>
             <RepeatMenu></RepeatMenu>
             <AddDetail></AddDetail>
             <PickDate
