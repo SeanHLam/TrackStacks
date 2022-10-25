@@ -9,10 +9,10 @@ import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import { Signin } from '../components/form/Signincomo.js';
+import{Signin} from '../components/form/Signincomo';
 import AppBttn from '../components/Button/appbutton.js';
 import styled from 'styled-components';
-import { Facebook } from '../components/form/Facebook.js';
+import {Facebook} from '../components/form/Facebook';
 
 
 
@@ -77,8 +77,7 @@ export default function SignIn({navigation, route}) {
          
           <AppBttn bttntext='  Sign In' style='large'/>
           <Facebook text='Continue with Facebook' style1='body' align='center'/>
-          <Facebook text='Continue with Google' style1='body'align='center'/>
-          <Facebook text='Continue with LinkedIn' style1='body' align='center'/>
+          
          
         </Wrapper>
         
