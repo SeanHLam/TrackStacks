@@ -57,12 +57,13 @@ export default function MakeTask({navigation, route}) {
             </HeaderCont>
             <TaskTitle></TaskTitle>
             <Category></Category>
-            <RepeatMenu></RepeatMenu>
+           
             <AddDetail></AddDetail>
             <PickDate
               date={date}
               onSelect={nextDate => setDate(nextDate)}
             ></PickDate>
+             <RepeatMenu></RepeatMenu>
             <AppBttn onBttn={HandleBack} style='small' bttntext='Add'></AppBttn>
           </Wrapper>
         </SliderCont>

@@ -103,8 +103,8 @@ sz="50px",
             </Pressable>        
 
            <DateCont>
-                <AppText text={num} style="date" c="black"/>
-                <AppText text={date} style="body" c="black" />
+                <AppText align='center' text={num} style="date" c="black"/>
+                <AppText align='center' text={date} style="body" c="black" />
             </DateCont>
             <ListCont>
                 <TextCont>

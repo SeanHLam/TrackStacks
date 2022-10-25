@@ -97,7 +97,9 @@ export default function Tasks({navigation, route}) {
                 onDone={()=> HandleDone()} 
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
-                typ={tasks[i].cat}>
+                typ={tasks[i].cat}
+                sub={tasks[i].cat}
+                >
               </TaskList> ) 
             }
           <AppBttn onBttn={HandleDone} bttntext='show modal'/>
