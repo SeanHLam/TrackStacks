@@ -52,8 +52,8 @@ export default function MakeTask({navigation, route}) {
         <SliderCont>
           <Wrapper>
             <HeaderCont>
-              <AppText style='header' text='Add Task'></AppText>
-              <AppBttn style='small' bttntext='Cancel'></AppBttn>
+              <AppText style='header' wdth='65%' text='Add Task'></AppText>
+              <AppBttn onBttn={HandleBack} style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle></TaskTitle>
             <Category></Category>

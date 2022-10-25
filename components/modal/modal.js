@@ -68,11 +68,11 @@ export default function ModalPop({
             visible={mdlvis}
             >
                 <Popup>
-                <AppText style='sub' text={mdltext}></AppText>
+                <AppText style='sub' align='center' text={mdltext}></AppText>
                 <BttnCont>
-                    <AppText style='sub' text={"You will get:"}></AppText>
+                    <AppText align='center' wdth='50%' style='sub' text={"You will get:"}></AppText>
                     <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
-                    <AppText style='sub' text={"30"}></AppText>
+                    <AppText align='left' style='sub' wdth='20%' text={"30"}></AppText>
                 </BttnCont>
                 <BttnCont>
                     <AppBttn onBttn={onYes} bttntext='Yes'></AppBttn>

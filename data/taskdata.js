@@ -24,4 +24,34 @@ export const tasks = [
       cat:"single",
       status:"unfinished",
     },
+
+    {
+      title:"Project 2 Midterm",
+      date:"Tue, Oct 25, 2022",
+      cat:"single",
+      status:"unfinished",
+    },
+
+    {
+      title:"Photoshop Midterm",
+      date:"Tue, Oct 25, 2022",
+      cat:"todo",
+      status:"unfinished",
+    },
+
+    {
+      title:"Do laundry",
+      date:"Wed, Oct 26, 2022",
+      cat:"single",
+      status:"unfinished",
+    },
+
+    {
+      title:"Study for Sales midterm",
+      date:"Thu, Oct 27, 2022",
+      cat:"longterm",
+      status:"unfinished",
+    },
+
+    
   ]
