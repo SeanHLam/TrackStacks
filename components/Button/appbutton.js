@@ -10,7 +10,7 @@ export const Buttonst = styled.Pressable`
 display:flex;
 background-color:#EAAA99;
 border:2px solid #363630;
-box-shadow: 2px 2px #363630;
+box-shadow: 4px 4px #363630;
 width: ${({size}) => 
 size === 'small' && '30%' ||
 size === 'large' && '40%' || 
@@ -25,7 +25,6 @@ text-align:center;
 border-radius: 10px;
 padding:3%;
 margin:3%;
-
 `
 
 export default function AppBttn({
