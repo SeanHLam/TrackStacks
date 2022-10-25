@@ -43,8 +43,12 @@ export default function Decor({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            <DecWidget t={"Shop"} i={"shopping-cart-outline"}></DecWidget>
-            <DecWidget t={"Inventory"} i={"briefcase-outline"}></DecWidget>
+            <DecorCont>
+              <DecWidget t={"Shop"} i={"shopping-cart-outline"}></DecWidget>
+              <DecWidget t={"Inventory"} i={"briefcase-outline"}></DecWidget>
+            </DecorCont>
+           
+            
             <DecorCont>
               <DecorImage source={require("../assets/rewardBgCool.png")}/>
             </DecorCont>

@@ -102,8 +102,7 @@ box-shadow: 4px 4px #363630;
 
 export const DecorCont = styled.View`
 display:flex;
-justify-content: center;
-align-items: center;
+flex-direction: row;
 width: 100%;
 
 `
@@ -112,6 +111,5 @@ export const DecorImage = styled(Image)`
 display:flex;
 justify-content: center;
 align-items: center;
-
 
 `
