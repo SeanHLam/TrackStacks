@@ -9,7 +9,7 @@ import { Wrapper, NavWrapper, SliderCont, Wrapper4 } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import{Signin} from '../components/form/Signincomo';
+import{Signin} from '../components/form/signincomp';
 import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
 import {Facebook} from '../components/form/Facebook';
