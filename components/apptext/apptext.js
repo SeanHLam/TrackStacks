@@ -7,12 +7,12 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 
 const AllText = styled(Text)`
 font-size: ${({size}) => 
-        size === 'header' && '34px' ||
-        size === 'date' && '24px' || 
-        size === 'sub' && '20px' || 
-        size === 'body' && '20px' || 
-        size === 'task' && '16px' ||
-        size === 'tasksub' && '14px' ||
+        size === 'header' && '34%' ||
+        size === 'date' && '24%' || 
+        size === 'sub' && '20%' || 
+        size === 'body' && '20%' || 
+        size === 'task' && '16%' ||
+        size === 'tasksub' && '14%' ||
         '38px'
   };
 

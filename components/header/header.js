@@ -26,17 +26,16 @@ justify-content: flex-end;
 align-items: center;
 `
 const ICont = styled.View`
-height: 100%;
-width: 18%;
+
+
 
 `
 
 const Logo = styled(Image)`
-height: 100%;
-width: 100%;
+flex: 1;
+aspectRatio: .6;
+resizeMode: 'contain';
 `
-
-
 
 export default function Header({
 }){

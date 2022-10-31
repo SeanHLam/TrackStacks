@@ -19,6 +19,7 @@ import { Wrapper1, Wrapper2, Wrapper3 } from '../styles/global.js';
 import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
+import { ScreenCont } from '../styles/global.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -66,7 +67,7 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        <AppText text='Good Afternoon, Sean' style='header'/>
+        <AppText text='Good Afternoon, Sean' style='sub'/>
       
         <Wrapper1>
         <Widget onWidget={HandleAdd} 

@@ -5,11 +5,16 @@ import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 
+export const ScreenCont = styled.View`
+background-color:#FEFDF4;
+`
+
 export const Wrapper = styled.View`
 flex:1;
 width: 100%;
 height:100%;
 display:flex;
+padding: 3%;
 align-items:center;
 justify-content:center
 flex-direction:column;
@@ -82,6 +87,7 @@ align-items:center;
 `;
 
 export const SliderCont = styled(ScrollView)`
+background-color:#FEFDF4;
 width: 100%;
 `
 
