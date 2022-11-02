@@ -12,7 +12,7 @@ import AppText from '../components/apptext/apptext.js';
 import{Signin} from '../components/form/signincomp';
 import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
-import {Facebook} from '../components/form/Facebook';
+import {Facebook} from '../components/form/facebook';
 
 
 

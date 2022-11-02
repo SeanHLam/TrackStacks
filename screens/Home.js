@@ -67,7 +67,7 @@ export default function Home({navigation, route}) {
       
       <SliderCont>
         <Wrapper>
-        <AppText text='Good Afternoon, Sean' style='sub'/>
+        <AppText text='Good Afternoon, Sean' style='header'/>
       
         <Wrapper1>
         <Widget onWidget={HandleAdd} 
