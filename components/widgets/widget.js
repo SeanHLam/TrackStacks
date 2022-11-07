@@ -17,7 +17,7 @@ export const WidgetCont = styled.Pressable`
     col === 'pink' && '#EAAA99' ||
     '#EAAA99'
 };
-    Font-Weight:Bold;
+    font-weight:bold;
     border-radius: 10px;
     box-shadow: 5px 5px #363630;
     border: 4px solid #363630;
@@ -30,7 +30,6 @@ export const WidgetCont = styled.Pressable`
     margin:3%;
     margin-top:${ props => props.WidMrgn};
     display:flex;
-   
 `
 const TextCont = styled(Text)`
 font-size: ${({size}) => 
@@ -64,8 +63,7 @@ col === 'teal' && '#99FFDF' ||
 col === 'pink' && '#EAAA99' ||
 '#363630'
 };
-margin-top:15px;
-
+margin-top:15%;
 `
 const TextCont2 = styled(Text)`
 font-size: ${({size1}) => 
@@ -99,14 +97,15 @@ col2 === 'blue' && '#7B89A3' ||
 col2 === 'teal' && '#99FFDF' ||
 col2 === 'pink' && '#EAAA99' ||
 '#363630'
-
-};
-margin-top:-15px;
+}
+margin-top:-15%;
+margin-bottom:15%;
+;
 `
 const IconCont = styled.View`
 width:100%;
 display:flex;
-position:absolute;
+position: ${ props => props.pos};
 top:${props => props.top};
 left:${props => props.left};
 `
@@ -115,9 +114,9 @@ left:${props => props.left};
 export default function Widget ({
   alignItems="center",
   justifyContent="center",
-  alignContent="center",
-  width="30%",
-  height="20%",
+  alignContent="",
+  width="100%",
+  height="100%",
   onWidget=()=>{},
   c="pink",
   text="WED",
@@ -127,10 +126,11 @@ export default function Widget ({
   style1="body",
   nme="chevron-down",
   fll="#FFFDF4",
-  dsp="none",
-  top="0%",
+  dsp="inline",
+  pos="absolute",
+  top="0",
   left="0%",
-  marginTop='0px'
+  marginTop='0px',
 }){ 
 
   let [fontsLoaded] = useFonts({
@@ -154,10 +154,9 @@ return(
   <TextCont size={style}>{text}</TextCont>
   <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>
   <IconCont top={top} left={left}>
-  <Icon name={nme} fill={fll} display={dsp} style={styles.icon} ></Icon>
+  <Icon name={nme} fill={fll} position={pos} display={dsp} style={styles.icon} ></Icon>
   </IconCont>
  </WidgetCont>
- 
   )
 }
 

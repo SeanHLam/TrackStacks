@@ -7,12 +7,12 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 
 const AllText = styled(Text)`
 font-size: ${({size}) => 
-        size === 'header' && '34%' ||
-        size === 'date' && '24%' || 
-        size === 'sub' && '20%' || 
-        size === 'body' && '20%' || 
-        size === 'task' && '16%' ||
-        size === 'tasksub' && '14%' ||
+        size === 'header' && '34px' ||
+        size === 'date' && '24px' || 
+        size === 'sub' && '20px' || 
+        size === 'body' && '20px' || 
+        size === 'task' && '16px' ||
+        size === 'tasksub' && '14px' ||
         '38px'
   };
 
@@ -38,6 +38,8 @@ font-family: ${({size}) =>
 
     width: ${ props => props.WidWidth};
     text-align: ${ props => props.txtalign};
+    padding-left: ${ props => props.paddingLeft};
+    margin: ${ props => props.margin};
 `
 
 export default function AppText({
@@ -47,6 +49,8 @@ export default function AppText({
     c="black",
     wdth="90%",
     align="left",
+    paddingleft='0',
+    margin='0'
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,
@@ -59,7 +63,7 @@ export default function AppText({
       }
 
     return(
-        <AllText col={c} size={style} txtalign={align} WidWidth={wdth} >
+        <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} >
            {text}
         </AllText>
     )
