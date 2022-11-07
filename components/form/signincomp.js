@@ -4,7 +4,18 @@ import styled from 'styled-components';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 
+const TextCont = styled.View`
+display:flex;
+align-items:flex-start;
+margin-bottom:-3%;
+margin-top:3%;
+`
 
+const InputCont = styled.View`
+display:flex;
+justify-content:center;
+align-items:center;
+`
 
 export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
     text="Email",
@@ -12,19 +23,22 @@ export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
     
 }) => {
     return(
-        <View style={{width:"100%", justifyContent:'center', display:"flex"}}>
-            <Text style={{fontWeight:"bold", fontSize:"20px", color:'#363630', marginLeft:30}}>{text}</Text>
-            <View style={styles.container}>
-            <TextInput 
-            value={value} 
-            onChangeText={SetValue} 
-            placeholder={placeholder} 
-            style={styles.input}
-            secureTextEntry={secureTextEntry}
-            >
-
-            </TextInput>
-            </View>
+        <View style={{width:"85%"}}>
+                <TextCont>
+                    <Text style={{fontWeight:"bold", fontSize:"20px", color:'#363630'}}>{text}</Text>
+                </TextCont>
+                <InputCont>
+                    <View style={styles.container}>
+                    <TextInput 
+                    value={value} 
+                    onChangeText={SetValue} 
+                    placeholder={placeholder} 
+                    style={styles.input}
+                    secureTextEntry={secureTextEntry}
+                    >
+                    </TextInput>
+                    </View>
+                </InputCont>
         </View>
         
         );
@@ -34,21 +48,19 @@ export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
 const styles = StyleSheet.create({
     container:{
         backgroundColor: "#FFFDF4",
-        width:"85%",
-        borderColor:"black",
-        shadowColor:"black",
+        width:"100%",
+        borderColor:"#363630",
+        shadowColor:"#363630",
         shadowOffset: {width:4, height:4},
-        shadowRadius:1,
+        shadowRadius:0.1,
         shadowOpacity: 1,
         borderWidth:2,
         borderRadius:5,
-        justifyContent:"center",
-        marginLeft:30,
         padding:10,
-        margin:10
+        margin:10,
     },
     input:{
-        marginLeft:20
+        justifyContent:"flex-start",
     },
 
   
