@@ -14,6 +14,7 @@ import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
 import {Facebook} from '../components/form/facebook';
 
+
 const Divider = styled.Text`
 color: #363630;
 font-size: 25px;
