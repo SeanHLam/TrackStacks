@@ -10,42 +10,37 @@ background-color:#FEFDF4;
 `
 
 export const Wrapper = styled.View`
-flex:1;
-width: 100%;
-height:100%;
 display:flex;
-padding: 3%;
 align-items:center;
-justify-content:center
 flex-direction:column;
-background-color:#FEFDF4;
 `;
+
 export const Wrapper1 = styled.View`
-flex:1;
 display:flex;
 flex-direction:row;
-`;
-export const Wrapper2 = styled.View`
-flex:1;
-display:flex;
-flex-direction:row;
-margin-top:25px;
-`;
-export const Wrapper3 = styled.View`
-flex:1;
-display:flex;
-flex-direction:row;
-align-items:center;
 justify-content:center;
-margin-top: 3%;
-margin-bottom:5%;
+width:90%;
+margin-top:5%;
 `;
+
+export const Wrapper2 = styled.View`
+display:flex;
+flex-direction:row;
+justify-content:center;
+align-content:flex-end;
+align-items:flex-end;
+width:90%;
+`;
+
+export const Wrapper3 = styled.View`
+display:flex;
+`;
+
 export const Wrapper4 = styled.View`
 display:flex;
 flex-direction:row;
-margin-right:120px;
-margin-left:155px;
-margin-top:30px;
+padding:2%
+padding-top:2%;
 `;
 
 export const ButtonCont = styled.View`
@@ -88,7 +83,7 @@ align-items:center;
 
 export const SliderCont = styled(ScrollView)`
 background-color:#FEFDF4;
-width: 100%;
+width: 100%;   
 `
 
 export const HeaderCont = styled.View`
@@ -117,7 +112,7 @@ box-shadow: 4px 4px #363630;
 
 
 export const TaskContWrapper = styled.View`
-margin-top:10%;
+margin-top:0%;
 `
 
 export const DecorCont = styled.View`
@@ -136,4 +131,58 @@ align-items: center;
 const AppIcon = styled(Icon)`
 width: 20%;
 height: 20%;
+`
+
+export const HomeTextCont = styled.View`
+padding-left:5%;
+width:100%;
+`
+
+export const WidgetWrapper = styled.View`
+display:flex;
+padding: 3%;
+flex-direction:row;
+width: 100%;
+height:100%;
+`;
+
+
+export const WidgetWrapper2 = styled.View`
+display:flex;
+flex-direction:column;
+width:50%;
+height:50%;
+`;
+
+export const WidgetWrapper3 = styled.View`
+display:flex;
+flex-direction:column;
+width:50%;
+height:100%;
+`;
+
+export const FormCont = styled.View`
+display:flex;
+align-items:center;
+width:100%;
+`
+
+export const HeadCont = styled.View`
+background-color: #FEFDF4;
+width: 100%;
+height:15%;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+flex-direction: row;
+padding: 5% 5% 5% 5%;
+margin-top:10%;
+margin-bottom:10%;
+`
+
+export const HeadCont2 = styled.View`
+flex-direction: row;
+width: 85%;
+justify-content: flex-end;
+align-items: center;
 `

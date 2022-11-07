@@ -15,7 +15,7 @@ import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
-import { Wrapper1, Wrapper2, Wrapper3 } from '../styles/global.js';
+import {HomeTextCont, WidgetWrapper, WidgetWrapper2, WidgetWrapper3, Wrapper3} from '../styles/global.js';
 import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
@@ -66,63 +66,73 @@ export default function Home({navigation, route}) {
       <Header/>
       
       <SliderCont>
-        <Wrapper>
-        <AppText text='Good Afternoon, Sean' style='header'/>
-      
-        <Wrapper1>
-        <Widget onWidget={HandleAdd} 
-         width='45%' 
-         height='70%'
-         style='header2' 
-         cl="white"
+  
+        <HomeTextCont>
+          <AppText text='Good Afternoon, Sean' style='header'/>
+        </HomeTextCont>
+        <WidgetWrapper>
+        <WidgetWrapper2>
+
+        <Widget onWidget={HandleAdd}  
+        width='90%'
+        height='35%'
+        style='header2' 
+        cl='white'
         style1='header3'
-         ></Widget>
-         <Widget onWidget={HandleAdd} 
-         alignContent="flex-start" 
-         justifyContent="flex-start"
-         alignItems='flex-start' 
+        dsp='none'
+        />
+
+        <Widget onWidget={HandleAdd} 
+         width='90%'
+         height='35%'
+         style='header3'
+         text='Help & Resources'
+         justifyContent='flex-end'
+         alignItems='flex-start'
+         text1=''
+         c='blue'
+         nme='info'
+         top='-100%'
+         left='60%'
+         marginTop='5%'
+        />
+         
+
+        </WidgetWrapper2>
+        
+        <WidgetWrapper3>
+
+        <Widget onWidget={HandleAdd} 
+         width='90%'
+         height='25%'
+         alignItems='flex-start'
+         justifyContent='flex-start'
          text='Task Archive'
          text1=''
          c='blue'
-         width='45%'
-         height='100%'
          style='header3'
-        nme='folder'
-        dsp='flex'
-        top='60%'
-        left='10%'
-         ></Widget>
-        </Wrapper1>
-        
-        <Wrapper2>
-        <Widget onWidget={HandleAdd} 
-         width='45%' 
-         height='180%' 
-         style='header3'
-         text='Help & Resource'
-         text1=''
-         alignContent="flex-end" 
-         justifyContent="flex-end"
-         alignItems='flex-start' 
-         c='blue'
-         nme='info'
-         dsp='flex'
-         left='70%'
-         marginTop='-17%'
-         ></Widget>
+         nme='archive'
+         pos='absolute'
+         left='-5%'
+         top='10%'
+         />
+
          <Widget onWidget={HandleAdd} 
-         width='40%' 
-         height='100%' 
+         width='90%' 
+         height='10%'
          text=''
          text1=''
          nme='bell'
-         dsp='flex'
-         top='25%'
-         left='35%'
-         >
-        </Widget>
-        </Wrapper2>
-        </Wrapper>
+         pos='static'
+         justifyContent='flex-end'
+         left='25%'
+         marginTop='5%'
+         />
+        </WidgetWrapper3>
+
+        </WidgetWrapper>
+        
+
         <TaskContWrapper>
           <TaskCont/>
         </TaskContWrapper>
@@ -153,7 +163,6 @@ export default function Home({navigation, route}) {
     icon: {
         width: 70,
         height: 70,
-        
     },
   });
   
