@@ -5,7 +5,7 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, Wrapper4, FormCont, HeadCont, HeadCont2} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
@@ -62,9 +62,9 @@ export default function SignIn({navigation, route}) {
 
         <SliderCont>
         <HeadCont>
-          <HeadCont2>
+          <HeadContInner>
           <AppText text='TrackStacks' style='header'></AppText>
-          </HeadCont2>
+          </HeadContInner>
         </HeadCont>
         <Wrapper>
         <FormCont>
@@ -85,10 +85,10 @@ export default function SignIn({navigation, route}) {
           <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
           <AppText text='--- or —--' style='sub' align='center' margin='5%'/>
           <Facebook text='Continue with Facebook' align='center'/>
-          <Wrapper4>
+          <SignInFooter>
             <AppText text='New user?' style='task' align='right'/>
             <AppText text='Sign Up' style='task' align='left' c='blue' paddingleft='2%'/>
-          </Wrapper4>
+          </SignInFooter>
           
           
          

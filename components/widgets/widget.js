@@ -63,7 +63,7 @@ col === 'teal' && '#99FFDF' ||
 col === 'pink' && '#EAAA99' ||
 '#363630'
 };
-margin-top:15%;
+margin-top:30%;
 `
 const TextCont2 = styled(Text)`
 font-size: ${({size1}) => 
@@ -162,8 +162,8 @@ return(
 
 const styles = StyleSheet.create({
   icon: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     shadowOpacity:1,
     shadowOffset: {height:4, width:4},
     shadowRadius:0.1,
