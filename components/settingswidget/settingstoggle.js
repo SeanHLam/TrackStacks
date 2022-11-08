@@ -33,11 +33,12 @@ margin-right:2%;
 export default function SetToggle({
 i="bell-outline",
 t="Notifications",
-onSet =()=>{},
+onToggle=()=>{}
 }){
     const [checked, setChecked] = React.useState(true);
     const onCheckedChange = (isChecked) => {
         setChecked(isChecked);
+        onToggle()
       };
     return (
     <Wrapper>
