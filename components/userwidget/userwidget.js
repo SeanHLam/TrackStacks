@@ -3,8 +3,7 @@ import React from 'react';
 import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput, Image} from 'react-native';
-import AppBttn from '../button/appbutton';
-
+import AppBttn from '../Button/appbutton';
 
 export const Wrapper = styled.View`
 display: flex;

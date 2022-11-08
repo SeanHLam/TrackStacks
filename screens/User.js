@@ -13,6 +13,7 @@ import SetToggle from '../components/settingswidget/settingstoggle.js';
 import Statistics from '../components/statistics/statistics.js';
 import UserWidget from '../components/userwidget/userwidget.js';
 
+
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
