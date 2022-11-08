@@ -66,30 +66,30 @@ display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
 background-color: ${({clr}) =>
-                    clr === 'todo' && '#5C7457' ||
-                    clr === 'longterm' && '#85C0FF' ||
-                    clr === 'single' && '#89608E'
+                    clr === 'To Do' && '#5C7457' ||
+                    clr === 'Long-Term' && '#85C0FF' ||
+                    clr === 'Single' && '#89608E'
                 };
 `
 
 const ColTag = styled.View`
-width: 8%;
+width: 7%;
+display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
 background-color: ${({clr}) =>
-                    clr === 'todo' && '#5C7457' ||
-                    clr === 'longterm' && '#85C0FF' ||
-                    clr === 'single' && '#89608E'
+                    clr === 'To Do' && '#5C7457' ||
+                    clr === 'Long-Term' && '#85C0FF' ||
+                    clr === 'Single' && '#89608E'
                 };
-margin-left: 2%;
-
+margin-left: 3%;
 `
 
 const ICont = styled.View`
 display:flex;
-align-itens: center;
+align-items: start;
 justify-content: flex-end;
-
+margin-bottom:2%
 `
 
 
@@ -124,7 +124,7 @@ checked=false
             </DateCont>
             <ListCont>
                 <TextCont>
-                    <AppText text={tlt}  style="task" c="black"/>
+                    <AppText wdth='100%' text={tlt}  style="task" c="black"/>
                     <AppText text={sub} style="tasksub" c="pink"/>
 
                     
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     icon: {
         width: 25,
         height: 25,
-        alignSelf: 'center',
         padding: 10,
+        marginLeft:-5,
     },
   });

@@ -3,14 +3,13 @@ import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext.js';
-import {Wrapper} from '../search/search';
 import DropDown from './categorydropdown.js';
 import { colours } from './categorydata.js';
 
 import { IndexPath, Layout, Select, SelectItem } from '@ui-kitten/components';
 
 
-const Wrapper1 = styled.View`
+const Wrapper = styled.View`
 background-color:#fcf9ed;
 width:90%;
 border:2px solid #363630;
@@ -69,7 +68,7 @@ tlt="Pick a Category",
        setTitle(catname)
     }
 
-    return ( <Wrapper1>
+    return ( <Wrapper>
             <SearchCont onPress={toggleState}>
                 <AppText text={title} style="body" wdth="90%"/>
                 {
@@ -100,7 +99,7 @@ tlt="Pick a Category",
                 )}
             </DropDownWrapper>
             }
-        </Wrapper1>
+        </Wrapper>
     )
 }
 
