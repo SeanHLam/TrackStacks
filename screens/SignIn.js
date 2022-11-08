@@ -7,12 +7,14 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
 import Header from '../components/header/header.js';
+import {Signin} from '../components/Form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import{Signin} from '../components/form/signincomp';
-import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
-import {Facebook} from '../components/form/facebook';
+import AppBttn from '../components/Button/appbutton';
+import {Facebook} from '../components/Form/facebook';
+import {auth} from '../firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 
 const Divider = styled.Text`
@@ -41,7 +43,14 @@ export default function SignIn({navigation, route}) {
     }
     const HandleSignIn = () =>{
       navigation.navigate("Home")
-    }
+      createUserWithEmailAndPassword(auth,email,password)
+      .then((re) => {
+        console.log(re);
+      })
+      .catch((re) => {
+        console.log(re);
+    })
+  }
     return(
       <ApplicationProvider 
     style={{display: "flex", 
