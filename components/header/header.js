@@ -9,30 +9,34 @@ import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
 
 const Cont = styled.View`
-background-color: #FEFDF4;
-width: 100%;
-height:15%;
-display: flex;
-align-items: flex-end;
-justify-content: center;
+background-color: #FFFDF4;
 flex-direction: row;
-padding: 5% 5% 5% 5%;
-
+width: 100%;
+height:12%;
+display: flex;
+align-items: center;
+justify-content:center;
+padding: 10% 5% 5% 5%;
 `;
 
 const SCont = styled.View`
 flex-direction: row;
-width: 85%;
+display:flex;
+flex:1;
 justify-content: flex-end;
-align-items: center;
+padding-right:5%;
+padding-top:3%;
 `
 const ICont = styled.View`
-
+display:flex;
+align-items:center;
+justify-content:flex-start;
+margin-left:5%;
 `
 
 const Logo = styled(Image)`
-flex: 1;
-aspectRatio: .6;
+flex: 1 ;
+aspectRatio: 1;
 resizeMode: 'contain';
 `
 
@@ -46,7 +50,7 @@ export default function Header({
             </ICont>
             <SCont>
                 <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
-                <AppText wdth={"15%"} align='right' text={user.points} style='sub'></AppText>
+                <AppText wdth={"20%"} align='right' text={user.points} style='sub'></AppText>
             </SCont>
         </Cont>
     )
@@ -57,8 +61,8 @@ const styles = StyleSheet.create({
 
         width: 25,
         height: 25,
-        marginRight: 5,
-        marginLeft: 5,
+        marginRight: 0,
+        marginLeft: 0,
 
     },
   });
