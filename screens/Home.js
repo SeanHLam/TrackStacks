@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text,Image, StyleSheet } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
-import AppBttn, { SigninButton} from '../components/button/appbutton.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
 import { Widget1 } from '../components/widgets/widget.js';
@@ -20,6 +19,7 @@ import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
+import AppBttn from '../components/Button/appbutton.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{

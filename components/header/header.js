@@ -6,6 +6,7 @@ import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
 import { user } from '../../data/userdata';
 import logo from '../../assets/TSlogo.png'
+import SvgUri from 'react-native-svg-uri';
 
 const Cont = styled.View`
 background-color: #FFFDF4;

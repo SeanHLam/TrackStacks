@@ -3,6 +3,7 @@ import React from 'react';
 import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
+import { Toggle } from '@ui-kitten/components';
 
 export const Wrapper = styled.View`
 width:95%;
@@ -29,18 +30,25 @@ margin-right:2%;
 
 
 
-export default function SetWidget({
-i="edit-outline",
-t="Edit Profile",
-onSet =()=>{}
+export default function SetToggle({
+i="bell-outline",
+t="Notifications",
+onToggle=()=>{}
 }){
+    const [checked, setChecked] = React.useState(true);
+    const onCheckedChange = (isChecked) => {
+        setChecked(isChecked);
+        onToggle()
+      };
     return (
     <Wrapper>
         <ICont>
             <Icon name={i} fill={"#FEFDF4"} style={styles.icon}/>
         </ICont>
-        <AppText wdth='75%' text={t} style='sub'></AppText>
-        <Icon  name="chevron-right" fill={"#363630"} style={styles.icon} onPress={onSet}/>
+        <AppText wdth='70%' text={t} style='sub'></AppText>
+        <Toggle checked={checked} onChange={onCheckedChange}>
+    
+    </Toggle>
     </Wrapper>
     )
 }

@@ -7,6 +7,8 @@ import User from './screens/User';
 import MakeTask from './screens/MakeTask';
 import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
+import SignUp from './screens/SignUp';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-      initialRouteName='SignIn'
+      initialRouteName='SignUp'
       screenOptions={{
         headerShown: false
       }}
@@ -46,6 +48,10 @@ export default function App() {
         <Stack.Screen 
           name="SignIn" 
           component={SignIn} 
+        />
+         <Stack.Screen 
+          name="SignUp" 
+          component={SignUp} 
         />
         
 
