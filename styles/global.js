@@ -120,8 +120,7 @@ height: 20%;
 `
 
 export const HomeTextCont = styled.View`
-padding-left:10%;
-margin-top:5%;
+padding-left:8%;
 width:100%;
 `
 
