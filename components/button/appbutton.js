@@ -1,0 +1,76 @@
+import React, {useState} from 'react';
+import { ButtonCont  } from '../../styles/global';
+import { Layout, Text } from '@ui-kitten/components';
+import styled from 'styled-components';
+import { Button, TouchableOpacity, Pressable  } from 'react-native';
+import AppText from '../apptext/apptext';
+
+
+export const Buttonst = styled.Pressable`
+display:flex;
+background-color:#EAAA99;
+border:2px solid #363630;
+width: ${({size}) => 
+size === 'small' && '30%' ||
+size === 'large' && '40%' || 
+size === 'huge' && '60%' || 
+'40%'
+};
+
+justify-content:center;
+align-items:center;
+align-content:center;
+text-align:center;
+border-radius: 10px;
+padding:3%;
+margin:3%;
+`
+
+export default function AppBttn({
+  bttntext ="Sign Up",
+  style = "large",
+  alignItems="center",
+  onBttn=()=>{},
+}){
+
+  const bttPress = (pressType) => {
+    console.log(pressType);
+  };
+
+    return(
+     
+      <Buttonst 
+      size={style} 
+      onPress={onBttn}
+      onPressIn={() => bttPress("onPressIn")}
+      onPressOut={() => bttPress("onPressOut")}
+      onLongPress={() => bttPress("onLongPress")}
+      style={({ pressed }) => [
+        {
+          shadowOpacity: pressed
+            ? 0
+            : 1,
+          shadowRadius: pressed
+            ? 0
+            : 0.1,
+            shadowOffset: pressed
+            ? {width:0, height:0}
+            : {width:4, height:4},
+            shadowColor: '#363630'
+        }
+      ]}
+      /*style={{
+        shadowOpacity: isPress ? '0' : '1',
+        shadowRadius: isPress ? '0' : '0.1',
+        shadowOffset: isPress ? { width: 0, height: 0} : { width:4, height:4 }
+      }}*/
+      >
+         <AppText align='center' c="black" style='sub' text={bttntext}/>
+      </Buttonst>
+
+    )
+}
+
+
+
+
