@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
-import { View,Text, StyleSheet} from 'react-native';
+import { TouchableOpacity, LayoutAnimation, View,Text, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext.js';
 import RepeatDropDown from './repeatdropdown';
 import { repeatdata } from './repeatdata.js';
@@ -18,7 +18,7 @@ margin:5%;
 `
 
 
-const RepeatCont = styled.View`
+const RepeatCont = styled(TouchableOpacity)`
 color: #363630;
 display:flex;
 flex-direction:row;
@@ -39,20 +39,19 @@ tlt="Repeat",
 }){
     const [title, setTitle] = useState("Never")
     const [toggle, setToggle] = React.useState(false);
-    function toggleState(){
-        if (toggle === false) {
-            setToggle(true)
-        }else if(toggle === true){
-            setToggle(false)
-        } 
-    }
+
+    const toggleOpen = () => {
+        setToggle(value => !value);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      }
+    
 
     const changeCat = (catname) => {
         setTitle(catname)
      }
     return ( 
     <Wrapper>
-            <RepeatCont onPress={toggleState}>
+            <RepeatCont onPress={toggleOpen}>
                 <AppText wdth="48%" text={"Repeat"} style="body"/>
                 <AppText text={title} wdth="45%" align='right' style="tasksub" c="pink"/>
                 
@@ -61,7 +60,6 @@ tlt="Repeat",
                 <Icon name="chevron-down"
                 fill={"#363630"}
                 style={styles.icon}
-                onPress={toggleState}
                 />
                 }
 
@@ -70,14 +68,13 @@ tlt="Repeat",
                 <Icon name="chevron-up"
                 fill={"#363630"}
                 style={styles.icon}
-                onPress={toggleState}
                 />
                 }
             </RepeatCont>
 
             
             {toggle === true &&
-            <DropDownWrapper>
+            <DropDownWrapper style={[styles.list, !toggle ? styles.hidden : undefined]}>
                   {repeatdata.map((o,i)=>
                     <RepeatDropDown 
                     key={i}
@@ -98,9 +95,17 @@ const styles = StyleSheet.create({
         marginTop:-3
     },
 
-        container: {
-            width:"90%",
-        },
+    container: {
+        width:"90%",
+    },
+
+    list: {
+        overflow:'hidden'
+    },
+
+    hidden: {
+        height: 0
+    }
       
   });
 

@@ -9,9 +9,9 @@ import Header from '../components/header/header.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import {Signin} from '../components/Form/signincomp';
-import AppBttn from '../components/Button/appbutton';
-import {Facebook} from '../components/Form/facebook';
+import {Signin} from '../components/form/signincomp';
+import AppBttn from '../components/button/appbutton';
+import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 

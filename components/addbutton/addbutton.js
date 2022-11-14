@@ -16,15 +16,36 @@ flex-direction: row;
 background-color:#EAAA99;
 border:2px solid #363630;
 border-radius: 5px;
-box-shadow: 4px 4px #363630;
-
 `
 
 export default function AddBttn({
  onAdd=()=>{},
 }){
+
+      const bttPress = (pressType) => {
+    console.log(pressType);
+    };
     return (
-    <Wrapper onPress={onAdd()}>
+    <Wrapper
+    onPress={onAdd()}
+    onPressIn={() => bttPress("onPressIn")}
+      onPressOut={() => bttPress("onPressOut")}
+      onLongPress={() => bttPress("onLongPress")}
+      style={({ pressed }) => [
+        {
+        shadowOpacity: pressed
+        ? 0
+        : 1,
+        shadowRadius: pressed
+        ? 0
+        : 0.1,
+        shadowOffset: pressed
+        ? {width:0, height:0}
+        : {width:4, height:4},
+        shadowColor: '#363630'
+        }
+      ]
+    }>
         <IconCont >
          <Icon name='plus' fill={"#FEFDF4"} style={styles.icon}/>
         </IconCont>

@@ -5,7 +5,7 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
 export const Wrapper = styled.View`
-width:95%;
+width:90%;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -39,7 +39,7 @@ onSet =()=>{}
         <ICont>
             <Icon name={i} fill={"#FEFDF4"} style={styles.icon}/>
         </ICont>
-        <AppText wdth='75%' text={t} style='sub'></AppText>
+        <AppText wdth='75%' paddingleft='2%' text={t} style='sub'></AppText>
         <Icon  name="chevron-right" fill={"#363630"} style={styles.icon} onPress={onSet}/>
     </Wrapper>
     )
@@ -47,7 +47,7 @@ onSet =()=>{}
 
 const styles = StyleSheet.create({
     icon: {
-        width: 35,
-        height: 35,
+        width: 25,
+        height: 25,
     },
   });

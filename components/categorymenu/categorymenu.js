@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
-import { View,Text, StyleSheet} from 'react-native';
+import { LayoutAnimation, TouchableOpacity, View,Text, StyleSheet} from 'react-native';
 import AppText from '../apptext/apptext.js';
 import DropDown from './categorydropdown.js';
 import { colours } from './categorydata.js';
@@ -20,7 +20,7 @@ margin:5%;
 `
 
 
-const SearchCont = styled.View`
+const SearchCont = styled(TouchableOpacity)`
 color: #363630;
 display:flex;
 flex-direction:row;
@@ -63,13 +63,19 @@ tlt="Pick a Category",
         } 
     }
 
+    
+    const toggleOpen = () => {
+        setToggle(value => !value);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      }
+
     const [selectedCat, setSelectedCat] = React.useState(new IndexPath(0));
     const changeCat = (catname) => {
        setTitle(catname)
     }
 
     return ( <Wrapper>
-            <SearchCont onPress={toggleState}>
+            <SearchCont onPress={toggleOpen}>
                 <AppText text={title} style="body" wdth="90%"/>
                 {
                 toggle === false &&

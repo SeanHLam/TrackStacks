@@ -6,7 +6,7 @@ import { View,Text, StyleSheet, TextInput} from 'react-native';
 import { Toggle } from '@ui-kitten/components';
 
 export const Wrapper = styled.View`
-width:95%;
+width:90%;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -43,9 +43,9 @@ onToggle=()=>{}
     return (
     <Wrapper>
         <ICont>
-            <Icon name={i} fill={"#FEFDF4"} style={styles.icon}/>
+            <Icon  name={i} fill={"#FEFDF4"} style={styles.icon}/>
         </ICont>
-        <AppText wdth='70%' text={t} style='sub'></AppText>
+        <AppText wdth='70%' paddingleft='2%' text={t} style='sub'></AppText>
         <Toggle checked={checked} onChange={onCheckedChange}>
     
     </Toggle>
@@ -55,7 +55,7 @@ onToggle=()=>{}
 
 const styles = StyleSheet.create({
     icon: {
-        width: 35,
-        height: 35,
+        width: 25,
+        height: 25,
     },
   });
