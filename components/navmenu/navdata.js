@@ -1,5 +1,13 @@
 export const colour = {
 
+"SignIn":{
+        "home":"#99FFDF"
+},
+
+"SignUp":{
+        "home":"#99FFDF"
+},
+
 "Home":{
     "home":"#99FFDF"
 },

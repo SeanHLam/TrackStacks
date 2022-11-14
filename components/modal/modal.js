@@ -6,7 +6,7 @@ import { View,Text, StyleSheet, TextInput, Modal, Pressable} from 'react-native'
 import { useState } from 'react';
 import Add from '../addbutton/addbutton';
 import Widget from '../widgets/widget';
-import AppBttn from '../Button/appbutton';
+import AppBttn from '../button/appbutton';
 
 const Wrapper = styled.Pressable`
 display: flex;
