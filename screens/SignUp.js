@@ -12,6 +12,7 @@ import AppText from '../components/apptext/apptext.js';
 import {Signin} from '../components/form/signincomp';
 import AppBttn from '../components/button/appbutton';
 import {Facebook} from '../components/form/facebook';
+import {auth} from '../firebase'
 import {auth, db} from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore"; 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ButtonCont  } from '../../styles/global';
 import { Layout, Text } from '@ui-kitten/components';
 import styled from 'styled-components';
@@ -10,7 +10,6 @@ export const Buttonst = styled.Pressable`
 display:flex;
 background-color:#EAAA99;
 border:2px solid #363630;
-box-shadow: 4px 4px #363630;
 width: ${({size}) => 
 size === 'small' && '30%' ||
 size === 'large' && '40%' || 
@@ -33,15 +32,44 @@ export default function AppBttn({
   alignItems="center",
   onBttn=()=>{},
 }){
+
+  const bttPress = (pressType) => {
+    console.log(pressType);
+  };
+
     return(
      
-      <Buttonst size={style} onPress={onBttn}>
+      <Buttonst 
+      size={style} 
+      onPress={onBttn}
+      onPressIn={() => bttPress("onPressIn")}
+      onPressOut={() => bttPress("onPressOut")}
+      onLongPress={() => bttPress("onLongPress")}
+      style={({ pressed }) => [
+        {
+          shadowOpacity: pressed
+            ? 0
+            : 1,
+          shadowRadius: pressed
+            ? 0
+            : 0.1,
+            shadowOffset: pressed
+            ? {width:0, height:0}
+            : {width:4, height:4},
+            shadowColor: '#363630'
+        }
+      ]}
+      /*style={{
+        shadowOpacity: isPress ? '0' : '1',
+        shadowRadius: isPress ? '0' : '0.1',
+        shadowOffset: isPress ? { width: 0, height: 0} : { width:4, height:4 }
+      }}*/
+      >
          <AppText align='center' c="black" style='sub' text={bttntext}/>
       </Buttonst>
 
     )
 }
-
 
 
 

@@ -142,6 +142,11 @@ export default function Widget ({
   if (!fontsLoaded) {
     return null;
   }
+
+  const widPress = (pressType) => {
+    console.log(pressType);
+  };
+
 return(
  <WidgetCont col={c} onPress={onWidget} 
  WidHeight={height}
@@ -150,6 +155,22 @@ return(
  ali={alignContent} 
  alig={alignItems}
  WidMrgn={marginTop}
+ onPressIn={() => widPress("onPressIn")}
+onPressOut={() => widPress("onPressOut")}
+onLongPress={() => widPress("onLongPress")}
+style={({ pressed }) => [
+  {
+    shadowOpacity: pressed
+      ? 0
+      : 1,
+    shadowRadius: pressed
+      ? 0
+      : 0.1,
+      shadowOffset: pressed
+      ? {width:0, height:0}
+      : {width:5, height:5}
+  }
+]}
  > 
   <TextCont size={style}>{text}</TextCont>
   <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>

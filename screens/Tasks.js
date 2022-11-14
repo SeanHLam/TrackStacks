@@ -84,7 +84,6 @@ export default function Tasks({navigation, route}) {
         <SliderCont>
           <Wrapper>
             <TaskSearch></TaskSearch>
-            
             <Calendar
               date={date}
               onSelect={(nextDate)=> {setDate(nextDate)}}>
