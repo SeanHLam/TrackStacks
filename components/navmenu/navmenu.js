@@ -30,13 +30,13 @@ export default function NavMenu({
     
     return(
         <Cont>
-            <Icon name='home' fill={colour[activemenu].home} style={styles.icon} onPress={onHome}/>
+            <Icon name='home' fill={colour[activemenu].home || "#FEFDF4"} style={styles.icon} onPress={onHome}/>
             <Divider>|</Divider>
-            <Icon name='clipboard' fill={colour[activemenu].board} style={styles.icon} onPress={onTask}/>
+            <Icon name='clipboard' fill={colour[activemenu].board || "#FEFDF4"} style={styles.icon} onPress={onTask}/>
             <Divider>|</Divider>
-            <Icon name='brush' fill={colour[activemenu].brush} style={styles.icon} onPress={onDecor}/>
+            <Icon name='brush' fill={colour[activemenu].brush || "#FEFDF4"} style={styles.icon} onPress={onDecor}/>
             <Divider>|</Divider>
-            <Icon name='person' fill={colour[activemenu].user} style={styles.icon} onPress={onUser}/>
+            <Icon name='person' fill={colour[activemenu].user || "#FEFDF4"} style={styles.icon} onPress={onUser}/>
         </Cont>
     )
 }

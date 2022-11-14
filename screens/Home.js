@@ -3,7 +3,7 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text,Image, StyleSheet } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
@@ -42,9 +42,13 @@ export default function Home({navigation, route}) {
     navigation.navigate("MakeTask")
   };
 
+
+
   const HandleAdd = ()=>{
-    console.log('pressed')
-  };
+    fetch(`https://77e3-142-232-219-87.ngrok.io/add-tasks?task=1`)
+    .then(async (res)=>console.log(await res.json()))
+   
+  }
 
   return(
     <ApplicationProvider 
