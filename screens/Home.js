@@ -19,7 +19,7 @@ import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
-import AppBttn from '../components/Button/appbutton.js';
+import AppBttn from '../components/button/appbutton.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{

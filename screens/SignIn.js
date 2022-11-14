@@ -7,12 +7,12 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
 import Header from '../components/header/header.js';
-import {Signin} from '../components/Form/signincomp';
+import {Signin} from '../components/form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
 import styled from 'styled-components';
-import AppBttn from '../components/Button/appbutton';
-import {Facebook} from '../components/Form/facebook';
+import AppBttn from '../components/button/appbutton';
+import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
