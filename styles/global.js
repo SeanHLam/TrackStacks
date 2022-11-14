@@ -15,28 +15,13 @@ align-items:center;
 flex-direction:column;
 `;
 
-export const Wrapper1 = styled.View`
+export const ButtonWrapper = styled.View`
 display:flex;
 flex-direction:row;
 justify-content:center;
-width:90%;
-margin-top:5%;
 `;
 
-export const Wrapper2 = styled.View`
-display:flex;
-flex-direction:row;
-justify-content:center;
-align-content:flex-end;
-align-items:flex-end;
-width:90%;
-`;
-
-export const Wrapper3 = styled.View`
-display:flex;
-`;
-
-export const Wrapper4 = styled.View`
+export const SignInFooter = styled.View`
 display:flex;
 flex-direction:row;
 padding:2%
@@ -112,7 +97,8 @@ box-shadow: 4px 4px #363630;
 
 
 export const TaskContWrapper = styled.View`
-margin-top:0%;
+display:flex;
+margin-top:5%;
 `
 
 export const DecorCont = styled.View`
@@ -134,7 +120,7 @@ height: 20%;
 `
 
 export const HomeTextCont = styled.View`
-padding-left:5%;
+padding-left:8%;
 width:100%;
 `
 
@@ -142,23 +128,24 @@ export const WidgetWrapper = styled.View`
 display:flex;
 padding: 3%;
 flex-direction:row;
+align-items:center;
 width: 100%;
-height:100%;
+height:40%;
 `;
 
 
-export const WidgetWrapper2 = styled.View`
+export const ColumnOneWrapper = styled.View`
 display:flex;
 flex-direction:column;
+align-items:center;
 width:50%;
-height:50%;
 `;
 
-export const WidgetWrapper3 = styled.View`
+export const ColumnTwoWrapper = styled.View`
 display:flex;
 flex-direction:column;
+align-items:center;
 width:50%;
-height:100%;
 `;
 
 export const FormCont = styled.View`
@@ -180,7 +167,7 @@ margin-top:10%;
 margin-bottom:10%;
 `
 
-export const HeadCont2 = styled.View`
+export const HeadContInner = styled.View`
 flex-direction: row;
 width: 85%;
 justify-content: flex-end;

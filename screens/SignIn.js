@@ -5,14 +5,16 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, Wrapper4, FormCont, HeadCont, HeadCont2} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
 import Header from '../components/header/header.js';
+import {Signin} from '../components/Form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import{Signin} from '../components/form/signincomp';
-import AppBttn from '../components/button/appbutton.js';
 import styled from 'styled-components';
-import {Facebook} from '../components/form/facebook';
+import AppBttn from '../components/Button/appbutton';
+import {Facebook} from '../components/Form/facebook';
+import {auth} from '../firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 
 const Divider = styled.Text`
@@ -41,7 +43,14 @@ export default function SignIn({navigation, route}) {
     }
     const HandleSignIn = () =>{
       navigation.navigate("Home")
-    }
+      createUserWithEmailAndPassword(auth,email,password)
+      .then((re) => {
+        console.log(re);
+      })
+      .catch((re) => {
+        console.log(re);
+    })
+  }
     return(
       <ApplicationProvider 
     style={{display: "flex", 
@@ -62,9 +71,9 @@ export default function SignIn({navigation, route}) {
 
         <SliderCont>
         <HeadCont>
-          <HeadCont2>
+          <HeadContInner>
           <AppText text='TrackStacks' style='header'></AppText>
-          </HeadCont2>
+          </HeadContInner>
         </HeadCont>
         <Wrapper>
         <FormCont>
@@ -85,10 +94,10 @@ export default function SignIn({navigation, route}) {
           <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
           <AppText text='--- or —--' style='sub' align='center' margin='5%'/>
           <Facebook text='Continue with Facebook' align='center'/>
-          <Wrapper4>
+          <SignInFooter>
             <AppText text='New user?' style='task' align='right'/>
             <AppText text='Sign Up' style='task' align='left' c='blue' paddingleft='2%'/>
-          </Wrapper4>
+          </SignInFooter>
           
           
          

@@ -3,19 +3,19 @@ export const recent = [
       title:"Do Chores",
       date:"Thu",
       num:"20",
-      cat:"todo",
+      cat:"To Do",
     },
     {
       title:"Make more eye contact",
       date:"Fri",
       num:"21",
-      cat:"longterm",
+      cat:"Long-Term",
     },
     {
       title:"Do AP History hw",
       date:"Fri",
       num:"28",
-      cat:"single",
+      cat:"Single",
     }
   ]
 

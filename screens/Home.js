@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import { Text,Image, StyleSheet } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
-import AppBttn, { SigninButton} from '../components/button/appbutton.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
 import { Widget1 } from '../components/widgets/widget.js';
@@ -15,11 +14,12 @@ import { default as theme } from "../assets/TSTheme.json";
 import ModalPop from '../components/modal/modal.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import Widget from '../components/widgets/widget.js';
-import {HomeTextCont, WidgetWrapper, WidgetWrapper2, WidgetWrapper3, Wrapper3} from '../styles/global.js';
+import {HomeTextCont, WidgetWrapper, ColumnOneWrapper, ColumnTwoWrapper, ButtonWrapper} from '../styles/global.js';
 import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
+import AppBttn from '../components/Button/appbutton.js';
 
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
@@ -74,12 +74,14 @@ export default function Home({navigation, route}) {
         <HomeTextCont>
           <AppText text='Good Afternoon, Sean' style='header'/>
         </HomeTextCont>
+
         <WidgetWrapper>
-        <WidgetWrapper2>
+
+        <ColumnOneWrapper>
 
         <Widget onWidget={HandleAdd}  
-        width='90%'
-        height='35%'
+        width='85%'
+        height='45%'
         style='header2' 
         cl='white'
         style1='header3'
@@ -87,10 +89,10 @@ export default function Home({navigation, route}) {
         />
 
         <Widget onWidget={HandleAdd} 
-         width='90%'
-         height='35%'
+         width='85%'
+         height='50%'
          style='header3'
-         text='Help & Resources'
+         text='Help & Sources'
          justifyContent='flex-end'
          alignItems='flex-start'
          text1=''
@@ -102,13 +104,13 @@ export default function Home({navigation, route}) {
         />
          
 
-        </WidgetWrapper2>
+        </ColumnOneWrapper>
         
-        <WidgetWrapper3>
+        <ColumnTwoWrapper>
 
         <Widget onWidget={HandleAdd} 
-         width='90%'
-         height='25%'
+         width='85%'
+         height='70%'
          alignItems='flex-start'
          justifyContent='flex-start'
          text='Task Archive'
@@ -118,21 +120,21 @@ export default function Home({navigation, route}) {
          nme='archive'
          pos='absolute'
          left='-5%'
-         top='10%'
          />
 
          <Widget onWidget={HandleAdd} 
-         width='90%' 
-         height='10%'
+         width='85%' 
+         height='25%'
          text=''
          text1=''
          nme='bell'
          pos='static'
          justifyContent='flex-end'
+         top='-5%'
          left='25%'
          marginTop='5%'
          />
-        </WidgetWrapper3>
+        </ColumnTwoWrapper>
 
         </WidgetWrapper>
         
@@ -140,10 +142,10 @@ export default function Home({navigation, route}) {
         <TaskContWrapper>
           <TaskCont/>
         </TaskContWrapper>
-        <Wrapper3>
-        <AppBttn bttntext='View tasks' style='tiny' onBttn={()=>HandleTask()}/> 
+        <ButtonWrapper>
+        <AppBttn bttntext='View tasks' style='large' onBttn={()=>HandleTask()}/> 
         <AppBttn bttntext='Add tasks' onBttn={()=>HandleAddTask()}/> 
-        </Wrapper3>
+        </ButtonWrapper>
         
         
       </SliderCont>
