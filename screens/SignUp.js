@@ -13,7 +13,25 @@ import {Signin} from '../components/form/signincomp';
 import AppBttn from '../components/button/appbutton';
 import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
+import {auth, db} from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore"; 
+
+// .then( async (re) => {
+//   try {
+//     const docRef = await addDoc(collection(db, "users"), {
+//       username: username,
+//       email:email,
+//       stars:0,
+      
+//     });
+//     console.log("Document written with ID: ", docRef.id);
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// })
+
+
 
 
 export default function SignUp({navigation, route}) { 
@@ -31,12 +49,14 @@ export default function SignUp({navigation, route}) {
         navigation.navigate("User")
       }
     }
-    const HandleSignUp = () =>{
+
+
+
+
+    const HandleSignUp = async () =>{
       navigation.navigate("SignIn")
       createUserWithEmailAndPassword(auth,email,password,username)
-      .then((re) => {
-        console.log(re);
-      })
+     
       .catch((re) => {
         console.log(re);
     })
@@ -105,14 +125,6 @@ export default function SignUp({navigation, route}) {
         
          </SliderCont>
          
-        <NavWrapper>
-            <NavMenu
-              activemenu={route.name}
-              onHome={()=>HandlePage(1)}
-              onTask={()=>HandlePage(2)}
-              onDecor={()=>HandlePage(3)}
-              onUser={()=>HandlePage(4)}
-            ></NavMenu>
-          </NavWrapper>
+   
       </ApplicationProvider>
     )};

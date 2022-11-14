@@ -1,61 +1,35 @@
 export const colour = {
-"None":{
-    "home":"#FEFDF4",
-    "board":"#FEFDF4",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
-},
+
 "SignIn":{
-    "home":"#FEFDF4",
-    "board":"#FEFDF4",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
+        "home":"#99FFDF"
 },
+
 "SignUp":{
-    "home":"#FEFDF4",
-    "board":"#FEFDF4",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
+        "home":"#99FFDF"
 },
+
 "Home":{
-    "home":"#99FFDF",
-    "board":"#FEFDF4",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
+    "home":"#99FFDF"
 },
 
 "Tasks":{
-    "home":"#FEFDF4",
+   
     "board":"#99FFDF",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
 },
 
 "MakeTask":{
-    "home":"#FEFDF4",
     "board":"#99FFDF",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
 },
 
 "EditTask":{
-    "home":"#FEFDF4",
     "board":"#99FFDF",
-    "brush":"#FEFDF4",
-    "user":"#FEFDF4",
 },
 
 "Decor":{
-    "home":"#FEFDF4",
-    "board":"#FEFDF4",
     "brush":"#99FFDF",
-    "user":"#FEFDF4",
 },
 
 "User":{
-    "home":"#FEFDF4",
-    "board":"#FEFDF4",
-    "brush":"#FEFDF4",
     "user":"#99FFDF",
 },
 "Facebook":{
