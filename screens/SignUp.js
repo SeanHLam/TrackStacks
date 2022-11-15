@@ -20,6 +20,9 @@ export default function SignUp({navigation, route}) {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [username, setUserName]= useState('');
+
+  const [errorMessage, setErrorMessage] = useState('');
+
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -32,14 +35,24 @@ export default function SignUp({navigation, route}) {
       }
     }
     const HandleSignUp = () =>{
-      navigation.navigate("SignIn")
-      createUserWithEmailAndPassword(auth,email,password,username)
-      .then((re) => {
-        console.log(re);
-      })
-      .catch((re) => {
-        console.log(re);
-    })
+      
+      if(email.length > 0 && password.length > 0) {
+        navigation.navigate("SignIn")
+        createUserWithEmailAndPassword(auth,email,password,username)
+          .then((re) => {
+            console.log(re);
+          })
+          .catch((re) => {
+            console.log(re);
+        })
+      } else {
+        if(email == "") {
+          setErrorMessage("Invailed Email");
+        }if(password == ""){
+          setErrorMessage("Invailed Password")
+        }
+      }
+      
   }
    
     return(
@@ -69,6 +82,7 @@ export default function SignUp({navigation, route}) {
         <FormCont>
         <AppText text='Manage your tasks efficiently' align='left' c='black' style='sub' paddingleft='5%'/>
         <AppText text='Tell us more about you!' align='left' c='blue' style='tasksub' paddingleft='5%'/>
+        <AppText text={errorMessage}></AppText>
         <Signin
             placeholder="Enter Username"
             value={username}

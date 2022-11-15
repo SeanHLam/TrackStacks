@@ -1,3 +1,3 @@
-export const user = {
+export const userP = {
     points:300
 }

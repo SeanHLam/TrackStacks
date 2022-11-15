@@ -21,6 +21,7 @@ import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
 import AppBttn from '../components/Button/appbutton.js';
 
+
 export default function Home({navigation, route}) { 
   const HandlePage = (new_page) =>{
     if(new_page === 1){
@@ -68,7 +69,7 @@ export default function Home({navigation, route}) {
       <SliderCont>
   
         <HomeTextCont>
-          <AppText text='Good Afternoon, Sean' style='header'/>
+          <AppText text='' style='header'/>
         </HomeTextCont>
 
         <WidgetWrapper>

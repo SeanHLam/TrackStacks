@@ -4,7 +4,7 @@ import * as eva from '@eva-design/eva';
 import styled from 'styled-components/native';
 import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
-import { user } from '../../data/userdata';
+import { userP } from '../../data/userdata';
 import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
 
@@ -46,7 +46,7 @@ export default function Header({
             </ICont>
             <SCont>
                 <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
-                <AppText wdth={"15%"} align='right' text={user.points} style='sub'></AppText>
+                <AppText wdth={"15%"} align='right' text={userP.points} style='sub'></AppText>
             </SCont>
         </Cont>
     )
