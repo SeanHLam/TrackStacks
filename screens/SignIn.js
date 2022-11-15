@@ -14,7 +14,7 @@ import styled from 'styled-components';
 import AppBttn from '../components/button/appbutton';
 import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 const Divider = styled.Text`
@@ -43,7 +43,7 @@ export default function SignIn({navigation, route}) {
     }
     const HandleSignIn = () =>{
       navigation.navigate("Home")
-      createUserWithEmailAndPassword(auth,email,password)
+      signInWithEmailAndPassword(auth,email,password)
       .then((re) => {
         console.log(re);
       })

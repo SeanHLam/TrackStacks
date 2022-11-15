@@ -3,7 +3,7 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
@@ -12,7 +12,8 @@ import SetWidget from '../components/settingswidget/settingswidget.js';
 import SetToggle from '../components/settingswidget/settingstoggle.js';
 import Statistics from '../components/statistics/statistics.js';
 import UserWidget from '../components/userwidget/userwidget.js';
-
+import {auth, db} from '../firebase.js'
+import { doc, getDoc } from "firebase/firestore";
 
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -26,6 +27,44 @@ export default function User({navigation, route}) {
             navigation.navigate("User")
       }
     }
+
+  const [currentUser, setCurrentUser] = useState()
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [tDone, setTDone] = useState()
+  const [tDoing, setTDoing] = useState()
+  const [tReview, setTReview] = useState()
+  const [earned, setEarned] = useState()
+
+  useEffect(()=>{
+    // get current notes from backend
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User logged in already or has just logged in.
+        setCurrentUser(user.uid)
+        console.log(user.uid);
+      } else {
+        // User not logged in or has just logged out.
+      }
+    });
+    });
+
+    (async () => {
+      const docRef =  await doc(db, "users", currentUser);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setName(docSnap.data().displayName)
+        setEmail(docSnap.data().email)
+        setTDone(docSnap.data().stats.done)
+        setTDoing(docSnap.data().stats.doing)
+        setTReview(docSnap.data().stats.review)
+        setEarned(docSnap.data().stats.earned)
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+  })()
     
     const HandleSet = () =>{
       console.log("pressed")
@@ -54,9 +93,9 @@ export default function User({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            <UserWidget></UserWidget>
+            <UserWidget name={name} email={email}></UserWidget>
             <AppText text='Statistics' style='header'></AppText>
-            <Statistics></Statistics>
+            <Statistics ></Statistics>
             <AppText text='Settings' style='header'></AppText>
             <SetWidget onSet={()=>HandleSet()}></SetWidget>
             <SetToggle></SetToggle>
