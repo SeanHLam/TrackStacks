@@ -57,7 +57,7 @@ t="Edit Profile",
         <StatCont>
             <NumCont>
                 <NumBg>
-                    <AppText align='left' c="white" wdth='100%' text="99" style='sub'></AppText>
+                    <AppText align='left' c="white" wdth='100%' text="" style='sub'></AppText>
                 </NumBg>
                 
             </NumCont>

@@ -14,21 +14,9 @@ import AppBttn from '../components/button/appbutton';
 import {Facebook} from '../components/form/facebook';
 import {auth, db} from '../firebase.js'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore"; 
+import { addDoc, collection, setDoc, doc} from "firebase/firestore"; 
 
-// .then( async (re) => {
-//   try {
-//     const docRef = await addDoc(collection(db, "users"), {
-//       username: username,
-//       email:email,
-//       stars:0,
-      
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-//   } catch (e) {
-//     console.error("Error adding document: ", e);
-//   }
-// })
+
 
 
 
@@ -49,12 +37,43 @@ export default function SignUp({navigation, route}) {
       }
     }
 
-
-
-
     const HandleSignUp = async () =>{
       navigation.navigate("SignIn")
+      
       createUserWithEmailAndPassword(auth,email,password,username)
+      .then( async (re) => {
+        try {
+          const docRef = await setDoc(doc(db, "users", auth.currentUser.uid), {
+            uid: auth.currentUser.uid,  
+            displayName: username,
+            email:email,
+            stars:0,
+            settings:{
+              notifications:true,
+              sound:true,
+              contrast:true,
+              memo:true,
+            },
+            stats:{
+              done: 0,
+              doing: 0,
+              review: 0,
+              earned: 0,
+            },
+            tasks:{
+
+            },
+
+            items:{
+
+            }
+
+          });
+          console.log("Document written with ID: ", auth.currentUser.uid);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      })
      
       .catch((re) => {
         console.log(re);
