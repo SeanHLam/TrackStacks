@@ -42,6 +42,9 @@ export default function Home({navigation, route}) {
     navigation.navigate("MakeTask")
   };
 
+  const HandleResources = ()=>{
+    navigation.navigate("Resources");
+  };
 
 
   const HandleAdd = ()=>{
@@ -79,7 +82,7 @@ export default function Home({navigation, route}) {
 
         <ColumnOneWrapper>
 
-        <Widget onWidget={HandleAdd}  
+        <Widget
         width='85%'
         height='45%'
         style='header2' 
@@ -88,7 +91,7 @@ export default function Home({navigation, route}) {
         dsp='none'
         />
 
-        <Widget onWidget={HandleAdd} 
+        <Widget onWidget={HandleResources} 
          width='85%'
          height='50%'
          style='header3'
@@ -108,7 +111,7 @@ export default function Home({navigation, route}) {
         
         <ColumnTwoWrapper>
 
-        <Widget onWidget={HandleAdd} 
+        <Widget 
          width='85%'
          height='70%'
          alignItems='flex-start'
@@ -122,7 +125,7 @@ export default function Home({navigation, route}) {
          left='-5%'
          />
 
-         <Widget onWidget={HandleAdd} 
+         <Widget
          width='85%' 
          height='25%'
          text=''
