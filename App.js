@@ -8,7 +8,7 @@ import MakeTask from './screens/MakeTask';
 import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
-
+import Resources from './screens/Resources';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +52,10 @@ export default function App() {
          <Stack.Screen 
           name="SignUp" 
           component={SignUp} 
+        />
+         <Stack.Screen 
+          name="Resources" 
+          component={Resources} 
         />
         
 

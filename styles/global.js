@@ -122,6 +122,7 @@ height: 20%;
 export const HomeTextCont = styled.View`
 padding-left:8%;
 width:100%;
+margin-top:3%;
 `
 
 export const WidgetWrapper = styled.View`
@@ -172,4 +173,12 @@ flex-direction: row;
 width: 85%;
 justify-content: flex-end;
 align-items: center;
+`
+
+export const ResourceWidgetCont = styled.View`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+width:100%;
 `

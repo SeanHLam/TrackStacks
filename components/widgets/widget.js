@@ -29,6 +29,7 @@ export const WidgetCont = styled.Pressable`
     padding:5%;
     margin:3%;
     margin-top:${ props => props.WidMrgn};
+    background-image: ${ props => props.bg}
     display:flex;
 `
 const TextCont = styled(Text)`
@@ -131,6 +132,7 @@ export default function Widget ({
   top="0",
   left="0%",
   marginTop='0px',
+  backgroundImage='none'
 }){ 
 
   let [fontsLoaded] = useFonts({
@@ -148,13 +150,15 @@ export default function Widget ({
   };
 
 return(
- <WidgetCont col={c} onPress={onWidget} 
+ <WidgetCont col={c}
  WidHeight={height}
   WidWidth={width} 
  jst={justifyContent} 
  ali={alignContent} 
  alig={alignItems}
  WidMrgn={marginTop}
+ bg={backgroundImage}
+ onPress={onWidget} 
  onPressIn={() => widPress("onPressIn")}
 onPressOut={() => widPress("onPressOut")}
 onLongPress={() => widPress("onLongPress")}
