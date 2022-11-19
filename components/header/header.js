@@ -7,7 +7,8 @@ import AppText from '../apptext/apptext';
 import { user } from '../../data/userdata';
 import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
-import {auth, db} from '../../firebase.js'
+import { db} from '../../firebase.js'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 
@@ -49,30 +50,52 @@ export default function Header({
     const [currentUser, setCurrentUser] = useState()
     const [stars, setStars] = useState()
 
-  useEffect(()=>{
-    // get current notes from backend
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        setCurrentUser(user.uid)
-      } else {
-        // User not logged in or has just logged out.
-      }
-    });
-    });
+  // useEffect(()=>{
+  //   // get current notes from backend
+  //   // setCurrentUser('test');
+  //   const auth = getAuth();
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log("user", user);
+  //       // User logged in already or has just logged in.
+  //       setCurrentUser(user.uid)
 
-    (async () => {
-      const docRef =  await doc(db, "users", currentUser);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-       
-        setStars(docSnap.data().stars)
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  })()
+  //       (async () => {
+  //         const docRef =  await doc(db, "users", currentUser);
+  //         const docSnap = await getDoc(docRef);
+  //         if (docSnap.exists()) {
+           
+  //           setStars(docSnap.data().stars)
+  //         } else {
+  //           // doc.data() will be undefined in this case
+  //           console.log("No such document!");
+  //         }
+  //     })()
+  //     } else {
+  //       // User not logged in or has just logged out.
+  //     }
+  //   });
+  //   },[]);
+
     
+    useEffect(()=>{
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user)=>{
+        if (user) {
+          setCurrentUser(user.uid);
+          (async () => {
+              const docRef =  await doc(db, "users", auth.currentUser.uid);
+              const docSnap = await getDoc(docRef);
+              if (docSnap.exists()) {
+                setStars(docSnap.data().stars)
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+          })()
+        }
+      })
+    },[])
     return(
         <Cont>
             <ICont >

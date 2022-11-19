@@ -12,8 +12,9 @@ import SetWidget from '../components/settingswidget/settingswidget.js';
 import SetToggle from '../components/settingswidget/settingstoggle.js';
 import Statistics from '../components/statistics/statistics.js';
 import UserWidget from '../components/userwidget/userwidget.js';
-import {auth, db} from '../firebase.js'
-import { doc, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -36,35 +37,62 @@ export default function User({navigation, route}) {
   const [tReview, setTReview] = useState()
   const [earned, setEarned] = useState()
 
-  useEffect(()=>{
-    // get current notes from backend
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        setCurrentUser(user.uid)
-        console.log(user.uid);
-      } else {
-        // User not logged in or has just logged out.
-      }
-    });
-    });
+  // useEffect(()=>{
+  //   // get current notes from backend
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       // User logged in already or has just logged in.
+  //       setCurrentUser(user.uid)
+  //       console.log(user.uid);
+  //     } else {
+  //       // User not logged in or has just logged out.
+  //     }
+  //   });
+  //   });
 
-    (async () => {
-      const docRef =  await doc(db, "users", currentUser);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setName(docSnap.data().displayName)
-        setEmail(docSnap.data().email)
-        setTDone(docSnap.data().stats.done)
-        setTDoing(docSnap.data().stats.doing)
-        setTReview(docSnap.data().stats.review)
-        setEarned(docSnap.data().stats.earned)
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  })()
+  //   (async () => {
+  //     const docRef =  await doc(db, "users", currentUser);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       console.log("Document data:", docSnap.data());
+  //       setName(docSnap.data().displayName)
+  //       setEmail(docSnap.data().email)
+  //       setTDone(docSnap.data().stats.done)
+  //       setTDoing(docSnap.data().stats.doing)
+  //       setTReview(docSnap.data().stats.review)
+  //       setEarned(docSnap.data().stats.earned)
+  //     } else {
+  //       // doc.data() will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  // })()
+
+
+  useFocusEffect(
+    React.useCallback(() => {
+      //setCurrentUser(user.uid);
+      (async () => {
+
+        const auth = getAuth();
+        const db = getFirestore();
+          const docRef =  await doc(db, "users", auth.currentUser.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            console.log(docSnap.data())
+            setName(docSnap.data().displayName)
+            setEmail(docSnap.data().email)
+            setTDone(docSnap.data().stats.done)
+            setTDoing(docSnap.data().stats.doing)
+            setTReview(docSnap.data().stats.review)
+            setEarned(docSnap.data().stats.earned)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+      })();
+      return ()=>{}
+    }, [])
+  )
     
     const HandleSet = () =>{
       console.log("pressed")
@@ -97,11 +125,11 @@ export default function User({navigation, route}) {
             <AppText text='Statistics' style='header'></AppText>
             <Statistics ></Statistics>
             <AppText text='Settings' style='header'></AppText>
-            <SetWidget onSet={()=>HandleSet()}></SetWidget>
+            
             <SetToggle></SetToggle>
             <SetToggle onToggle={()=>HandleSet()} i="volume-up-outline" t="Sound"></SetToggle>
-            <SetToggle i="color-palette-outline" t="High Contrast Mode"></SetToggle>
-            <SetToggle i="message-square-outline" t="Motivational Memo"></SetToggle>
+            
+            
             <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleSet()}></SetWidget>
             <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleSet()}></SetWidget>
           </Wrapper>
