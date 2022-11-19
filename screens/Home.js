@@ -20,37 +20,58 @@ import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
 import AppBttn from '../components/button/appbutton.js';
-import {auth, db} from '../firebase.js'
-import { doc, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
   const [name, setName] = useState()
 
-  useEffect(()=>{
-    // get current notes from backend
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        setCurrentUser(user.uid)
-        console.log(user.uid);
-      } else {
-        // User not logged in or has just logged out.
-      }
-    });
-    });
+  // useEffect(()=>{
+  //   // get current notes from backend
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       // User logged in already or has just logged in.
+  //       setCurrentUser(user.uid)
+  //       console.log(user.uid);
+  //     } else {
+  //       // User not logged in or has just logged out.
+  //     }
+  //   });
+  //   });
 
-    (async () => {
-      const docRef =  await doc(db, "users", currentUser);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().displayName);
-        setName(docSnap.data().displayName)
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
+  //   (async () => {
+  //     const docRef =  await doc(db, "users", currentUser);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //         console.log("Document data:", docSnap.data().displayName);
+  //       setName(docSnap.data().displayName)
+  //     } else {
+  //       // doc.data() will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  // })()
+
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user)=>{
+      if (user) {
+        setCurrentUser(user.uid);
+        (async () => {
+          const db = getFirestore();
+            const docRef =  await doc(db, "users", currentUser);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+            setName(docSnap.data().displayName)
+             console.log(docSnap.data())
+            } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+            }
+        })()
       }
-  })()
+    })
+  },[])
 
 
     
