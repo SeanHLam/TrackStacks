@@ -22,6 +22,7 @@ import { ScreenCont } from '../styles/global.js';
 import AppBttn from '../components/button/appbutton.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
@@ -52,26 +53,27 @@ export default function Home({navigation, route}) {
   //     }
   // })()
 
-  useEffect(()=>{
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user)=>{
-      if (user) {
-        setCurrentUser(user.uid);
-        (async () => {
+  useFocusEffect(
+    React.useCallback(() => {
+      //setCurrentUser(user.uid);
+      (async () => {
+
+          const auth = getAuth();
           const db = getFirestore();
-            const docRef =  await doc(db, "users", currentUser);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
+          //const docRef =  await doc(db, "users", auth.currentUser.uid);
+          const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            console.log(docSnap.data())
             setName(docSnap.data().displayName)
-             console.log(docSnap.data())
-            } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
-            }
-        })()
-      }
-    })
-  },[])
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+      })();
+      return ()=>{}
+    }, [])
+  )
 
 
     
