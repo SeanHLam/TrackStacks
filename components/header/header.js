@@ -7,9 +7,11 @@ import AppText from '../apptext/apptext';
 import { user } from '../../data/userdata';
 import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
-import {auth, db} from '../../firebase.js'
-import { doc, getDoc } from "firebase/firestore";
+import { db} from '../../firebase.js'
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useState, useEffect } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Cont = styled.View`
 background-color: #FFFDF4;
@@ -49,30 +51,30 @@ export default function Header({
     const [currentUser, setCurrentUser] = useState()
     const [stars, setStars] = useState()
 
-  useEffect(()=>{
-    // get current notes from backend
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        setCurrentUser(user.uid)
-      } else {
-        // User not logged in or has just logged out.
-      }
-    });
-    });
+    useFocusEffect(
+      React.useCallback(() => {
+        //setCurrentUser(user.uid);
+        (async () => {
+  
+          const auth = getAuth();
+          const db = getFirestore();
+            //const docRef =  await doc(db, "users", auth.currentUser.uid);
+            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              console.log(docSnap.data())
+              setStars(docSnap.data().stars)
+            } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+            }
+        })();
+        return ()=>{}
+      }, [])
+    )
+  
+  
 
-    (async () => {
-      const docRef =  await doc(db, "users", currentUser);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-       
-        setStars(docSnap.data().stars)
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  })()
-    
     return(
         <Cont>
             <ICont >

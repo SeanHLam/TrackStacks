@@ -12,6 +12,10 @@ export const colour = {
     "home":"#99FFDF"
 },
 
+"Resources":{
+    "home":"#99FFDF"
+},
+
 "Tasks":{
    
     "board":"#99FFDF",

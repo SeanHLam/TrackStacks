@@ -20,37 +20,60 @@ import { Icon } from '@ui-kitten/components';
 import { TaskContWrapper } from '../styles/global.js';
 import { ScreenCont } from '../styles/global.js';
 import AppBttn from '../components/button/appbutton.js';
-import {auth, db} from '../firebase.js'
-import { doc, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
   const [name, setName] = useState()
 
-  useEffect(()=>{
-    // get current notes from backend
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        setCurrentUser(user.uid)
-        console.log(user.uid);
-      } else {
-        // User not logged in or has just logged out.
-      }
-    });
-    });
+  // useEffect(()=>{
+  //   // get current notes from backend
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       // User logged in already or has just logged in.
+  //       setCurrentUser(user.uid)
+  //       console.log(user.uid);
+  //     } else {
+  //       // User not logged in or has just logged out.
+  //     }
+  //   });
+  //   });
 
-    (async () => {
-      const docRef =  await doc(db, "users", currentUser);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().displayName);
-        setName(docSnap.data().displayName)
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  })()
+  //   (async () => {
+  //     const docRef =  await doc(db, "users", currentUser);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //         console.log("Document data:", docSnap.data().displayName);
+  //       setName(docSnap.data().displayName)
+  //     } else {
+  //       // doc.data() will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  // })()
+
+  useFocusEffect(
+    React.useCallback(() => {
+      //setCurrentUser(user.uid);
+      (async () => {
+
+          const auth = getAuth();
+          const db = getFirestore();
+          //const docRef =  await doc(db, "users", auth.currentUser.uid);
+          const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            console.log(docSnap.data())
+            setName(docSnap.data().displayName)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+      })();
+      return ()=>{}
+    }, [])
+  )
 
 
     
@@ -75,6 +98,9 @@ export default function Home({navigation, route}) {
     navigation.navigate("MakeTask")
   };
 
+  const HandleResources = ()=>{
+    navigation.navigate("Resources");
+  };
 
 
   const HandleAdd = ()=>{
@@ -112,7 +138,7 @@ export default function Home({navigation, route}) {
 
         <ColumnOneWrapper>
 
-        <Widget onWidget={HandleAdd}  
+        <Widget
         width='85%'
         height='45%'
         style='header2' 
@@ -121,7 +147,7 @@ export default function Home({navigation, route}) {
         dsp='none'
         />
 
-        <Widget onWidget={HandleAdd} 
+        <Widget onWidget={HandleResources} 
          width='85%'
          height='50%'
          style='header3'
@@ -141,7 +167,7 @@ export default function Home({navigation, route}) {
         
         <ColumnTwoWrapper>
 
-        <Widget onWidget={HandleAdd} 
+        <Widget 
          width='85%'
          height='70%'
          alignItems='flex-start'
@@ -155,7 +181,7 @@ export default function Home({navigation, route}) {
          left='-5%'
          />
 
-         <Widget onWidget={HandleAdd} 
+         <Widget
          width='85%' 
          height='25%'
          text=''

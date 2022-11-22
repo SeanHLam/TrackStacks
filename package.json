@@ -17,7 +17,7 @@
     "@react-navigation/native-stack": "^6.9.1",
     "@ui-kitten/components": "^5.1.2",
     "@ui-kitten/eva-icons": "^5.1.2",
-    "expo": "~46.0.13",
+    "expo": "^47.0.6",
     "expo-checkbox": "~2.2.0",
     "expo-constants": "~13.2.4",
     "expo-font": "~10.2.0",
@@ -40,7 +40,8 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "private": true
 }

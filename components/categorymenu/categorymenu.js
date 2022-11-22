@@ -36,7 +36,7 @@ const DropDownWrapper = styled.View`
 `
 
 const Layout2 = styled(Layout)`
-background-color:#fcf9ed;
+background-color:#FFFDF4;
 width:90%;
 border:2px solid #363630;
 border-radius: 5px;
@@ -50,10 +50,10 @@ padding:5%;
 `
 
 export default function Category({
-
-tlt="Pick a Category",
+onCat=()=>{},
+tlt="Single",
 }){
-    const [title, setTitle] = useState("Pick a Category")
+    
     const [toggle, setToggle] = React.useState(false);
     function toggleState(){
         if (toggle === false) {
@@ -76,7 +76,7 @@ tlt="Pick a Category",
 
     return ( <Wrapper>
             <SearchCont onPress={toggleOpen}>
-                <AppText text={title} style="body" wdth="90%"/>
+                <AppText text={tlt} style="body" wdth="90%"/>
                 {
                 toggle === false &&
                 <Icon name="chevron-down"
@@ -101,7 +101,7 @@ tlt="Pick a Category",
             <DropDownWrapper>
                 {colours.map((o,i)=>
         
-                    <DropDown  key={i} typ={colours[i].category} txt={colours[i].category} onSelect={()=>changeCat(colours[i].category)}/>
+                    <DropDown  key={i} typ={colours[i].category} txt={colours[i].category} onSelect={(onCat)}/>
                 )}
             </DropDownWrapper>
             }
