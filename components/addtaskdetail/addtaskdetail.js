@@ -36,9 +36,6 @@ export default function AddDetail({
   return(
  <WidgetCont> 
    <AppText style='sub' text='Details'></AppText>
-  <SubTask></SubTask>
-  <SubTask></SubTask>
-  <SubTask></SubTask>
 
   <AddCont>
     <AddBttn></AddBttn>

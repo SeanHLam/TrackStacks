@@ -8,7 +8,7 @@ import { repeatdata } from './repeatdata.js';
 
 
 const Wrapper = styled.View`
-background-color:#fcf9ed;
+background-color:#FEFDF4;
 width:90%;
 border:2px solid #363630;
 border-radius: 5px;

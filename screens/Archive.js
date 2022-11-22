@@ -17,7 +17,7 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
 
-export default function Tasks({navigation, route}) { 
+export default function Archive({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
           navigation.navigate("Home")
@@ -31,7 +31,6 @@ export default function Tasks({navigation, route}) {
     };
 
     const [tasks, setTasks] = useState([])
-    const [stars, setStars] = useState()
 
     useFocusEffect(
       React.useCallback(() => {
@@ -54,69 +53,13 @@ export default function Tasks({navigation, route}) {
       }, [])
     )
 
-    const HandleAdd = ()=>{
-      navigation.navigate("MakeTask")
-    };
-
-    const HandleEdit = ()=>{
-      navigation.navigate("EditTask")
-    };
-
-    var donearr = []
-    
-
-    const [modalVisible, setModalVisible] = useState(false);
-    const [isChecked, setChecked] = useState([]);  
-    const [index, setIndex] = useState();  
-    
-    const HandleDone = (i)=>{
-      setModalVisible(true)
-      setIndex(i)
-      donearr = isChecked
-    
-        donearr[i] = true
-     
-      //setChecked(true)
-    };
-
-    const HandleFinish = async ()=>{
-      setModalVisible(false)
-      const db = getFirestore();
-      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-      tasks[index].status = "finished"
-      stars + 30
-      setDoc(
-        docRef,
-        {
-          tasks : tasks,
-        },
-        {merge: true}
-      )
-      updateDoc(docRef, {stars: increment(30)})
-      
-    }
-
-    const HandleClose = ()=>{
-      setModalVisible(false)
-      donearr = isChecked
-      donearr[index] = false
-    }
 
     const [date, setDate] = React.useState(new Date());
     const [value,setValue]=useState('');
     const changeCat=(e)=>{
         setValue(e)
     }
-    
-    function Tab({value}){
-    if (value.toString() == 'Long Term') {
-      value="Long-Term"
-    }else if (value.toString() == 'Single') {
-      value="Single"
-    }else {
-      value="To-Do"
-    }
-    }
+
 
     
     return(
@@ -141,15 +84,6 @@ export default function Tasks({navigation, route}) {
         <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
           <Wrapper>
-            <TaskSearch></TaskSearch>
-            <Calendar
-              date={date}
-              onSelect={(nextDate)=> {setDate(nextDate)}}>
-            </Calendar>
-            <AddCont>
-              <AddBttn onAdd={()=>HandleAdd}></AddBttn>
-            </AddCont>
-            
             {tasks.map((o,i)=>
             new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) && tasks[i].status == "unfinished" &&
               <TaskList

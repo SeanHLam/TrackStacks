@@ -15,6 +15,7 @@ import {Facebook} from '../components/form/facebook';
 import {auth, db} from '../firebase.js'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection, setDoc, doc} from "firebase/firestore"; 
+import { useFocusEffect } from '@react-navigation/native';
 
 
 
@@ -57,16 +58,16 @@ export default function SignUp({navigation, route}) {
             stats:{
               done: 0,
               doing: 0,
-              review: 0,
+              spent: 0,
               earned: 0,
             },
-            tasks:{
+            tasks:[
 
-            },
+            ],
 
-            items:{
-
-            }
+            items:[
+              
+            ]
 
           });
           console.log("Document written with ID: ", auth.currentUser.uid);

@@ -8,7 +8,7 @@ export const Wrapper = styled.View`
 width:90%;
 display: flex;
 flex-direction: row;
-background-color:#FEFDF4;
+background-color:#FFFDF4;
 padding:3%;
 margin: 5% 5% 1% 5%;
 border:2px solid #363630;
@@ -34,15 +34,21 @@ margin-right: 10%;
 
 
 export default function TaskTitle({
-    
+t = "",
+addTitle=()=>{}
 }){
-    const [text, onChangeText] = React.useState('');
+    //const [text, onChangeText] = React.useState('');
+    // const onTest = () => {
+    //     onChangeText()
+    //     console.log(1)
+    //   };
+    
     return (
     <>
     <Wrapper>
         <TitleCont
-        onChangeText={onChangeText} 
-        value={text}
+        onChangeText={addTitle} 
+        value={t}
         maxLength={30}
         defaultValue={"Title"}
         >   
@@ -50,7 +56,7 @@ export default function TaskTitle({
         <Icon name='edit-outline' fill={"#363630"} style={styles.icon}/>
     </Wrapper>
     <TxtCont>
-        <AppText align='right'  text={`${text.length}/30`}></AppText>
+        <AppText align='right'  text={`${t.length}/30`}></AppText>
     </TxtCont>
    
     </>

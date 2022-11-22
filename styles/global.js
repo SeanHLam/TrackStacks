@@ -1,12 +1,12 @@
 import { View,Text, SafeAreaView, ScrollView, Image} from 'react-native';
-import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
+import { ApplicationProvider, Datepicker, RangeDatepicker, Select, SelectItem, Layout} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 
 export const ScreenCont = styled.View`
-background-color:#FEFDF4;
+background-color:#FFFDF4;
 `
 
 export const Wrapper = styled.View`
@@ -68,7 +68,17 @@ align-items:center;
 
 export const SliderCont = styled(ScrollView)`
 background-color:#FEFDF4;
-width: 100%;   
+width: 100%;  
+`
+
+export const SelectCont = styled(Layout)`
+background-color:#FEFDF4;
+width:90%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+padding:3%;
+margin:5%;
 `
 
 export const HeaderCont = styled.View`
@@ -95,6 +105,15 @@ border-radius: 5px;
 box-shadow: 4px 4px #363630;
 `
 
+export const PickDateRange = styled(RangeDatepicker)`
+width: 90%;
+background-color:#FEFDF4;
+padding:3%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+`
+
 
 export const TaskContWrapper = styled.View`
 display:flex;
@@ -104,14 +123,19 @@ margin-top:5%;
 export const DecorCont = styled.View`
 display:flex;
 flex-direction: row;
-width: 100%;
 align-items:center;
+justify-content:center;
 `
 
 export const DecorImage = styled(Image)`
-display:flex;
-justify-content: center;
-align-items: center;
+width: 90%;
+resizeMode:'contain'
+margin-bottom:5%;
+display: grid;
+grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 `
 
 const AppIcon = styled(Icon)`
@@ -181,4 +205,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 width:100%;
+`
+
+export const AssetCont = styled.View`
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:row;
+width:auto;
 `
