@@ -6,6 +6,7 @@ import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
 import {TextInput, StyleSheet, Pressable} from 'react-native';
+
 import Checkbox from 'expo-checkbox';
 
 
