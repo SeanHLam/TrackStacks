@@ -8,7 +8,7 @@ export const Wrapper = styled.View`
 width:90%;
 display: flex;
 flex-direction: row;
-background-color:#FEFDF4;
+background-color:#FFFDF4;
 padding:3%;
 margin: 5%;
 border:2px solid #363630;

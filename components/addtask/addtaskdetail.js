@@ -7,7 +7,7 @@ import { Icon } from '@ui-kitten/components';
 import AppText from '../apptext/apptext';
 import SubTask from './subtask';
 import AddBttn from '../addbutton/addbutton';
-
+import { useState } from 'react';
 
 
 export const WidgetCont = styled.View`
@@ -25,23 +25,27 @@ export const WidgetCont = styled.View`
 `
 
 export const AddCont = styled.View`
-
 display:flex;
 flex-direction:row;
-
 align-items:center;
 `
+
 
 export default function AddDetail({
   
 }){
   const [text, onChangeText] = React.useState('Add Sub Task');
+  const [subTask, setSubTask] = useState([])
+
   return(
+ 
  <WidgetCont> 
    <AppText style='sub' text='Details'></AppText>
-  <SubTask></SubTask>
-  <SubTask></SubTask>
-  <SubTask></SubTask>
+   {subTask.map((o,i)=>
+    <subTask
+    key={i}
+/>
+  )}
 
   <AddCont>
     <AddBttn></AddBttn>

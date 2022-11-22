@@ -67,7 +67,7 @@ border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
 background-color: ${({clr}) =>
                     clr === 'To Do' && '#5C7457' ||
-                    clr === 'Long-Term' && '#85C0FF' ||
+                    clr === 'Long Term' && '#85C0FF' ||
                     clr === 'Single' && '#89608E'
                 };
 `
@@ -79,10 +79,10 @@ border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
 background-color: ${({clr}) =>
                     clr === 'To Do' && '#5C7457' ||
-                    clr === 'Long-Term' && '#85C0FF' ||
+                    clr === 'Long Term' && '#85C0FF' ||
                     clr === 'Single' && '#89608E'
                 };
-margin-left: 3%;
+margin-left: 5.7%;
 `
 
 const ICont = styled.View`

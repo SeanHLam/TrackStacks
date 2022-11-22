@@ -8,12 +8,14 @@ import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
-import { tasks } from '../data/taskdata.js';
 import TaskSearch from '../components/search/search.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import AddBttn from '../components/addbutton/addbutton.js';
 import ModalPop from '../components/modal/modal.js';
-
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
+import { async } from '@firebase/util';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -27,6 +29,31 @@ export default function Tasks({navigation, route}) {
           navigation.navigate("User")
       }
     };
+
+    const [tasks, setTasks] = useState([])
+    const [stars, setStars] = useState()
+
+    useFocusEffect(
+      React.useCallback(() => {
+        //setCurrentUser(user.uid);
+        (async () => {
+            const auth = getAuth();
+            const db = getFirestore();
+            //const docRef =  await doc(db, "users", auth.currentUser.uid);
+            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              console.log(docSnap.data())
+              setTasks(docSnap.data().tasks)
+              setStars(docSnap.data().stars)
+            } else {
+              console.log("No such document!");
+            }
+        })();
+        return ()=>{}
+      }, [])
+    )
+
     const HandleAdd = ()=>{
       navigation.navigate("MakeTask")
     };
@@ -35,14 +62,44 @@ export default function Tasks({navigation, route}) {
       navigation.navigate("EditTask")
     };
 
+    var donearr = []
+    
+
     const [modalVisible, setModalVisible] = useState(false);
-    const [isChecked, setChecked] = useState(false);  
-    const HandleDone = ()=>{
+    const [isChecked, setChecked] = useState([]);  
+    const [index, setIndex] = useState();  
+    
+    const HandleDone = (i)=>{
       setModalVisible(true)
-      setChecked(true)
+      setIndex(i)
+      donearr = isChecked
+    
+        donearr[i] = true
+     
+      //setChecked(true)
     };
+
+    const HandleFinish = async ()=>{
+      setModalVisible(false)
+      const db = getFirestore();
+      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      tasks[index].status = "finished"
+      stars + 30
+      setDoc(
+        docRef,
+        {
+          tasks : tasks,
+        },
+        {merge: true}
+      )
+      updateDoc(docRef, {stars: increment(30)})
+      
+    }
+
     const HandleClose = ()=>{
       setModalVisible(false)
+      donearr = isChecked
+      donearr[index] = false
     }
 
     const [date, setDate] = React.useState(new Date());
@@ -52,7 +109,7 @@ export default function Tasks({navigation, route}) {
     }
     
     function Tab({value}){
-    if (value.toString() == 'Long-Term') {
+    if (value.toString() == 'Long Term') {
       value="Long-Term"
     }else if (value.toString() == 'Single') {
       value="Single"
@@ -60,6 +117,7 @@ export default function Tasks({navigation, route}) {
       value="To-Do"
     }
     }
+
     
     return(
 
@@ -80,7 +138,7 @@ export default function Tasks({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
-        <ModalPop onYes={HandleClose} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
+        <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
           <Wrapper>
             <TaskSearch></TaskSearch>
@@ -93,19 +151,18 @@ export default function Tasks({navigation, route}) {
             </AddCont>
             
             {tasks.map((o,i)=>
-            tasks[i].date == date.toLocaleDateString
-            (undefined, 
-            {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) &&
+            new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) && tasks[i].status == "unfinished" &&
               <TaskList
+                  
                 tlt={tasks[i].title}
                 key={i}
-                onDone={()=> HandleDone()} 
+                onDone={()=> HandleDone(i)} 
                 onEdit={()=> HandleEdit()}
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}
                 sub={tasks[i].cat}
-                checked={isChecked}
+                checked={isChecked[i]}
                 >
               </TaskList> ) 
             }

@@ -1,12 +1,12 @@
 import { View,Text, SafeAreaView, ScrollView, Image} from 'react-native';
-import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
+import { ApplicationProvider, Datepicker, RangeDatepicker, Select, SelectItem, Layout} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 
 export const ScreenCont = styled.View`
-background-color:#FEFDF4;
+background-color:#FFFDF4;
 `
 
 export const Wrapper = styled.View`
@@ -71,6 +71,16 @@ background-color:#FEFDF4;
 width: 100%;  
 `
 
+export const SelectCont = styled(Layout)`
+background-color:#FEFDF4;
+width:90%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+padding:3%;
+margin:5%;
+`
+
 export const HeaderCont = styled.View`
 display:flex;
 flex-direction: row;
@@ -87,6 +97,15 @@ justify-content: flex-end;
 width:90%;
 `
 export const PickDate = styled(Datepicker)`
+width: 90%;
+background-color:#FEFDF4;
+padding:3%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+`
+
+export const PickDateRange = styled(RangeDatepicker)`
 width: 90%;
 background-color:#FEFDF4;
 padding:3%;
