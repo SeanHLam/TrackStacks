@@ -12,7 +12,6 @@ import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
 import styled from 'styled-components';
 import AppBttn from '../components/button/appbutton';
-import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -29,6 +28,7 @@ font-weight:bold;
 export default function SignIn({navigation, route}) { 
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
+  const [error, setError]= useState(false);
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -41,8 +41,15 @@ export default function SignIn({navigation, route}) {
       }
   
     }
-    const HandleSignIn = () =>{
-      navigation.navigate("Home")
+    const HandleSignIn = (e) =>{
+      e.preventDefault();
+      if(email.length == 0){
+        setError(true)
+      }
+      if(password.length == 0){
+        setError(true)
+      }else( navigation.navigate("Home"))
+      
       signInWithEmailAndPassword(auth,email,password)
       .then((re) => {
         console.log(re);
@@ -82,6 +89,8 @@ export default function SignIn({navigation, route}) {
             value={email}
             SetValue={setEmail}
           />
+           {error&&email.length <=0?
+          <AppText text='Invalid Email' align='center' c='red' style='sub'></AppText>:""}
           <Signin 
             placeholder="Enter Password" 
             text='Password' 
@@ -89,11 +98,12 @@ export default function SignIn({navigation, route}) {
             SetValue={setPassword}
             secureTextEntry={true}
           />
+                    {error&&password.length <=0?
+          <AppText text='Invalid Password' align='center' c='red' style='sub'></AppText>:""}
           <AppText text='Forgot Password?' align='left' c='blue' style='tasksub' paddingleft='3%'/>
         </FormCont>
           <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
           <AppText text='--- or —--' style='sub' align='center' margin='5%'/>
-          <Facebook text='Continue with Facebook' align='center'/>
           <SignInFooter>
             <AppText text='New user?' style='task' align='right'/>
             <AppText text='Sign Up' style='task' align='left' c='blue' paddingleft='2%'/>

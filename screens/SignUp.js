@@ -9,9 +9,8 @@ import Header from '../components/header/header.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import {Signin} from '../components/form/signincomp';
+import {Signin} from '../components/Form/signincomp';
 import AppBttn from '../components/button/appbutton';
-import {Facebook} from '../components/form/facebook';
 import {auth, db} from '../firebase.js'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection, setDoc, doc} from "firebase/firestore"; 
@@ -26,6 +25,7 @@ export default function SignUp({navigation, route}) {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [username, setUserName]= useState('');
+  const [error, setError]= useState(false);
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -37,12 +37,22 @@ export default function SignUp({navigation, route}) {
         navigation.navigate("User")
       }
     }
-
-    const HandleSignUp = async () =>{
-      navigation.navigate("SignIn")
+   
+    const HandleSignUp = async (e) =>{
+      e.preventDefault();
+      if(username.length == 0){
+        setError(true)
+      }if(email.length == 0){
+        setError(true)
+      }
+      if(password.length == 0){
+        setError(true)
+      }else(navigation.navigate("SignIn"))
+      
       
       createUserWithEmailAndPassword(auth,email,password,username)
       .then( async (re) => {
+        
         try {
           const docRef = await setDoc(doc(db, "users", auth.currentUser.uid), {
             uid: auth.currentUser.uid,  
@@ -114,12 +124,16 @@ export default function SignUp({navigation, route}) {
             SetValue={setUserName}
             text=''
           />
+          {error&&username.length <=0?
+          <AppText text='Invalid Username' align='center' c='red' style='sub'></AppText>:""}
           <Signin
             placeholder="Enter Email Address"
             value={email}
             SetValue={setEmail}
             text=''
           />
+          {error&&email.length <=0?
+          <AppText text='Invalid Email' align='center' c='red' style='sub'></AppText>:""}
           <Signin 
             placeholder="Enter Password" 
             text='' 
@@ -127,6 +141,8 @@ export default function SignUp({navigation, route}) {
             SetValue={setPassword}
             secureTextEntry={true}
           />
+          {error&&password.length <=0?
+          <AppText text='Invalid Password' align='center' c='red' style='sub'></AppText>:""}
           <AppText text='Yes, I want to recieve TrackStacks emails' align='left' c='black' style='tasksub' paddingleft='5%'/>
           <AppText text='I agree to all the' align='left' c='black' style='tasksub' paddingleft='5%'/> 
           <AppText text='Terms and Conditions' align='center' c='blue' style='tasksub'/>
