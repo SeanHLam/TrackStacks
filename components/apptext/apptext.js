@@ -29,6 +29,7 @@ font-family: ${({size}) =>
     color: ${({col}) => 
         col === 'black' && '#363630' ||
         col === 'white' && '#FEFDF4' ||
+        col === 'red' && '#FF0000' ||
         col === 'blue' && '#7B89A3' ||
         col === 'teal' && '#99FFDF' ||
         col === 'pink' && '#EAAA99' ||
