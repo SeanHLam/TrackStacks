@@ -7,8 +7,8 @@ export const accordiondata = [{
     answer: "By clicking on the user icon, located at the bottom right; you can head into settings. Where the motivational memos will be to help you."
   },
   {
-    question: "What is partner mode?",
-    answer: "It allows your parent, guardian, partner or friend to assist with marking tasks as complete via email or phone notification."
+    question: "Are all tasks worth the same stars?",
+    answer: "Single tasks and individual items in a to-do list are both worth 20 stars. Long term goals vary, and are worth more for the longer they are."
   },
   {
     question: "Where can I change the colors?",
