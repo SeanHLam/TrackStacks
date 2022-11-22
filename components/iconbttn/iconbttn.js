@@ -11,10 +11,14 @@ export const Wrapper = styled.View`
 
 export default function IconBttn({
 i="search",
+width='45',
+height='40',
+padding='0%',
+onIcon=()=>{},
 }){
     const [text, onChangeText] = React.useState('Search');
     return (
-        <Icon name={i} fill={"#363630"} style={styles.icon}/>
+        <Icon name={i} fill={"#363630"} style={styles.icon} width={width} height={height} onPress={onIcon}/>
     )
 }
 

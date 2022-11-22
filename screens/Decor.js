@@ -4,12 +4,15 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-import { Image } from 'react-native';
+import { Image} from 'react-native';
 import DecWidget from '../components/decorwidget/decorwidget.js';
 import IconBttn from '../components/iconbttn/iconbttn.js';
+import AssetSlider from '../components/assetslider/assetslider.js';
+import AppBttn from '../components/button/appbutton';
+import Lavender from '../components/svgcomponent/svgcomponent.js';
 
 export default function Decor({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -23,6 +26,16 @@ export default function Decor({navigation, route}) {
         navigation.navigate("User")
       }
     }
+
+    const [background, setBackground] = useState(false);
+    const handleBg = () => {
+      if (background == false){
+        setBackground(true)
+      } else if (background == true){
+        setBackground(false)
+      }
+    }
+
     
     return(
       <ApplicationProvider 
@@ -45,15 +58,19 @@ export default function Decor({navigation, route}) {
         <SliderCont>
           <Wrapper>
             <DecorCont>
-              <DecWidget t={"Shop"} i={"shopping-cart-outline"}></DecWidget>
-              <DecWidget t={"Items"} i={"briefcase-outline"}></DecWidget>
+              <AppBttn bttntext='Shop' style='small' nme='shopping-cart' dsp='flex'></AppBttn>
+              <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn>
               <IconBttn i={"question-mark-circle"}></IconBttn>
             </DecorCont>
-           
+
+            <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             
-            <DecorCont>
-              <DecorImage source={require("../assets/rewardBgCool.png")}/>
-            </DecorCont>
+            <AssetCont>
+            <AssetSlider/>
+              <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
+            </AssetCont>
+
+
             
           </Wrapper>
         </SliderCont>
@@ -68,5 +85,3 @@ export default function Decor({navigation, route}) {
           </NavWrapper>
       </ApplicationProvider>
     )};
-
-  

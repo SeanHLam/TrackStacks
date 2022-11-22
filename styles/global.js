@@ -68,7 +68,7 @@ align-items:center;
 
 export const SliderCont = styled(ScrollView)`
 background-color:#FEFDF4;
-width: 100%;   
+width: 100%;  
 `
 
 export const HeaderCont = styled.View`
@@ -104,14 +104,19 @@ margin-top:5%;
 export const DecorCont = styled.View`
 display:flex;
 flex-direction: row;
-width: 100%;
 align-items:center;
+justify-content:center;
 `
 
 export const DecorImage = styled(Image)`
-display:flex;
-justify-content: center;
-align-items: center;
+width: 90%;
+resizeMode:'contain'
+margin-bottom:5%;
+display: grid;
+grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 `
 
 const AppIcon = styled(Icon)`
@@ -181,4 +186,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 width:100%;
+`
+
+export const AssetCont = styled.View`
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:row;
+width:auto;
 `
