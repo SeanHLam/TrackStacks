@@ -9,6 +9,8 @@ import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
+import TaskTutorial from './screens/TaskTutorial';
+import PartnerTutorial from './screens/PartnerTutorial';
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +59,17 @@ export default function App() {
           name="Resources" 
           component={Resources} 
         />
+
+        <Stack.Screen 
+          name="TaskTutorial" 
+          component={TaskTutorial} 
+        />
+
+        <Stack.Screen 
+          name="PartnerTutorial" 
+          component={PartnerTutorial} 
+        />
+        
         
 
       </Stack.Navigator>
