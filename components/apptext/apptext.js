@@ -51,7 +51,8 @@ export default function AppText({
     wdth="90%",
     align="left",
     paddingleft='0',
-    margin='0'
+    margin='0',
+    onText=()=>{},
 }){
     let [fontsLoaded] = useFonts({
         DaysOne_400Regular,
@@ -64,7 +65,7 @@ export default function AppText({
       }
 
     return(
-        <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} >
+        <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} onPress={onText} >
            {text}
         </AllText>
     )

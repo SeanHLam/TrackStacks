@@ -23,7 +23,6 @@ align-content:center;
 text-align:center;
 border-radius: 10px;
 padding:3%;
-margin:3%;
 `
 export default function AppBttn({
   bttntext ="Sign Up",
@@ -32,7 +31,10 @@ export default function AppBttn({
   onBttn=()=>{},
   nme="star",
   clr="#fcf9ed",
-  dsp='none'
+  dsp='none',
+  margin='3%',
+  marginTop='0%',
+  marginBottom='0%',
 }){
 
   const bttPress = (pressType) => {
@@ -42,6 +44,9 @@ export default function AppBttn({
     return(
      
       <Buttonst 
+      margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
       size={style} 
       onPress={onBttn}
       onPressIn={() => bttPress("onPressIn")}

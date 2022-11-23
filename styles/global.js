@@ -15,6 +15,11 @@ align-items:center;
 flex-direction:column;
 `;
 
+export const SignUpWrapper = styled.View`
+display:flex;
+flex-direction:column;
+`;
+
 export const ButtonWrapper = styled.View`
 display:flex;
 flex-direction:row;
@@ -24,8 +29,6 @@ justify-content:center;
 export const SignInFooter = styled.View`
 display:flex;
 flex-direction:row;
-padding:2%
-padding-top:2%;
 `;
 
 export const ButtonCont = styled.View`
@@ -175,28 +178,20 @@ width:50%;
 
 export const FormCont = styled.View`
 display:flex;
-align-items:center;
+align-items:flex-start;
+width:100%;
+margin-top:7%;
+`
+export const HeadCont = styled.View`
+margin-left:7%;
 width:100%;
 `
 
-export const HeadCont = styled.View`
-background-color: #FEFDF4;
-width: 100%;
-height:15%;
-display: flex;
-align-items: flex-end;
-justify-content: center;
-flex-direction: row;
-padding: 5% 5% 5% 5%;
-margin-top:10%;
-margin-bottom:10%;
-`
-
 export const HeadContInner = styled.View`
-flex-direction: row;
-width: 85%;
-justify-content: flex-end;
-align-items: center;
+display:flex;
+width:100%;
+height:auto;
+margin-top:25%;
 `
 
 export const ResourceWidgetCont = styled.View`
@@ -213,4 +208,11 @@ align-items:center;
 justify-content:center;
 flex-direction:row;
 width:auto;
+`
+
+export const MascotCont = styled.View`
+background-color:#FEFDF4;
+position:absolute;
+bottom:5%;
+right:8%;
 `

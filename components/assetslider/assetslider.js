@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Image, ScrollView, Text,Pressable} from 'react-native';
 import styled from 'styled-components/native';
-import Lavender from '../svgcomponent/svgcomponent.js';
-import { Component } from 'react';
-import Svg from 'react-native-svg';
+import Lavender from '../../assets/lavender.svg';
+import AppleRug from '../../assets/applerug.svg';
+import Cactus from '../../assets/cacts.svg';
+import DarkCat from '../../assets/darkcat.svg';
+import FatCat from '../../assets/fatcat.svg';
+import Wolf from '../svgcomponent/wolf.js';
 
 const Wrapper = styled.View`
 background-color: #FFFDF4;
@@ -11,27 +14,27 @@ border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
 display: flex;
-justify-content: center;
-align-items: center;
+
 flex-direction: row;
 width:65%;
 margin-right:5%;
 `
 
 const Slider = styled(ScrollView)`
-padding:2%;
+padding:3%;
 margin-right:5%;
 `
 
 const Divider = styled.Text`
-font-size: 20px;
-padding:5%;
+font-size: 50px;
+opacity:0.2;
 `
 
-const Row = styled.View`
+const Content = styled.View`
+display:flex;
 flex-direction:row;
-justify-content:space-between;
-align-items:space-evenly;
+justify-content:center;
+align-items:center;
 `
 
 export default function AssetSlider() {
@@ -43,7 +46,14 @@ export default function AssetSlider() {
     return (
         <Wrapper>
             <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
-                <Lavender onAsset={HandleClick}/>
+            <Content>
+                <Lavender width={100} height={100}/>
+                <Divider>|</Divider>
+                <AppleRug width={100} height={100}/>
+                <Divider>|</Divider>
+                <Lavender width={100} height={100}/>
+                <Divider>|</Divider>
+            </Content>
             </Slider>
         </Wrapper>
     )

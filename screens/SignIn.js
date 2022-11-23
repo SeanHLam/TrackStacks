@@ -5,7 +5,7 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner, MascotCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import {Signin} from '../components/form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
@@ -14,16 +14,8 @@ import styled from 'styled-components';
 import AppBttn from '../components/button/appbutton';
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-
-const Divider = styled.Text`
-color: #363630;
-font-size: 25px;
-font-weight:bold;
-
-`
-
-
+import Mascot from '../assets/mascot.svg'
+import Logo from '../assets/logo.svg';
 
 export default function SignIn({navigation, route}) { 
   const [email, setEmail]= useState('');
@@ -38,8 +30,10 @@ export default function SignIn({navigation, route}) {
         navigation.navigate("Decor")
       }else if(new_page === 4){
         navigation.navigate("User")
+      }else if(new_page === -1){
+        navigation.navigate("SignUp")
       }
-  
+      
     }
     const HandleSignIn = (e) =>{
       e.preventDefault();
@@ -75,14 +69,15 @@ export default function SignIn({navigation, route}) {
         <IconRegistry 
         icons={EvaIconsPack} 
         />
-
         <SliderCont>
-        <HeadCont>
+          <HeadCont>
+
           <HeadContInner>
-          <AppText text='TrackStacks' style='header'></AppText>
+            <AppText text='TrackStacks' style='header'/>
+            <Logo style={{opacity:'0.4', position:'absolute', zIndex:-1, top:'-25%' }}/>
           </HeadContInner>
-        </HeadCont>
-        <Wrapper>
+
+        <Wrapper style={{alignItems:'flex-start'}}>
         <FormCont>
           <Signin
             placeholder="Enter Email Address"
@@ -90,7 +85,7 @@ export default function SignIn({navigation, route}) {
             SetValue={setEmail}
           />
            {error&&email.length <=0?
-          <AppText text='Invalid Email' align='center' c='red' style='sub'></AppText>:""}
+          <AppText text='Invalid Email' c='red' style='task'></AppText>:""}
           <Signin 
             placeholder="Enter Password" 
             text='Password' 
@@ -99,26 +94,25 @@ export default function SignIn({navigation, route}) {
             secureTextEntry={true}
           />
                     {error&&password.length <=0?
-          <AppText text='Invalid Password' align='center' c='red' style='sub'></AppText>:""}
-          <AppText text='Forgot Password?' align='left' c='blue' style='tasksub' paddingleft='3%'/>
+          <AppText text='Invalid Password' c='red' style='task'></AppText>:""}
+          <AppText text='Forgot Password?' c='blue' style='tasksub'/>
         </FormCont>
-          <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
-          <AppText text='--- or —--' style='sub' align='center' margin='5%'/>
+          <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='small' margin='0%' marginTop='5%' marginBottom='5%'/>
+          {/*<AppText text='--- or —--' style='sub' align='center' margin='5%'/>*/}
           <SignInFooter>
-            <AppText text='New user?' style='task' align='right'/>
-            <AppText text='Sign Up' style='task' align='left' c='blue' paddingleft='2%'/>
+            <AppText text='New user?' style='task' wdth='20%'/>
+            <AppText text='Sign Up' style='task' c='blue' onText={()=>HandlePage(-1)}/>
           </SignInFooter>
-          
-          
-         
+                
         </Wrapper>
         
-        
-         </SliderCont>
+        </HeadCont>
+
+        </SliderCont>
+
+        <MascotCont>
+            <Mascot width={80} height={80} />
+        </MascotCont>
          
-       
-        
-         
-        
       </ApplicationProvider>
     )};

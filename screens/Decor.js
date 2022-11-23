@@ -12,7 +12,7 @@ import DecWidget from '../components/decorwidget/decorwidget.js';
 import IconBttn from '../components/iconbttn/iconbttn.js';
 import AssetSlider from '../components/assetslider/assetslider.js';
 import AppBttn from '../components/button/appbutton';
-import Lavender from '../components/svgcomponent/svgcomponent.js';
+import Lavender2 from '../assets/lavender.svg'
 
 export default function Decor({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -63,13 +63,13 @@ export default function Decor({navigation, route}) {
               <IconBttn i={"question-mark-circle"}></IconBttn>
             </DecorCont>
 
+            {/* <SvgCssUri uri="../assets/lavender.svg" width="100" height="100" /> */}
             <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             
             <AssetCont>
-            <AssetSlider/>
+              <AssetSlider/>
               <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
             </AssetCont>
-
 
             
           </Wrapper>
