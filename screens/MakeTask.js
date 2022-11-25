@@ -19,6 +19,7 @@ import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 import { Datepicker, Layout, Text,  RangeDatepicker, Select, SelectItem,  IndexPath } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
 import { doc, updateDoc, arrayUnion, arrayRemove, getFirestore} from "firebase/firestore";
+import { View} from 'react-native';
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
 const customMapping = { strict: strictTheme };
@@ -36,6 +37,7 @@ export default function MakeTask({navigation, route}) {
   const [text, onChangeText] = React.useState('');
   const [sub, onSub] = React.useState('');
   const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0))
+  const [index, setIndex] = useState(0)
   const [subTask, setSubTask] = useState([{
     taskname:'',
     status:"unfinished"
@@ -59,14 +61,14 @@ export default function MakeTask({navigation, route}) {
     
     const HandleTitle = (t)=>{
       onChangeText(t)
-
-      
     }
     
+ 
+
     const HandleSub = (t)=>{
-      subTask.taskname = t
+      subTask[index].taskname = t
       onSub(t)
-      console.log(subTask, i)
+      console.log(console.log(subTask))
 
     }
 
@@ -102,6 +104,7 @@ export default function MakeTask({navigation, route}) {
             title: text,
             date: date,
             cat: data[selectedIndex.row],
+            sub: subTask,
             status: "unfinished"
           })
         });
@@ -121,7 +124,18 @@ export default function MakeTask({navigation, route}) {
     const renderOption = (title) => (
       <SelectItem title={title}/>
     );
-    console.log(subTask)
+
+    const handleAddSub = () => {
+      setSubTask([
+        ...subTask,
+        {
+          taskname:"",
+          status:"unfinished"
+        }
+      ])
+      setIndex(index + 1)
+    }
+    //console.log(subTask)
     return(
       <ApplicationProvider 
       customMapping={customMapping}
@@ -159,33 +173,51 @@ export default function MakeTask({navigation, route}) {
                  {data.map(renderOption)}
               </Select>
             </SelectCont> 
-            <AddDetail
-              detail={sub}
-              changeText={HandleSub}
-              subText={sub}
-              addTask={()=>setSubTask([
-                ...subTask,
-                {
-                  taskname:"",
-                  status:"unfinished"
-                }
-              ])}
-              subTasks={subTask}
-            >
+
+            { data[selectedIndex.row] === "To Do" &&
+                    <AddDetail
               
-            </AddDetail>
+                    changeText={HandleSub}
+          
+                    addTask={()=>handleAddSub()}
+                    subTasks={subTask}
+                  >
+                  </AddDetail>
+            }
+   
+            {/* {subTask.map((o,i)=> (
+            <SubTask
+            onText={HandleSub}
+            t={subTask[i].taskname}
+            key={i}/>)
+          )} */}
+          
+            { data[selectedIndex.row] === "Single" && 
+                <PickDate
+                date={date}
+                onSelect={nextDate => setDate(nextDate)}
+              ></PickDate>
+            }
+
+            {data[selectedIndex.row] === "To Do" && 
+                <PickDate
+                date={date}
+                onSelect={nextDate => setDate(nextDate)}
+              ></PickDate>
+            }
+
             
-            <PickDate
-              date={date}
-              onSelect={nextDate => setDate(nextDate)}
-            ></PickDate>
+          
             
-            <PickDateRange
-            range={range}
-            onSelect={nextRange => setRange(nextRange)}
-            />
+            { data[selectedIndex.row] === "Long Term" &&
+              <PickDateRange
+              range={range}
+              onSelect={nextRange => setRange(nextRange)}
+              />
+            }
+            
              
-             <RepeatMenu></RepeatMenu>
+             {/* <RepeatMenu></RepeatMenu> */}
             <AppBttn onBttn={HandleAdd} style='small' bttntext='Add'></AppBttn>
           </Wrapper>
         </SliderCont>
