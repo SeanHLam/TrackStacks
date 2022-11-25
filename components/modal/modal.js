@@ -7,16 +7,18 @@ import { useState } from 'react';
 import Add from '../addbutton/addbutton';
 import Widget from '../widgets/widget';
 import AppBttn from '../button/appbutton';
+import { MotiView, MotiText } from 'moti'
+import { Easing } from 'react-native-reanimated';
 
 const Wrapper = styled.Pressable`
 display: flex;
 flex-direction: row;
-justify-content: 'center';
-align-items:"center";
+justify-content: center;
+align-items:center;
 flex: 1;
 width:100%;
 height: 100%;
-backgroundColor: 'rgba(0, 0, 0, 0.5)'
+background-color:rgba(0, 0, 0, 0.5);
 position: absolute;
 z-index: 30;
 `
@@ -24,8 +26,8 @@ const Mdl = styled.Modal`
 display: flex;
 flex: 1;
 flex-direction: row;
-justify-content: 'center';
-align-items:"center";
+justify-content:center;
+align-items:center;
 backgroundColor: red;
 align-self: center;
 `
@@ -41,7 +43,7 @@ border-radius: 10px;
 box-shadow: 5px 5px #363630;
 border: 4px solid #363630;
 padding: 3%;
-margin-top:50%;
+margin-top:80%;
 `
 const BttnCont = styled.View`
 display: flex;
@@ -66,7 +68,16 @@ export default function ModalPop({
             <Mdl
             transparent={true}
             visible={mdlvis}
-            >
+            >   
+                <MotiView
+                from={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                    type:'timing',
+                    duration:800,
+                    easing:Easing.in(Easing.bounce)
+                }}
+                >
                 <Popup>
                 <AppText style='sub' align='center' text={mdltext}></AppText>
                 <BttnCont>
@@ -79,7 +90,8 @@ export default function ModalPop({
                     <AppBttn onBttn={onNo} bttntext='No'></AppBttn>
                 </BttnCont>
                 </Popup>
-            </Mdl>  
+                </MotiView>
+            </Mdl> 
         </Wrapper>}
         </>
     )
