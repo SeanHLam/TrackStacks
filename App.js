@@ -39,11 +39,11 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  
+  SplashScreen.hideAsync()
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
-      initialRouteName='SignIn'
+      initialRouteName='Home'
       screenOptions={{
         headerShown: false
       }}
