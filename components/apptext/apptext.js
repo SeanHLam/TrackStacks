@@ -2,8 +2,14 @@ import { View,Text, StyleSheet} from 'react-native';
 import React from 'react';
 import * as eva from '@eva-design/eva';
 import styled from 'styled-components/native';
-import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import {Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+import AppLoading from "expo-app-loading";
+
+SplashScreen.preventAutoHideAsync();
 
 const AllText = styled(Text)`
 font-size: ${({size}) => 
@@ -54,15 +60,21 @@ export default function AppText({
     margin='0',
     onText=()=>{},
 }){
-    let [fontsLoaded] = useFonts({
-        DaysOne_400Regular,
-        Cabin_400Regular,
-        Cabin_700Bold 
-      });
-    
-      if (!fontsLoaded) {
-        return null;
-      }
+  const [fontsLoaded] = useFonts({
+    DaysOne_400Regular,
+    Cabin_400Regular,
+    Cabin_700Bold 
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
     return(
         <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} >

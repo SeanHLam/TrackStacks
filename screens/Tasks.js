@@ -1,6 +1,6 @@
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components';
+import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect} from 'react';
@@ -44,7 +44,7 @@ export default function Tasks({navigation, route}) {
             const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-              console.log(docSnap.data())
+              // console.log(docSnap.data())
               setTasks(docSnap.data().tasks)
               setStars(docSnap.data().stars)
             } else {
@@ -155,13 +155,13 @@ export default function Tasks({navigation, route}) {
         {Confetti && <ConfettiCannon count={50} origin={{x: 0, y:-300}} fallSpeed={3000} fadeOut={true}
             />}
           <Wrapper>
-            <TaskSearch></TaskSearch>
+            {/* <TaskSearch></TaskSearch> */}
             <Calendar
               date={date}
               onSelect={(nextDate)=> {setDate(nextDate)}}>
             </Calendar>
             <AddCont>
-              <AddBttn onAdd={()=>HandleAdd}></AddBttn>
+              <AddBttn onAdd={()=>HandleAdd()}></AddBttn>
             </AddCont>
             
             {tasks.map((o,i)=>
@@ -179,7 +179,9 @@ export default function Tasks({navigation, route}) {
                 checked={isChecked[i]}
                 >
               </TaskList> ) 
+              
             }
+
          
             
           </Wrapper>
