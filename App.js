@@ -10,14 +10,38 @@ import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
 import { LogBox } from 'react-native';
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import {Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
+import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+import AppLoading from "expo-app-loading";
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
+
+SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    DaysOne_400Regular,
+    Cabin_400Regular,
+    Cabin_700Bold 
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+  
   return (
-    <NavigationContainer>
+    <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
       initialRouteName='Home'
       screenOptions={{
