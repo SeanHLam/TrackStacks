@@ -23,6 +23,8 @@ import AppBttn from '../components/button/appbutton.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
+import { MotiView, MotiText } from 'moti'
+import { Easing } from 'react-native-reanimated';
 
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
@@ -129,10 +131,19 @@ export default function Home({navigation, route}) {
       <Header/>
       
       <SliderCont>
-  
+        <MotiView
+        delay={400}
+        from={{ translateX: -15, opacity: 0}}
+        animate={{ translateX: 0, opacity: 1}}
+        transition={{
+          type:'timing',
+          duration:700,
+        }}
+        >
         <HomeTextCont>
           <AppText text={`Good Afternoon, ${name}`} style='header'/>
         </HomeTextCont>
+        </MotiView>
 
         <WidgetWrapper>
 

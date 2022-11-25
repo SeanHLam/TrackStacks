@@ -65,7 +65,7 @@ export default function AppText({
       }
 
     return(
-        <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} onPress={onText} >
+        <AllText margin={margin} paddingLeft={paddingleft} col={c} size={style} txtalign={align} WidWidth={wdth} >
            {text}
         </AllText>
     )

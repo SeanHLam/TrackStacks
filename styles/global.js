@@ -212,7 +212,4 @@ width:auto;
 
 export const MascotCont = styled.View`
 background-color:#FEFDF4;
-position:absolute;
-bottom:5%;
-right:8%;
 `

@@ -3,7 +3,7 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -68,7 +69,7 @@ export default function Tasks({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false);
     const [isChecked, setChecked] = useState([]);  
     const [index, setIndex] = useState();  
-    
+
     const HandleDone = (i)=>{
       setModalVisible(true)
       setIndex(i)
@@ -78,6 +79,16 @@ export default function Tasks({navigation, route}) {
      
       //setChecked(true)
     };
+
+    const [Confetti, setConfetti] = useState(false)
+  
+    useEffect(() => {
+      if (Confetti === false) {
+        setConfetti(true)
+      } else {
+        setConfetti(false)
+      }
+    },[Confetti]); 
 
     const HandleFinish = async ()=>{
       setModalVisible(false)
@@ -93,10 +104,10 @@ export default function Tasks({navigation, route}) {
         {merge: true}
       )
       updateDoc(docRef, {stars: increment(30)})
-      
     }
 
     const HandleClose = ()=>{
+      setConfetti(!Confetti)
       setModalVisible(false)
       donearr = isChecked
       donearr[index] = false
@@ -117,6 +128,7 @@ export default function Tasks({navigation, route}) {
       value="To-Do"
     }
     }
+
 
     
     return(
@@ -140,6 +152,8 @@ export default function Tasks({navigation, route}) {
         <Header/>
         <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
+        {Confetti && <ConfettiCannon count={50} origin={{x: 0, y:-300}} fallSpeed={3000} fadeOut={true}
+            />}
           <Wrapper>
             <TaskSearch></TaskSearch>
             <Calendar

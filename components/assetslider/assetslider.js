@@ -3,10 +3,10 @@ import { View, Image, ScrollView, Text,Pressable} from 'react-native';
 import styled from 'styled-components/native';
 import Lavender from '../../assets/lavender.svg';
 import AppleRug from '../../assets/applerug.svg';
-import Cactus from '../../assets/cacts.svg';
+import Cactus from '../../assets/cactus.svg';
 import DarkCat from '../../assets/darkcat.svg';
 import FatCat from '../../assets/fatcat.svg';
-import Wolf from '../svgcomponent/wolf.js';
+import Wolf from '../../assets/wolf.svg';
 
 const Wrapper = styled.View`
 background-color: #FFFDF4;
