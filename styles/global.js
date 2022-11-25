@@ -115,6 +115,7 @@ padding:3%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
+margin-bottom: 5%;
 `
 
 

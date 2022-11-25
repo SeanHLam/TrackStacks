@@ -55,9 +55,8 @@ export default function AddDetail({
  <WidgetCont> 
    <AppText style='sub' text='Details'></AppText>
    {subTasks.map((o,i)=> (
-    //  console.log("New Object", o),
     <SubTask
-    t={detail}
+    t={subTasks[i]}
     onText={changeText}
     key={i}/>)
   )}

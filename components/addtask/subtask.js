@@ -46,7 +46,7 @@ return(
         placeholder="Add Step"
         value={t}
         maxLength={20}
-        defaultValue={"Title"}
+       
    ></TaskType>
  
  </WidgetCont>
