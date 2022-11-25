@@ -9,6 +9,9 @@ import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-      initialRouteName='SignUp'
+      initialRouteName='Home'
       screenOptions={{
         headerShown: false
       }}

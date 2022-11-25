@@ -26,22 +26,25 @@ width:90%
 `
 
 export default function SubTask({
+t="dwd",
+onText = ()=>{}
 }){
-const [text, onChangeText] = React.useState('Add Sub-Task');
+const [text, onChangeText] = React.useState('');
 const [isChecked, setChecked] = useState(false);
 return(
  <WidgetCont> 
     <Checkbox 
         style={styles.checkbox}
-        value={isChecked}
+        value={false}
         onValueChange={setChecked}
-        color={isChecked ? '#363630' : '#FFFDF4'}
+        color={false ? '#363630' : '#FFFDF4'}
         >
     </Checkbox> 
 
    <TaskType
-        onChangeText={onChangeText} 
-        value={text}
+        onChangeText={onText} 
+        placeholder="Add Step"
+        value={t}
         maxLength={20}
         defaultValue={"Title"}
    ></TaskType>

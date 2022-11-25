@@ -9,7 +9,7 @@ import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
 import { db} from '../../firebase.js'
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { doc, getDoc, getFirestore, onSnapshot } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -58,16 +58,21 @@ export default function Header({
   
           const auth = getAuth();
           const db = getFirestore();
+          const check = onSnapshot(doc(db, 'users', "gmYamKsYiOMiHSj8e099gj0PEvn2"), (doc)=>{
+            console.log("check", doc.data())
+            setStars(doc.data().stars)
+            // const docSnap = await getDoc(docRef);
+          //     if (docSnap.exists()) {
+          //       console.log(docSnap.data())
+          //       setStars(docSnap.data().stars)
+          //     } else {
+          //       // doc.data() will be undefined in this case
+          //       console.log("No such document!");
+          //     }
+          })
             //const docRef =  await doc(db, "users", auth.currentUser.uid);
-            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-              console.log(docSnap.data())
-              setStars(docSnap.data().stars)
-            } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
-            }
+            // const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            
         })();
         return ()=>{}
       }, [])

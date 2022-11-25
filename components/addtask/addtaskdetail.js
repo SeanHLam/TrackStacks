@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text } from '@ui-kitten/components';
 import styled from 'styled-components';
 import { Size } from '@ui-kitten/components/devsupport';
@@ -32,23 +32,46 @@ align-items:center;
 
 
 export default function AddDetail({
-  
+  subText = "",
+  changeText=()=>{},
+  onChange=()=>{},
+  addTask=()=>{},
+  detail="",
+  subIndex=0,
+  subTasks = []
 }){
   const [text, onChangeText] = React.useState('Add Sub Task');
-  const [subTask, setSubTask] = useState([])
+  const [subTask, setSubTask] = useState([{
+    taskname:'',
+    status:""
+  }])
 
+  useEffect(()=>{
+    //do some firebase stuff
+    onChange(subTask)
+  },[subTask])
   return(
  
  <WidgetCont> 
    <AppText style='sub' text='Details'></AppText>
-   {subTask.map((o,i)=>
-    <subTask
-    key={i}
-/>
+   {subTasks.map((o,i)=> (
+    //  console.log("New Object", o),
+    <SubTask
+    t={detail}
+    onText={changeText}
+    key={i}/>)
   )}
+  
 
   <AddCont>
-    <AddBttn></AddBttn>
+    {/* <AddBttn onAdd={()=>setSubTask([
+      ...subTask,
+      {
+        taskname:"",
+        status:"unfinished"
+      }
+    ])}></AddBttn> */}
+    <AddBttn onAdd={addTask}></AddBttn>
     <AppText style='body' text='Add New'></AppText>
   </AddCont>
  

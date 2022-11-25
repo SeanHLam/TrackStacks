@@ -34,7 +34,12 @@ export default function MakeTask({navigation, route}) {
   const [date, setDate] = React.useState(new Date());
   const [range, setRange] = React.useState({});
   const [text, onChangeText] = React.useState('');
-  const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0));
+  const [sub, onSub] = React.useState('');
+  const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0))
+  const [subTask, setSubTask] = useState([{
+    taskname:'',
+    status:"unfinished"
+  }])
   
   const [title, setTitle] = useState("Pick a Category")
     const HandlePage = (new_page) =>{
@@ -55,6 +60,14 @@ export default function MakeTask({navigation, route}) {
     const HandleTitle = (t)=>{
       onChangeText(t)
 
+      
+    }
+    
+    const HandleSub = (t)=>{
+      subTask.taskname = t
+      onSub(t)
+      console.log(subTask, i)
+
     }
 
     const HandleAdd = ()=>{
@@ -74,7 +87,16 @@ export default function MakeTask({navigation, route}) {
           });
           loop = new Date(newDate);
         }
-      }else{
+      }else if(data[selectedIndex.row] === "Single"){
+        updateDoc(docRef, {
+          tasks: arrayUnion({
+            title: text,
+            date: date,
+            cat: data[selectedIndex.row],
+            status: "unfinished"
+          })
+        });
+      }else if(data[selectedIndex.row] === "To Do"){
         updateDoc(docRef, {
           tasks: arrayUnion({
             title: text,
@@ -93,23 +115,13 @@ export default function MakeTask({navigation, route}) {
      console.log(e)
     }
    
-    console.log(date.toLocaleDateString(undefined, {day:"numeric"}), date, range)
-
-
-    let [fontsLoaded] = useFonts({
-      DaysOne_400Regular,
-      Cabin_400Regular,
-      Cabin_700Bold 
-    });
-  
-    if (!fontsLoaded) {
-      return null;
-    }
-
+    //console.log(date.toLocaleDateString(undefined, {day:"numeric"}), date, range)
+    
+ 
     const renderOption = (title) => (
       <SelectItem title={title}/>
     );
-
+    console.log(subTask)
     return(
       <ApplicationProvider 
       customMapping={customMapping}
@@ -146,9 +158,21 @@ export default function MakeTask({navigation, route}) {
               onSelect={index => setSelectedIndex(index)}> 
                  {data.map(renderOption)}
               </Select>
-            </SelectCont>
-            <AddDetail>
-              <SubTask></SubTask>
+            </SelectCont> 
+            <AddDetail
+              detail={sub}
+              changeText={HandleSub}
+              subText={sub}
+              addTask={()=>setSubTask([
+                ...subTask,
+                {
+                  taskname:"",
+                  status:"unfinished"
+                }
+              ])}
+              subTasks={subTask}
+            >
+              
             </AddDetail>
             
             <PickDate
