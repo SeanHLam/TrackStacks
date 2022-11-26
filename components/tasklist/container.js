@@ -90,7 +90,7 @@ export default function TaskCont(){
                 
             </HeaderCont>
             {tasks.map((o,i)=>
-            i >= tasks.length - 3 && 
+            i >= tasks.length - 3 && tasks[i].status == "unfinished" &&
             // i === 1000 && 
             <ArchiveList
               month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
