@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
+import ArchiveList from '../components/tasklist/archivelist.js';
 
 export default function Archive({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -81,24 +82,24 @@ export default function Archive({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
-        <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
+        
         <SliderCont>
           <Wrapper>
             {tasks.map((o,i)=>
-            new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) && tasks[i].status == "unfinished" &&
-              <TaskList
-                  
+            
+              <ArchiveList
+                month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
                 tlt={tasks[i].title}
                 key={i}
                 onDone={()=> HandleDone(i)} 
                 onEdit={()=> HandleEdit()}
-                num={date.toLocaleDateString(undefined, {day:"numeric"})}
-                date={date.toLocaleDateString(undefined, {weekday:"short"})}
+                num={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {day:"numeric"})}
+                date={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}
                 sub={tasks[i].cat}
-                checked={isChecked[i]}
+                
                 >
-              </TaskList> ) 
+              </ArchiveList> ) 
             }
          
             

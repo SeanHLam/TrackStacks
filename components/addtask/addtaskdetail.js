@@ -11,17 +11,13 @@ import { useState } from 'react';
 
 
 export const WidgetCont = styled.View`
-    display:flex;
-    background-color:#FFFDF4;
-    Font-Weight:Bold;
-    border-radius: 10px;
-    box-shadow: 2px 2px #363630;
-    border: 2px solid #363630;
-    width: 90%;
-    padding:5%;
-    align-items:flex-start;
-    align-content:center;
-    margin: 5%;
+background-color:#FEFDF4;
+width:90%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+padding:3%;
+margin: 0% 0% 5% 0%;
 `
 
 export const AddCont = styled.View`
