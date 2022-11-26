@@ -4,7 +4,7 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate, PickDateRange, SelectCont} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate, PickDateRange, SelectCont, MascotCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
@@ -20,6 +20,7 @@ import { Datepicker, Layout, Text,  RangeDatepicker, Select, SelectItem,  IndexP
 import { colours } from '../components/categorymenu/categorydata.js';
 import { doc, updateDoc, arrayUnion, arrayRemove, getFirestore} from "firebase/firestore";
 import { View} from 'react-native';
+import Mascot from '../assets/mascot.svg'
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
 const customMapping = { strict: strictTheme };
@@ -218,7 +219,8 @@ export default function MakeTask({navigation, route}) {
             
              
              {/* <RepeatMenu></RepeatMenu> */}
-            <AppBttn onBttn={HandleAdd} style='small' bttntext='Add'></AppBttn>
+            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Add Task'></AppBttn>
+         
           </Wrapper>
         </SliderCont>
         <NavWrapper>

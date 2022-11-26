@@ -8,13 +8,11 @@ export const colour = {
         "home":"#99FFDF"
 },
 
+
 "Home":{
     "home":"#99FFDF"
 },
 
-"Resources":{
-    "home":"#99FFDF"
-},
 
 "Tasks":{
    
@@ -36,6 +34,16 @@ export const colour = {
 "User":{
     "user":"#99FFDF",
 },
+
+"Archive":{
+    "user":"#99FFDF",
+},
+
+"Resources":{
+    "user":"#99FFDF",
+},
+
+
 "Facebook":{
     "home":"#363630",
     "board":"#363630",

@@ -5,10 +5,17 @@ import AppText from '../apptext/apptext';
 import { Icon } from '@ui-kitten/components';
 import TaskList from './tasklist';
 import {recent, urgent} from './taskdata';
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
+import { async } from '@firebase/util';
+import ArchiveList from './archivelist';
 
 
 const MainCont = styled.View`
 width: 100%;
+margin-bottom: 4%;
+
 `
  
 const HeaderCont = styled.View`
@@ -16,7 +23,7 @@ width: 100%;
 display:flex;
 flex-direction:row;
 justify-content:flex-start;
-margin-left:32px;
+margin-left:3%;
 
 `
 
@@ -38,35 +45,67 @@ export default function TaskCont(){
     } else if (list === "urgent"){
         recent.tlt = {recent}
     }
+
+    const [tasks, setTasks] = useState([])
+
+    useFocusEffect(
+      React.useCallback(() => {
+        //setCurrentUser(user.uid);
+        (async () => {
+            const auth = getAuth();
+            const db = getFirestore();
+            //const docRef =  await doc(db, "users", auth.currentUser.uid);
+            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              console.log(docSnap.data())
+              setTasks(docSnap.data().tasks)
+              setStars(docSnap.data().stars)
+            } else {
+              console.log("No such document!");
+            }
+        })();
+        return ()=>{}
+      }, [])
+    )
+
+
+    const [date, setDate] = React.useState(new Date());
+    const [value,setValue]=useState('');
+    const changeCat=(e)=>{
+        setValue(e)
+    }
     
 
     return (
         <MainCont>
             <HeaderCont>
-                <AppText style="sub"
+                <AppText 
+                align='left'
+                style="sub"
                 c="black"
                 text="Recently Added">
                 </AppText>
-                <Icon name='home' style={styles.icon}/>
-                <IconCont onClick={ () => { setList("urgent") } } >
-                    <Icon name="refresh"
-                    style={styles.icon}
-                    fill="black"
-                    />
-                </IconCont>
+                
+                
             </HeaderCont>
+            {tasks.map((o,i)=>
+            i >= tasks.length - 3 && 
+            // i === 1000 && 
+            <ArchiveList
+              month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
+              tlt={tasks[i].title}
+              key={i}
+              onDone={()=> HandleDone(i)} 
+              onEdit={()=> HandleEdit()}
+              num={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {day:"numeric"})}
+              date={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {weekday:"short"})}
+              typ={tasks[i].cat}
+              sub={tasks[i].cat}
+              >
+            </ArchiveList> )}
 
-
-            {recent.map((o,i)=>
-                <TaskList tlt={recent[i].title}
-                key={i}
-                num={recent[i].num}
-                date={recent[i].date}
-                typ={recent[i].cat}
-                sub={recent[i].cat}
-                onClick={()=> removeTodo()}
-                />)
-            }
+      
 
             
         </MainCont>

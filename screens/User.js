@@ -67,6 +67,13 @@ export default function User({navigation, route}) {
     const HandleSet = () =>{
       console.log("pressed")
     }
+    const HandleHelp = () =>{
+      navigation.navigate("Resources")
+    }
+
+    const HandleArchive = () =>{
+      navigation.navigate("Archive")
+    }
 
     const [checked, setChecked] = React.useState(true);
     const onCheckedChange = (isChecked) => {
@@ -100,8 +107,8 @@ export default function User({navigation, route}) {
             <SetToggle onToggle={()=>HandleSet()} i="volume-up-outline" t="Sound"></SetToggle>
             
             
-            <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleSet()}></SetWidget>
-            <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleSet()}></SetWidget>
+            <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleHelp()}></SetWidget>
+            <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleArchive()}></SetWidget>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

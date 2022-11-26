@@ -9,6 +9,7 @@ import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
+import Archive from './screens/Archive'
 import { LogBox } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useCallback } from 'react';
@@ -43,7 +44,7 @@ export default function App() {
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
-      initialRouteName='Home'
+      initialRouteName='Archive'
       screenOptions={{
         headerShown: false
       }}
@@ -83,6 +84,10 @@ export default function App() {
          <Stack.Screen 
           name="Resources" 
           component={Resources} 
+        />
+        <Stack.Screen 
+          name="Archive" 
+          component={Archive} 
         />
         
 
