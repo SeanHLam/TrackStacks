@@ -44,7 +44,7 @@ export default function App() {
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
-      initialRouteName='Home'
+      initialRouteName='SignIn'
       screenOptions={{
         headerShown: false
       }}

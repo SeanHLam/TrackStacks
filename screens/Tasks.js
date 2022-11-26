@@ -79,15 +79,6 @@ export default function Tasks({navigation, route}) {
       //setChecked(true)
     };
 
-    const [Confetti, setConfetti] = useState(false)
-  
-    useEffect(() => {
-      if (Confetti === false) {
-        setConfetti(true)
-      } else {
-        setConfetti(false)
-      }
-    },[Confetti]); 
 
     const HandleFinish = async ()=>{
       setModalVisible(false)
@@ -106,7 +97,6 @@ export default function Tasks({navigation, route}) {
     }
 
     const HandleClose = ()=>{
-      setConfetti(!Confetti)
       setModalVisible(false)
       donearr = isChecked
       donearr[index] = false
