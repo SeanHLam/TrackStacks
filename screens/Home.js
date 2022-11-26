@@ -150,7 +150,9 @@ export default function Home({navigation, route}) {
         <ColumnOneWrapper>
 
         <Widget
-        width='85%'
+        text1={new Date().toLocaleDateString(undefined, {day:"numeric"})}
+        text={new Date().toLocaleDateString(undefined, {month:"short"})}
+        width='95%'
         height='45%'
         style='header2' 
         cl='white'
@@ -159,7 +161,7 @@ export default function Home({navigation, route}) {
         />
 
         <Widget onWidget={HandleResources} 
-         width='85%'
+         width='95%'
          height='50%'
          style='header3'
          text='Help & Sources'
