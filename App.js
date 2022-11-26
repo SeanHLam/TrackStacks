@@ -44,7 +44,7 @@ export default function App() {
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
-      initialRouteName='Archive'
+      initialRouteName='Home'
       screenOptions={{
         headerShown: false
       }}
