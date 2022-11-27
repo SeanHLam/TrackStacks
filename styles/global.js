@@ -1,17 +1,22 @@
 import { View,Text, SafeAreaView, ScrollView, Image} from 'react-native';
-import { ApplicationProvider, Datepicker} from '@ui-kitten/components';
+import { ApplicationProvider, Datepicker, RangeDatepicker, Select, SelectItem, Layout} from '@ui-kitten/components';
 import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
 
 export const ScreenCont = styled.View`
-background-color:#FEFDF4;
+background-color:#FFFDF4;
 `
 
 export const Wrapper = styled.View`
 display:flex;
 align-items:center;
+flex-direction:column;
+`;
+
+export const SignUpWrapper = styled.View`
+display:flex;
 flex-direction:column;
 `;
 
@@ -24,8 +29,6 @@ justify-content:center;
 export const SignInFooter = styled.View`
 display:flex;
 flex-direction:row;
-padding:2%
-padding-top:2%;
 `;
 
 export const ButtonCont = styled.View`
@@ -68,7 +71,17 @@ align-items:center;
 
 export const SliderCont = styled(ScrollView)`
 background-color:#FEFDF4;
-width: 100%;   
+width: 100%;  
+`
+
+export const SelectCont = styled(Layout)`
+background-color:#FEFDF4;
+width:90%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+padding:3%;
+margin: 4% 0% 5% 0%;
 `
 
 export const HeaderCont = styled.View`
@@ -93,6 +106,17 @@ padding:3%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
+margin: 0% 0% 5% 0%;
+`
+
+export const PickDateRange = styled(RangeDatepicker)`
+width: 90%;
+background-color:#FEFDF4;
+padding:3%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+margin-bottom: 5%;
 `
 
 
@@ -104,14 +128,19 @@ margin-top:5%;
 export const DecorCont = styled.View`
 display:flex;
 flex-direction: row;
-width: 100%;
 align-items:center;
+justify-content:center;
 `
 
 export const DecorImage = styled(Image)`
-display:flex;
-justify-content: center;
-align-items: center;
+width: 90%;
+resizeMode:'contain'
+margin-bottom:5%;
+display: grid;
+grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 `
 
 const AppIcon = styled(Icon)`
@@ -151,28 +180,20 @@ width:50%;
 
 export const FormCont = styled.View`
 display:flex;
-align-items:center;
+align-items:flex-start;
+width:100%;
+margin-top:7%;
+`
+export const HeadCont = styled.View`
+margin-left:7%;
 width:100%;
 `
 
-export const HeadCont = styled.View`
-background-color: #FEFDF4;
-width: 100%;
-height:15%;
-display: flex;
-align-items: flex-end;
-justify-content: center;
-flex-direction: row;
-padding: 5% 5% 5% 5%;
-margin-top:10%;
-margin-bottom:10%;
-`
-
 export const HeadContInner = styled.View`
-flex-direction: row;
-width: 85%;
-justify-content: flex-end;
-align-items: center;
+display:flex;
+width:100%;
+height:auto;
+margin-top:25%;
 `
 
 export const ResourceWidgetCont = styled.View`
@@ -181,4 +202,16 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 width:100%;
+`
+
+export const AssetCont = styled.View`
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:row;
+width:auto;
+`
+
+export const MascotCont = styled.View`
+background-color:#FEFDF4;
 `

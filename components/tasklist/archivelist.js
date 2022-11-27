@@ -94,28 +94,25 @@ margin-bottom:2%
 
 
 
-export default function TaskList({
+export default function ArchiveList({
 onDone=()=>{},
 onEdit=()=>{},
 num="0",
 date="Date",
 tlt="Task Title",
+month="JAN",
 sub="CATEGORY",
 typ="single",
 sz="100%",
 checked=false
+
 })
 { 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     return (
         <Cont>
-            <Pressable onPress={onDone}>
-                <Checkbox style={styles.checkbox}
-                value={checked}
-                onValueChange={onDone}
-                color={checked ? '#363630' : '#FFFDF4'}
-                >
-                </Checkbox>
+            <Pressable>
+                <AppText wdth='100%' align='center' text={month} style="date" c="black"/>
             </Pressable>        
 
            <DateCont>
@@ -130,7 +127,7 @@ checked=false
                     
                 </TextCont>
                 <ICont>
-                    <Icon onPress={onEdit} name='edit-outline' fill={"#363630"} style={styles.icon}/>
+                    <Icon  name='edit-outline' fill={"#363630"} style={styles.icon}/>
                 </ICont>
                 
                 <ColTag clr={typ}></ColTag>
@@ -157,5 +154,6 @@ const styles = StyleSheet.create({
         height: 25,
         padding: 10,
         marginLeft:-5,
+        opacity:0
     },
   });

@@ -1,9 +1,9 @@
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/components';
+import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
@@ -16,8 +16,9 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
+import ArchiveList from '../components/tasklist/archivelist.js';
 
-export default function Tasks({navigation, route}) { 
+export default function Archive({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
           navigation.navigate("Home")
@@ -31,7 +32,6 @@ export default function Tasks({navigation, route}) {
     };
 
     const [tasks, setTasks] = useState([])
-    const [stars, setStars] = useState()
 
     useFocusEffect(
       React.useCallback(() => {
@@ -43,7 +43,7 @@ export default function Tasks({navigation, route}) {
             const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-              // console.log(docSnap.data())
+              console.log(docSnap.data())
               setTasks(docSnap.data().tasks)
               setStars(docSnap.data().stars)
             } else {
@@ -54,68 +54,11 @@ export default function Tasks({navigation, route}) {
       }, [])
     )
 
-    const HandleAdd = ()=>{
-      navigation.navigate("MakeTask")
-    };
-
-    const HandleEdit = ()=>{
-      navigation.navigate("EditTask")
-    };
-
-    var donearr = []
-    
-
-    const [modalVisible, setModalVisible] = useState(false);
-    const [isChecked, setChecked] = useState([]);  
-    const [index, setIndex] = useState();  
-
-    const HandleDone = (i)=>{
-      setModalVisible(true)
-      setIndex(i)
-      donearr = isChecked
-    
-        donearr[i] = true
-     
-      //setChecked(true)
-    };
-
-
-    const HandleFinish = async ()=>{
-      setModalVisible(false)
-      const db = getFirestore();
-      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-      tasks[index].status = "finished"
-      stars + 30
-      setDoc(
-        docRef,
-        {
-          tasks : tasks,
-        },
-        {merge: true}
-      )
-      updateDoc(docRef, {stars: increment(30)})
-    }
-
-    const HandleClose = ()=>{
-      setModalVisible(false)
-      donearr = isChecked
-      donearr[index] = false
-    }
 
     const [date, setDate] = React.useState(new Date());
     const [value,setValue]=useState('');
     const changeCat=(e)=>{
         setValue(e)
-    }
-    
-    function Tab({value}){
-    if (value.toString() == 'Long Term') {
-      value="Long-Term"
-    }else if (value.toString() == 'Single') {
-      value="Single"
-    }else {
-      value="To-Do"
-    }
     }
 
 
@@ -139,38 +82,25 @@ export default function Tasks({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
-        <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
+        
         <SliderCont>
-        {/*Confetti && <ConfettiCannon count={50} origin={{x: 0, y:-300}} fallSpeed={3000} fadeOut={true}
-            />*/}
           <Wrapper>
-            {/* <TaskSearch></TaskSearch> */}
-            <Calendar
-              date={date}
-              onSelect={(nextDate)=> {setDate(nextDate)}}>
-            </Calendar>
-            <AddCont>
-              <AddBttn onAdd={()=>HandleAdd()}></AddBttn>
-            </AddCont>
-            
             {tasks.map((o,i)=>
-            new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) == date.toLocaleDateString(undefined, {  weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'}) && tasks[i].status == "unfinished" &&
-              <TaskList
-                  
+            tasks[i].status == "finished" &&
+              <ArchiveList
+                month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
                 tlt={tasks[i].title}
                 key={i}
                 onDone={()=> HandleDone(i)} 
                 onEdit={()=> HandleEdit()}
-                num={date.toLocaleDateString(undefined, {day:"numeric"})}
-                date={date.toLocaleDateString(undefined, {weekday:"short"})}
+                num={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {day:"numeric"})}
+                date={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}
                 sub={tasks[i].cat}
-                checked={isChecked[i]}
+                
                 >
-              </TaskList> ) 
-              
+              </ArchiveList> ) 
             }
-
          
             
           </Wrapper>

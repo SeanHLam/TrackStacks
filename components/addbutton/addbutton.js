@@ -27,7 +27,7 @@ export default function AddBttn({
     };
     return (
     <Wrapper
-    onPress={onAdd()}
+    onPress={()=>onAdd()}
     onPressIn={() => bttPress("onPressIn")}
       onPressOut={() => bttPress("onPressOut")}
       onLongPress={() => bttPress("onLongPress")}

@@ -3,6 +3,7 @@ import { View,Text, TextInput,StyleSheet} from 'react-native';
 import styled from 'styled-components';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+import AppText from '../apptext/apptext';
 
 const TextCont = styled.View`
 display:flex;
@@ -25,7 +26,7 @@ export const Signin= ({ value,SetValue, placeholder,secureTextEntry,
     return(
         <View style={{width:"85%"}}>
                 <TextCont>
-                    <Text style={{fontWeight:"bold", fontSize:"20px", color:'#363630'}}>{text}</Text>
+                    <AppText text={text} style='sub'></AppText>
                 </TextCont>
                 <InputCont>
                     <View style={styles.container}>

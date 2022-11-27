@@ -37,8 +37,8 @@ display: flex;
 
 
 export default function UserWidget({
-name="Sean Lam",
-email="slam152@gmail.com",
+name="",
+email="",
 }){
     return (
     <Wrapper>

@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import { ButtonCont  } from '../../styles/global';
 import { Layout, Text } from '@ui-kitten/components';
 import styled from 'styled-components';
-import { Button, TouchableOpacity, Pressable  } from 'react-native';
+import { Button, TouchableOpacity, Pressable, StyleSheet  } from 'react-native';
 import AppText from '../apptext/apptext';
-
+import { Icon } from '@ui-kitten/components';
 
 export const Buttonst = styled.Pressable`
 display:flex;
@@ -16,21 +16,25 @@ size === 'large' && '40%' ||
 size === 'huge' && '60%' || 
 '40%'
 };
-
+flex-direction:row;
 justify-content:center;
 align-items:center;
 align-content:center;
 text-align:center;
 border-radius: 10px;
 padding:3%;
-margin:3%;
 `
-
 export default function AppBttn({
   bttntext ="Sign Up",
   style = "large",
   alignItems="center",
   onBttn=()=>{},
+  nme="star",
+  clr="#fcf9ed",
+  dsp='none',
+  margin='3%',
+  marginTop='0%',
+  marginBottom='0%',
 }){
 
   const bttPress = (pressType) => {
@@ -40,6 +44,9 @@ export default function AppBttn({
     return(
      
       <Buttonst 
+      margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
       size={style} 
       onPress={onBttn}
       onPressIn={() => bttPress("onPressIn")}
@@ -64,7 +71,8 @@ export default function AppBttn({
         shadowRadius: isPress ? '0' : '0.1',
         shadowOffset: isPress ? { width: 0, height: 0} : { width:4, height:4 }
       }}*/
-      >
+      > 
+        <Icon name={nme} fill={clr} display={dsp} style={styles.icon}></Icon>
          <AppText align='center' c="black" style='sub' text={bttntext}/>
       </Buttonst>
 
@@ -72,5 +80,11 @@ export default function AppBttn({
 }
 
 
-
-
+const styles = StyleSheet.create({
+  icon: {
+      width: 30,
+      height: 30,
+      marginLeft:10,
+      marginRight:-10
+  },
+});

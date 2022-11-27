@@ -4,20 +4,47 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, HeaderCont, PickDate, PickDateRange, SelectCont, MascotCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import Category from '../components/categorymenu/categorymenu.js';
+import SubTask from '../components/addtask/subtask.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/button/appbutton.js';
 import TaskTitle from '../components/form/tasktitle.js';
 import AddDetail from '../components/addtask/addtaskdetail.js';
-import { Datepicker, Layout, Text } from '@ui-kitten/components';
+import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
+import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
+import { Datepicker, Layout, Text,  RangeDatepicker, Select, SelectItem,  IndexPath } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
+import { doc, updateDoc, arrayUnion, arrayRemove, getFirestore} from "firebase/firestore";
+import { View} from 'react-native';
+import Mascot from '../assets/mascot.svg'
+
+const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
+const customMapping = { strict: strictTheme };
+
+const data = [
+  'Single',
+  'To Do',
+  'Long Term',
+];
 
 
-export default function MakeTask({navigation, route}) { 
+export default function MakeTask({navigation, route}) {
+  const [date, setDate] = React.useState(new Date());
+  const [range, setRange] = React.useState({});
+  const [text, onChangeText] = React.useState('');
+  const [sub, onSub] = React.useState('');
+  const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0))
+  const [index, setIndex] = useState(0)
+  const [subTask, setSubTask] = useState([{
+    taskname:'',
+    status:"unfinished"
+  }])
+  
+  const [title, setTitle] = useState("Pick a Category")
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -32,9 +59,87 @@ export default function MakeTask({navigation, route}) {
     const HandleBack = ()=>{
       navigation.navigate("Tasks")
     }
-    const [date, setDate] = React.useState(new Date());
+    
+    const HandleTitle = (t)=>{
+      onChangeText(t)
+    }
+    
+ 
+
+    const HandleSub = (t)=>{
+      subTask[index].taskname = t
+      onSub(t)
+      console.log(console.log(subTask))
+
+    }
+
+    const HandleAdd = ()=>{
+      const db = getFirestore();
+      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      if(data[selectedIndex.row] === "Long Term"){
+        let loop = new Date(range.startDate);
+        while (loop <= range.endDate) {
+          let newDate = loop.setDate(loop.getDate() + 1);
+          updateDoc(docRef, {
+            tasks: arrayUnion({
+              title: text,
+              date: loop,
+              cat: data[selectedIndex.row],
+              status: "unfinished"
+            })
+          });
+          loop = new Date(newDate);
+        }
+      }else if(data[selectedIndex.row] === "Single"){
+        updateDoc(docRef, {
+          tasks: arrayUnion({
+            title: text,
+            date: date,
+            cat: data[selectedIndex.row],
+            status: "unfinished"
+          })
+        });
+      }else if(data[selectedIndex.row] === "To Do"){
+        updateDoc(docRef, {
+          tasks: arrayUnion({
+            title: text,
+            date: date,
+            cat: data[selectedIndex.row],
+            sub: subTask,
+            status: "unfinished"
+          })
+        });
+      }
+  
+
+    }
+
+    const HandleCat = (e)=>{
+     setTitle(e)
+     console.log(e)
+    }
+   
+    //console.log(date.toLocaleDateString(undefined, {day:"numeric"}), date, range)
+    
+ 
+    const renderOption = (title) => (
+      <SelectItem title={title}/>
+    );
+
+    const handleAddSub = () => {
+      setSubTask([
+        ...subTask,
+        {
+          taskname:"",
+          status:"unfinished"
+        }
+      ])
+      setIndex(index + 1)
+    }
+    //console.log(subTask)
     return(
       <ApplicationProvider 
+      customMapping={customMapping}
       style={{display: "flex", 
       justifyContent: 'center',
       alignItems: 'center',
@@ -46,6 +151,7 @@ export default function MakeTask({navigation, route}) {
         ...eva.light,
         ...theme
       }
+      
       }>
         <IconRegistry 
         icons={EvaIconsPack} 
@@ -57,16 +163,64 @@ export default function MakeTask({navigation, route}) {
               <AppText style='header' wdth='65%' text='Add Task'></AppText>
               <AppBttn onBttn={HandleBack} style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
-            <TaskTitle></TaskTitle>
-            <Category></Category>
-           
-            <AddDetail></AddDetail>
-            <PickDate
-              date={date}
-              onSelect={nextDate => setDate(nextDate)}
-            ></PickDate>
-             <RepeatMenu></RepeatMenu>
-            <AppBttn onBttn={HandleBack} style='small' bttntext='Add'></AppBttn>
+            <TaskTitle addTitle={HandleTitle} t={text}></TaskTitle>
+            {/* <Category onCat={HandleCat}></Category> */}
+            <SelectCont>
+              <Select
+              style={{marginTop:0,}}
+              selectedIndex={selectedIndex}
+              value={data[selectedIndex.row]}
+              onSelect={index => setSelectedIndex(index)}> 
+                 {data.map(renderOption)}
+              </Select>
+            </SelectCont> 
+
+            { data[selectedIndex.row] === "To Do" &&
+                    <AddDetail
+              
+                    changeText={HandleSub}
+          
+                    addTask={()=>handleAddSub()}
+                    subTasks={subTask}
+                  >
+                  </AddDetail>
+            }
+   
+            {/* {subTask.map((o,i)=> (
+            <SubTask
+            onText={HandleSub}
+            t={subTask[i].taskname}
+            key={i}/>)
+          )} */}
+          
+            { data[selectedIndex.row] === "Single" && 
+                <PickDate
+                date={date}
+                onSelect={nextDate => setDate(nextDate)}
+              ></PickDate>
+            }
+
+            {data[selectedIndex.row] === "To Do" && 
+                <PickDate
+                date={date}
+                onSelect={nextDate => setDate(nextDate)}
+              ></PickDate>
+            }
+
+            
+          
+            
+            { data[selectedIndex.row] === "Long Term" &&
+              <PickDateRange
+              range={range}
+              onSelect={nextRange => setRange(nextRange)}
+              />
+            }
+            
+             
+             {/* <RepeatMenu></RepeatMenu> */}
+            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Add Task'></AppBttn>
+         
           </Wrapper>
         </SliderCont>
         <NavWrapper>

@@ -37,37 +37,6 @@ export default function User({navigation, route}) {
   const [tReview, setTReview] = useState()
   const [earned, setEarned] = useState()
 
-  // useEffect(()=>{
-  //   // get current notes from backend
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       // User logged in already or has just logged in.
-  //       setCurrentUser(user.uid)
-  //       console.log(user.uid);
-  //     } else {
-  //       // User not logged in or has just logged out.
-  //     }
-  //   });
-  //   });
-
-  //   (async () => {
-  //     const docRef =  await doc(db, "users", currentUser);
-  //     const docSnap = await getDoc(docRef);
-  //     if (docSnap.exists()) {
-  //       console.log("Document data:", docSnap.data());
-  //       setName(docSnap.data().displayName)
-  //       setEmail(docSnap.data().email)
-  //       setTDone(docSnap.data().stats.done)
-  //       setTDoing(docSnap.data().stats.doing)
-  //       setTReview(docSnap.data().stats.review)
-  //       setEarned(docSnap.data().stats.earned)
-  //     } else {
-  //       // doc.data() will be undefined in this case
-  //       console.log("No such document!");
-  //     }
-  // })()
-
-
   useFocusEffect(
     React.useCallback(() => {
       //setCurrentUser(user.uid);
@@ -75,7 +44,8 @@ export default function User({navigation, route}) {
 
         const auth = getAuth();
         const db = getFirestore();
-          const docRef =  await doc(db, "users", auth.currentUser.uid);
+         // const docRef =  await doc(db, "users", auth.currentUser.uid);
+          const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             console.log(docSnap.data())
@@ -96,6 +66,13 @@ export default function User({navigation, route}) {
     
     const HandleSet = () =>{
       console.log("pressed")
+    }
+    const HandleHelp = () =>{
+      navigation.navigate("Resources")
+    }
+
+    const HandleArchive = () =>{
+      navigation.navigate("Archive")
     }
 
     const [checked, setChecked] = React.useState(true);
@@ -130,8 +107,8 @@ export default function User({navigation, route}) {
             <SetToggle onToggle={()=>HandleSet()} i="volume-up-outline" t="Sound"></SetToggle>
             
             
-            <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleSet()}></SetWidget>
-            <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleSet()}></SetWidget>
+            <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleHelp()}></SetWidget>
+            <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleArchive()}></SetWidget>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

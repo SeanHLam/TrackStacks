@@ -8,9 +8,10 @@ import { user } from '../../data/userdata';
 import logo from '../../assets/TSlogo.png'
 import SvgUri from 'react-native-svg-uri';
 import { db} from '../../firebase.js'
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, getDoc, getFirestore, onSnapshot } from "firebase/firestore";
 import { useState, useEffect } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Cont = styled.View`
 background-color: #FFFDF4;
@@ -50,52 +51,35 @@ export default function Header({
     const [currentUser, setCurrentUser] = useState()
     const [stars, setStars] = useState()
 
-  // useEffect(()=>{
-  //   // get current notes from backend
-  //   // setCurrentUser('test');
-  //   const auth = getAuth();
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       console.log("user", user);
-  //       // User logged in already or has just logged in.
-  //       setCurrentUser(user.uid)
+    useFocusEffect(
+      React.useCallback(() => {
+        //setCurrentUser(user.uid);
+        (async () => {
+  
+          const auth = getAuth();
+          const db = getFirestore();
+          const check = onSnapshot(doc(db, 'users', "gmYamKsYiOMiHSj8e099gj0PEvn2"), (doc)=>{
+            console.log("check", doc.data())
+            setStars(doc.data().stars)
+            // const docSnap = await getDoc(docRef);
+          //     if (docSnap.exists()) {
+          //       console.log(docSnap.data())
+          //       setStars(docSnap.data().stars)
+          //     } else {
+          //       // doc.data() will be undefined in this case
+          //       console.log("No such document!");
+          //     }
+          })
+            //const docRef =  await doc(db, "users", auth.currentUser.uid);
+            // const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            
+        })();
+        return ()=>{}
+      }, [])
+    )
+  
+  
 
-  //       (async () => {
-  //         const docRef =  await doc(db, "users", currentUser);
-  //         const docSnap = await getDoc(docRef);
-  //         if (docSnap.exists()) {
-           
-  //           setStars(docSnap.data().stars)
-  //         } else {
-  //           // doc.data() will be undefined in this case
-  //           console.log("No such document!");
-  //         }
-  //     })()
-  //     } else {
-  //       // User not logged in or has just logged out.
-  //     }
-  //   });
-  //   },[]);
-
-    
-    useEffect(()=>{
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user)=>{
-        if (user) {
-          setCurrentUser(user.uid);
-          (async () => {
-              const docRef =  await doc(db, "users", auth.currentUser.uid);
-              const docSnap = await getDoc(docRef);
-              if (docSnap.exists()) {
-                setStars(docSnap.data().stars)
-              } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-              }
-          })()
-        }
-      })
-    },[])
     return(
         <Cont>
             <ICont >

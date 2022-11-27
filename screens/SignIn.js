@@ -1,34 +1,28 @@
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import {Text} from 'react-native';
+import {Text, Pressable} from 'react-native';
 import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner, MascotCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import {Signin} from '../components/form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
 import styled from 'styled-components';
 import AppBttn from '../components/button/appbutton';
-import {Facebook} from '../components/form/facebook';
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-
-const Divider = styled.Text`
-color: #363630;
-font-size: 25px;
-font-weight:bold;
-
-`
-
-
+import Mascot from '../assets/mascot.svg'
+import Logo from '../assets/logo.svg';
+import { MotiView, MotiText } from 'moti'
+import { Easing } from 'react-native-reanimated';
 
 export default function SignIn({navigation, route}) { 
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
+  const [error, setError]= useState(false);
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -38,11 +32,20 @@ export default function SignIn({navigation, route}) {
         navigation.navigate("Decor")
       }else if(new_page === 4){
         navigation.navigate("User")
+      }else if(new_page === -1){
+        navigation.navigate("SignUp")
       }
-  
+      
     }
-    const HandleSignIn = () =>{
-      navigation.navigate("Home")
+    const HandleSignIn = (e) =>{
+      e.preventDefault();
+      if(email.length == 0){
+        setError(true)
+      }
+      if(password.length == 0){
+        setError(true)
+      }else( navigation.navigate("Home"))
+      
       signInWithEmailAndPassword(auth,email,password)
       .then((re) => {
         console.log(re);
@@ -68,20 +71,50 @@ export default function SignIn({navigation, route}) {
         <IconRegistry 
         icons={EvaIconsPack} 
         />
-
         <SliderCont>
-        <HeadCont>
+          <HeadCont>
+
           <HeadContInner>
-          <AppText text='TrackStacks' style='header'></AppText>
+            <MotiView
+              delay={300}
+              from={{ translateX: 10 , opacity: 0}}
+              animate={{ translateX: 0, opacity: 1, zIndex:50}}
+              transition={{
+                type: 'timing',
+                duration: 600,
+            }}>
+              <AppText text='TrackStacks' style='header'/>
+            </MotiView>
+            <MotiView
+              delay={300}
+              from={{ position:'absolute', top: '-30%', left:'-5%', opacity: 0}}
+              animate={{ position:'absolute', top: '-30%', left:'0%', opacity: 0.2, zIndex:-10}}
+              transition={{
+                type: 'timing',
+                duration: 600,
+                easing: Easing.linear,
+            }}>
+              <Logo width={60}/>
+            </MotiView>
           </HeadContInner>
-        </HeadCont>
-        <Wrapper>
+        
+        <MotiView
+          delay={1100}
+          from={{ translateY:-10, opacity: 0}}
+          animate={{ translateY:0, opacity: 1}}
+          transition={{
+            type: 'timing',
+            duration: 900,
+        }}>  
+        <Wrapper style={{alignItems:'flex-start'}}>
         <FormCont>
           <Signin
             placeholder="Enter Email Address"
             value={email}
             SetValue={setEmail}
           />
+           {error&&email.length <=0?
+          <AppText text='Invalid Email' c='red' style='task'></AppText>:""}
           <Signin 
             placeholder="Enter Password" 
             text='Password' 
@@ -89,26 +122,35 @@ export default function SignIn({navigation, route}) {
             SetValue={setPassword}
             secureTextEntry={true}
           />
-          <AppText text='Forgot Password?' align='left' c='blue' style='tasksub' paddingleft='3%'/>
+                    {error&&password.length <=0?
+          <AppText text='Invalid Password' c='red' style='task'></AppText>:""}
+          <AppText text='Forgot Password?' c='blue' style='tasksub'/>
         </FormCont>
-          <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='large'/>
-          <AppText text='--- or —--' style='sub' align='center' margin='5%'/>
-          <Facebook text='Continue with Facebook' align='center'/>
+          <AppBttn onBttn={HandleSignIn} bttntext='Sign In' style='small' margin='0%' marginTop='5%' marginBottom='5%'/>
+          {/*<AppText text='--- or —--' style='sub' align='center' margin='5%'/>*/}
           <SignInFooter>
-            <AppText text='New user?' style='task' align='right'/>
-            <AppText text='Sign Up' style='task' align='left' c='blue' paddingleft='2%'/>
+            <AppText text='New user?' style='task' wdth='20%'/>
+            <Pressable onPress={()=>HandlePage(-1)}>
+            <AppText text='Sign Up' wdth='100%' style='task' c='blue'/>
+            </Pressable>
           </SignInFooter>
-          
-          
-         
+                
         </Wrapper>
-        
-        
-         </SliderCont>
-         
-       
-        
-         
-        
+        </MotiView>
+        </HeadCont>
+
+        </SliderCont>
+        <MotiView
+          delay={1400}
+          from={{ position:'absolute', bottom:'5%', right:'3%', opacity: 0}}
+          animate={{ position:'absolute', bottom:'5%', right:'8%', opacity: 1}}
+          transition={{
+            type: 'timing',
+            duration: 700,
+        }}>
+          <MascotCont>
+              <Mascot width={80} height={80} />
+          </MascotCont>
+          </MotiView>
       </ApplicationProvider>
     )};
