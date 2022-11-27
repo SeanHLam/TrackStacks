@@ -17,6 +17,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import {Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 import AppLoading from "expo-app-loading";
+
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
