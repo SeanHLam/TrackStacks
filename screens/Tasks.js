@@ -4,7 +4,7 @@ import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/component
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect} from 'react';
-import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, AddCont, ConfettiCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -68,6 +69,7 @@ export default function Tasks({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false);
     const [isChecked, setChecked] = useState([]);  
     const [index, setIndex] = useState();  
+    const [confetti, setConfetti] = useState()
 
     const HandleDone = (i)=>{
       setModalVisible(true)
@@ -79,8 +81,8 @@ export default function Tasks({navigation, route}) {
       //setChecked(true)
     };
 
-
     const HandleFinish = async ()=>{
+      setConfetti(!confetti)
       setModalVisible(false)
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
@@ -96,11 +98,20 @@ export default function Tasks({navigation, route}) {
       updateDoc(docRef, {stars: increment(30)})
     }
 
+    useEffect(() => {
+      if (confetti === false) {
+        setConfetti(true)
+      }
+    }, [confetti]);
+
+
     const HandleClose = ()=>{
+      setConfetti(!confetti)
       setModalVisible(false)
       donearr = isChecked
       donearr[index] = false
     }
+
 
     const [date, setDate] = React.useState(new Date());
     const [value,setValue]=useState('');
@@ -141,8 +152,6 @@ export default function Tasks({navigation, route}) {
         <Header/>
         <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
-        {/*Confetti && <ConfettiCannon count={50} origin={{x: 0, y:-300}} fallSpeed={3000} fadeOut={true}
-            />*/}
           <Wrapper>
             {/* <TaskSearch></TaskSearch> */}
             <Calendar
@@ -170,6 +179,7 @@ export default function Tasks({navigation, route}) {
               </TaskList> ) 
               
             }
+                        {confetti === true ? <ConfettiCannon count={60} origin={{x:200, y:50}} fallSpeed={3000} fadeOut={true}/> : ''}
 
          
             

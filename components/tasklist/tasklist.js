@@ -36,7 +36,10 @@ width:11%;
 const ListCont = styled.View`
 display:flex;
 width: 60%;
+height:70%;
 flex-direction:row;
+justify-content:center;
+align-items:center;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 2px 2px #363630;
@@ -74,6 +77,7 @@ background-color: ${({clr}) =>
 
 const ColTag = styled.View`
 width: 7%;
+height:80%;
 display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;
@@ -82,7 +86,7 @@ background-color: ${({clr}) =>
                     clr === 'Long Term' && '#85C0FF' ||
                     clr === 'Single' && '#89608E'
                 };
-margin-left: 5.7%;
+margin-left: 3%;
 `
 
 const ICont = styled.View`
@@ -132,8 +136,7 @@ checked=false
                 <ICont>
                     <Icon onPress={onEdit} name='edit-outline' fill={"#363630"} style={styles.icon}/>
                 </ICont>
-                
-                <ColTag clr={typ}></ColTag>
+                <ColTag clr={typ}/>
             </ListCont>
             
         </Cont>

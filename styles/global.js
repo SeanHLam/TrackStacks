@@ -215,3 +215,8 @@ width:auto;
 export const MascotCont = styled.View`
 background-color:#FEFDF4;
 `
+
+export const ConfettiCont = styled.View`
+z-index:50;
+width:100%;
+`
