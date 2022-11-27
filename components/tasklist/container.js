@@ -60,7 +60,7 @@ export default function TaskCont(){
             if (docSnap.exists()) {
               console.log(docSnap.data())
               setTasks(docSnap.data().tasks)
-              setStars(docSnap.data().stars)
+          
             } else {
               console.log("No such document!");
             }
