@@ -79,6 +79,37 @@ export default function SignUp({navigation, route}) {
 
             items:[
               
+            ],
+
+            shop:[
+              {
+                name: "Apple Rug" ,
+                purchased: false
+              },
+             {
+                name: "Cactus",
+                purchased: false
+              },
+              {
+                name: "Dark Cat" ,
+                purchased: false
+              },
+              {
+                name: "Fat Cat",
+                purchased: false
+              },
+              {
+                name:"Lavender",
+                purchased: false
+              },
+              {
+                name:" Mascot",
+                purchased: false
+              },
+              {
+                name: "Wolf",
+                purchased: false
+              },
             ]
 
           });

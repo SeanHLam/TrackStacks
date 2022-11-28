@@ -87,7 +87,7 @@ export default function Header({
             </ICont>
             <SCont>
                 <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
-                <AppText wdth={"15%"} align='right' text={stars} style='sub'></AppText>
+                <AppText wdth={"20%"} align='left' text={stars} style='sub'></AppText>
             </SCont>
         </Cont>
     )

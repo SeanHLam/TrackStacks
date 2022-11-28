@@ -17,6 +17,7 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
 import ArchiveList from '../components/tasklist/archivelist.js';
+import AppText from '../components/apptext/apptext.js';
 
 export default function Archive({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -85,6 +86,7 @@ export default function Archive({navigation, route}) {
         
         <SliderCont>
           <Wrapper>
+            <AppText style='title'  text='Archive'></AppText>
             {tasks.map((o,i)=>
             tasks[i].status == "finished" &&
               <ArchiveList
