@@ -26,6 +26,7 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import ItemDrag from '../components/assetslider/itemdrag.js';
+import ModalTut from '../components/modal/modaltut.js';
 
 
 
@@ -85,6 +86,8 @@ export default function Decor({navigation, route}) {
 
     const [shopIndex, setShopIndex] = useState([]);
     const [user, setUser] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalPage, setModalPage] = useState(1);
     
 
     useFocusEffect(
@@ -109,6 +112,22 @@ export default function Decor({navigation, route}) {
           return ()=>{}
         }, [])
       )
+
+      const handleModal = () => {
+        setModalVisible(true)
+      }
+
+     const  handleModalClose = () => {
+        setModalVisible(false)
+      }
+
+      const handleModalNext = () =>{
+        setModalPage(modalPage + 1)
+      }
+
+      const handleModalBack = () => {
+        setModalPage(modalPage - 1)
+      }
     
 
     const [background, setBackground] = useState(false);
@@ -170,12 +189,21 @@ export default function Decor({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
+        <ModalTut
+        onYes={handleModalNext} 
+        onClose={handleModalClose} 
+        onNo={handleModalBack}  
+        mdlvis={modalVisible}
+        page={modalPage}
+        ></ModalTut>
         <SliderCont>
           <Wrapper>
             <DecorCont>
               <AppBttn bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
               {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
-              <IconBttn onIcon={console.log(1)} i={"question-mark-circle"}></IconBttn>
+              <IconBttn style={{
+                alignItems: "right",
+              }} onIcon={handleModal} i={"question-mark-circle"}></IconBttn>
             </DecorCont>
             <LottieView
               autoPlay
@@ -212,11 +240,6 @@ export default function Decor({navigation, route}) {
             )}
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             </BgCont>
-            
-
-            
-            
-            
             <AssetCont>
               <SliderWrapper>
                   <Slider showsHorizontalScrollIndicator={false} horizontal={true}>

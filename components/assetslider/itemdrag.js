@@ -46,7 +46,7 @@ export default function ItemDrag({
     }
     
     return (
-        <Wrapper
+        <Wrapper        
         onPress={()=>onImg()}
         style={{
             opacity: opacity

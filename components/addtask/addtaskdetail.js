@@ -32,9 +32,11 @@ export default function AddDetail({
   changeText=()=>{},
   onChange=()=>{},
   addTask=()=>{},
+  onMark=()=>{},
   detail="",
   subIndex=0,
-  subTasks = []
+  subTasks = [],
+  mark=false
 }){
   const [text, onChangeText] = React.useState('Add Sub Task');
   const [subTask, setSubTask] = useState([{
@@ -52,8 +54,10 @@ export default function AddDetail({
    <AppText style='sub' text='Details'></AppText>
    {subTasks.map((o,i)=> (
     <SubTask
-    t={subTasks[i]}
+    t={subTasks[i].taskname}
     onText={changeText}
+    onCheck={onMark}
+    check={subTasks[i].status}
     key={i}/>)
   )}
   
