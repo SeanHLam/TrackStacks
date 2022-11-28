@@ -18,15 +18,16 @@ import AppleRug from '../assets/applerug.svg';
 import Cactus from '../assets/cactus.svg';
 import DarkCat from '../assets/darkcat.svg';
 import FatCat from '../assets/fatcat.svg';
+import AppText from '../components/apptext/apptext.js';
 import Wolf from '../assets/wolf.svg';
 import { View, Image, ScrollView, Text,Pressable} from 'react-native';
 import LottieView from 'lottie-react-native';
 import Item from '../components/assetslider/item.js';
+import ShopItem from '../components/shopitem/shopitem.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
-
-
+import ModalShop from '../components/modal/modalshop.js';
 
 const Slider = styled(ScrollView)`
 padding:3%;
@@ -39,11 +40,12 @@ font-size: 50px;
 opacity:0.2;
 `
 
-const Content = styled.View`
+const ShopWrapper = styled.View`
 display:flex;
 flex-direction:row;
 justify-content:center;
 align-items:center;
+flex-wrap: wrap;
 `
 const SliderWrapper = styled.View`
 width:71%;
@@ -58,7 +60,7 @@ margin-right: 4%;
 
 
 
-export default function Decor({navigation, route}) { 
+export default function Shop({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -71,11 +73,23 @@ export default function Decor({navigation, route}) {
       }
     }
 
+    const [shop, setShop] = useState([
+        {
+            name:"Cactus",
+            price: 9999
+        }
 
-    
-
-    const [shopIndex, setShopIndex] = useState([]);
+    ])
     const [user, setUser] = useState([]);
+    const [bought, setBought] = useState([{
+        name:"Cactus",
+        purchased:false
+    }]);
+    const [stars, setStars] = useState([]);
+    const [purchased, setPurchased] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalPage, setModalPage] = useState(1);
+    const [shopIndex, setShopIndex] = useState(0);
     
 
     useFocusEffect(
@@ -87,13 +101,22 @@ export default function Decor({navigation, route}) {
               //const docRef =  await doc(db, "users", auth.currentUser.uid);
               const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
               const docSnap = await getDoc(docRef);
+              const itemRef =  await doc(db, "items", "decor");
+              const itemSnap = await getDoc(itemRef);
               if (docSnap.exists()) {
                 setUser(docSnap.data().items)
-      
+                setBought(docSnap.data().shop)
+                setStars(docSnap.data().stars)
               } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
-              } 
+              } if (itemSnap.exists()) {
+                console.log(itemSnap.data())
+                setShop(itemSnap.data().items)
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
 
             
           })();
@@ -101,24 +124,57 @@ export default function Decor({navigation, route}) {
         }, [])
       )
     
-
-    const [background, setBackground] = useState(false);
-    const handleBg = () => {
-      if (background == false){
-        setBackground(true)
-      } else if (background == true){
-        setBackground(false)
-      }
+    
+    const HandleBuy = (i) =>{
+       if (bought[i].purchased === false){
+        setModalVisible(true)
+        setShopIndex(i)
+       }
+      
     }
 
-   
-      const animation = useRef(null);
-      useEffect(() => {
-        // You can control the ref programmatically, rather than using autoPlay
-        animation.current?.play();
-      }, []);
-  
-    
+    const HandleClose = () =>{
+        setModalVisible(false)
+        setModalPage(1)
+    }
+
+    const HandleYes = async () =>{
+        const db = getFirestore();
+        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        if (stars >= shop[shopIndex].price){
+            bought[shopIndex].purchased = true
+            setDoc(
+                docRef,
+                {
+                  shop : bought,
+                },
+                {merge: true}
+              )
+            updateDoc(docRef, {
+                items: arrayUnion({
+                    name:shop[shopIndex].name,
+                    purchased:true,
+                    opacity:0,
+                    invOpacity: 1,
+                    x: "621 px",
+                    y: "1218 px",
+                    id: shopIndex
+                })
+            });
+            
+            setModalPage(2)
+            //add minus so it costs stars   
+            updateDoc(docRef, {stars: increment(-shop[shopIndex].price)})
+
+        }else{
+            setModalPage(3)
+        }
+        
+    }
+
+
+
+
     return(
       <ApplicationProvider 
       style={{display: "flex", 
@@ -137,49 +193,29 @@ export default function Decor({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
+        <ModalShop 
+        onYes={HandleYes} 
+        onClose={console.log(1)} 
+        onNo={HandleClose}  
+        mdlvis={modalVisible}
+        page={modalPage}
+        img={shop[shopIndex].name}
+        ></ModalShop>
         <SliderCont>
           <Wrapper>
-            <DecorCont>
-              <AppBttn bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
-              {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
-              <IconBttn onIcon={console.log(1)} i={"question-mark-circle"}></IconBttn>
-            </DecorCont>
-            <LottieView
-              autoPlay
-              ref={animation}
-              style={{
-                width: 300,
-                height: 300,
-                zIndex: -20,
-                position: "absolute",
-                top: 35,
-              }}
-                
-              source={require('../assets/movingBgCool.json')}
-            />
-
-            {/* <SvgCssUri uri="../assets/lavender.svg" width="100" height="100" /> */}
-            <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
-            
-            <AssetCont>
-              <SliderWrapper>
-                  <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
-                <Content>
-                {user.map((o,i)=>
-                    <Item
-                    onImg={console.log(1)}
-                    opacity={1} 
-                    image={user[i].name}
+            <AppText style='title' text='Shop'></AppText>
+            <ShopWrapper>
+                {shop.map((o,i)=>
+                    <ShopItem
+                    onBttn={()=>HandleBuy(i)}
+                    name={shop[i].name}
                     key={i}
-                    ></Item>
+                    price={shop[i].price}
+                    o={bought[i].purchased === true ? .3 : 1}
+                    ></ShopItem>
                 )}
-            
-                </Content>
-                </Slider>
-              </SliderWrapper>
-              <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
-            </AssetCont>
-
+            </ShopWrapper>
+            <AppBttn bttntext="Back" onBttn={()=>navigation.navigate("Decor")} marginBottom='5%'></AppBttn>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

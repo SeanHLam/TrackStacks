@@ -9,7 +9,7 @@ import FatCat from '../../assets/fatcat.svg';
 import Wolf from '../../assets/wolf.svg';
 import Mascot from '../../assets/mascot.svg'
 
-const Wrapper = styled.View`
+const Wrapper = styled.Pressable`
 
 `
 
@@ -31,7 +31,10 @@ align-items:center;
 `
 
 export default function Item({
- image="AppleRug"
+ image="AppleRug",
+ size="70",
+ opacity=1,
+ onImg=()=>{}
 }) {
     
     const HandleClick = () => {
@@ -39,33 +42,37 @@ export default function Item({
     }
     
     return (
-        <>
+        <Wrapper
+        onPress={()=>onImg()}
+        style={{
+            opacity: opacity
+        }} >
             
-            {image === "AppleRug" &&
-                <AppleRug width={70} height={70}/>
+            {image === "Apple Rug" &&
+                <AppleRug width={size} height={size}/>
             } 
             {image === "Cactus" &&
-                <Cactus width={70} height={70}/>
+                <Cactus width={size} height={size}/>
             } 
-            {image === "DarkCat" &&
-                <DarkCat width={70} height={70}/>
+            {image === "Dark Cat" &&
+                <DarkCat width={size} height={size}/>
             } 
-            {image === "FatCat" &&
-                <FatCat width={70} height={70}/>
+            {image === "Fat Cat" &&
+                <FatCat width={size} height={size}/>
             } 
             {image === "Lavender" &&
-                <Lavender width={70} height={70}/>
+                <Lavender width={size} height={size}/>
             } 
-            {image === "mascot" &&
-                <Mascot width={70} height={70}/>
+            {image === "Mascot" &&
+                <Mascot width={size} height={size}/>
             } 
             {image === "Wolf" &&
-                <Wolf width={70} height={70}/>
+                <Wolf width={size} height={size}/>
             }
             
 
 
 
-        </>
+        </Wrapper>
     )
 }

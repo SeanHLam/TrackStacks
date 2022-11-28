@@ -85,7 +85,7 @@ export default function Tasks({navigation, route}) {
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
       tasks[index].status = "finished"
-      stars + 30
+      stars + 50
       setDoc(
         docRef,
         {
@@ -93,7 +93,7 @@ export default function Tasks({navigation, route}) {
         },
         {merge: true}
       )
-      updateDoc(docRef, {stars: increment(30)})
+      updateDoc(docRef, {stars: increment(50)})
     }
 
     const HandleClose = ()=>{
