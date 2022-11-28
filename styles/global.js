@@ -126,10 +126,12 @@ margin-top:5%;
 `
 
 export const DecorCont = styled.View`
+width: 95%;
 display:flex;
 flex-direction: row;
 align-items:center;
-justify-content:center;
+justify-content:flex-start;
+margin-bottom:4%;
 `
 
 export const DecorImage = styled(Image)`
@@ -210,6 +212,7 @@ align-items:center;
 justify-content:center;
 flex-direction:row;
 width:auto;
+margin-bottom: 5%;
 `
 
 export const MascotCont = styled.View`

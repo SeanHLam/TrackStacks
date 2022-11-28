@@ -31,6 +31,10 @@ export const colour = {
     "brush":"#99FFDF",
 },
 
+"Shop":{
+    "brush":"#99FFDF",
+},
+
 "User":{
     "user":"#99FFDF",
 },

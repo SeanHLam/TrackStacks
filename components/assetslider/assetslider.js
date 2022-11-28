@@ -45,7 +45,7 @@ export default function AssetSlider() {
     
     return (
         <Wrapper>
-            <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
+            {/* <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
             <Content>
                 <Lavender width={100} height={100}/>
                 <Divider>|</Divider>
@@ -54,7 +54,7 @@ export default function AssetSlider() {
                 <Lavender width={100} height={100}/>
                 <Divider>|</Divider>
             </Content>
-            </Slider>
+            </Slider> */}
         </Wrapper>
     )
 }
