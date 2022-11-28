@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {View, Text} from 'react-native';
 import Header from '../components/header/header';
@@ -13,8 +14,11 @@ import { StyleSheet } from 'react-native';
 import AppText from '../components/apptext/apptext';
 import Accordion from '../components/accordion/accordion';
 import AccordionBar from '../components/accordion/accordionbar';
-
-export default function Resources({navigation, route}){
+import AppBttn from '../components/button/appbutton';
+import { ButtonWrapper } from '../styles/global';
+import { Wrapper } from '../styles/global';
+import { Image } from 'react-native';
+export default function PartnerTutorial({navigation, route}){
     const HandlePage = (new_page) =>{
         if(new_page === 1){
           navigation.navigate("Home")
@@ -26,12 +30,12 @@ export default function Resources({navigation, route}){
           navigation.navigate("User")
         }
       }
-      const HandleTutorial = ()=>{
-        navigation.navigate("TaskTutorial")
+      const HandleBack = ()=>{
+        navigation.navigate("Resources")
       }
       const images = {
-        task: require('../assets/CreateTask.png'),
-        parental: require('../assets/ParentalMode.png'),
+        Maketast: require('../assets/TaskPhoto.png'),
+        
         } 
 
       
@@ -56,38 +60,18 @@ export default function Resources({navigation, route}){
             <SliderCont>
 
               <HomeTextCont>
-                <AppText text='Tutorials' style='header'/>
+                <AppText text='Partner Mode' style='header'/>
+                <AppText text="1.Tap on the profile icon on the menu. (Fourth)" style='body'/>
+                <AppText text="2.Choose Edit profile > Partner information.)" style='body'/>
+                <AppText text="3. Your partner will recieve email notifications to verify task completions." style='body'/>
               </HomeTextCont>
-
-              <ResourceWidgetCont>
-                  <ResourceWidget onBttn={HandleTutorial} 
-                  secondtext='/ Create a Task'
-                  dsp='none'
-                  source={images.task}
-                  ></ResourceWidget>
-                  <ResourceWidget
-                  secondtext='/ Partner Mode'
-                  dsp='none'
-                  source={images.parental}
-                  ></ResourceWidget>
-              </ResourceWidgetCont>
-
-              <HomeTextCont>
-                <AppText text='FAQ' style='header'/>
-              </HomeTextCont>
-
-              <Accordion></Accordion>
-
+              <Wrapper> 
+              <Image source={require('../assets/ProfilePhoto.png')}/>
+              </Wrapper>
+              <ButtonWrapper> 
+              <AppBttn onBttn={HandleBack} style='small' bttntext='Back'></AppBttn>
+              </ButtonWrapper>
             </SliderCont>
-
-            <NavWrapper>
-                <NavMenu
-                    activemenu={route.name}
-                    onHome={()=>HandlePage(1)}
-                    onTask={()=>HandlePage(2)}
-                    onDecor={()=>HandlePage(3)}
-                    onUser={()=>HandlePage(4)}
-                ></NavMenu>
-            </NavWrapper>
+ 
         </ApplicationProvider>
     )};
