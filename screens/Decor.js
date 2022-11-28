@@ -19,18 +19,27 @@ import Cactus from '../assets/cactus.svg';
 import DarkCat from '../assets/darkcat.svg';
 import FatCat from '../assets/fatcat.svg';
 import Wolf from '../assets/wolf.svg';
-import { View, Image, ScrollView, Text,Pressable} from 'react-native';
+import { Animated, View, Image, ScrollView, Text,Pressable, PanResponder} from 'react-native';
 import LottieView from 'lottie-react-native';
 import Item from '../components/assetslider/item.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
+import ItemDrag from '../components/assetslider/itemdrag.js';
 
 
 
 const Slider = styled(ScrollView)`
 padding:3%;
 
+
+`
+
+const BgCont = styled.View`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 
 `
 
@@ -117,6 +126,30 @@ export default function Decor({navigation, route}) {
         // You can control the ref programmatically, rather than using autoPlay
         animation.current?.play();
       }, []);
+
+
+      const pan = useRef(new Animated.ValueXY()).current;
+
+      const panResponder = useRef(
+        PanResponder.create({
+          onMoveShouldSetPanResponder: () => true,
+          onPanResponderGrant: () => {
+            pan.setOffset({
+              x: pan.x._value,
+              y: pan.y._value
+            });
+          },
+          onPanResponderMove: Animated.event(
+            [
+              null,
+              { dx: pan.x, dy: pan.y }
+            ]
+          ),
+          onPanResponderRelease: () => {
+            pan.flattenOffset();
+          }
+        })
+      ).current;
   
     
     return(
@@ -158,8 +191,31 @@ export default function Decor({navigation, route}) {
               source={require('../assets/movingBgCool.json')}
             />
 
-            {/* <SvgCssUri uri="../assets/lavender.svg" width="100" height="100" /> */}
-            <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
+            
+         
+            <BgCont>
+            {user.map((o,i)=>
+            <Animated.View
+            style={{
+              transform: [{ translateX: pan.x }, { translateY: pan.y }]
+            }}
+            {...panResponder.panHandlers} >
+                 <ItemDrag
+                    size='100'
+                    opacity={1} 
+                    image={user[i].name}
+                    key={i}
+                    ></ItemDrag>
+
+            </Animated.View>
+                 
+            )}
+              <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
+            </BgCont>
+            
+
+            
+            
             
             <AssetCont>
               <SliderWrapper>
@@ -177,7 +233,8 @@ export default function Decor({navigation, route}) {
                 </Content>
                 </Slider>
               </SliderWrapper>
-              <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
+              
+                <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
             </AssetCont>
 
           </Wrapper>

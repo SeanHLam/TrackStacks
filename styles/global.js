@@ -143,6 +143,7 @@ grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
 grid-template-rows: repeat(5, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
+z-index: -30
 `
 
 const AppIcon = styled(Icon)`
