@@ -29,7 +29,6 @@ import { Easing } from 'react-native-reanimated';
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
   const [name, setName] = useState()
-  const [noti, setNoti] = useState(true)
 
   // useEffect(()=>{
   //   // get current notes from backend
@@ -67,9 +66,8 @@ export default function Home({navigation, route}) {
           const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
-            
+            console.log(docSnap.data())
             setName(docSnap.data().displayName)
-            setNoti(docSnap.data().settings.notifications)
           } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -107,7 +105,11 @@ export default function Home({navigation, route}) {
   };
 
 
-
+  const HandleAdd = ()=>{
+    fetch(`https://77e3-142-232-219-87.ngrok.io/add-tasks?task=1`)
+    .then(async (res)=>console.log(await res.json()))
+   
+  }
 
   return(
     <ApplicationProvider 
@@ -150,18 +152,38 @@ export default function Home({navigation, route}) {
         <Widget
         text1={new Date().toLocaleDateString(undefined, {day:"numeric"})}
         text={new Date().toLocaleDateString(undefined, {month:"short"})}
-        width='95%'
-        height='45%'
+        width='90%'
+        height='140'
+        alignItems='center'
+        justifyContent='flex-start'
         style='header2' 
         cl='white'
         style1='header3'
         dsp='none'
-        onWidget={()=>navigation.navigate("Tasks")}
         />
 
+        <Widget 
+         width='90%'
+         height='275'
+         justifyContent='flex-start'
+         alignItems='center'
+         text='Task Archive'
+         text1=''
+         c='blue'
+         style='header3'
+         nme='archive'
+         pos='absolute'
+         left='-50%'
+         top='5%'
+         />
+
+        </ColumnOneWrapper>
+        
+        <ColumnTwoWrapper>
+
         <Widget onWidget={HandleResources} 
-         width='95%'
-         height='50%'
+         width='90%'
+         height='210'
          style='header3'
          text='Help & Sources'
          justifyContent='flex-end'
@@ -170,52 +192,27 @@ export default function Home({navigation, route}) {
          c='blue'
          nme='info'
          top='-100%'
-         left='60%'
-         marginTop='5%'
+         left='55%'
+         marginTop='-70%'
         />
-         
-
-        </ColumnOneWrapper>
-        
-        <ColumnTwoWrapper>
-
-        <Widget 
-         width='85%'
-         height='70%'
-         alignItems='flex-start'
-         justifyContent='flex-start'
-         text='Task Archive'
-         text1=''
-         c='blue'
-         style='header3'
-         nme='archive'
-         pos='absolute'
-         left='-5%'
-         onWidget={()=>navigation.navigate("Archive")}
-         />
 
          <Widget
-         width='85%' 
-         height='25%'
+         width='90%' 
+         height='75'
          text=''
          text1=''
          nme='bell'
          pos='static'
          justifyContent='flex-end'
-         top='-5%'
-         left='25%'
-         marginTop='5%'
-         fll={noti ? "#FFFDF4" : "#363630"}
+         marginTop='7%'
+         top='15%'
          />
         </ColumnTwoWrapper>
 
         </WidgetWrapper>
-        
 
-        <TaskContWrapper>
-          <TaskCont/>
-        </TaskContWrapper>
-        
+        <TaskCont/>
+
         <ButtonWrapper>
         <AppBttn bttntext='View tasks' style='large' onBttn={()=>HandleTask()}/> 
         <AppBttn bttntext='Add tasks' onBttn={()=>HandleAddTask()}/> 

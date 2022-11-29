@@ -121,9 +121,7 @@ margin-bottom: 5%;
 
 
 export const TaskContWrapper = styled.View`
-display:flex;
 margin-top:5%;
-
 `
 
 export const DecorCont = styled.View`
@@ -153,33 +151,28 @@ height: 20%;
 `
 
 export const HomeTextCont = styled.View`
-padding-left:8%;
+margin-left:8%;
 width:100%;
 margin-top:3%;
 `
 
 export const WidgetWrapper = styled.View`
-display:flex;
-padding: 3%;
-flex-direction:row;
-align-items:center;
-width: 100%;
-height:40%;
+padding: 5%;
 `;
 
 
 export const ColumnOneWrapper = styled.View`
 display:flex;
-flex-direction:column;
-align-items:center;
+flex-direction:row;
 width:50%;
+max-height:100%;
 `;
 
 export const ColumnTwoWrapper = styled.View`
 display:flex;
-flex-direction:column;
-align-items:center;
+flex-direction:row;
 width:50%;
+max-height:100%;
 `;
 
 export const FormCont = styled.View`
@@ -188,6 +181,7 @@ align-items:flex-start;
 width:100%;
 margin-top:7%;
 `
+
 export const HeadCont = styled.View`
 margin-left:7%;
 width:100%;

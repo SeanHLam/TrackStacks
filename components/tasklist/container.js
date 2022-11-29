@@ -10,28 +10,21 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
 import ArchiveList from './archivelist';
-import Item from '../assetslider/item';
 
 
 const MainCont = styled.View`
-
 width: 100%;
-
+margin-bottom: 4%;
 
 `
  
 const HeaderCont = styled.View`
-
 width: 100%;
-display:flex;
-flex-direction:row;
-justify-content:flex-start;
-margin-left:3%;
+padding-left:8%;
 
 `
 
 const IconCont = styled.View`
-
 background-color:#FFFDF4;
 border-radius: 5px;
 box-shadow: 2px 2px #363630;
@@ -43,7 +36,7 @@ align-content:center;
 
 export default function TaskCont(){
     
-    
+    const [list, setList] = useState("recent");
     if (list === "recent"){
         recent.tlt = {urgent}
     } else if (list === "urgent"){
@@ -51,14 +44,6 @@ export default function TaskCont(){
     }
 
     const [tasks, setTasks] = useState([])
-    const [list, setList] = useState()
-
-    // for (let i = 0; i < tasks.length; i++) {
-    //   if( i >= tasks.length - 3 && tasks[i].status == "unfinished"){
-    //    console.log(tasks[i])
-        
-    //   }
-    // }
 
     useFocusEffect(
       React.useCallback(() => {
@@ -70,6 +55,7 @@ export default function TaskCont(){
             const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
+              console.log(docSnap.data())
               setTasks(docSnap.data().tasks)
           
             } else {
@@ -90,7 +76,6 @@ export default function TaskCont(){
 
     return (
         <MainCont>
-           
             <HeaderCont>
                 <AppText 
                 align='left'
@@ -101,9 +86,9 @@ export default function TaskCont(){
                 
                 
             </HeaderCont>
-            {tasks.map((o,i)=> 
-            
+            {tasks.map((o,i)=>
             i >= tasks.length - 3 && tasks[i].status == "unfinished" &&
+            // i === 1000 && 
             <ArchiveList
               month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
               tlt={tasks[i].title}
@@ -115,24 +100,8 @@ export default function TaskCont(){
               typ={tasks[i].cat}
               sub={tasks[i].cat}
               >
-            </ArchiveList>  )}
-            <View
-            style={{
-             marginTop:0,
-              width:"90%",
-              display:"flex",
-              flexDirection:"row",
-              justifyContent:"flex-end",
-            
-            }}
-            >
-              <Item
-              image='Mascot'
-              size='100'
-              ></Item>
-            </View>
-           
-          
+            </ArchiveList> )}
+
       
 
             
