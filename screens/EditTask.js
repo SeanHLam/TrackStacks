@@ -95,8 +95,10 @@ export default function EditTask({navigation, route}) {
         (async () => {
             const auth = getAuth();
             const db = getFirestore();
-            //const docRef =  await doc(db, "users", auth.currentUser.uid);
-            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+
+            const docRef =  await doc(db, "users", auth.currentUser.uid);
+            //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               // console.log(docSnap.data())
@@ -154,8 +156,10 @@ export default function EditTask({navigation, route}) {
     console.log(subTask)
     const HandleAdd = ()=>{
 
+      const auth = getAuth();
       const db = getFirestore();
-      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      const docRef = doc(db, "users", auth.currentUser.uid);
+
       tasks[taskKey].title = text
       tasks[taskKey].date = date
       tasks[taskKey].sub = subTask

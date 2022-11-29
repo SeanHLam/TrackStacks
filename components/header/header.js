@@ -58,8 +58,9 @@ export default function Header({
   
           const auth = getAuth();
           const db = getFirestore();
-          const check = onSnapshot(doc(db, 'users', "gmYamKsYiOMiHSj8e099gj0PEvn2"), (doc)=>{
-            
+          const check = onSnapshot(doc(db, 'users', auth.currentUser.uid), (doc)=>{
+            console.log("check", doc.data())
+
             setStars(doc.data().stars)
             // const docSnap = await getDoc(docRef);
           //     if (docSnap.exists()) {

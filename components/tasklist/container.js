@@ -51,8 +51,8 @@ export default function TaskCont(){
         (async () => {
             const auth = getAuth();
             const db = getFirestore();
-            //const docRef =  await doc(db, "users", auth.currentUser.uid);
-            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            const docRef =  await doc(db, "users", auth.currentUser.uid);
+            //const docRef =  await doc(db, "users", "gmYaKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               console.log(docSnap.data())
