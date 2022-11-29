@@ -123,6 +123,7 @@ margin-bottom: 5%;
 export const TaskContWrapper = styled.View`
 display:flex;
 margin-top:5%;
+
 `
 
 export const DecorCont = styled.View`

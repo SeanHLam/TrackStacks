@@ -41,7 +41,7 @@ export default function MakeTask({navigation, route}) {
   const [index, setIndex] = useState(0)
   const [subTask, setSubTask] = useState([{
     taskname:'',
-    status:"unfinished"
+    status:false
   }])
   
   const [title, setTitle] = useState("Pick a Category")
@@ -110,7 +110,7 @@ export default function MakeTask({navigation, route}) {
           })
         });
       }
-  
+      navigation.navigate("Tasks")
 
     }
 
@@ -131,7 +131,7 @@ export default function MakeTask({navigation, route}) {
         ...subTask,
         {
           taskname:"",
-          status:"unfinished"
+          status:false
         }
       ])
       setIndex(index + 1)

@@ -29,6 +29,7 @@ import { Easing } from 'react-native-reanimated';
 export default function Home({navigation, route}) { 
   const [currentUser, setCurrentUser] = useState()
   const [name, setName] = useState()
+  const [noti, setNoti] = useState(true)
 
   // useEffect(()=>{
   //   // get current notes from backend
@@ -66,8 +67,9 @@ export default function Home({navigation, route}) {
           const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
-            console.log(docSnap.data())
+            
             setName(docSnap.data().displayName)
+            setNoti(docSnap.data().settings.notifications)
           } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -105,11 +107,7 @@ export default function Home({navigation, route}) {
   };
 
 
-  const HandleAdd = ()=>{
-    fetch(`https://77e3-142-232-219-87.ngrok.io/add-tasks?task=1`)
-    .then(async (res)=>console.log(await res.json()))
-   
-  }
+
 
   return(
     <ApplicationProvider 
@@ -158,6 +156,7 @@ export default function Home({navigation, route}) {
         cl='white'
         style1='header3'
         dsp='none'
+        onWidget={()=>navigation.navigate("Tasks")}
         />
 
         <Widget onWidget={HandleResources} 
@@ -192,6 +191,7 @@ export default function Home({navigation, route}) {
          nme='archive'
          pos='absolute'
          left='-5%'
+         onWidget={()=>navigation.navigate("Archive")}
          />
 
          <Widget
@@ -205,6 +205,7 @@ export default function Home({navigation, route}) {
          top='-5%'
          left='25%'
          marginTop='5%'
+         fll={noti ? "#FFFDF4" : "#363630"}
          />
         </ColumnTwoWrapper>
 
@@ -214,6 +215,7 @@ export default function Home({navigation, route}) {
         <TaskContWrapper>
           <TaskCont/>
         </TaskContWrapper>
+        
         <ButtonWrapper>
         <AppBttn bttntext='View tasks' style='large' onBttn={()=>HandleTask()}/> 
         <AppBttn bttntext='Add tasks' onBttn={()=>HandleAddTask()}/> 

@@ -48,7 +48,7 @@ export default function User({navigation, route}) {
           const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
-            console.log(docSnap.data())
+            
             setName(docSnap.data().displayName)
             setEmail(docSnap.data().email)
             setTDone(docSnap.data().stats.done)

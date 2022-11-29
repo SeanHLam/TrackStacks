@@ -69,7 +69,7 @@ margin-top:30%;
 const TextCont2 = styled(Text)`
 font-size: ${({size1}) => 
 size1 === 'header' && '38px' ||
-size1 === 'header3' && '100px' ||
+size1 === 'header3' && '95px' ||
 size1 === 'header2' && '28px' ||
 size1 === 'date' && '24px' || 
 size1 === 'sub' && '20px' || 

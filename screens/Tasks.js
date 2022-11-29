@@ -58,8 +58,10 @@ export default function Tasks({navigation, route}) {
       navigation.navigate("MakeTask")
     };
 
-    const HandleEdit = ()=>{
-      navigation.navigate("EditTask")
+    const HandleEdit = (i)=>{
+      navigation.navigate("EditTask", {
+        paramKey: i
+      })
     };
 
     var donearr = []
@@ -160,7 +162,7 @@ export default function Tasks({navigation, route}) {
                 tlt={tasks[i].title}
                 key={i}
                 onDone={()=> HandleDone(i)} 
-                onEdit={()=> HandleEdit()}
+                onEdit={()=> HandleEdit(i)}
                 num={date.toLocaleDateString(undefined, {day:"numeric"})}
                 date={date.toLocaleDateString(undefined, {weekday:"short"})}
                 typ={tasks[i].cat}
