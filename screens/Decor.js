@@ -105,12 +105,8 @@ export default function Decor({navigation, route}) {
               if (docSnap.exists()) {
                 setUser(docSnap.data().items)
 
-                // for(let i = 0;i >= user.length; i++){
-                  
-                // }
       
               } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
               } 
 
@@ -163,37 +159,32 @@ export default function Decor({navigation, route}) {
     
 
       const handlePick = async (i) => {
-        
         const db = getFirestore();
         const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-   
-       if(user[i].active == false){
-        user[i].active = true
-        user[i].opacity = 1
-        user[i].zIndex= 50
-        user[i].invOpacity = .5
-        setDoc(
-          docRef,
-          {
-            items : user,
-          },
-          {merge: true}
-        )
+        let newArr = [...user];
 
-       }else if(user[i].active == true){
-        user[i].active = false
-        user[i].opacity = 0
-        user[i].zIndex= -99
-        user[i].invOpacity = 1
-        setDoc(
-          docRef,
-          {
-            items : user,
-          },
-          {merge: true}
-        )
+       if(newArr[i].active == false){
+        newArr[i].active = true
+        newArr[i].opacity = 1
+        newArr[i].zIndex= 50
+        newArr[i].invOpacity = .5
+    
+       }else if(newArr[i].active == true){
+        newArr[i].active = false
+        newArr[i].opacity = 0
+        newArr[i].zIndex= -99
+        newArr[i].invOpacity = 1
+     
        }
-       console.log(user[i])
+       setUser(newArr)
+
+       setDoc(
+        docRef,
+        {
+          items : user,
+        },
+        {merge: true}
+      )
        
       }
   

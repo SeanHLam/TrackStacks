@@ -18,9 +18,11 @@ import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/c
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 import { Datepicker, Layout, Text,  RangeDatepicker, Select, SelectItem,  IndexPath } from '@ui-kitten/components';
 import { colours } from '../components/categorymenu/categorydata.js';
-import { doc, updateDoc, arrayUnion, arrayRemove, getFirestore} from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { View} from 'react-native';
 import Mascot from '../assets/mascot.svg'
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { useFocusEffect } from '@react-navigation/native';
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
 const customMapping = { strict: strictTheme };
@@ -43,8 +45,10 @@ export default function MakeTask({navigation, route}) {
     taskname:'',
     status:false
   }])
+  const [stats, setStats] = useState([])
   
   const [title, setTitle] = useState("Pick a Category")
+
     const HandlePage = (new_page) =>{
       if(new_page === 1){
         navigation.navigate("Home")
@@ -63,6 +67,27 @@ export default function MakeTask({navigation, route}) {
     const HandleTitle = (t)=>{
       onChangeText(t)
     }
+
+    useFocusEffect(
+      React.useCallback(() => {
+        //setCurrentUser(user.uid);
+        (async () => {
+            const auth = getAuth();
+            const db = getFirestore();
+            //const docRef =  await doc(db, "users", auth.currentUser.uid);
+            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              setStats(docSnap.data().stats)
+              console.log(docSnap.data().stats)
+            } else {
+              console.log("No such document!");
+            }
+        })();
+        return ()=>{}
+      }, [])
+    )
+    console.log(stats)
     
  
 
@@ -76,6 +101,7 @@ export default function MakeTask({navigation, route}) {
     const HandleAdd = ()=>{
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      stats.doing += 1
       if(data[selectedIndex.row] === "Long Term"){
         let loop = new Date(range.startDate);
         while (loop <= range.endDate) {
@@ -110,6 +136,13 @@ export default function MakeTask({navigation, route}) {
           })
         });
       }
+      setDoc(
+        docRef,
+        { 
+          stats : stats
+        },
+        {merge: true}
+      )
       navigation.navigate("Tasks")
 
     }

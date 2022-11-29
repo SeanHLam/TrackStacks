@@ -12,8 +12,8 @@ import SetWidget from '../components/settingswidget/settingswidget.js';
 import SetToggle from '../components/settingswidget/settingstoggle.js';
 import Statistics from '../components/statistics/statistics.js';
 import UserWidget from '../components/userwidget/userwidget.js';
-import { getAuth, onAuthStateChanged, auth, signOut } from 'firebase/auth';
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import AppBttn from '../components/button/appbutton.js';
 import { async } from '@firebase/util';
@@ -36,7 +36,7 @@ export default function User({navigation, route}) {
   const [email, setEmail] = useState()
   const [tDone, setTDone] = useState()
   const [tDoing, setTDoing] = useState()
-  const [tReview, setTReview] = useState()
+  const [tSpent, setTSpent] = useState()
   const [earned, setEarned] = useState()
 
   useFocusEffect(
@@ -55,7 +55,7 @@ export default function User({navigation, route}) {
             setEmail(docSnap.data().email)
             setTDone(docSnap.data().stats.done)
             setTDoing(docSnap.data().stats.doing)
-            setTReview(docSnap.data().stats.review)
+            setTSpent(docSnap.data().stats.spent)
             setEarned(docSnap.data().stats.earned)
           } else {
             // doc.data() will be undefined in this case
@@ -112,7 +112,14 @@ export default function User({navigation, route}) {
             <UserWidget name={name} email={email}></UserWidget>
             <AppBttn onBttn={()=>HandleLogOut()} bttntext='Logout' style='small' margin='0%' marginTop='-15%' marginBottom='10%' marginLeft='15%'/>
             <AppText text='Statistics' style='header'></AppText>
-            <Statistics ></Statistics>
+            <Statistics 
+            doing={tDoing}
+            spent={tSpent}
+            done={tDone}
+            earned={earned}
+            
+            
+            ></Statistics>
             <AppText text='Settings' style='header'></AppText>
             
             <SetToggle></SetToggle>

@@ -64,7 +64,7 @@ export default function EditTask({navigation, route}) {
   const [index, setIndex] = useState(0)
   const [subTask, setSubTask] = useState([{
     taskname:'',
-    status:"unfinished"
+    status:false
   }])
  
   
@@ -106,6 +106,7 @@ export default function EditTask({navigation, route}) {
               console.log("here",allTasks[10].cat)
               onChangeText(allTasks[taskKey].title)
               setDate(taskDate.toDate())
+              setSubTask(allTasks[taskKey].sub)
 
               if(allTasks[taskKey].cat === "Single"){
                 setSelectedIndex(new IndexPath(0))
@@ -115,7 +116,7 @@ export default function EditTask({navigation, route}) {
                 setSelectedIndex(new IndexPath(2))
               }
 
-              setSubTask(allTasks[taskKey].sub)
+              
               
               
            
@@ -128,24 +129,45 @@ export default function EditTask({navigation, route}) {
     )
  
 
-    const HandleSub = (i, t)=>{
-      subTask[i].taskname = t
-      onSub(t)
-      console.log(console.log(subTask))
-
+    const HandleSub = (e, i) =>{
+      let newArr = [...subTask];
+      newArr[i].taskname = e
+      setSubTask(newArr)
+      console.log(e)
     }
 
     const [checked, onCheckMark] = useState()
     
-    const handleCheck = (i)=>{
-      
-      tasks[taskKey].sub[i].status 
-      console.log(tasks[taskKey].sub[i].status)
-    }
 
+    const handleCheck = (i)=>{
+      let newArr = [...subTask];
+      
+      if(newArr[i].status === true){
+        newArr[i].status = false
+      }else if(newArr[i].status === false){
+        newArr[i].status = true
+      }
+
+      setSubTask(newArr)
+      
+    }
+    console.log(subTask)
     const HandleAdd = ()=>{
+
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      tasks[taskKey].title = text
+      tasks[taskKey].date = date
+      tasks[taskKey].sub = subTask
+        setDoc(
+            docRef,
+            {
+             tasks:tasks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+              
+            },
+            {merge: true}
+          )
+      navigation.navigate("Tasks")
     }
 
     const HandleCat = (e)=>{
@@ -197,15 +219,7 @@ export default function EditTask({navigation, route}) {
             </HeaderCont>
             <TaskTitle addTitle={HandleTitle} t={text}></TaskTitle>
             {/* <Category onCat={HandleCat}></Category> */}
-            <SelectCont>
-              <Select
-              style={{marginTop:0,}}
-              selectedIndex={selectedIndex}
-              value={data[selectedIndex.row]}
-              onSelect={index => setSelectedIndex(index)}> 
-                 {data.map(renderOption)}
-              </Select>
-            </SelectCont> 
+           
 
             {/* { data[selectedIndex.row] === "To Do" &&
                     <AddDetail
@@ -224,15 +238,15 @@ export default function EditTask({navigation, route}) {
             {subTask.map((o,i)=> (
                 <SubTask
                 t={subTask[i].taskname}
-                onText={()=>HandleSub(i)}
+                onText={e =>HandleSub(e,i)}
                 onCheck={()=>handleCheck(i)}
-                check={tasks[taskKey].sub[i].status}
+                check={subTask[i].status}
                 key={i}/>)
               )}
-              <AddCont>
+              {/* <AddCont>
                 <AddBttn></AddBttn>
                 <AppText style='body' text='Add New'></AppText>
-              </AddCont>
+              </AddCont> */}
               
 
             </WidgetCont>}
@@ -258,20 +272,17 @@ export default function EditTask({navigation, route}) {
                 onSelect={nextDate => setDate(nextDate)}
               ></PickDate>
             }
-
-            
-          
             
             { data[selectedIndex.row] === "Long Term" &&
-              <PickDateRange
-              range={range}
-              onSelect={nextRange => setRange(nextRange)}
-              />
+                    <PickDate
+                    date={date}
+                    onSelect={nextDate => setDate(nextDate)}
+                  ></PickDate>
             }
             
              
              {/* <RepeatMenu></RepeatMenu> */}
-            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Add Task'></AppBttn>
+            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Edit Task'></AppBttn>
          
           </Wrapper>
         </SliderCont>

@@ -9,6 +9,7 @@ width:90%;
 display: flex;
 flex-direction: row;
 justify-contenr: center;
+align-items:center;
 background-color:#FEFDF4;
 padding:6%;
 margin: 5%;
@@ -20,6 +21,7 @@ box-shadow: 4px 4px #363630;
 export const ColWrapper = styled.View`
 display: flex;
 flex-direction: column;
+margin-right:8%;
 
 `
 
@@ -48,7 +50,11 @@ background-color:#7B89A3;
 
 export default function Statistics({
 
-t="Edit Profile",
+done=0,
+earned=0,
+spent=0,
+doing=0
+
 
 }){
     return (
@@ -57,7 +63,7 @@ t="Edit Profile",
         <StatCont>
             <NumCont>
                 <NumBg>
-                    <AppText align='left' c="white" wdth='100%' text="" style='sub'></AppText>
+                    <AppText text={done} align='left' c="white" wdth='100%'  style='sub'></AppText>
                 </NumBg>
                 
             </NumCont>
@@ -67,10 +73,10 @@ t="Edit Profile",
         <StatCont>
             <NumCont>
             <NumBg>
-                 <AppText align='left' c="white" wdth='100%' text="99" style='sub'></AppText>
+                 <AppText align='left' c="white" wdth='100%' text={spent} style='sub'></AppText>
             </NumBg>
             </NumCont>
-            <AppText c='blue' wdth='100%' text="Tasks to review" style='body'></AppText>
+            <AppText c='blue' wdth='100%' text="Stars Spent" style='body'></AppText>
         </StatCont>
         </ColWrapper>
 
@@ -78,7 +84,7 @@ t="Edit Profile",
         <StatCont>
             <NumCont>
                 <NumBg>
-                    <AppText align='left' c="white" wdth='100%' text="99" style='sub'></AppText>
+                    <AppText align='left' c="white" wdth='100%' text={doing} style='sub'></AppText>
                 </NumBg>
                 
             </NumCont>
@@ -88,7 +94,7 @@ t="Edit Profile",
         <StatCont>
             <NumCont>
             <NumBg>
-                 <AppText align='left' c="white" wdth='100%' text="99" style='sub'></AppText>
+                 <AppText text={earned} align='left' c="white" wdth='100%' style='sub'></AppText>
             </NumBg>
             </NumCont>
             <AppText c='blue' wdth='100%' text="Stars earned" style='body'></AppText>
