@@ -53,8 +53,8 @@ export default function ItemDrag({
     const panResponder = useRef(
         PanResponder.create({
           onMoveShouldSetPanResponder: () => true,
-          onPanResponderGrant: () => {
-            
+          onPanResponderGrant: (e, gestureState) => {
+            console.log(gestureState)
             pan.setOffset({
               x: pan.x._value,
               y: pan.y._value
