@@ -29,9 +29,10 @@ export default function Tasks({navigation, route}) {
           navigation.navigate("User")
       }
     };
-
+    
     const [tasks, setTasks] = useState([])
     const [stars, setStars] = useState()
+    const [stats, setStats] = useState([])
 
     useFocusEffect(
       React.useCallback(() => {
@@ -46,6 +47,7 @@ export default function Tasks({navigation, route}) {
               // console.log(docSnap.data())
               setTasks(docSnap.data().tasks)
               setStars(docSnap.data().stars)
+              setStats(docSnap.data().stats)
             } else {
               console.log("No such document!");
             }
@@ -87,15 +89,19 @@ export default function Tasks({navigation, route}) {
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
       tasks[index].status = "finished"
-      stars + 50
+      stats.earned += 50
+      stats.doing -= 1
+      stats.done += 1
       setDoc(
         docRef,
         {
           tasks : tasks,
+          stats : stats
         },
         {merge: true}
       )
       updateDoc(docRef, {stars: increment(50)})
+     
     }
 
     const HandleClose = ()=>{
