@@ -15,6 +15,8 @@ import UserWidget from '../components/userwidget/userwidget.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
+import AppBttn from '../components/button/appbutton.js';
+import { async } from '@firebase/util';
 
 export default function User({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -63,12 +65,21 @@ export default function User({navigation, route}) {
       return ()=>{}
     }, [])
   )
+
     
     const HandleSet = () =>{
       console.log("pressed")
     }
     const HandleHelp = () =>{
       navigation.navigate("Resources")
+    }
+    const HandleLogout = async (e) =>{
+      e.preventDefault();
+      await signOut(auth);
+      console.log("User is logged out");
+      if(signOut === true){
+        navigation.navigate("SignIn")
+      }
     }
 
     const HandleArchive = () =>{
@@ -99,6 +110,7 @@ export default function User({navigation, route}) {
         <SliderCont>
           <Wrapper>
             <UserWidget name={name} email={email}></UserWidget>
+            <AppBttn onBttn={()=>HandleLogOut()} bttntext='Logout' style='small' margin='0%' marginTop='-15%' marginBottom='10%' marginLeft='15%'/>
             <AppText text='Statistics' style='header'></AppText>
             <Statistics 
             doing={tDoing}
