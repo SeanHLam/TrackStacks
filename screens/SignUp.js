@@ -10,7 +10,7 @@ import Header from '../components/header/header.js';
 import Category from '../components/categorymenu/categorymenu.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
-import {Signin} from '../components/form/signincomp';
+import {Signin} from '../components/Form/signincomp';
 import AppBttn from '../components/button/appbutton';
 import {auth, db} from '../firebase.js'
 import { createUserWithEmailAndPassword } from "firebase/auth";

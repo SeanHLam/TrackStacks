@@ -35,6 +35,7 @@ export default function AppBttn({
   margin='3%',
   marginTop='0%',
   marginBottom='0%',
+  marginLeft="0%"
 }){
 
   const bttPress = (pressType) => {
@@ -47,6 +48,7 @@ export default function AppBttn({
       margin={margin}
       marginTop={marginTop}
       marginBottom={marginBottom}
+      marginLeft={marginLeft}
       size={style} 
       onPress={onBttn}
       onPressIn={() => bttPress("onPressIn")}
