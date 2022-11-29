@@ -17,6 +17,7 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
 import ArchiveList from '../components/tasklist/archivelist.js';
+import AppText from '../components/apptext/apptext.js';
 
 export default function Archive({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -43,7 +44,7 @@ export default function Archive({navigation, route}) {
             const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-              console.log(docSnap.data())
+              
               setTasks(docSnap.data().tasks)
               setStars(docSnap.data().stars)
             } else {
@@ -85,10 +86,11 @@ export default function Archive({navigation, route}) {
         
         <SliderCont>
           <Wrapper>
+            <AppText style='title'  text='Archive'></AppText>
             {tasks.map((o,i)=>
             tasks[i].status == "finished" &&
               <ArchiveList
-                month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
+                month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"}).toUpperCase()}
                 tlt={tasks[i].title}
                 key={i}
                 onDone={()=> HandleDone(i)} 

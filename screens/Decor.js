@@ -3,16 +3,73 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import styled from 'styled-components/native';
 import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
-import { Image} from 'react-native';
 import DecWidget from '../components/decorwidget/decorwidget.js';
 import IconBttn from '../components/iconbttn/iconbttn.js';
 import AssetSlider from '../components/assetslider/assetslider.js';
 import AppBttn from '../components/button/appbutton';
 import Lavender2 from '../assets/lavender.svg'
+import Lavender from '../assets/lavender.svg';
+import AppleRug from '../assets/applerug.svg';
+import Cactus from '../assets/cactus.svg';
+import DarkCat from '../assets/darkcat.svg';
+import FatCat from '../assets/fatcat.svg';
+import Wolf from '../assets/wolf.svg';
+import { Animated, View, Image, ScrollView, Text,Pressable, PanResponder} from 'react-native';
+import LottieView from 'lottie-react-native';
+import Item from '../components/assetslider/item.js';
+import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
+import { useFocusEffect } from '@react-navigation/native';
+import ItemDrag from '../components/assetslider/itemdrag.js';
+import ModalTut from '../components/modal/modaltut.js';
+import { async } from '@firebase/util';
+
+
+
+const Slider = styled(ScrollView)`
+padding:3%;
+
+
+`
+
+const BgCont = styled.View`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+
+
+`
+
+const Divider = styled.Text`
+font-size: 50px;
+opacity:0.2;
+`
+
+const Content = styled.View`
+display:flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+`
+const SliderWrapper = styled.View`
+width:71%;
+background-color: #FFFDF4;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+display: flex;
+margin-left: 4%;
+margin-right: 4%;
+`
+
+
+
 
 export default function Decor({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -27,6 +84,60 @@ export default function Decor({navigation, route}) {
       }
     }
 
+
+    
+
+    const [shopIndex, setShopIndex] = useState([]);
+    const [user, setUser] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalPage, setModalPage] = useState(1);
+    
+
+    useFocusEffect(
+        React.useCallback(() => {
+          //setCurrentUser(user.uid);
+          (async () => {
+              const auth = getAuth();
+              const db = getFirestore();
+              //const docRef =  await doc(db, "users", auth.currentUser.uid);
+              const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+              const docSnap = await getDoc(docRef);
+              if (docSnap.exists()) {
+                setUser(docSnap.data().items)
+
+                // for(let i = 0;i >= user.length; i++){
+                  
+                // }
+      
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              } 
+
+            
+          })();
+          return ()=>{}
+        }, [])
+      )
+
+      const handleModal = () => {
+        setModalVisible(true)
+      }
+
+     const  handleModalClose = () => {
+        setModalVisible(false)
+        setModalPage(1)
+      }
+
+      const handleModalNext = () =>{
+        setModalPage(modalPage + 1)
+      }
+
+      const handleModalBack = () => {
+        setModalPage(modalPage - 1)
+      }
+    
+
     const [background, setBackground] = useState(false);
     const handleBg = () => {
       if (background == false){
@@ -36,6 +147,56 @@ export default function Decor({navigation, route}) {
       }
     }
 
+   
+      const animation = useRef(null);
+      useEffect(() => {
+        // You can control the ref programmatically, rather than using autoPlay
+        animation.current?.play();
+      }, []);
+
+      const [scroll, setScroll] = useState(true)
+      const pan = useRef(new Animated.ValueXY()).current;
+
+      
+      
+      const [picked, setPicked] = useState([])
+    
+
+      const handlePick = async (i) => {
+        
+        const db = getFirestore();
+        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+   
+       if(user[i].active == false){
+        user[i].active = true
+        user[i].opacity = 1
+        user[i].zIndex= 50
+        user[i].invOpacity = .5
+        setDoc(
+          docRef,
+          {
+            items : user,
+          },
+          {merge: true}
+        )
+
+       }else if(user[i].active == true){
+        user[i].active = false
+        user[i].opacity = 0
+        user[i].zIndex= -99
+        user[i].invOpacity = 1
+        setDoc(
+          docRef,
+          {
+            items : user,
+          },
+          {merge: true}
+        )
+       }
+       console.log(user[i])
+       
+      }
+  
     
     return(
       <ApplicationProvider 
@@ -55,23 +216,72 @@ export default function Decor({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
-        <SliderCont>
+        <ModalTut
+        onYes={handleModalNext} 
+        onClose={handleModalClose} 
+        onNo={handleModalBack}  
+        mdlvis={modalVisible}
+        page={modalPage}
+        ></ModalTut>
+        
+        <SliderCont scrollEnabled={scroll}>
           <Wrapper>
             <DecorCont>
-              <AppBttn bttntext='Shop' style='small' nme='shopping-cart' dsp='flex'></AppBttn>
-              <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn>
-              <IconBttn i={"question-mark-circle"}></IconBttn>
+              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
+              {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
+              <IconBttn style={{
+                alignItems: "right",
+              }} onIcon={handleModal} i={"question-mark-circle"}></IconBttn>
             </DecorCont>
-
-            {/* <SvgCssUri uri="../assets/lavender.svg" width="100" height="100" /> */}
-            <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
-            
+            <LottieView
+              autoPlay
+              ref={animation}
+              style={{
+                width: 300,
+                height: 300,
+                zIndex: -20,
+                position: "absolute",
+                top: 35,
+              }}
+                
+              source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
+            />
+            <BgCont>
+              {user.map((o,i)=>
+                  <ItemDrag 
+                      onPress={()=>setScroll(false)}
+                      onRelease={()=>setScroll(true)}
+                      
+                      size='100'
+                      opacity={user[i].opacity} 
+                      image={user[i].name}
+                      z={user[i].zIndex}
+                      key={i}
+                      ></ItemDrag>
+              )}  
+              <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
+            </BgCont>
             <AssetCont>
-              <AssetSlider/>
-              <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
+              <SliderWrapper>
+                <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
+                <Content>
+                {user.map((o,i)=>
+                    <Item
+                    onImg={()=>handlePick(i)}
+                    onFinish={null}
+                    opacity={user[i].invOpacity} 
+                    image={user[i].name}
+                    key={i}
+                    ></Item>
+                )}
+            
+                </Content>
+                </Slider>
+              </SliderWrapper>
+              
+                <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
             </AssetCont>
 
-            
           </Wrapper>
         </SliderCont>
         <NavWrapper>

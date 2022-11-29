@@ -152,17 +152,38 @@ export default function Home({navigation, route}) {
         <Widget
         text1={new Date().toLocaleDateString(undefined, {day:"numeric"})}
         text={new Date().toLocaleDateString(undefined, {month:"short"})}
-        width='95%'
-        height='45%'
+        width='90%'
+        height='140'
+        alignItems='center'
+        justifyContent='flex-start'
         style='header2' 
         cl='white'
         style1='header3'
         dsp='none'
         />
 
+        <Widget 
+         width='90%'
+         height='275'
+         justifyContent='flex-start'
+         alignItems='center'
+         text='Task Archive'
+         text1=''
+         c='blue'
+         style='header3'
+         nme='archive'
+         pos='absolute'
+         left='-50%'
+         top='5%'
+         />
+
+        </ColumnOneWrapper>
+        
+        <ColumnTwoWrapper>
+
         <Widget onWidget={HandleResources} 
-         width='95%'
-         height='50%'
+         width='90%'
+         height='210'
          style='header3'
          text='Help & Sources'
          justifyContent='flex-end'
@@ -171,49 +192,27 @@ export default function Home({navigation, route}) {
          c='blue'
          nme='info'
          top='-100%'
-         left='60%'
-         marginTop='5%'
+         left='55%'
+         marginTop='-70%'
         />
-         
-
-        </ColumnOneWrapper>
-        
-        <ColumnTwoWrapper>
-
-        <Widget 
-         width='85%'
-         height='70%'
-         alignItems='flex-start'
-         justifyContent='flex-start'
-         text='Task Archive'
-         text1=''
-         c='blue'
-         style='header3'
-         nme='archive'
-         pos='absolute'
-         left='-5%'
-         />
 
          <Widget
-         width='85%' 
-         height='25%'
+         width='90%' 
+         height='75'
          text=''
          text1=''
          nme='bell'
          pos='static'
          justifyContent='flex-end'
-         top='-5%'
-         left='25%'
-         marginTop='5%'
+         marginTop='7%'
+         top='15%'
          />
         </ColumnTwoWrapper>
 
         </WidgetWrapper>
-        
 
-        <TaskContWrapper>
-          <TaskCont/>
-        </TaskContWrapper>
+        <TaskCont/>
+
         <ButtonWrapper>
         <AppBttn bttntext='View tasks' style='large' onBttn={()=>HandleTask()}/> 
         <AppBttn bttntext='Add tasks' onBttn={()=>HandleAddTask()}/> 

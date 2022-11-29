@@ -121,15 +121,16 @@ margin-bottom: 5%;
 
 
 export const TaskContWrapper = styled.View`
-display:flex;
 margin-top:5%;
 `
 
 export const DecorCont = styled.View`
+width: 95%;
 display:flex;
 flex-direction: row;
 align-items:center;
-justify-content:center;
+justify-content:flex-start;
+margin-bottom:4%;
 `
 
 export const DecorImage = styled(Image)`
@@ -141,6 +142,7 @@ grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
 grid-template-rows: repeat(5, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
+z-index: -30
 `
 
 const AppIcon = styled(Icon)`
@@ -149,33 +151,28 @@ height: 20%;
 `
 
 export const HomeTextCont = styled.View`
-padding-left:8%;
+margin-left:8%;
 width:100%;
 margin-top:3%;
 `
 
 export const WidgetWrapper = styled.View`
-display:flex;
-padding: 3%;
-flex-direction:row;
-align-items:center;
-width: 100%;
-height:40%;
+padding: 5%;
 `;
 
 
 export const ColumnOneWrapper = styled.View`
 display:flex;
-flex-direction:column;
-align-items:center;
+flex-direction:row;
 width:50%;
+max-height:100%;
 `;
 
 export const ColumnTwoWrapper = styled.View`
 display:flex;
-flex-direction:column;
-align-items:center;
+flex-direction:row;
 width:50%;
+max-height:100%;
 `;
 
 export const FormCont = styled.View`
@@ -184,6 +181,7 @@ align-items:flex-start;
 width:100%;
 margin-top:7%;
 `
+
 export const HeadCont = styled.View`
 margin-left:7%;
 width:100%;
@@ -210,6 +208,7 @@ align-items:center;
 justify-content:center;
 flex-direction:row;
 width:auto;
+margin-bottom: 5%;
 `
 
 export const MascotCont = styled.View`

@@ -28,6 +28,7 @@
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.13.0",
     "formik": "^2.2.9",
+    "lottie-react-native": "5.1.4",
     "moti": "^0.20.0",
     "node-fetch": "^3.2.10",
     "react": "18.1.0",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "react-native-clean-project": "^4.0.1",
     "react-native-svg-transformer": "^1.0.0"
   },
   "private": true

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {View, Text} from 'react-native';
 import Header from '../components/header/header';
@@ -13,8 +14,11 @@ import { StyleSheet } from 'react-native';
 import AppText from '../components/apptext/apptext';
 import Accordion from '../components/accordion/accordion';
 import AccordionBar from '../components/accordion/accordionbar';
-
-export default function Resources({navigation, route}){
+import AppBttn from '../components/button/appbutton';
+import { ButtonWrapper } from '../styles/global';
+import { Image } from 'react-native';
+import { Wrapper } from '../styles/global';
+export default function TaskTutorial({navigation, route}){
     const HandlePage = (new_page) =>{
         if(new_page === 1){
           navigation.navigate("Home")
@@ -26,12 +30,12 @@ export default function Resources({navigation, route}){
           navigation.navigate("User")
         }
       }
-      const HandleTutorial = ()=>{
-        navigation.navigate("TaskTutorial")
+      const HandleBack = ()=>{
+        navigation.navigate("Resources")
       }
       const images = {
-        task: require('../assets/CreateTask.png'),
-        parental: require('../assets/ParentalMode.png'),
+        Maketast: require('../assets/TaskPhoto.png'),
+        
         } 
 
       
@@ -56,39 +60,20 @@ export default function Resources({navigation, route}){
             <SliderCont>
 
               <HomeTextCont>
-                <AppText text='Tutorials' style='header'/>
+                <AppText text='Create a Task' style='header'/>
+                <AppText text="1. Tap on the clipboard icon on the menu. (Second)" style='body'/>
+                <AppText text="2. Tap on the + icon. (Second)" style='body'/>
+                <AppText text="3. Enter in your task name, category details and due dates and press done." style='body'/>
               </HomeTextCont>
-
-              <ResourceWidgetCont>
-                  <ResourceWidget onWidget={()=>navigation.navigate("TaskTutorial")} 
-                  secondtext='/ Create a Task'
-                  dsp='none'
-                  source={images.task}
-                  ></ResourceWidget>
-                  <ResourceWidget
-                  onWidget={()=>navigation.navigate("PartnerTutorial")}
-                  secondtext='/ Partner Mode'
-                  dsp='none'
-                  source={images.parental}
-                  ></ResourceWidget>
-              </ResourceWidgetCont>
-
-              <HomeTextCont>
-                <AppText text='FAQ' style='header'/>
-              </HomeTextCont>
-
-              <Accordion></Accordion>
-
+              <Wrapper> 
+              <Image source={require('../assets/TaskPhoto.png')}/>
+              </Wrapper>
+              <ButtonWrapper> 
+              <AppBttn onBttn={HandleBack} style='small' bttntext='Back'></AppBttn>
+              </ButtonWrapper>
             </SliderCont>
+ 
 
-            <NavWrapper>
-                <NavMenu
-                    activemenu={route.name}
-                    onHome={()=>HandlePage(1)}
-                    onTask={()=>HandlePage(2)}
-                    onDecor={()=>HandlePage(3)}
-                    onUser={()=>HandlePage(4)}
-                ></NavMenu>
-            </NavWrapper>
+
         </ApplicationProvider>
     )};

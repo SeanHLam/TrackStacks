@@ -9,6 +9,8 @@ import EditTask from './screens/EditTask';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
+import TaskTutorial from './screens/TaskTutorial';
+import PartnerTutorial from './screens/PartnerTutorial';
 import Archive from './screens/Archive'
 import { LogBox } from 'react-native';
 import { useFonts } from 'expo-font';
@@ -17,10 +19,13 @@ import * as SplashScreen from 'expo-splash-screen';
 import {Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
 import AppLoading from "expo-app-loading";
+import Shop from './screens/Shop'
+
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
 SplashScreen.preventAutoHideAsync();
+
 
 const Stack = createNativeStackNavigator();
 
@@ -44,7 +49,7 @@ export default function App() {
   return (
     <NavigationContainer onLayout={onLayoutRootView}>
       <Stack.Navigator 
-      initialRouteName='SignIn'
+      initialRouteName='Tasks'
       screenOptions={{
         headerShown: false
       }}
@@ -85,10 +90,27 @@ export default function App() {
           name="Resources" 
           component={Resources} 
         />
+
+        <Stack.Screen 
+          name="TaskTutorial" 
+          component={TaskTutorial} 
+        />
+
+        <Stack.Screen 
+          name="PartnerTutorial" 
+          component={PartnerTutorial} 
+        />
+        
         <Stack.Screen 
           name="Archive" 
           component={Archive} 
         />
+
+        <Stack.Screen 
+          name="Shop" 
+          component={Shop} 
+        />
+
         
 
       </Stack.Navigator>

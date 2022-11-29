@@ -1,4 +1,5 @@
-export const accordiondata = [{
+export const accordionData = [
+  {
     question: "How can I earn more stars?",
     answer: "You can earn more stars by completing your tasks on time and by taking on long term ones."
   },

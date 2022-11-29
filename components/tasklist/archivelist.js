@@ -29,7 +29,7 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-margin:4%;
+margin:4% 4% 4% 0;
 width:11%;
 `
 
@@ -111,9 +111,9 @@ checked=false
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     return (
         <Cont>
-            <Pressable>
-                <AppText wdth='100%' align='center' text={month} style="date" c="black"/>
-            </Pressable>        
+          
+                <AppText wdth='18%' align='center' text={month} style="date" c="black"/>
+           
 
            <DateCont>
                 <AppText align='center' text={num} style="date" c="black"/>
