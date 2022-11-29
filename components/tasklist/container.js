@@ -20,10 +20,7 @@ margin-bottom: 4%;
  
 const HeaderCont = styled.View`
 width: 100%;
-display:flex;
-flex-direction:row;
-justify-content:flex-start;
-margin-left:3%;
+padding-left:8%;
 
 `
 
@@ -93,7 +90,7 @@ export default function TaskCont(){
             i >= tasks.length - 3 && tasks[i].status == "unfinished" &&
             // i === 1000 && 
             <ArchiveList
-              month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
+              month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"}).toUpperCase()}
               tlt={tasks[i].title}
               key={i}
               onDone={()=> HandleDone(i)} 

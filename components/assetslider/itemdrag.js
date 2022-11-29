@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, ScrollView, Text,Pressable, Animated} from 'react-native';
+import React, { useRef } from "react";
+import {Image, ScrollView, Text,Pressable, Animated, View, PanResponder} from 'react-native';
 import styled from 'styled-components/native';
 import Lavender from '../../assets/lavender.svg';
 import AppleRug from '../../assets/applerug.svg';
@@ -9,7 +9,11 @@ import FatCat from '../../assets/fatcat.svg';
 import Wolf from '../../assets/wolf.svg';
 import Mascot from '../../assets/mascot.svg'
 
-const Wrapper = styled.View`
+
+const Wrapper = styled.Pressable`
+position:absolute;
+z-index: 40;
+
 
 `
 
@@ -30,25 +34,61 @@ justify-content:center;
 align-items:center;
 `
 
-export default function Item({
+export default function ItemDrag({
  image="AppleRug",
  size="70",
  opacity=1,
+ z=-99,
  onImg=()=>{},
- onFinish=()=>{}
+ onPress=()=>{},
+ onRelease=()=>{},
 }) {
     
     const HandleClick = () => {
         console.log('click')
     }
+
+    const pan = useRef(new Animated.ValueXY()).current;
+
+    const panResponder = useRef(
+        PanResponder.create({
+          onMoveShouldSetPanResponder: () => true,
+          onPanResponderGrant: (e, gestureState) => {
+            console.log(gestureState)
+            pan.setOffset({
+              x: pan.x._value,
+              y: pan.y._value
+            });
+          },
+          onPanResponderMove: Animated.event(
+            [
+              null,
+              { dx: pan.x, dy: pan.y }
+            ],  {useNativeDriver: false}
+          ),
+          onPanResponderRelease: () => {
+            
+            console.log(pan.x,pan.y);
+            pan.flattenOffset();
+          }
+        })
+      ).current;
+  
     
     return (
-        <Animated.View
-        onTouchEnd={onFinish}
-        onTouchStart={onImg}
+        <Animated.View 
+        onTouchStart={onPress} 
+        onTouchEnd={onRelease} 
+        onPress={()=>onImg()}
         style={{
-            opacity: opacity
-        }} >
+            position:"absolute",
+            opacity: opacity,
+            zIndex:z,
+            transform: [{ translateX: pan.x }, { translateY: pan.y }],
+            
+        }}
+        {...panResponder.panHandlers} 
+        >
             
             {image === "Apple Rug" &&
                 <AppleRug width={size} height={size}/>
@@ -72,9 +112,6 @@ export default function Item({
                 <Wolf width={size} height={size}/>
             }
             
-
-
-
         </Animated.View>
     )
 }

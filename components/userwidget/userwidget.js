@@ -11,6 +11,7 @@ padding: 2%;
 flex-direction:row;
 align-items:center;
 justify-content:center;
+margin-right:25%
 
 `
 
@@ -48,7 +49,6 @@ email="",
         <UserCont>
             <AppText style="sub"  text={name}></AppText>
             <AppText wdth='100%' text={email}></AppText>
-            <AppBttn style='huge' bttntext="logout"></AppBttn>
         </UserCont>
        
 
@@ -59,8 +59,8 @@ email="",
 
 const styles = StyleSheet.create({
     icon: {
-        width: 80,
-        height: 80,
+        width: 100,
+        height: 100,
     },
   });
 

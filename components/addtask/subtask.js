@@ -27,7 +27,9 @@ width:90%
 
 export default function SubTask({
 t="dwd",
-onText = ()=>{}
+onText = ()=>{},
+check=false,
+onCheck = ()=>{}
 }){
 const [text, onChangeText] = React.useState('');
 const [isChecked, setChecked] = useState(false);
@@ -35,9 +37,9 @@ return(
  <WidgetCont> 
     <Checkbox 
         style={styles.checkbox}
-        value={false}
-        onValueChange={setChecked}
-        color={false ? '#363630' : '#FFFDF4'}
+        value={check}
+        onValueChange={onCheck}
+        color={check ? '#363630' : '#FFFDF4'}
         >
     </Checkbox> 
 

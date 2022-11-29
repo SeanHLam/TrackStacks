@@ -17,17 +17,16 @@ export const WidgetCont = styled.Pressable`
     col === 'pink' && '#EAAA99' ||
     '#EAAA99'
 };
-    font-weight:bold;
     border-radius: 10px;
     box-shadow: 5px 5px #363630;
     border: 4px solid #363630;
     width: ${ props => props.WidWidth};
-    height: ${ props => props.WidHeight};
+    height: ${ props => props.height};
     align-items:${props=>props.alig};
     align-content:${props=>props.ali};
     justify-content:${props=>props.jst};
-    padding:5%;
-    margin:3%;
+    padding:8%;
+    margin:5%;
     margin-top:${ props => props.WidMrgn};
     background-image: ${ props => props.bg}
     display:flex;
@@ -64,12 +63,11 @@ col === 'teal' && '#99FFDF' ||
 col === 'pink' && '#EAAA99' ||
 '#363630'
 };
-margin-top:30%;
 `
 const TextCont2 = styled(Text)`
 font-size: ${({size1}) => 
 size1 === 'header' && '38px' ||
-size1 === 'header3' && '100px' ||
+size1 === 'header3' && '80px' ||
 size1 === 'header2' && '28px' ||
 size1 === 'date' && '24px' || 
 size1 === 'sub' && '20px' || 
@@ -99,12 +97,10 @@ col2 === 'teal' && '#99FFDF' ||
 col2 === 'pink' && '#EAAA99' ||
 '#363630'
 }
-margin-top:-15%;
-margin-bottom:15%;
 ;
+margin-top:-15%;
 `
 const IconCont = styled.View`
-width:100%;
 display:flex;
 position: ${ props => props.pos};
 top:${props => props.top};
@@ -115,9 +111,9 @@ left:${props => props.left};
 export default function Widget ({
   alignItems="center",
   justifyContent="center",
-  alignContent="",
+  alignContent="center",
   width="100%",
-  height="100%",
+  height="600",
   onWidget=()=>{},
   c="pink",
   text="WED",
@@ -130,8 +126,8 @@ export default function Widget ({
   dsp="inline",
   pos="absolute",
   top="0",
-  left="0%",
-  marginTop='0px',
+  left="0",
+  marginTop='0',
   backgroundImage='none'
 }){ 
 
@@ -151,7 +147,7 @@ export default function Widget ({
 
 return(
  <WidgetCont col={c}
- WidHeight={height}
+ height={height}
   WidWidth={width} 
  jst={justifyContent} 
  ali={alignContent} 
@@ -175,11 +171,11 @@ style={({ pressed }) => [
       : {width:5, height:5}
   }
 ]}
- > 
-  <TextCont size={style}>{text}</TextCont>
-  <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>
+ >
+    <TextCont size={style}>{text}</TextCont>
+    <TextCont2 size1={style1} col2={cl} >{text1}</TextCont2>
   <IconCont top={top} left={left}>
-  <Icon name={nme} fill={fll} position={pos} display={dsp} style={styles.icon} ></Icon>
+    <Icon name={nme} fill={fll} position={pos} display={dsp} style={styles.icon} ></Icon>
   </IconCont>
  </WidgetCont>
   )

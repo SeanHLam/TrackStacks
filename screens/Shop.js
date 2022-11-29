@@ -90,6 +90,7 @@ export default function Shop({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalPage, setModalPage] = useState(1);
     const [shopIndex, setShopIndex] = useState(0);
+    const [stats, setStats] = useState([])
     
 
     useFocusEffect(
@@ -107,6 +108,7 @@ export default function Shop({navigation, route}) {
                 setUser(docSnap.data().items)
                 setBought(docSnap.data().shop)
                 setStars(docSnap.data().stars)
+                setStats(docSnap.data().stats)
               } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -137,16 +139,18 @@ export default function Shop({navigation, route}) {
         setModalVisible(false)
         setModalPage(1)
     }
-
+  
     const HandleYes = async () =>{
         const db = getFirestore();
         const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        stats.spent += shop[shopIndex].price
         if (stars >= shop[shopIndex].price){
             bought[shopIndex].purchased = true
             setDoc(
                 docRef,
                 {
                   shop : bought,
+                  stats : stats
                 },
                 {merge: true}
               )
@@ -156,14 +160,17 @@ export default function Shop({navigation, route}) {
                     purchased:true,
                     opacity:0,
                     invOpacity: 1,
-                    x: "621 px",
-                    y: "1218 px",
-                    id: shopIndex
+                    x: "0px",
+                    y: "0px",
+                    id: shopIndex,
+                    zIndex: -99,
+                    active:false
                 })
             });
             
             setModalPage(2)
-            //add minus so it costs stars   
+            //add minus so it costs stars 
+             
             updateDoc(docRef, {stars: increment(-shop[shopIndex].price)})
 
         }else{

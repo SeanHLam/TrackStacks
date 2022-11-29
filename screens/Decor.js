@@ -19,17 +19,29 @@ import Cactus from '../assets/cactus.svg';
 import DarkCat from '../assets/darkcat.svg';
 import FatCat from '../assets/fatcat.svg';
 import Wolf from '../assets/wolf.svg';
-import { View, Image, ScrollView, Text,Pressable} from 'react-native';
+import { Animated, View, Image, ScrollView, Text,Pressable, PanResponder} from 'react-native';
 import LottieView from 'lottie-react-native';
 import Item from '../components/assetslider/item.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
+import ItemDrag from '../components/assetslider/itemdrag.js';
+import ModalTut from '../components/modal/modaltut.js';
+import { async } from '@firebase/util';
 
 
 
 const Slider = styled(ScrollView)`
 padding:3%;
+
+
+`
+
+const BgCont = styled.View`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 
 
 `
@@ -58,6 +70,7 @@ margin-right: 4%;
 
 
 
+
 export default function Decor({navigation, route}) { 
     const HandlePage = (new_page) =>{
       if(new_page === 1){
@@ -76,6 +89,8 @@ export default function Decor({navigation, route}) {
 
     const [shopIndex, setShopIndex] = useState([]);
     const [user, setUser] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalPage, setModalPage] = useState(1);
     
 
     useFocusEffect(
@@ -89,9 +104,9 @@ export default function Decor({navigation, route}) {
               const docSnap = await getDoc(docRef);
               if (docSnap.exists()) {
                 setUser(docSnap.data().items)
+
       
               } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
               } 
 
@@ -100,6 +115,23 @@ export default function Decor({navigation, route}) {
           return ()=>{}
         }, [])
       )
+
+      const handleModal = () => {
+        setModalVisible(true)
+      }
+
+     const  handleModalClose = () => {
+        setModalVisible(false)
+        setModalPage(1)
+      }
+
+      const handleModalNext = () =>{
+        setModalPage(modalPage + 1)
+      }
+
+      const handleModalBack = () => {
+        setModalPage(modalPage - 1)
+      }
     
 
     const [background, setBackground] = useState(false);
@@ -117,6 +149,44 @@ export default function Decor({navigation, route}) {
         // You can control the ref programmatically, rather than using autoPlay
         animation.current?.play();
       }, []);
+
+      const [scroll, setScroll] = useState(true)
+      const pan = useRef(new Animated.ValueXY()).current;
+
+      
+      
+      const [picked, setPicked] = useState([])
+    
+
+      const handlePick = async (i) => {
+        const db = getFirestore();
+        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        let newArr = [...user];
+
+       if(newArr[i].active == false){
+        newArr[i].active = true
+        newArr[i].opacity = 1
+        newArr[i].zIndex= 50
+        newArr[i].invOpacity = .5
+    
+       }else if(newArr[i].active == true){
+        newArr[i].active = false
+        newArr[i].opacity = 0
+        newArr[i].zIndex= -99
+        newArr[i].invOpacity = 1
+     
+       }
+       setUser(newArr)
+
+       setDoc(
+        docRef,
+        {
+          items : user,
+        },
+        {merge: true}
+      )
+       
+      }
   
     
     return(
@@ -137,12 +207,22 @@ export default function Decor({navigation, route}) {
         icons={EvaIconsPack} 
         />
         <Header/>
-        <SliderCont>
+        <ModalTut
+        onYes={handleModalNext} 
+        onClose={handleModalClose} 
+        onNo={handleModalBack}  
+        mdlvis={modalVisible}
+        page={modalPage}
+        ></ModalTut>
+        
+        <SliderCont scrollEnabled={scroll}>
           <Wrapper>
             <DecorCont>
-              <AppBttn bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
+              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
               {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
-              <IconBttn onIcon={console.log(1)} i={"question-mark-circle"}></IconBttn>
+              <IconBttn style={{
+                alignItems: "right",
+              }} onIcon={handleModal} i={"question-mark-circle"}></IconBttn>
             </DecorCont>
             <LottieView
               autoPlay
@@ -155,20 +235,32 @@ export default function Decor({navigation, route}) {
                 top: 35,
               }}
                 
-              source={require('../assets/movingBgCool.json')}
+              source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
             />
-
-            {/* <SvgCssUri uri="../assets/lavender.svg" width="100" height="100" /> */}
-            <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
-            
+            <BgCont>
+              {user.map((o,i)=>
+                  <ItemDrag 
+                      onPress={()=>setScroll(false)}
+                      onRelease={()=>setScroll(true)}
+                      
+                      size='100'
+                      opacity={user[i].opacity} 
+                      image={user[i].name}
+                      z={user[i].zIndex}
+                      key={i}
+                      ></ItemDrag>
+              )}  
+              <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
+            </BgCont>
             <AssetCont>
               <SliderWrapper>
-                  <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
+                <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
                 <Content>
                 {user.map((o,i)=>
                     <Item
-                    onImg={console.log(1)}
-                    opacity={1} 
+                    onImg={()=>handlePick(i)}
+                    onFinish={null}
+                    opacity={user[i].invOpacity} 
                     image={user[i].name}
                     key={i}
                     ></Item>
@@ -177,7 +269,8 @@ export default function Decor({navigation, route}) {
                 </Content>
                 </Slider>
               </SliderWrapper>
-              <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
+              
+                <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
             </AssetCont>
 
           </Wrapper>

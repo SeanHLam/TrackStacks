@@ -112,7 +112,7 @@ checked=false
     return (
         <Cont>
           
-                <AppText wdth='15%' align='center' text={month} style="date" c="black"/>
+                <AppText wdth='18%' align='center' text={month} style="date" c="black"/>
            
 
            <DateCont>

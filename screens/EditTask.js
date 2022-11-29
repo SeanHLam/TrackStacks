@@ -12,7 +12,7 @@ import SubTask from '../components/addtask/subtask.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/button/appbutton.js';
-import TaskTitle from '../components/form/tasktitle.js';
+import TaskTitle from '../components/Form/tasktitle.js';
 import AddDetail from '../components/addtask/addtaskdetail.js';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
@@ -95,8 +95,10 @@ export default function EditTask({navigation, route}) {
         (async () => {
             const auth = getAuth();
             const db = getFirestore();
+
             const docRef =  await doc(db, "users", auth.currentUser.uid);
             //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               // console.log(docSnap.data())
@@ -153,9 +155,11 @@ export default function EditTask({navigation, route}) {
     }
     console.log(subTask)
     const HandleAdd = ()=>{
+
       const auth = getAuth();
       const db = getFirestore();
       const docRef = doc(db, "users", auth.currentUser.uid);
+
       tasks[taskKey].title = text
       tasks[taskKey].date = date
       tasks[taskKey].sub = subTask

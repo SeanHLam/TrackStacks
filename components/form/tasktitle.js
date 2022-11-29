@@ -30,6 +30,7 @@ flex-direction: row;
 align-items: flex-end;
 justify-content: flex-end;
 margin-right: 10%;
+margin-bottom: 4%;
 
 `
 
