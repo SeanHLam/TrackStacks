@@ -42,13 +42,15 @@ export default function ItemDrag({
  onImg=()=>{},
  onPress=()=>{},
  onRelease=()=>{},
+ x=0,
+ y=0
 }) {
     
     const HandleClick = () => {
         console.log('click')
     }
 
-    const pan = useRef(new Animated.ValueXY()).current;
+    const pan = useRef(new Animated.ValueXY({x:x, y:y})).current;
 
     const panResponder = useRef(
         PanResponder.create({
