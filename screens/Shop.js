@@ -98,8 +98,8 @@ export default function Shop({navigation, route}) {
           (async () => {
               const auth = getAuth();
               const db = getFirestore();
-              //const docRef =  await doc(db, "users", auth.currentUser.uid);
-              const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+              const docRef =  await doc(db, "users", auth.currentUser.uid);
+              //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
               const docSnap = await getDoc(docRef);
               const itemRef =  await doc(db, "items", "decor");
               const itemSnap = await getDoc(itemRef);
