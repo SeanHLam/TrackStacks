@@ -42,6 +42,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 
+
 `
 
 const Divider = styled.Text`
@@ -65,6 +66,7 @@ display: flex;
 margin-left: 4%;
 margin-right: 4%;
 `
+
 
 
 
@@ -119,6 +121,7 @@ export default function Decor({navigation, route}) {
 
      const  handleModalClose = () => {
         setModalVisible(false)
+        setModalPage(1)
       }
 
       const handleModalNext = () =>{
@@ -146,29 +149,23 @@ export default function Decor({navigation, route}) {
         animation.current?.play();
       }, []);
 
-
+      const [scroll, setScroll] = useState(true)
       const pan = useRef(new Animated.ValueXY()).current;
 
-      const panResponder = useRef(
-        PanResponder.create({
-          onMoveShouldSetPanResponder: () => true,
-          onPanResponderGrant: () => {
-            pan.setOffset({
-              x: pan.x._value,
-              y: pan.y._value
-            });
-          },
-          onPanResponderMove: Animated.event(
-            [
-              null,
-              { dx: pan.x, dy: pan.y }
-            ]
-          ),
-          onPanResponderRelease: () => {
-            pan.flattenOffset();
-          }
-        })
-      ).current;
+      
+      
+  
+      const [picked, setPicked] = useState( )
+
+      const handlePick = (i) => {
+        if(picked[i] === false){
+          setPicked([true])
+        }else if(picked[i] === true){
+          setPicked([false])
+        }
+       console.log(picked)
+        
+      }
   
     
     return(
@@ -196,7 +193,8 @@ export default function Decor({navigation, route}) {
         mdlvis={modalVisible}
         page={modalPage}
         ></ModalTut>
-        <SliderCont>
+        
+        <SliderCont scrollEnabled={scroll}>
           <Wrapper>
             <DecorCont>
               <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
@@ -218,36 +216,28 @@ export default function Decor({navigation, route}) {
                 
               source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
             />
-
-            
-         
             <BgCont>
-            {user.map((o,i)=>
-            <Animated.View
-            key={i}
-            style={{
-              transform: [{ translateX: pan.x }, { translateY: pan.y }]
-            }}
-            {...panResponder.panHandlers} >
-                 <ItemDrag
-                    size='100'
-                    opacity={1} 
-                    image={user[i].name}
-                    key={i}
-                    ></ItemDrag>
-
-            </Animated.View>
-                 
-            )}
+              {user.map((o,i)=>
+                  <ItemDrag 
+                      onPress={()=>setScroll(false)}
+                      onRelease={()=>setScroll(true)}
+                      scrollEnabled={false}
+                      size='100'
+                      opacity={user[i].opacity} 
+                      image={user[i].name}
+                      z={user[i].zIndex}
+                      key={i}
+                      ></ItemDrag>
+              )}
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             </BgCont>
             <AssetCont>
               <SliderWrapper>
-                  <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
+                <Slider showsHorizontalScrollIndicator={false} horizontal={true}>
                 <Content>
                 {user.map((o,i)=>
                     <Item
-                    onImg={console.log(1)}
+                    onImg={()=>handlePick(i)}
                     opacity={1} 
                     image={user[i].name}
                     key={i}

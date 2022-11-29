@@ -76,7 +76,7 @@ export default function Tasks({navigation, route}) {
       setIndex(i)
       donearr = isChecked
     
-        donearr[i] = true
+      donearr[i] = true
      
       //setChecked(true)
     };

@@ -38,19 +38,57 @@ export default function ItemDrag({
  image="AppleRug",
  size="70",
  opacity=1,
- onImg=()=>{}
+ z=-99,
+ onImg=()=>{},
+ onPress=()=>{},
+ onRelease=()=>{},
 }) {
     
     const HandleClick = () => {
         console.log('click')
     }
+
+    const pan = useRef(new Animated.ValueXY()).current;
+
+    const panResponder = useRef(
+        PanResponder.create({
+          onMoveShouldSetPanResponder: () => true,
+          onPanResponderGrant: () => {
+            
+            pan.setOffset({
+              x: pan.x._value,
+              y: pan.y._value
+            });
+          },
+          onPanResponderMove: Animated.event(
+            [
+              null,
+              { dx: pan.x, dy: pan.y }
+            ],  {useNativeDriver: false}
+          ),
+          onPanResponderRelease: () => {
+            
+            console.log(pan.x,pan.y);
+            pan.flattenOffset();
+          }
+        })
+      ).current;
+  
     
     return (
-        <Wrapper        
+        <Animated.View 
+        onTouchStart={onPress} 
+        onTouchEnd={onRelease} 
         onPress={()=>onImg()}
         style={{
-            opacity: opacity
-        }} >
+            position:"absolute",
+            opacity: opacity,
+            zIndex:z,
+            transform: [{ translateX: pan.x }, { translateY: pan.y }],
+            
+        }}
+        {...panResponder.panHandlers} 
+        >
             
             {image === "Apple Rug" &&
                 <AppleRug width={size} height={size}/>
@@ -74,9 +112,6 @@ export default function ItemDrag({
                 <Wolf width={size} height={size}/>
             }
             
-
-
-
-        </Wrapper>
+        </Animated.View>
     )
 }
