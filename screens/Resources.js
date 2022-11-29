@@ -60,12 +60,13 @@ export default function Resources({navigation, route}){
               </HomeTextCont>
 
               <ResourceWidgetCont>
-                  <ResourceWidget onBttn={HandleTutorial} 
+                  <ResourceWidget onWidget={()=>navigation.navigate("TaskTutorial")} 
                   secondtext='/ Create a Task'
                   dsp='none'
                   source={images.task}
                   ></ResourceWidget>
                   <ResourceWidget
+                  onWidget={()=>navigation.navigate("PartnerTutorial")}
                   secondtext='/ Partner Mode'
                   dsp='none'
                   source={images.parental}

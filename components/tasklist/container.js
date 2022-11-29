@@ -105,7 +105,7 @@ export default function TaskCont(){
             
             i >= tasks.length - 3 && tasks[i].status == "unfinished" &&
             <ArchiveList
-              month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"})}
+              month={new Date(tasks[i].date.seconds * 1000).toLocaleDateString(undefined, {month:"short"}).toUpperCase()}
               tlt={tasks[i].title}
               key={i}
               onDone={()=> HandleDone(i)} 

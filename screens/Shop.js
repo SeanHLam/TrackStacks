@@ -156,9 +156,10 @@ export default function Shop({navigation, route}) {
                     purchased:true,
                     opacity:0,
                     invOpacity: 1,
-                    x: "621 px",
-                    y: "1218 px",
-                    id: shopIndex
+                    x: "0px",
+                    y: "0px",
+                    id: shopIndex,
+                    zIndex: -99
                 })
             });
             

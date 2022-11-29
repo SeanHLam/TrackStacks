@@ -66,7 +66,7 @@ export default function EditTask({navigation, route}) {
     taskname:'',
     status:"unfinished"
   }])
-  const [checked, onCheckMark] = useState()
+ 
   
   const [title, setTitle] = useState("Pick a Category")
     const HandlePage = (new_page) =>{
@@ -128,50 +128,24 @@ export default function EditTask({navigation, route}) {
     )
  
 
-    const HandleSub = (t)=>{
-      subTask[index].taskname = t
+    const HandleSub = (i, t)=>{
+      subTask[i].taskname = t
       onSub(t)
       console.log(console.log(subTask))
 
     }
 
+    const [checked, onCheckMark] = useState()
+    
+    const handleCheck = (i)=>{
+      
+      tasks[taskKey].sub[i].status 
+      console.log(tasks[taskKey].sub[i].status)
+    }
+
     const HandleAdd = ()=>{
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-      if(data[selectedIndex.row] === "Long Term"){
-        let loop = new Date(range.startDate);
-        while (loop <= range.endDate) {
-          let newDate = loop.setDate(loop.getDate() + 1);
-          updateDoc(docRef, {
-            tasks: arrayUnion({
-              title: text,
-              date: loop,
-              cat: data[selectedIndex.row],
-              status: "unfinished"
-            })
-          });
-          loop = new Date(newDate);
-        }
-      }else if(data[selectedIndex.row] === "Single"){
-        updateDoc(docRef, {
-          tasks: arrayUnion({
-            title: text,
-            date: date,
-            cat: data[selectedIndex.row],
-            status: "unfinished"
-          })
-        });
-      }else if(data[selectedIndex.row] === "To Do"){
-        updateDoc(docRef, {
-          tasks: arrayUnion({
-            title: text,
-            date: date,
-            cat: data[selectedIndex.row],
-            sub: subTask,
-            status: "unfinished"
-          })
-        });
-      }
     }
 
     const HandleCat = (e)=>{
@@ -233,7 +207,7 @@ export default function EditTask({navigation, route}) {
               </Select>
             </SelectCont> 
 
-            { data[selectedIndex.row] === "To Do" &&
+            {/* { data[selectedIndex.row] === "To Do" &&
                     <AddDetail
               
                     changeText={HandleSub}
@@ -243,17 +217,16 @@ export default function EditTask({navigation, route}) {
                     subTasks={tasks[taskKey].sub}
                   >
                   </AddDetail>
-              
-
-            }
+            } */}
+            {data[selectedIndex.row] === "To Do" &&
             <WidgetCont>
               <AppText style='sub' text='Details'></AppText>
             {subTask.map((o,i)=> (
                 <SubTask
                 t={subTask[i].taskname}
-                onText={console.log(1)}
-                onCheck={console.log(1)}
-                check={subTask[i].status}
+                onText={()=>HandleSub(i)}
+                onCheck={()=>handleCheck(i)}
+                check={tasks[taskKey].sub[i].status}
                 key={i}/>)
               )}
               <AddCont>
@@ -262,7 +235,7 @@ export default function EditTask({navigation, route}) {
               </AddCont>
               
 
-            </WidgetCont>
+            </WidgetCont>}
             
    
             {/* {subTask.map((o,i)=> (
