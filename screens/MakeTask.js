@@ -74,6 +74,7 @@ export default function MakeTask({navigation, route}) {
     }
 
     const HandleAdd = ()=>{
+      const auth = getAuth();
       const db = getFirestore();
       const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
       if(data[selectedIndex.row] === "Long Term"){
