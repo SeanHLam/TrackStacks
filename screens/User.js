@@ -85,9 +85,6 @@ export default function User({navigation, route}) {
     const HandleArchive = () =>{
       navigation.navigate("Archive")
     }
-    const HandleLogOut = () =>{
-      navigation.navigate("SignIn")
-    }
 
     const [checked, setChecked] = React.useState(true);
     const onCheckedChange = (isChecked) => {
