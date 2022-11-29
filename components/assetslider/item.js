@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, ScrollView, Text,Pressable} from 'react-native';
+import { View, Image, ScrollView, Text,Pressable, Animated} from 'react-native';
 import styled from 'styled-components/native';
 import Lavender from '../../assets/lavender.svg';
 import AppleRug from '../../assets/applerug.svg';
@@ -9,7 +9,7 @@ import FatCat from '../../assets/fatcat.svg';
 import Wolf from '../../assets/wolf.svg';
 import Mascot from '../../assets/mascot.svg'
 
-const Wrapper = styled.Pressable`
+const Wrapper = styled.View`
 
 `
 
@@ -34,7 +34,8 @@ export default function Item({
  image="AppleRug",
  size="70",
  opacity=1,
- onImg=()=>{}
+ onImg=()=>{},
+ onFinish=()=>{}
 }) {
     
     const HandleClick = () => {
@@ -42,8 +43,9 @@ export default function Item({
     }
     
     return (
-        <Wrapper
-        onPress={()=>onImg()}
+        <Animated.View
+        onTouchEnd={onFinish}
+        onTouchStart={onImg}
         style={{
             opacity: opacity
         }} >
@@ -73,6 +75,6 @@ export default function Item({
 
 
 
-        </Wrapper>
+        </Animated.View>
     )
 }

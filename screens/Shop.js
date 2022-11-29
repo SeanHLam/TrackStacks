@@ -159,7 +159,8 @@ export default function Shop({navigation, route}) {
                     x: "0px",
                     y: "0px",
                     id: shopIndex,
-                    zIndex: -99
+                    zIndex: -99,
+                    active:false
                 })
             });
             

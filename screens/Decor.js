@@ -27,6 +27,7 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import ItemDrag from '../components/assetslider/itemdrag.js';
 import ModalTut from '../components/modal/modaltut.js';
+import { async } from '@firebase/util';
 
 
 
@@ -103,6 +104,10 @@ export default function Decor({navigation, route}) {
               const docSnap = await getDoc(docRef);
               if (docSnap.exists()) {
                 setUser(docSnap.data().items)
+
+                // for(let i = 0;i >= user.length; i++){
+                  
+                // }
       
               } else {
                 // doc.data() will be undefined in this case
@@ -154,17 +159,42 @@ export default function Decor({navigation, route}) {
 
       
       
-  
-      const [picked, setPicked] = useState( )
+      const [picked, setPicked] = useState([])
+    
 
-      const handlePick = (i) => {
-        if(picked[i] === false){
-          setPicked([true])
-        }else if(picked[i] === true){
-          setPicked([false])
-        }
-       console.log(picked)
+      const handlePick = async (i) => {
         
+        const db = getFirestore();
+        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+   
+       if(user[i].active == false){
+        user[i].active = true
+        user[i].opacity = 1
+        user[i].zIndex= 50
+        user[i].invOpacity = .5
+        setDoc(
+          docRef,
+          {
+            items : user,
+          },
+          {merge: true}
+        )
+
+       }else if(user[i].active == true){
+        user[i].active = false
+        user[i].opacity = 0
+        user[i].zIndex= -99
+        user[i].invOpacity = 1
+        setDoc(
+          docRef,
+          {
+            items : user,
+          },
+          {merge: true}
+        )
+       }
+       console.log(user[i])
+       
       }
   
     
@@ -221,14 +251,14 @@ export default function Decor({navigation, route}) {
                   <ItemDrag 
                       onPress={()=>setScroll(false)}
                       onRelease={()=>setScroll(true)}
-                      scrollEnabled={false}
+                      
                       size='100'
                       opacity={user[i].opacity} 
                       image={user[i].name}
                       z={user[i].zIndex}
                       key={i}
                       ></ItemDrag>
-              )}
+              )}  
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             </BgCont>
             <AssetCont>
@@ -238,7 +268,8 @@ export default function Decor({navigation, route}) {
                 {user.map((o,i)=>
                     <Item
                     onImg={()=>handlePick(i)}
-                    opacity={1} 
+                    onFinish={null}
+                    opacity={user[i].invOpacity} 
                     image={user[i].name}
                     key={i}
                     ></Item>
