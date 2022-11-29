@@ -141,8 +141,10 @@ export default function Shop({navigation, route}) {
     }
   
     const HandleYes = async () =>{
+      const auth = getAuth();
+           
         const db = getFirestore();
-        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        const docRef = doc(db, "users", auth.currentUser.uid);
         stats.spent += shop[shopIndex].price
         if (stars >= shop[shopIndex].price){
             bought[shopIndex].purchased = true

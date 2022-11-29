@@ -159,8 +159,9 @@ export default function Decor({navigation, route}) {
     
 
       const handlePick = async (i) => {
+        const auth = getAuth();
         const db = getFirestore();
-        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        const docRef = doc(db, "users", auth.currentUser.uid);
         let newArr = [...user];
 
        if(newArr[i].active == false){
