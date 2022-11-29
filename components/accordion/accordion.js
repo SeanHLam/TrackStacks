@@ -8,7 +8,7 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { default as theme} from '../../assets/TSTheme.json';
 import { Pressable, StyleSheet } from 'react-native';
-import { accordionData } from './accordiondata';
+import { accordionData } from './accordiondata.js';
 import AccordionBar from './accordionbar';
 
 const AccordionContainer = styled.View`
@@ -17,6 +17,7 @@ flex-direction: column;
 justify-content:center;
 align-items:center;
 width:100%;
+margin-bottom:10%;
 `
 
 export default function Accordion() {
@@ -40,10 +41,12 @@ export default function Accordion() {
         icons={EvaIconsPack} 
         />
         <AccordionContainer>
-            <AccordionBar></AccordionBar>
-            <AccordionBar></AccordionBar>
-            <AccordionBar></AccordionBar>
-            <AccordionBar></AccordionBar>
+        {accordionData.map((o,i)=>
+            <AccordionBar
+            qs={accordionData[i].question}
+            ans={accordionData[i].answer}
+            />
+        )}
         </AccordionContainer>
             
     </ApplicationProvider>
