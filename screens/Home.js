@@ -67,7 +67,7 @@ export default function Home({navigation, route}) {
           const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
-            console.log(docSnap.data())
+            
             setName(docSnap.data().displayName)
             setNoti(docSnap.data().settings.notifications)
           } else {

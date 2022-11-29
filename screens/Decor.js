@@ -199,7 +199,7 @@ export default function Decor({navigation, route}) {
         <SliderCont>
           <Wrapper>
             <DecorCont>
-              <AppBttn bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
+              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
               {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
               <IconBttn style={{
                 alignItems: "right",
@@ -216,7 +216,7 @@ export default function Decor({navigation, route}) {
                 top: 35,
               }}
                 
-              source={require('../assets/movingBgCool.json')}
+              source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
             />
 
             
@@ -224,6 +224,7 @@ export default function Decor({navigation, route}) {
             <BgCont>
             {user.map((o,i)=>
             <Animated.View
+            key={i}
             style={{
               transform: [{ translateX: pan.x }, { translateY: pan.y }]
             }}
