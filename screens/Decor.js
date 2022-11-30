@@ -243,7 +243,7 @@ export default function Decor({navigation, route}) {
                   <ItemDrag 
                       onPress={()=>setScroll(false)}
                       onRelease={()=>setScroll(true)}
-                      
+                      x={10}
                       size='100'
                       opacity={user[i].opacity} 
                       image={user[i].name}

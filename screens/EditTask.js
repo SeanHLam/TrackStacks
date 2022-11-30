@@ -105,7 +105,6 @@ export default function EditTask({navigation, route}) {
               let allTasks = docSnap.data().tasks
               let taskDate = allTasks[taskKey].date
               setTasks(docSnap.data().tasks)
-              
               onChangeText(allTasks[taskKey].title)
               setDate(taskDate.toDate())
               setSubTask(allTasks[taskKey].sub)
