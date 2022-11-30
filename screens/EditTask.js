@@ -12,7 +12,7 @@ import SubTask from '../components/addtask/subtask.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/button/appbutton.js';
-import TaskTitle from '../components/Form/tasktitle.js';
+import TaskTitle from '../components/form/tasktitle.js';
 import AddDetail from '../components/addtask/addtaskdetail.js';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';

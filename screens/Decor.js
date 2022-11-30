@@ -58,7 +58,7 @@ justify-content:center;
 align-items:center;
 `
 const SliderWrapper = styled.View`
-width:71%;
+width:65%;
 background-color: #FFFDF4;
 border:2px solid #363630;
 border-radius: 5px;

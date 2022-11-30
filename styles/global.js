@@ -125,16 +125,17 @@ margin-top:5%;
 `
 
 export const DecorCont = styled.View`
-width: 95%;
+width: 90%;
 display:flex;
 flex-direction: row;
 align-items:center;
-justify-content:flex-start;
-margin-bottom:4%;
+margin-bottom:5%;
+margin-top:5%;
+margin-left:8%;
 `
 
 export const DecorImage = styled(Image)`
-width: 90%;
+width: 85%;
 resizeMode:'contain'
 margin-bottom:5%;
 display: grid;
