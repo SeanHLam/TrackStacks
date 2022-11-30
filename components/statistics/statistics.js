@@ -8,11 +8,10 @@ export const Wrapper = styled.View`
 width:90%;
 display: flex;
 flex-direction: row;
-justify-contenr: center;
-align-items:center;
+justify-content: center;
 background-color:#FEFDF4;
-padding:6%;
-margin: 5%;
+margin:2%;
+margin-bottom:5%;
 border:2px solid #363630;
 border-radius: 8px;
 box-shadow: 4px 4px #363630;
@@ -20,9 +19,8 @@ box-shadow: 4px 4px #363630;
 
 export const ColWrapper = styled.View`
 display: flex;
-flex-direction: column;
-margin-right:8%;
-
+align-items:center;
+padding:5%;
 `
 
 export const StatCont = styled.View`

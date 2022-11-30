@@ -10,7 +10,7 @@ width:90%;
 display: flex;
 flex-direction: row;
 align-items: center;
-justify-contenr: center;
+justify-content: center;
 background-color:#FEFDF4;
 padding:3%;
 margin: 5%;
@@ -23,9 +23,10 @@ background-color:#EAAA99;
 border-radius: 100%;
 display:flex;
 justify-content:center;
-align-items:center;
+align-items:flex-start;
 padding:1%;
 margin-right:2%;
+width:10%;
 `
 
 
@@ -45,7 +46,7 @@ onToggle=()=>{}
         <ICont>
             <Icon  name={i} fill={"#FEFDF4"} style={styles.icon}/>
         </ICont>
-        <AppText wdth='70%' paddingleft='2%' text={t} style='sub'></AppText>
+        <AppText wdth='65%' paddingleft='2%' text={t} style='sub'></AppText>
         <Toggle checked={checked} onChange={onCheckedChange}>
     
     </Toggle>

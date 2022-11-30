@@ -215,3 +215,22 @@ margin-bottom: 5%;
 export const MascotCont = styled.View`
 background-color:#FEFDF4;
 `
+
+export const ProfileCont = styled.View`
+display:flex;
+flex-direction: row;
+margin-top:5%;
+margin-bottom:3%;
+`
+
+export const ProfileInfoCont = styled.View`
+display:flex;
+flex-direction: column;
+justify-content:space-around;
+margin-left:5%;
+`
+
+export const SettingCont = styled.View`
+margin-top:-3%;
+margin-bottom:10%;
+`
