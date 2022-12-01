@@ -12,7 +12,7 @@ import SubTask from '../components/addtask/subtask.js';
 import RepeatMenu from '../components/repeatmenu/repeatmenu.js';
 import AppText from '../components/apptext/apptext.js';
 import AppBttn from '../components/button/appbutton.js';
-import TaskTitle from '../components/Form/tasktitle.js';
+import TaskTitle from '../components/form/tasktitle.js';
 import AddDetail from '../components/addtask/addtaskdetail.js';
 import { useFonts, Cabin_400Regular, Cabin_700Bold  } from '@expo-google-fonts/cabin';
 import { DaysOne_400Regular } from '@expo-google-fonts/days-one';
@@ -88,7 +88,7 @@ export default function EditTask({navigation, route}) {
       onChangeText(t)
     }
     
-
+    
     useFocusEffect(
       React.useCallback(() => {
         //setCurrentUser(user.uid);
@@ -98,14 +98,13 @@ export default function EditTask({navigation, route}) {
 
             const docRef =  await doc(db, "users", auth.currentUser.uid);
             //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-
+            console.log("AUTH", auth)
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               // console.log(docSnap.data())
               let allTasks = docSnap.data().tasks
               let taskDate = allTasks[taskKey].date
               setTasks(docSnap.data().tasks)
-              console.log("here",allTasks[10].cat)
               onChangeText(allTasks[taskKey].title)
               setDate(taskDate.toDate())
               setSubTask(allTasks[taskKey].sub)

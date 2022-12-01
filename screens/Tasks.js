@@ -85,9 +85,10 @@ export default function Tasks({navigation, route}) {
 
 
     const HandleFinish = async ()=>{
+      const auth = getAuth();
       setModalVisible(false)
       const db = getFirestore();
-      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      const docRef = doc(db, "users", auth.currentUser.uid);
       tasks[index].status = "finished"
       stats.earned += 50
       stats.doing -= 1

@@ -7,7 +7,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
 import { Wrapper, NavWrapper, SliderCont, SignInFooter, FormCont, HeadCont, HeadContInner, MascotCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
-import {Signin} from '../components/Form/signincomp';
+import {Signin} from '../components/form/signincomp';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
 import styled from 'styled-components';
