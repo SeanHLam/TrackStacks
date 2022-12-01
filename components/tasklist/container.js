@@ -43,7 +43,7 @@ export default function TaskCont(){
         recent.tlt = {recent}
     }
 
-    const [tasks, setTasks] = useState([])
+    const [ tasks, setTasks] = useState([])
 
     useFocusEffect(
       React.useCallback(() => {

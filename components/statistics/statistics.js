@@ -36,6 +36,11 @@ align-items:flex-start;
 `
 
 export const NumBg = styled.View`
+text-align:right;
+display:flex;
+justify-content:right;
+align-items:right;
+width:100%;
 padding:8%;
 border-radius: 8px;
 border-radius: 8px;
@@ -61,7 +66,7 @@ doing=0
         <StatCont>
             <NumCont>
                 <NumBg>
-                    <AppText text={done} align='left' c="white" wdth='100%'  style='sub'></AppText>
+                    <AppText text={done} align='right' c="white" wdth='100%'  style='sub'></AppText>
                 </NumBg>
                 
             </NumCont>
@@ -71,7 +76,7 @@ doing=0
         <StatCont>
             <NumCont>
             <NumBg>
-                 <AppText align='left' c="white" wdth='100%' text={spent} style='sub'></AppText>
+                 <AppText align='right' c="white" wdth='100%' text={spent} style='sub'></AppText>
             </NumBg>
             </NumCont>
             <AppText c='blue' wdth='100%' text="Stars Spent" style='body'></AppText>
@@ -82,7 +87,7 @@ doing=0
         <StatCont>
             <NumCont>
                 <NumBg>
-                    <AppText align='left' c="white" wdth='100%' text={doing} style='sub'></AppText>
+                    <AppText align='right' c="white" wdth='100%' text={doing} style='sub'></AppText>
                 </NumBg>
                 
             </NumCont>
@@ -92,7 +97,7 @@ doing=0
         <StatCont>
             <NumCont>
             <NumBg>
-                 <AppText text={earned} align='left' c="white" wdth='100%' style='sub'></AppText>
+                 <AppText text={earned} align='right' c="white" wdth='100%' style='sub'></AppText>
             </NumBg>
             </NumCont>
             <AppText c='blue' wdth='100%' text="Stars earned" style='body'></AppText>

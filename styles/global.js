@@ -24,6 +24,7 @@ export const ButtonWrapper = styled.View`
 display:flex;
 flex-direction:row;
 justify-content:center;
+margin-bottom:2%;
 `;
 
 export const SignInFooter = styled.View`

@@ -187,7 +187,7 @@ export default function EditTask({navigation, route}) {
         ...subTask,
         {
           taskname:"",
-          status:"unfinished"
+          status:false
         }
       ])
       setIndex(index + 1)
@@ -246,10 +246,10 @@ export default function EditTask({navigation, route}) {
                 check={subTask[i].status}
                 key={i}/>)
               )}
-              {/* <AddCont>
-                <AddBttn></AddBttn>
-                <AppText style='body' text='Add New'></AppText>
-              </AddCont> */}
+               <AddCont>
+                    <AddBttn onAdd={handleAddSub}></AddBttn>
+                    <AppText style='body' text='Add New'></AppText>
+                  </AddCont>
               
 
             </WidgetCont>}
