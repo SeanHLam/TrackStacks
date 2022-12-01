@@ -21,7 +21,7 @@ import { colours } from '../components/categorymenu/categorydata.js';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { View} from 'react-native';
 import Mascot from '../assets/mascot.svg'
-import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useFocusEffect } from '@react-navigation/native';
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
@@ -70,16 +70,18 @@ export default function MakeTask({navigation, route}) {
 
     useFocusEffect(
       React.useCallback(() => {
+        // console.log("CALLBACK MAKE TASK")
         //setCurrentUser(user.uid);
         (async () => {
             const auth = getAuth();
             const db = getFirestore();
-            //const docRef =  await doc(db, "users", auth.currentUser.uid);
-            const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+            console.log('auth', auth);
+            const docRef =  await doc(db, "users", auth.currentUser.uid);
+            //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               setStats(docSnap.data().stats)
-              console.log(docSnap.data().stats)
+              console.log("check make task stuff", docSnap.data().stats)
             } else {
               console.log("No such document!");
             }
@@ -101,7 +103,7 @@ export default function MakeTask({navigation, route}) {
     const HandleAdd = ()=>{
       const auth = getAuth();
       const db = getFirestore();
-      const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+      const docRef = doc(db, "users", auth.currentUser.uid);
       stats.doing += 1
       if(data[selectedIndex.row] === "Long Term"){
         let loop = new Date(range.startDate);

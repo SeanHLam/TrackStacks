@@ -88,7 +88,7 @@ export default function EditTask({navigation, route}) {
       onChangeText(t)
     }
     
-
+    
     useFocusEffect(
       React.useCallback(() => {
         //setCurrentUser(user.uid);
@@ -98,14 +98,13 @@ export default function EditTask({navigation, route}) {
 
             const docRef =  await doc(db, "users", auth.currentUser.uid);
             //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
-
+            console.log("AUTH", auth)
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               // console.log(docSnap.data())
               let allTasks = docSnap.data().tasks
               let taskDate = allTasks[taskKey].date
               setTasks(docSnap.data().tasks)
-              console.log("here",allTasks[10].cat)
               onChangeText(allTasks[taskKey].title)
               setDate(taskDate.toDate())
               setSubTask(allTasks[taskKey].sub)

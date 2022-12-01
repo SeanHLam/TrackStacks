@@ -68,8 +68,7 @@ export default function Shop({navigation, route}) {
 
     const [shop, setShop] = useState([
         {
-            name:"Cactus",
-            price: 9999
+          
         }
 
     ])
@@ -132,8 +131,11 @@ export default function Shop({navigation, route}) {
     }
 
     const HandleYes = async () =>{
+      const auth = getAuth();
+           
         const db = getFirestore();
-        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        const docRef = doc(db, "users", auth.currentUser.uid);
+        stats.spent += shop[shopIndex].price
         if (stars >= shop[shopIndex].price){
             bought[shopIndex].purchased = true
             setDoc(
@@ -149,8 +151,8 @@ export default function Shop({navigation, route}) {
                     purchased:true,
                     opacity:0,
                     invOpacity: 1,
-                    x: "0px",
-                    y: "0px",
+                    x: 0,
+                    y: 0,
                     id: shopIndex,
                     zIndex: -99
                 })
