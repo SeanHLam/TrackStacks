@@ -174,6 +174,7 @@ export default function Home({navigation, route}) {
         <Widget
         text1={new Date().toLocaleDateString(undefined, {day:"numeric"})}
         text={new Date().toLocaleDateString(undefined, {month:"short"})}
+        onWidget={()=>navigation.navigate("Tasks")}
         width='90%'
         height='140'
         alignItems='center'
@@ -189,6 +190,7 @@ export default function Home({navigation, route}) {
          height='275'
          justifyContent='flex-start'
          alignItems='center'
+         onWidget={()=>navigation.navigate("Archive")}
          text='Task Archive'
          text1=''
          c='blue'
