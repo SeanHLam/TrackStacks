@@ -159,8 +159,9 @@ export default function Decor({navigation, route}) {
     
 
       const handlePick = async (i) => {
+        const auth = getAuth();
         const db = getFirestore();
-        const docRef = doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+        const docRef = doc(db, "users", auth.currentUser.uid);
         let newArr = [...user];
 
        if(newArr[i].active == false){
@@ -168,10 +169,14 @@ export default function Decor({navigation, route}) {
         newArr[i].opacity = 1
         newArr[i].zIndex= 50
         newArr[i].invOpacity = .5
+        newArr[i].x = 0
+        newArr[i].y = 0
     
        }else if(newArr[i].active == true){
         newArr[i].active = false
         newArr[i].opacity = 0
+        newArr[i].x = 0
+        newArr[i].y = 0
         newArr[i].zIndex= -99
         newArr[i].invOpacity = 1
      
@@ -242,12 +247,15 @@ export default function Decor({navigation, route}) {
                   <ItemDrag 
                       onPress={()=>setScroll(false)}
                       onRelease={()=>setScroll(true)}
-                      
+                      x={10}
                       size='100'
                       opacity={user[i].opacity} 
                       image={user[i].name}
                       z={user[i].zIndex}
                       key={i}
+                      posx={user[i].x}
+                      posy={user[i].y}
+                      index={i}
                       ></ItemDrag>
               )}  
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
