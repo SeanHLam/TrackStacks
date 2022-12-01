@@ -114,7 +114,7 @@ export default function User({navigation, route}) {
               <ProfileInfoCont>
                 <AppText style="sub"  text={name}></AppText>
                 <AppText wdth='100%' style='task' text={email}></AppText>
-                <AppBttn onBttn={()=>HandleLogOut()} bttntext='Logout' style='huge'/>
+                <AppBttn  bttntext='Logout' style='huge'/>
               </ProfileInfoCont>
             </ProfileCont>
             <AppText text='Statistics' style='header'/>
