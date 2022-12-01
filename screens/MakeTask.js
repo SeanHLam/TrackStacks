@@ -23,6 +23,10 @@ import { View} from 'react-native';
 import Mascot from '../assets/mascot.svg'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useFocusEffect } from '@react-navigation/native';
+import styledComponents from 'styled-components';
+import styled from 'styled-components';
+import { AddCont } from './EditTask.js';
+import AddBttn from '../components/addbutton/addbutton.js';
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
 const customMapping = { strict: strictTheme };
@@ -32,6 +36,17 @@ const data = [
   'To Do',
   'Long Term',
 ];
+
+export const WidgetCont = styled.View`
+background-color:#FEFDF4;
+width:90%;
+border:2px solid #363630;
+border-radius: 5px;
+box-shadow: 4px 4px #363630;
+padding:3%;
+margin: 0% 0% 5% 0%;
+`
+
 
 
 export default function MakeTask({navigation, route}) {
@@ -93,11 +108,11 @@ export default function MakeTask({navigation, route}) {
     
  
 
-    const HandleSub = (t)=>{
-      subTask[index].taskname = t
-      onSub(t)
-      console.log(console.log(subTask))
-
+       const HandleSub = (e, i) =>{
+      let newArr = [...subTask];
+      newArr[i].taskname = e
+      setSubTask(newArr)
+      console.log(e)
     }
 
     const HandleAdd = ()=>{
@@ -212,14 +227,32 @@ export default function MakeTask({navigation, route}) {
             </SelectCont> 
 
             { data[selectedIndex.row] === "To Do" &&
-                    <AddDetail
+                  //   <AddDetail
               
-                    changeText={HandleSub}
+                  //   changeText={HandleSub}
           
-                    addTask={()=>handleAddSub()}
-                    subTasks={subTask}
-                  >
-                  </AddDetail>
+                  //   addTask={()=>handleAddSub()}
+                  //   subTasks={subTask}
+                  // >
+                  // </AddDetail>
+
+                  <WidgetCont>
+                  <AppText style='sub' text='Details'></AppText>
+                  {subTask.map((o,i)=> (
+                    <SubTask
+                    t={subTask[i].taskname}
+                    onText={e =>HandleSub(e,i)}
+                   
+                    check={subTask[i].status}
+                    key={i}/>)
+                  )}
+                  <AddCont>
+                    <AddBttn onAdd={handleAddSub}></AddBttn>
+                    <AppText style='body' text='Add New'></AppText>
+                  </AddCont>
+
+
+                  </WidgetCont>
             }
    
             {/* {subTask.map((o,i)=> (

@@ -8,6 +8,7 @@ import DarkCat from '../../assets/darkcat.svg';
 import FatCat from '../../assets/fatcat.svg';
 import Wolf from '../../assets/wolf.svg';
 import Mascot from '../../assets/mascot.svg'
+import BluePlush from '../../assets/Blue plush.png'
 
 const Wrapper = styled.View`
 
@@ -71,7 +72,7 @@ export default function Item({
             {image === "Wolf" &&
                 <Wolf width={size} height={size}/>
             }
-            
+          
 
 
 

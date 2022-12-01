@@ -5,7 +5,7 @@ import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect } from 'react';
 import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
-import { Text,Image, StyleSheet } from 'react-native';
+import { Text,Image, StyleSheet, View } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
 import TaskList from '../components/tasklist/tasklist.js';
 import Header from '../components/header/header.js';
@@ -141,9 +141,31 @@ export default function Home({navigation, route}) {
         }}
         >
         <HomeTextCont>
-          <AppText text={`Good Afternoon, ${name}`} style='header'/>
+          <AppText text={`Good Afternoon,`} style='header'/>
         </HomeTextCont>
         </MotiView>
+        
+        <MotiView
+        delay={900}
+        from={{ translateX: -15, opacity: 0}}
+        animate={{ translateX: 0, opacity: 1}}
+        transition={{
+          type:'timing',
+          duration:1200,
+        }}
+        >
+        <View
+        style={{
+          marginLeft:30,
+        
+        }}
+        >
+          <AppText text={`${ name ? name : "Sean"}`} style='header'/>
+        </View>
+         
+     
+        </MotiView>
+        
 
         <WidgetWrapper>
 
