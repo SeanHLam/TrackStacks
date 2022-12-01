@@ -169,10 +169,14 @@ export default function Decor({navigation, route}) {
         newArr[i].opacity = 1
         newArr[i].zIndex= 50
         newArr[i].invOpacity = .5
+        newArr[i].x = 0
+        newArr[i].y = 0
     
        }else if(newArr[i].active == true){
         newArr[i].active = false
         newArr[i].opacity = 0
+        newArr[i].x = 0
+        newArr[i].y = 0
         newArr[i].zIndex= -99
         newArr[i].invOpacity = 1
      
@@ -249,6 +253,9 @@ export default function Decor({navigation, route}) {
                       image={user[i].name}
                       z={user[i].zIndex}
                       key={i}
+                      posx={user[i].x}
+                      posy={user[i].y}
+                      index={i}
                       ></ItemDrag>
               )}  
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
