@@ -4,7 +4,7 @@ import { ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect } from 'react';
-import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, ProfileCont, ProfileInfoCont, SettingCont, HomeTextCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import AppText from '../components/apptext/apptext.js';
@@ -109,9 +109,15 @@ export default function User({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            <UserWidget name={name} email={email}></UserWidget>
-            <AppBttn onBttn={()=>HandleLogOut()} bttntext='Logout' style='small' margin='0%' marginTop='-15%' marginBottom='10%' marginLeft='15%'/>
-            <AppText text='Statistics' style='header'></AppText>
+            <ProfileCont>
+              <UserWidget/>
+              <ProfileInfoCont>
+                <AppText style="sub"  text={name}></AppText>
+                <AppText wdth='100%' style='task' text={email}></AppText>
+                <AppBttn onBttn={()=>HandleLogOut()} bttntext='Logout' style='huge'/>
+              </ProfileInfoCont>
+            </ProfileCont>
+            <AppText text='Statistics' style='header'/>
             <Statistics 
             doing={tDoing}
             spent={tSpent}
@@ -120,14 +126,16 @@ export default function User({navigation, route}) {
             
             
             ></Statistics>
-            <AppText text='Settings' style='header'></AppText>
+
+
+            <AppText text='Settings' style='header'/>
+            <SettingCont>
+              <SetToggle/>
+              <SetToggle onToggle={()=>HandleSet()} i="volume-up-outline" t="Sound"></SetToggle>
+              <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleHelp()}></SetWidget>
+              <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleArchive()}></SetWidget>
+            </SettingCont>
             
-            <SetToggle></SetToggle>
-            <SetToggle onToggle={()=>HandleSet()} i="volume-up-outline" t="Sound"></SetToggle>
-            
-            
-            <SetWidget i="question-mark-circle-outline" t="Help & Resources" onSet={()=>HandleHelp()}></SetWidget>
-            <SetWidget i="archive-outline" t="Task Archive" onSet={()=>HandleArchive()}></SetWidget>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

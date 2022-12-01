@@ -5,7 +5,7 @@ import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont} from '../styles/global.js';
+import { NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont, HomeTextCont, ButtonWrapper} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import DecWidget from '../components/decorwidget/decorwidget.js';
@@ -31,8 +31,6 @@ import ModalShop from '../components/modal/modalshop.js';
 
 const Slider = styled(ScrollView)`
 padding:3%;
-
-
 `
 
 const Divider = styled.Text`
@@ -45,18 +43,13 @@ display:flex;
 flex-direction:row;
 justify-content:center;
 align-items:center;
-flex-wrap: wrap;
+flex-wrap: wrap
 `
-const SliderWrapper = styled.View`
-width:71%;
-background-color: #FFFDF4;
-border:2px solid #363630;
-border-radius: 5px;
-box-shadow: 4px 4px #363630;
-display: flex;
-margin-left: 4%;
-margin-right: 4%;
-`
+
+const Wrapper = styled.View`
+display:flex;
+flex-direction:column;
+`;
 
 
 
@@ -89,7 +82,6 @@ export default function Shop({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalPage, setModalPage] = useState(1);
     const [shopIndex, setShopIndex] = useState(0);
-    const [stats, setStats] = useState([])
     
 
     useFocusEffect(
@@ -98,8 +90,8 @@ export default function Shop({navigation, route}) {
           (async () => {
               const auth = getAuth();
               const db = getFirestore();
-              const docRef =  await doc(db, "users", auth.currentUser.uid);
-              //const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
+              //const docRef =  await doc(db, "users", auth.currentUser.uid);
+              const docRef =  await doc(db, "users", "gmYamKsYiOMiHSj8e099gj0PEvn2");
               const docSnap = await getDoc(docRef);
               const itemRef =  await doc(db, "items", "decor");
               const itemSnap = await getDoc(itemRef);
@@ -107,7 +99,6 @@ export default function Shop({navigation, route}) {
                 setUser(docSnap.data().items)
                 setBought(docSnap.data().shop)
                 setStars(docSnap.data().stars)
-                setStats(docSnap.data().stats)
               } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -138,7 +129,7 @@ export default function Shop({navigation, route}) {
         setModalVisible(false)
         setModalPage(1)
     }
-  
+
     const HandleYes = async () =>{
       const auth = getAuth();
            
@@ -151,7 +142,6 @@ export default function Shop({navigation, route}) {
                 docRef,
                 {
                   shop : bought,
-                  stats : stats
                 },
                 {merge: true}
               )
@@ -164,14 +154,12 @@ export default function Shop({navigation, route}) {
                     x: 0,
                     y: 0,
                     id: shopIndex,
-                    zIndex: -99,
-                    active:false
+                    zIndex: -99
                 })
             });
             
             setModalPage(2)
-            //add minus so it costs stars 
-             
+            //add minus so it costs stars   
             updateDoc(docRef, {stars: increment(-shop[shopIndex].price)})
 
         }else{
@@ -206,13 +194,16 @@ export default function Shop({navigation, route}) {
         onClose={console.log(1)} 
         onNo={HandleClose}  
         mdlvis={modalVisible}
+        //mdltext='${name}'
         page={modalPage}
         img={shop[shopIndex].name}
         ></ModalShop>
         <SliderCont>
           <Wrapper>
-            <AppText style='title' text='Shop'></AppText>
-            <ShopWrapper>
+            <HomeTextCont style={{marginBottom:'5%'}}>
+            <AppText style='title' text='Shop'/>
+            </HomeTextCont>
+            <ShopWrapper> 
                 {shop.map((o,i)=>
                     <ShopItem
                     onBttn={()=>HandleBuy(i)}
@@ -223,7 +214,9 @@ export default function Shop({navigation, route}) {
                     ></ShopItem>
                 )}
             </ShopWrapper>
-            <AppBttn bttntext="Back" onBttn={()=>navigation.navigate("Decor")} marginBottom='5%'></AppBttn>
+            <ButtonWrapper style={{marginTop:'5%', marginBottom:'5%'}}>
+            <AppBttn bttntext="Back" onBttn={()=>navigation.navigate("Decor")} marginBottom='5%'/>
+            </ButtonWrapper>
           </Wrapper>
         </SliderCont>
         <NavWrapper>

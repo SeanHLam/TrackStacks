@@ -9,7 +9,7 @@ width:90%;
 display: flex;
 flex-direction: row;
 align-items: center;
-justify-contenr: center;
+justify-content: center;
 background-color:#FEFDF4;
 padding:3%;
 margin: 5%;
@@ -22,9 +22,10 @@ background-color:#EAAA99;
 border-radius: 100%;
 display:flex;
 justify-content:center;
-align-items:center;
+align-items:flex-start;
 padding:1%;
 margin-right:2%;
+width:10%;
 `
 
 
