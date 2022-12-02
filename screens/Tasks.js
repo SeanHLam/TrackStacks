@@ -188,7 +188,10 @@ export default function Tasks({navigation, route}) {
               
             }
 
-            {/* {confetti === true ? <ConfettiCannon count={60} origin={{x:200, y:-8}} fallSpeed={3000} fadeOut={true}/> : ''} */}
+            <ConfettiContainer>
+            {confetti === true ? <ConfettiCannon count={60} origin={{x:180, y:-100}} fallSpeed={3000} fadeOut={true}/> : ''}
+            </ConfettiContainer>
+
             
           </Wrapper>
         </SliderCont>

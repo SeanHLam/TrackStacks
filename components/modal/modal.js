@@ -42,7 +42,6 @@ background-color: #FEFDF4;
 border-radius: 10px;
 box-shadow: 5px 5px #363630;
 border: 4px solid #363630;
-padding: 3%;
 margin-top:80%;
 `
 const BttnCont = styled.View`
@@ -51,6 +50,13 @@ flex-direction: row;
 justify-content: center;
 align-items:center;
 padding:5%;
+`
+
+const HeaderCont = styled.View`
+margin-top:4%;
+width:90%;
+display:flex;
+align-items:center;
 `
 
 export default function ModalPop({
@@ -79,9 +85,11 @@ export default function ModalPop({
                 }}
                 >
                 <Popup>
+                <HeaderCont>
                 <AppText style='sub' align='center' text={mdltext}></AppText>
+                </HeaderCont>
                 <BttnCont>
-                    <AppText align='center' wdth='50%' style='sub' text={"You will get:"}></AppText>
+                    <AppText align='center' wdth='60%' style='sub' text={"You will receive:"}></AppText>
                     <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
                     <AppText align='left' style='sub' wdth='20%' text={"50"}></AppText>
                 </BttnCont>
@@ -101,6 +109,5 @@ const styles = StyleSheet.create({
     icon: {
         width: 35,
         height: 35,
-        marginLeft: 5,
     },
   });
