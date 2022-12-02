@@ -144,12 +144,12 @@ export default function Home({navigation, route}) {
         </MotiView>
         
         <MotiView
-        delay={900}
+        delay={1200}
         from={{ translateX: -15, opacity: 0}}
         animate={{ translateX: 0, opacity: 1}}
         transition={{
           type:'timing',
-          duration:1200,
+          duration:1400,
         }}
         >
         <View
