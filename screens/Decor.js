@@ -5,7 +5,7 @@ import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont, DecorBubble} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import DecWidget from '../components/decorwidget/decorwidget.js';
@@ -33,8 +33,6 @@ import { async } from '@firebase/util';
 
 const Slider = styled(ScrollView)`
 padding:3%;
-
-
 `
 
 const BgCont = styled.View`
@@ -42,8 +40,6 @@ width:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-
-
 `
 
 const Divider = styled.Text`
@@ -57,6 +53,7 @@ flex-direction:row;
 justify-content:center;
 align-items:center;
 `
+
 const SliderWrapper = styled.View`
 width:65%;
 background-color: #FFFDF4;
@@ -64,7 +61,6 @@ border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
 display: flex;
-margin-left: 4%;
 margin-right: 4%;
 `
 
@@ -223,11 +219,11 @@ export default function Decor({navigation, route}) {
         <SliderCont scrollEnabled={scroll}>
           <Wrapper>
             <DecorCont>
-              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Buy Items' style='large' nme='shopping-cart' dsp='flex'></AppBttn>
-              {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
-              <IconBttn style={{
+            <IconBttn style={{
                 alignItems: "right",
-              }} onIcon={handleModal} i={"question-mark-circle"}></IconBttn>
+              }} onIcon={handleModal} i={"question-mark-circle"}/>
+              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Shop' style='large' nme='shopping-cart' dsp='flex' clr='#363630'></AppBttn>
+              {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
             </DecorCont>
             <LottieView
               autoPlay
@@ -242,6 +238,7 @@ export default function Decor({navigation, route}) {
                 
               source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
             />
+            <DecorBubble bg={background ? 'rgba(234,170,153,0.5)' : 'rgba(123,137,163,0.5)'}/>
             <BgCont>
               {user.map((o,i)=>
                   <ItemDrag 
@@ -278,7 +275,9 @@ export default function Decor({navigation, route}) {
                 </Slider>
               </SliderWrapper>
               
-                <IconBttn i={background ? 'moon' : 'moon-outline'} width='70' height='60' onIcon={handleBg}></IconBttn>
+             
+              
+                <IconBttn i={background ? 'moon' : 'moon-outline'} width='60' height='70' onIcon={handleBg}></IconBttn>
             </AssetCont>
 
           </Wrapper>

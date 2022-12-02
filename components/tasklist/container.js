@@ -14,24 +14,13 @@ import ArchiveList from './archivelist';
 
 const MainCont = styled.View`
 width: 100%;
-margin-bottom: 4%;
-
+margin-bottom: 5%;
+display:flex;
+align-items:center;
 `
  
 const HeaderCont = styled.View`
-width: 100%;
-padding-left:8%;
-
-`
-
-const IconCont = styled.View`
-background-color:#FFFDF4;
-border-radius: 5px;
-box-shadow: 2px 2px #363630;
-padding:3px;
-display:flex;
-justify-content:center;
-align-content:center;
+width: 85%;
 `
 
 export default function TaskCont(){

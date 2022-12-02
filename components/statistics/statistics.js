@@ -5,13 +5,14 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
 export const Wrapper = styled.View`
-width:90%;
+width:100%;
 display: flex;
 flex-direction: row;
 justify-content: center;
+align-items:center;
 background-color:#FEFDF4;
-margin:2%;
-margin-bottom:5%;
+margin-top:4%;
+margin-bottom:10%;
 border:2px solid #363630;
 border-radius: 8px;
 box-shadow: 4px 4px #363630;
@@ -21,6 +22,7 @@ export const ColWrapper = styled.View`
 display: flex;
 align-items:center;
 padding:5%;
+justify-content:center;
 `
 
 export const StatCont = styled.View`
@@ -79,7 +81,7 @@ doing=0
                  <AppText align='right' c="white" wdth='100%' text={spent} style='sub'></AppText>
             </NumBg>
             </NumCont>
-            <AppText c='blue' wdth='100%' text="Stars Spent" style='body'></AppText>
+            <AppText c='blue' wdth='100%' text="Stars spent" style='body'></AppText>
         </StatCont>
         </ColWrapper>
 

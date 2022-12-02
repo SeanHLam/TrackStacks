@@ -92,15 +92,15 @@ export default function ModalTut({
                 >
                 {page === 1 &&
                     <Popup>
-                    <AppText style='sub' align='center' text={"Welcome to you cabin"}></AppText>
-                    <AppText style='tasksub' align='center' text={"You can decorate it with items purchased from the store."}></AppText>
-                    <BttnCont>
-                        <AppBttn bttntext='Buy Items' style='huge' nme='shopping-cart' dsp='flex'></AppBttn>
+                    <AppText style='sub' align='center' text={"Welcome to your seat"}></AppText>
+                    <AppText style='tasksub' align='center' text={"Decorate your room with items purchased from the store."}></AppText>
+                    <BttnCont style={{marginTop:'5%', marginBottom:'5%'}}>
+                        <AppBttn bttntext='Shop' style='huge' nme='shopping-cart' dsp='flex' clr='#363630'></AppBttn>
                     </BttnCont>
-                    <AppText style='sub' align='center' text={"1/3"}></AppText>
-                    <BttnCont>
-                        <AppBttn onBttn={onClose} bttntext='Close'></AppBttn>
-                        <AppBttn onBttn={onYes} bttntext='Next'></AppBttn>
+                    <AppText style='tasksub' align='center' text={"1/3"}></AppText>
+                    <BttnCont style={{width:'100%', display:'flex', justifyContent:'space-evenly'}}>
+                        <AppBttn onBttn={onClose} bttntext='Close' styl='task'></AppBttn>
+                        <AppBttn onBttn={onYes} bttntext='Next' styl='task' ></AppBttn>
                        
                     </BttnCont>
                     </Popup>
@@ -109,7 +109,7 @@ export default function ModalTut({
                 {page === 2 &&
                      <Popup>
                      <AppText style='sub' align='center' text={"View your owned items"}></AppText>
-                     <AppText style='tasksub' align='center' text={"They’ll be displayed here below your cabin in this menu."}></AppText>
+                     <AppText style='tasksub' align='center' text={"Displayed below your room."}></AppText>
                      <BttnCont>
                          <Image 
                          style={{
@@ -119,8 +119,8 @@ export default function ModalTut({
                          }}
                          source={require("../../assets/itemslider.png")}/>
                      </BttnCont>
-                     <AppText style='sub' align='center' text={"2/3"}></AppText>
-                     <BttnCont>
+                     <AppText style='tasksub' align='center' text={"2/3"}></AppText>
+                     <BttnCont style={{width:'100%', display:'flex', justifyContent:'space-evenly'}}>
                         <AppBttn onBttn={onNo} bttntext='Back'></AppBttn>
                          <AppBttn onBttn={onYes} bttntext='Next'></AppBttn>
                         
@@ -130,8 +130,8 @@ export default function ModalTut({
                 
                 {page === 3 &&
                     <Popup>
-                    <AppText style='sub' align='center' text={"Decorate just by tapping"}></AppText>
-                    <AppText style='tasksub' align='center' text={"Click on the items and they’ll appear in the cabin"}></AppText>
+                    <AppText style='sub' align='center' text={"Drag & Drop"}></AppText>
+                    <AppText style='tasksub' align='center' text={"Tap your desired item, drag, and drop!"}></AppText>
                     <BttnCont>
                         <Image 
                         style={{
@@ -141,7 +141,7 @@ export default function ModalTut({
                         }}
                         source={require("../../assets/rewardBgtutpng.png")}/>
                     </BttnCont>
-                    <AppText style='sub' align='center' text={"3/3"}></AppText>
+                    <AppText style='tasksub' align='center' text={"3/3"}></AppText>
                     <BttnCont>
                        <AppBttn onBttn={onClose} bttntext='Close'></AppBttn>
                         

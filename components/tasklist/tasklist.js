@@ -82,7 +82,7 @@ background-color: ${({clr}) =>
                     clr === 'Long Term' && '#85C0FF' ||
                     clr === 'Single' && '#89608E'
                 };
-margin-left: 7%;
+margin-left: 6%;
 `
 
 const ICont = styled.View`

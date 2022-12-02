@@ -4,7 +4,7 @@ import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/component
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect } from 'react';
-import { Wrapper, NavWrapper, SliderCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, TaskContWrapper, ScreenCont, HomeTaskCont } from '../styles/global.js';
 import { Text,Image, StyleSheet, View } from 'react-native';
 import AppText from '../components/apptext/apptext.js';
 import TaskList from '../components/tasklist/tasklist.js';
@@ -17,8 +17,6 @@ import Widget from '../components/widgets/widget.js';
 import {HomeTextCont, WidgetWrapper, ColumnOneWrapper, ColumnTwoWrapper, ButtonWrapper} from '../styles/global.js';
 import TaskCont from '../components/tasklist/container.js';
 import { Icon } from '@ui-kitten/components';
-import { TaskContWrapper } from '../styles/global.js';
-import { ScreenCont } from '../styles/global.js';
 import AppBttn from '../components/button/appbutton.js';
 import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
@@ -234,7 +232,7 @@ export default function Home({navigation, route}) {
         </ColumnTwoWrapper>
 
         </WidgetWrapper>
-
+        
         <TaskCont/>
 
         <ButtonWrapper>

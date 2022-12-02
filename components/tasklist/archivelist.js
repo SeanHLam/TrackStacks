@@ -7,7 +7,7 @@ import { Icon } from '@ui-kitten/components';
 import Checkbox from 'expo-checkbox';
 
 const Cont = styled.View`
-width: 100%;
+width: 90%;
 display:flex;
 flex-direction:row;
 justify-content:center;
@@ -29,8 +29,8 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-margin:4% 4% 4% 0;
-width:11%;
+margin:3% 3% 5% 2%;
+width:12%;
 `
 
 const ListCont = styled.View`
@@ -44,12 +44,12 @@ background-color:#FFFDF4;
 `
 
 const TextCont = styled.View`
-width: 70%;
+width: 80%;
 display:flex;
 flex-direction: column;
 justify-content:center;
 text-align:center;
-margin:10px;
+margin:5%;
 position:relative;
 `
 
@@ -82,14 +82,7 @@ background-color: ${({clr}) =>
                     clr === 'Long Term' && '#85C0FF' ||
                     clr === 'Single' && '#89608E'
                 };
-margin-left: 5.7%;
-`
-
-const ICont = styled.View`
-display:flex;
-align-items: start;
-justify-content: flex-end;
-margin-bottom:2%
+margin-left: 4%;
 `
 
 
@@ -126,9 +119,7 @@ checked=false
 
                     
                 </TextCont>
-                <ICont>
-                    <Icon  name='edit-outline' fill={"#363630"} style={styles.icon}/>
-                </ICont>
+            
                 
                 <ColTag clr={typ}></ColTag>
             </ListCont>

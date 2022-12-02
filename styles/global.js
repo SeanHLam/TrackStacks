@@ -23,8 +23,9 @@ flex-direction:column;
 export const ButtonWrapper = styled.View`
 display:flex;
 flex-direction:row;
-justify-content:center;
-margin-bottom:2%;
+justify-content:space-evenly;
+margin-bottom:10%;
+max-width:100%;
 `;
 
 export const SignInFooter = styled.View`
@@ -101,7 +102,7 @@ justify-content: flex-end;
 width:90%;
 `
 export const PickDate = styled(Datepicker)`
-width: 90%;
+width: 85%;
 background-color:#FEFDF4;
 padding:3%;
 border:2px solid #363630;
@@ -111,7 +112,7 @@ margin: 0% 0% 5% 0%;
 `
 
 export const PickDateRange = styled(RangeDatepicker)`
-width: 90%;
+width: 85%;
 background-color:#FEFDF4;
 padding:3%;
 border:2px solid #363630;
@@ -125,14 +126,20 @@ export const TaskContWrapper = styled.View`
 margin-top:5%;
 `
 
+export const HomeTaskCont = styled.View`
+display:flex;
+align-items:center;
+flex-direction:column;
+`
+
 export const DecorCont = styled.View`
 width: 90%;
 display:flex;
 flex-direction: row;
 align-items:center;
+justify-content:flex-end;
 margin-bottom:5%;
 margin-top:5%;
-margin-left:8%;
 `
 
 export const DecorImage = styled(Image)`
@@ -144,7 +151,7 @@ grid-template-columns: 2fr 1fr repeat(2, 1.5fr) 1fr 2fr;
 grid-template-rows: repeat(5, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
-z-index: -30
+z-index: -30;
 `
 
 const AppIcon = styled(Icon)`
@@ -210,7 +217,7 @@ align-items:center;
 justify-content:center;
 flex-direction:row;
 width:auto;
-margin-bottom: 5%;
+margin-bottom: 15%;
 `
 
 export const MascotCont = styled.View`
@@ -221,7 +228,8 @@ export const ProfileCont = styled.View`
 display:flex;
 flex-direction: row;
 margin-top:5%;
-margin-bottom:3%;
+margin-bottom:8%;
+width:85%;
 `
 
 export const ProfileInfoCont = styled.View`
@@ -231,7 +239,19 @@ justify-content:space-around;
 margin-left:5%;
 `
 
-export const SettingCont = styled.View`
-margin-top:-3%;
-margin-bottom:10%;
+export const CenterCont= styled.View`
+display:flex;
+justify-content:center;
+align-items:center;
+width:85%;
+`
+
+export const DecorBubble = styled.View`
+position:absolute;
+width:95%;
+height:300;
+top:445;
+background-color:${props=>props.bg};
+z-index:-1;
+border-radius:30px;
 `

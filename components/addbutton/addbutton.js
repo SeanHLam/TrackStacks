@@ -16,6 +16,7 @@ flex-direction: row;
 background-color:#EAAA99;
 border:2px solid #363630;
 border-radius: 5px;
+margin-right:3%;
 `
 
 export default function AddBttn({
@@ -55,7 +56,7 @@ export default function AddBttn({
 
 const styles = StyleSheet.create({
     icon: {
-        width: 35,
-        height: 35,
+        width: 25,
+        height: 25,
     },
   });
