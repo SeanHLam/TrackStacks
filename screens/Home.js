@@ -158,7 +158,7 @@ export default function Home({navigation, route}) {
         
         }}
         >
-          <AppText text={`${ name ? name : "Sean"}`} style='header'/>
+          <AppText text={`${name}`} style='header'/>
         </View>
          
      
