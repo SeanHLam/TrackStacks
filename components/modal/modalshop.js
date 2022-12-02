@@ -51,7 +51,8 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items:center;
-padding:5% 5% 4% 5%;
+padding:5% 0% 5% 0%;
+width:100%;
 `
 
 const TextCont = styled.View`
@@ -94,7 +95,7 @@ export default function ModalShop({
                     <BttnCont>
                         <Item size='100' image={img}></Item>
                     </BttnCont>
-                    <BttnCont>
+                    <BttnCont style={{display:'flex', justifyContent:'space-evenly', alignItems:'space-between'}}>
                         <AppBttn onBttn={onYes} bttntext='Yes'></AppBttn>
                         <AppBttn onBttn={onNo} bttntext='No'></AppBttn>
                     </BttnCont>
@@ -141,6 +142,6 @@ const styles = StyleSheet.create({
     icon: {
         width: 50,
         height: 50,
-       
+       marginTop:10
     },
   });

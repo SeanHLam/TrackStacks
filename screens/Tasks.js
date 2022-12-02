@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, auth } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, increment } from "firebase/firestore";
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
@@ -33,6 +34,7 @@ export default function Tasks({navigation, route}) {
     const [tasks, setTasks] = useState([])
     const [stars, setStars] = useState()
     const [stats, setStats] = useState([])
+    const [confetti, setConfetti] = useState()
 
     useFocusEffect(
       React.useCallback(() => {
@@ -85,6 +87,7 @@ export default function Tasks({navigation, route}) {
 
 
     const HandleFinish = async ()=>{
+      setConfetti(!confetti)
       const auth = getAuth();
       setModalVisible(false)
       const db = getFirestore();
@@ -104,6 +107,12 @@ export default function Tasks({navigation, route}) {
       updateDoc(docRef, {stars: increment(50)})
      
     }
+
+    useEffect(() => {
+      if (confetti === false) {
+        setConfetti(true)
+      }
+    }, [confetti]);
 
     const HandleClose = ()=>{
       setModalVisible(false)
@@ -150,8 +159,7 @@ export default function Tasks({navigation, route}) {
         <Header/>
         <ModalPop onYes={HandleFinish} onClose={HandleClose} onNo={HandleClose}  mdlvis={modalVisible}></ModalPop>
         <SliderCont>
-        {/*Confetti && <ConfettiCannon count={50} origin={{x: 0, y:-300}} fallSpeed={3000} fadeOut={true}
-            />*/}
+
           <Wrapper>
             {/* <TaskSearch></TaskSearch> */}
             <Calendar
@@ -180,7 +188,7 @@ export default function Tasks({navigation, route}) {
               
             }
 
-         
+            {confetti === true ? <ConfettiCannon count={60} origin={{x:200, y:0}} fallSpeed={3000} fadeOut={true}/> : ''}
             
           </Wrapper>
         </SliderCont>

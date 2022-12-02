@@ -31,7 +31,7 @@ const customMapping = { strict: strictTheme };
 
 export const WidgetCont = styled.View`
 background-color:#FEFDF4;
-width:90%;
+width:85%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
@@ -216,8 +216,8 @@ export default function EditTask({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            <HeaderCont>
-              <AppText style='header' wdth='65%' text='Edit Task'></AppText>
+            <HeaderCont style={{width:'90%', justifyContent:'flex-start'}}>
+              <AppText style='header' wdth='70%' text='Edit Task'></AppText>
               <AppBttn onBttn={HandleBack} style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle addTitle={HandleTitle} t={text}></TaskTitle>
@@ -236,7 +236,7 @@ export default function EditTask({navigation, route}) {
                   </AddDetail>
             } */}
             {data[selectedIndex.row] === "To Do" &&
-            <WidgetCont>
+            <WidgetCont style ={{marginBottom:'10%'}}>
               <AppText style='sub' text='Details'></AppText>
             {subTask.map((o,i)=> (
                 <SubTask
@@ -249,7 +249,7 @@ export default function EditTask({navigation, route}) {
                <AddCont>
                     <AddBttn onAdd={handleAddSub}></AddBttn>
                     <AppText style='body' text='Add New'></AppText>
-                  </AddCont>
+                </AddCont>
               
 
             </WidgetCont>}
@@ -285,7 +285,7 @@ export default function EditTask({navigation, route}) {
             
              
              {/* <RepeatMenu></RepeatMenu> */}
-            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Edit Task'></AppBttn>
+            <AppBttn marginBottom='10%' marginTop='5%' onBttn={HandleAdd} style='large' bttntext='Edit Task'></AppBttn>
          
           </Wrapper>
         </SliderCont>

@@ -5,7 +5,7 @@ import { Icon } from '@ui-kitten/components';
 import { View,Text, StyleSheet, TextInput} from 'react-native';
 
 export const Wrapper = styled.View`
-width:90%;
+width:85%;
 display: flex;
 flex-direction: row;
 background-color:#FFFDF4;
@@ -24,12 +24,12 @@ width:90%
 `
 
 const TxtCont = styled.View`
-width:100%;
+width:85%;
 display: flex;
 flex-direction: row;
 align-items: flex-end;
 justify-content: flex-end;
-margin-right: 10%;
+margin-top:1%;
 margin-bottom: 4%;
 
 `

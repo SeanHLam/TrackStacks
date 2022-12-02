@@ -4,7 +4,7 @@ import { ApplicationProvider,Calendar, IconRegistry} from '@ui-kitten/components
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState } from 'react';
-import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, AddCont, HomeTextCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
@@ -86,7 +86,9 @@ export default function Archive({navigation, route}) {
         
         <SliderCont>
           <Wrapper>
+            <HomeTextCont style={{marginLeft:'15%', marginBottom:'3%'}}>
             <AppText style='title'  text='Archive'></AppText>
+            </HomeTextCont>
             {tasks.map((o,i)=>
             tasks[i].status == "finished" &&
               <ArchiveList

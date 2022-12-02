@@ -35,7 +35,8 @@ export default function AppBttn({
   margin='3%',
   marginTop='0%',
   marginBottom='0%',
-  marginLeft="0%"
+  marginLeft="0%",
+  styl='sub'
 }){
 
   const bttPress = (pressType) => {
@@ -75,7 +76,7 @@ export default function AppBttn({
       }}*/
       > 
         <Icon name={nme} fill={clr} display={dsp} style={styles.icon}></Icon>
-         <AppText align='center' c="black" style='sub' text={bttntext}/>
+         <AppText align='center' c="black" style={styl} text={bttntext}/>
       </Buttonst>
 
     )

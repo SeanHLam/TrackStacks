@@ -5,7 +5,7 @@ import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont} from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, DecorCont, DecorImage, AssetCont, HomeTextCont} from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import DecWidget from '../components/decorwidget/decorwidget.js';
@@ -211,7 +211,9 @@ export default function Shop({navigation, route}) {
         ></ModalShop>
         <SliderCont>
           <Wrapper>
-            <AppText style='title' text='Shop'></AppText>
+            <HomeTextCont style={{marginLeft:'15%', marginBottom:'3%'}}>
+              <AppText style='title' text='Shop'></AppText>
+            </HomeTextCont>
             <ShopWrapper>
                 {shop.map((o,i)=>
                     <ShopItem
