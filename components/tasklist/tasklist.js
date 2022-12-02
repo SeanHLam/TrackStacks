@@ -73,7 +73,7 @@ background-color: ${({clr}) =>
 `
 
 const ColTag = styled.View`
-width: 7%;
+width: 7.9%;
 display:flex;
 border-radius: 4px 6px 6px 4px;
 box-shadow: -3px 0px #363630;

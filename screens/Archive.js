@@ -46,7 +46,7 @@ export default function Archive({navigation, route}) {
             if (docSnap.exists()) {
               
               setTasks(docSnap.data().tasks)
-              setStars(docSnap.data().stars)
+       
             } else {
               console.log("No such document!");
             }

@@ -17,6 +17,7 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, getFirestore, 
 import { useFocusEffect } from '@react-navigation/native';
 import { async } from '@firebase/util';
 import ConfettiCannon from 'react-native-confetti-cannon';
+import { ConfettiContainer } from '../styles/global.js';
 
 export default function Tasks({navigation, route}) { 
     const HandlePage = (new_page) =>{
