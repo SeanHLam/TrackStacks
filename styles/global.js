@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { CurrentRenderContext } from '@react-navigation/native';
 import { Icon } from '@ui-kitten/components';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export const ScreenCont = styled.View`
 background-color:#FFFDF4;
@@ -13,7 +14,6 @@ export const Wrapper = styled.View`
 display:flex;
 align-items:center;
 flex-direction:column;
-
 `;
 
 export const SignUpWrapper = styled.View`
@@ -259,6 +259,8 @@ border-radius:10px;
 
 export const ConfettiContainer = styled.View`
 position:absolute;
-width:800px;
+width:1px;
 height:700px;
+z-index:-100;
+left:0%;
 `
