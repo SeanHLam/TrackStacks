@@ -4,7 +4,7 @@ import { ApplicationProvider, Calendar, IconRegistry} from '@ui-kitten/component
 import NavMenu from '../components/navmenu/navmenu.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useState, useEffect} from 'react';
-import { Wrapper, NavWrapper, SliderCont, AddCont, ConfettiContainer } from '../styles/global.js';
+import { Wrapper, NavWrapper, SliderCont, AddCont } from '../styles/global.js';
 import Header from '../components/header/header.js';
 import { default as theme } from "../assets/TSTheme.json";
 import TaskList from '../components/tasklist/tasklist.js';
@@ -187,9 +187,11 @@ export default function Tasks({navigation, route}) {
               </TaskList> ) 
               
             }
+
             <ConfettiContainer>
             {confetti === true ? <ConfettiCannon count={60} origin={{x:180, y:-100}} fallSpeed={3000} fadeOut={true}/> : ''}
             </ConfettiContainer>
+
             
           </Wrapper>
         </SliderCont>

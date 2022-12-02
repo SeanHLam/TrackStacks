@@ -25,6 +25,7 @@ import { View} from 'react-native';
 import Mascot from '../assets/mascot.svg'
 import styled from 'styled-components';
 import AddBttn from '../components/addbutton/addbutton.js';
+import { set } from 'react-native-reanimated';
 
 const strictTheme = { ["Cabin_700Bold"]: 'Times New Roman' }; 
 const customMapping = { strict: strictTheme };
@@ -86,6 +87,7 @@ export default function EditTask({navigation, route}) {
     
     const HandleTitle = (t)=>{
       onChangeText(t)
+      console.log(t)
     }
     
     
@@ -152,16 +154,25 @@ export default function EditTask({navigation, route}) {
       setSubTask(newArr)
       
     }
-    console.log(subTask)
+   
     const HandleAdd = ()=>{
 
       const auth = getAuth();
       const db = getFirestore();
       const docRef = doc(db, "users", auth.currentUser.uid);
 
-      tasks[taskKey].title = text
-      tasks[taskKey].date = date
-      tasks[taskKey].sub = subTask
+      let newArr = [...tasks] 
+      newArr[taskKey].title = text
+      newArr[taskKey].date = date
+      newArr[taskKey].sub = subTask ? subTask : []
+      
+      setTasks(newArr)
+      console.log(newArr[taskKey])
+
+      // tasks[taskKey].title = text
+      // tasks[taskKey].date = date
+      // tasks[taskKey].sub = subTask
+      
         setDoc(
             docRef,
             {
@@ -193,7 +204,7 @@ export default function EditTask({navigation, route}) {
       setIndex(index + 1)
     }
 
-
+    
     return(
       <ApplicationProvider 
       customMapping={customMapping}
@@ -241,7 +252,7 @@ export default function EditTask({navigation, route}) {
             {subTask.map((o,i)=> (
                 <SubTask
                 t={subTask[i].taskname}
-                onText={e =>HandleSub(e,i)}
+                onText={ e => HandleSub(e,i)}
                 onCheck={()=>handleCheck(i)}
                 check={subTask[i].status}
                 key={i}/>)
