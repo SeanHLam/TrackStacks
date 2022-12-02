@@ -39,7 +39,7 @@ const data = [
 
 export const WidgetCont = styled.View`
 background-color:#FEFDF4;
-width:90%;
+width:85%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
@@ -210,8 +210,8 @@ export default function MakeTask({navigation, route}) {
         <Header/>
         <SliderCont>
           <Wrapper>
-            <HeaderCont>
-              <AppText style='header' wdth='65%' text='Add Task'></AppText>
+            <HeaderCont style={{width:'90%', justifyContent:'flex-start'}}>
+              <AppText style='header' wdth='70%' text='Add Task'></AppText>
               <AppBttn onBttn={HandleBack} style='small' bttntext='Cancel'></AppBttn>
             </HeaderCont>
             <TaskTitle addTitle={HandleTitle} t={text}></TaskTitle>
@@ -236,7 +236,7 @@ export default function MakeTask({navigation, route}) {
                   // >
                   // </AddDetail>
 
-                  <WidgetCont>
+                  <WidgetCont style={{marginBottom:'10%'}}>
                   <AppText style='sub' text='Details'></AppText>
                   {subTask.map((o,i)=> (
                     <SubTask
@@ -288,7 +288,7 @@ export default function MakeTask({navigation, route}) {
             
              
              {/* <RepeatMenu></RepeatMenu> */}
-            <AppBttn marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Add Task'></AppBttn>
+            <AppBttn marginTop='5%' marginBottom='5%' onBttn={HandleAdd} style='large' bttntext='Add Task'></AppBttn>
          
           </Wrapper>
         </SliderCont>

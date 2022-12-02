@@ -85,7 +85,7 @@ export default function ModalPop({
                     <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
                     <AppText align='left' style='sub' wdth='20%' text={"50"}></AppText>
                 </BttnCont>
-                <BttnCont>
+                <BttnCont style={{width:'100%', display:'flex', justifyContent:'space-evenly'}}>
                     <AppBttn onBttn={onYes} bttntext='Yes'></AppBttn>
                     <AppBttn onBttn={onNo} bttntext='No'></AppBttn>
                 </BttnCont>
