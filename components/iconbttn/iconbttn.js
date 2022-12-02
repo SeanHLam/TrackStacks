@@ -11,8 +11,8 @@ export const Wrapper = styled.View`
 
 export default function IconBttn({
 i="search",
-width='45',
-height='40',
+width='55',
+height='55',
 padding='0%',
 onIcon=()=>{},
 }){
@@ -25,8 +25,8 @@ onIcon=()=>{},
 const styles = StyleSheet.create({
     icon: {
 
-        width: 45,
-        height: 40,
+        width: 55,
+        height: 55,
         marginRight: 5,
   
 

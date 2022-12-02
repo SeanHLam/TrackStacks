@@ -219,10 +219,11 @@ export default function Decor({navigation, route}) {
         <SliderCont scrollEnabled={scroll}>
           <Wrapper>
             <DecorCont>
+            <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Shop' style='large' nme='shopping-cart' dsp='flex' clr='#363630'></AppBttn>
             <IconBttn style={{
                 alignItems: "right",
               }} onIcon={handleModal} i={"question-mark-circle"}/>
-              <AppBttn onBttn={()=>navigation.navigate("Shop")} bttntext='Shop' style='large' nme='shopping-cart' dsp='flex' clr='#363630'></AppBttn>
+            
               {/* <AppBttn bttntext='Items' style='small' nme='briefcase' dsp='flex'></AppBttn> */}
             </DecorCont>
             <LottieView
@@ -238,7 +239,7 @@ export default function Decor({navigation, route}) {
                 
               source={background ? require('../assets/movingBgWarm.json') : require('../assets/movingBgCool.json')}
             />
-            <DecorBubble bg={background ? 'rgba(234,170,153,0.5)' : 'rgba(123,137,163,0.5)'}/>
+            {/*<DecorBubble bg={background ? 'rgba(234,170,153,0.5)' : 'rgba(123,137,163,0.5)'}/>*/}
             <BgCont>
               {user.map((o,i)=>
                   <ItemDrag 
@@ -254,7 +255,7 @@ export default function Decor({navigation, route}) {
                       posy={user[i].y}
                       index={i}
                       ></ItemDrag>
-              )}  
+              )}
               <DecorImage source={background ? require("../assets/rewardBgWarm.png") : require("../assets/rewardBgCool.png")}/>
             </BgCont>
             <AssetCont>

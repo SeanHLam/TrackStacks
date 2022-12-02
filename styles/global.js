@@ -78,7 +78,7 @@ width: 100%;
 
 export const SelectCont = styled(Layout)`
 background-color:#FEFDF4;
-width:90%;
+width:85%;
 border:2px solid #363630;
 border-radius: 5px;
 box-shadow: 4px 4px #363630;
@@ -133,11 +133,11 @@ flex-direction:column;
 `
 
 export const DecorCont = styled.View`
-width: 90%;
+width: 85%;
 display:flex;
 flex-direction: row;
 align-items:center;
-justify-content:flex-end;
+justify-content:space-between;
 margin-bottom:5%;
 margin-top:5%;
 `
@@ -217,7 +217,7 @@ align-items:center;
 justify-content:center;
 flex-direction:row;
 width:auto;
-margin-bottom: 15%;
+margin-bottom: 7%;
 `
 
 export const MascotCont = styled.View`
@@ -249,9 +249,15 @@ width:85%;
 export const DecorBubble = styled.View`
 position:absolute;
 width:95%;
-height:300;
-top:445;
+height:16%;
+top:79%;
 background-color:${props=>props.bg};
 z-index:-1;
-border-radius:30px;
+border-radius:10px;
+`
+
+export const ConfettiContainer = styled.View`
+position:absolute;
+width:800px;
+height:700px;
 `
