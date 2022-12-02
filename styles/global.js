@@ -13,6 +13,7 @@ export const Wrapper = styled.View`
 display:flex;
 align-items:center;
 flex-direction:column;
+
 `;
 
 export const SignUpWrapper = styled.View`

@@ -17,11 +17,11 @@ const Cont = styled.View`
 background-color: #FFFDF4;
 flex-direction: row;
 width: 100%;
-height:13%;
+height:12%;
 display: flex;
 align-items: center;
 justify-content:center;
-padding: 12% 5% 5% 5%;
+padding: 10% 5% 5% 5%;
 `;
 
 const SCont = styled.View`
@@ -29,6 +29,7 @@ flex-direction: row;
 display:flex;
 flex:1;
 justify-content: flex-end;
+padding-right:5%;
 padding-top:3%;
 `
 const ICont = styled.View`
@@ -59,7 +60,6 @@ export default function Header({
           const db = getFirestore();
           const check = onSnapshot(doc(db, 'users', auth.currentUser.uid), (doc)=>{
             console.log("check", doc.data())
-
             setStars(doc.data().stars)
             // const docSnap = await getDoc(docRef);
           //     if (docSnap.exists()) {
@@ -87,7 +87,7 @@ export default function Header({
             </ICont>
             <SCont>
                 <Icon  name='star' fill={"#EAAA99"} style={styles.icon}/>
-                  <AppText wdth={"20%"} align='left' text={stars} style='sub'></AppText>
+                  <AppText wdth={"20%"} align='left' text={stars ? stars : null} style='sub'></AppText>
                
             </SCont>
         </Cont>
